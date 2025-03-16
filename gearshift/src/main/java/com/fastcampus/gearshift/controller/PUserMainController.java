@@ -10,25 +10,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class PUserMainController {
     @GetMapping("/main")
-    public String main(){
+    public String main() {
         return "main";
-
-
-
-
-
-
-public class PUserMainController {
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone();
+    }
 
 
     @GetMapping("/list")
     public String list(){
         return "list";
 
-        
+
     }
 
     @GetMapping("/list2")
@@ -47,4 +38,8 @@ public class PUserMainController {
         return "list4";
     }
 
+    @GetMapping("/list5")
+    public String list5(){
+        return "list5";
+    }
 }
