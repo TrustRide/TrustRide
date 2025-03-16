@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5d6b9a11-a4f8-46e8-b670-acf8a557982a" name="변경" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fastcampus/gearshift/controller/PUserMainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fastcampus/gearshift/controller/PUserMainController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -72,7 +73,7 @@
       <option name="presentableId" value="Default" />
       <updated>1742107985972</updated>
       <workItem from="1742107987876" duration="110000" />
-      <workItem from="1742131202008" duration="7457000" />
+      <workItem from="1742131202008" duration="8792000" />
     </task>
     <servers />
   </component>

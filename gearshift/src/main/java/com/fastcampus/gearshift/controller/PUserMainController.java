@@ -62,5 +62,12 @@ public class PUserMainController {
         return "list9";
     }
 
+    @GetMapping("/list10")
+    public String list10(){
+        return "list10";
+    }
+
+
+
 
 }
