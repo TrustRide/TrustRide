@@ -26,4 +26,5 @@ public class PUserMainController {
     public String list(){
         return "list";
     }
+    
 }
