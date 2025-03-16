@@ -26,4 +26,8 @@ public class PUserMainController {
     public String list3(){
         return "list3";
     }
+    @GetMapping("/list4")
+    public String list4(){
+        return "list4";
+    }
 }
