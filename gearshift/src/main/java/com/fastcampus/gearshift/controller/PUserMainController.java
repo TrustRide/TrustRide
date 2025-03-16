@@ -1,6 +1,9 @@
 package com.fastcampus.gearshift.controller;
 
-<<<<<<< Updated upstream
+
+    
+
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -9,7 +12,7 @@ public class PUserMainController {
     @GetMapping("/main")
     public String main(){
         return "main";
-=======
+
 
 
 
@@ -19,8 +22,7 @@ public class PUserMainController {
     @Override
     protected Object clone() throws CloneNotSupportedException {
         return super.clone();
->>>>>>> Stashed changes
-    }
+
 
     @GetMapping("/list")
     public String list(){
@@ -33,5 +35,16 @@ public class PUserMainController {
     public String list2(){
         return "list2";
     }
-    
+
+
+
+    @GetMapping("/list3")
+    public String list3(){
+        return "list3";
+    }
+    @GetMapping("/list4")
+    public String list4(){
+        return "list4";
+    }
+
 }
