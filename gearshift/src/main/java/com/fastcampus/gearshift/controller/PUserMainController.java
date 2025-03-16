@@ -21,4 +21,9 @@ public class PUserMainController {
         return super.clone();
 >>>>>>> Stashed changes
     }
+
+    @GetMapping("/list")
+    public String list(){
+        return "list";
+    }
 }
