@@ -9,4 +9,9 @@ public class PUserMainController {
     public String main(){
         return "main";
     }
+
+    @GetMapping("/list")
+    public String list(){
+        return "list";
+    }
 }
