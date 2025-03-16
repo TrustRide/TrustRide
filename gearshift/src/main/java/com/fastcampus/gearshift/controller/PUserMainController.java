@@ -42,4 +42,10 @@ public class PUserMainController {
     public String list5(){
         return "list5";
     }
+    @GetMapping("/list6")
+    public String list6(){
+        return "list6";
+    }
+
+
 }
