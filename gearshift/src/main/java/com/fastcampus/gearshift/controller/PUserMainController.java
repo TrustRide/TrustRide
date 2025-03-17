@@ -128,4 +128,9 @@ public class PUserMainController {
         return "list21";
     }
 
+    @GetMapping("/list24")
+    public String list24(){
+        return "list24";
+    }
+
 }
