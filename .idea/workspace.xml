@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="703a47ae-a19d-4523-a767-93238b7eed03" name="Changes" comment="" />
+    <list default="true" id="703a47ae-a19d-4523-a767-93238b7eed03" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/gearshift/src/main/java/com/fastcampus/gearshift/controller/PUserMainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gearshift/src/main/java/com/fastcampus/gearshift/controller/PUserMainController.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,7 +27,8 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "NohHeeHyun",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "944357bf",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/admin/Documents/GitHub/TrustRide",
@@ -149,6 +152,8 @@
       <updated>1742212410993</updated>
       <workItem from="1742212412418" duration="315000" />
       <workItem from="1742212768282" duration="1341000" />
+      <workItem from="1742215795513" duration="69000" />
+      <workItem from="1742215909002" duration="154000" />
     </task>
     <servers />
   </component>
