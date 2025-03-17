@@ -98,9 +98,16 @@ public class PUserMainController {
         return "list18";
     }
 
+
     @GetMapping("/list19")
     public String list19(){
         return "list19";
+    }
+
+
+    @GetMapping("/list20")
+    public String list20(){
+        return "list20";
     }
 
 
