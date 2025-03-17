@@ -98,6 +98,7 @@ public class PUserMainController {
         return "list18";
     }
 
+
     @GetMapping("/list19")
     public String list19(){
         return "list19";
@@ -116,5 +117,15 @@ public class PUserMainController {
 
 
 
+
+    @GetMapping("/list20")
+    public String list20(){
+        return "list20";
+    }
+
+    @GetMapping("/list21")
+    public String list21(){
+        return "list21";
+    }
 
 }
