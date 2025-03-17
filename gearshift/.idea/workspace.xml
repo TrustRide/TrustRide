@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d6b9a11-a4f8-46e8-b670-acf8a557982a" name="변경" comment="" />
+    <list default="true" id="5d6b9a11-a4f8-46e8-b670-acf8a557982a" name="변경" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,12 +28,12 @@
     &quot;assignee&quot;: &quot;Gyojun1&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/TrustRide/TrustRide.git",
-    "accountId": "50301119-f6c8-40d9-9736-866572ff3c48"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/TrustRide/TrustRide.git&quot;,
+    &quot;accountId&quot;: &quot;50301119-f6c8-40d9-9736-866572ff3c48&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 4
@@ -44,7 +46,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "seoha",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/serha/OneDrive/문서/GitHub/TrustRide/gearshift",
     "node.js.detected.package.eslint": "true",
