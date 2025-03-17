@@ -139,8 +139,13 @@ public class PUserMainController {
     }
 
     @GetMapping("/list26")
-    public String list25(){
+    public String list26(){
         return "list26";
+    }
+
+    @GetMapping("/list27")
+    public String list27(){
+        return "list27";
     }
 
 }
