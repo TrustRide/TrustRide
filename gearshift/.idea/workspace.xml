@@ -12,6 +12,18 @@
       <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/TestMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/mapper/TestMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/mybatis-config.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/product.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/product.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/fastcampus/gearshift/controller/TestController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/css/admin/adminHeader.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/css/user/userHeader.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/img/trustride.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/js/test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/gearshift-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/fastcampus/gearshift/controller/TestController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/gearshift-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/css/admin/adminHeader.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/gearshift-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/css/user/userHeader.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/gearshift-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/img/trustride.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/gearshift-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/js/test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/gearshift-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/user/Test.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/gearshift-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/user/Test.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/gearshift-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/user/userMain.jsp" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +34,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Jsp File" />
       </list>
     </option>
   </component>
@@ -29,45 +42,135 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
+    &quot;lastFilter&quot;: {
     &quot;state&quot;: &quot;OPEN&quot;,
     &quot;assignee&quot;: &quot;jungyeons&quot;
-  }
-}</component>
+    }
+    }</component>
   <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/TrustRide/TrustRide.git&quot;,
     &quot;accountId&quot;: &quot;4098c5a3-461e-4435-b209-7e6ae8101c7f&quot;
-  }
-}</component>
+    }
+    }</component>
   <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: 8
-}</component>
+    &quot;customColor&quot;: &quot;&quot;,
+    &quot;associatedIndex&quot;: 8
+    }</component>
   <component name="ProjectId" id="2uToFzBnBzJ8eS3TUX8dURvvjYs" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
-  }
-}]]></component>
+  <component name="PropertiesComponent">{
+    &quot;keyToString&quot;: {
+      &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+      &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+      &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+      &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+      &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+      &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+      &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+      &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+      &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+      &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+      &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+    }
+  }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\korea\OneDrive\바탕 화면\git\TrustRide\gearshift\src\main\webapp" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Tomcat 9.0.52" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.52" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+      <option name="BROWSER_ID" value="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" />
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <artifact name="gearshift:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/gearshift" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="3522783e-2bf6-4844-9f18-8bca8ce7db0c" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="49730" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="gearshift:war exploded" />
+        </option>
+      </method>
+    </configuration>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -85,9 +188,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1742278405333</updated>
-      <workItem from="1742278407785" duration="2281000" />
-      <workItem from="1742281829782" duration="55000" />
-      <workItem from="1742281893967" duration="2260000" />
     </task>
     <servers />
   </component>
