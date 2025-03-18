@@ -1,16 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="gearshift:war exploded" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
+    <list default="true" id="5d6b9a11-a4f8-46e8-b670-acf8a557982a" name="변경" comment="" />
+=======
     <list default="true" id="5d6b9a11-a4f8-46e8-b670-acf8a557982a" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fastcampus/gearshift/dao/TestDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fastcampus/gearshift/dto/TestDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fastcampus/gearshift/service/TestService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user/Test.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/css/admin/adminHeader.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/css/user/userHeader.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/img/trustride.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/js/test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/gearshift-1.0.0-BUILD-SNAPSHOT/WEB-INF/spring/appServlet/servlet-context.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/gearshift-1.0.0-BUILD-SNAPSHOT/WEB-INF/spring/appServlet/servlet-context.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/gearshift-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/admin/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/gearshift-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/admin/home.jsp" afterDir="false" />
     </list>
+>>>>>>> Stashed changes
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,8 +31,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Jsp File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -56,16 +68,39 @@
   &quot;associatedIndex&quot;: 4
 }</component>
   <component name="ProjectId" id="2uO7tvFmqNPvjb7m1uxMFYYZefU" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< Updated upstream
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;sejun&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/apache-tomcat-9.0.52/lib&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+=======
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "Tomcat Server.Tomcat 9.0.52.executor": "Run",
     "git-widget-placeholder": "sejun",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/apache-tomcat-9.0.52/lib",
+    "last_opened_file_path": "C:/Users/sejun/Documents/GitHub/TrustRide/gearshift/src/main/webapp/resources/css/admin",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -76,6 +111,15 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\sejun\Documents\GitHub\TrustRide\gearshift\src\main\webapp\resources\css\admin" />
+      <recent name="C:\Users\sejun\Documents\GitHub\TrustRide\gearshift\src\main\webapp\resources\css\user" />
+      <recent name="C:\Users\sejun\Documents\GitHub\TrustRide\gearshift\src\main\webapp\resources\img" />
+      <recent name="C:\Users\sejun\Documents\GitHub\TrustRide\gearshift\src\main\webapp\resources\js" />
+    </key>
+  </component>
+>>>>>>> Stashed changes
   <component name="RunManager">
     <configuration name="Tomcat 9.0.52" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.52" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="BROWSER_ID" value="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" />
@@ -214,5 +258,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="변경" />
+    <option name="LAST_COMMIT_MESSAGE" value="변경" />
   </component>
 </project>

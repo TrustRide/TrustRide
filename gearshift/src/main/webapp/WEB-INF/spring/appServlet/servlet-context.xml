@@ -13,7 +13,6 @@
 	<annotation-driven />
 
 	<!-- 정적 리소스 (CSS, JS, 이미지) 서빙 설정 -->
-	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
 
 	<!-- 컨트롤러에서 반환하는 뷰 이름을 JSP로 매핑 -->
