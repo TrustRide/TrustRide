@@ -1,0 +1,46 @@
+# IntelliJ IDEA 관련 파일
+.idea/
+*.iml
+*.iws
+out/
+
+# Maven / Gradle 빌드 디렉토리
+target/
+build/
+
+# 실행 중 생성되는 로그 및 캐시
+*.log
+hs_err_pid*
+*.hprof
+
+# 환경 변수 및 보안 파일
+.env
+*.properties
+*.yml
+*.yaml
+!src/main/resources/application*.yml
+!src/main/resources/application*.yaml
+
+# 바이너리 및 클래스 파일
+*.class
+*.jar
+*.war
+*.ear
+
+# 운영체제 별 파일 (Mac, Windows)
+.DS_Store
+Thumbs.db
+
+# 기타
+node_modules/
+dist/
+
+# IntelliJ 관련 파일 무시
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/gradle.xml
+.idea/libraries/
+
+
+
+
