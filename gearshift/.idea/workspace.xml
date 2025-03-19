@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="gearshift:war exploded" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dd5c6329-e753-4e06-9aa6-6ff89db8aa28" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fastcampus/gearshift/controller/BAdminProductController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fastcampus/gearshift/controller/BAdminController.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/log4j.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/log4j.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/TestMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/mapper/TestMapper.xml" afterDir="false" />
@@ -24,6 +29,7 @@
       <change beforePath="$PROJECT_DIR$/target/gearshift-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/js/test.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/gearshift-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/user/Test.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/gearshift-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/user/Test.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/gearshift-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/user/userMain.jsp" beforeDir="false" />
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,14 +51,22 @@
     &quot;lastFilter&quot;: {
     &quot;state&quot;: &quot;OPEN&quot;,
     &quot;assignee&quot;: &quot;jungyeons&quot;
-    }
-    }</component>
-  <component name="GithubPullRequestsUISettings">{
-    &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/TrustRide/TrustRide.git&quot;,
-    &quot;accountId&quot;: &quot;4098c5a3-461e-4435-b209-7e6ae8101c7f&quot;
-    }
-    }</component>
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/TrustRide/TrustRide.git",
+    "accountId": "50301119-f6c8-40d9-9736-866572ff3c48"
+  }
+}]]></component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+
   <component name="ProjectColorInfo">{
     &quot;customColor&quot;: &quot;&quot;,
     &quot;associatedIndex&quot;: 8
@@ -62,28 +76,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-    &quot;keyToString&quot;: {
-      &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-      &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-      &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-      &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-      &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-      &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-      &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-      &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-      &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-      &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-      &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
-    }
-  }</component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\korea\OneDrive\바탕 화면\git\TrustRide\gearshift\src\main\webapp" />
-    </key>
-  </component>
-  <component name="RunManager">
-    <configuration name="Tomcat 9.0.52" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.52" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "Tomcat Server.Tomcat 9.0.98.executor": "Run",
+    "git-widget-placeholder": "seoha",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/serha/OneDrive/문서/GitHub/TrustRide/gearshift",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+
+    <configuration name="Tomcat 9.0.98" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.98" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+
       <option name="BROWSER_ID" value="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
@@ -94,7 +107,10 @@
         </artifact>
       </deployment>
       <server-settings>
+
         <option name="BASE_DIRECTORY_NAME" value="3522783e-2bf6-4844-9f18-8bca8ce7db0c" />
+
+
       </server-settings>
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
@@ -102,7 +118,10 @@
       <predefined_log_file id="Tomcat Host Manager" />
       <predefined_log_file id="Tomcat Localhost Access" />
       <RunnerSettings RunnerId="Debug">
+
         <option name="DEBUG_PORT" value="49730" />
+
+
       </RunnerSettings>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
         <option name="USE_ENV_VARIABLES" value="true" />
@@ -175,8 +194,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-a94e463ab2e7-intellij.indexing.shared.core-IU-243.25659.59" />
-        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.25659.59" />
+        <option value="bundled-jdk-9823dce3aa75-a94e463ab2e7-intellij.indexing.shared.core-IU-243.25659.39" />
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.25659.39" />
       </set>
     </attachedChunks>
   </component>
@@ -188,6 +207,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1742278405333</updated>
+
     </task>
     <servers />
   </component>
