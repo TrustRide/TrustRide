@@ -17,6 +17,10 @@ public class PUserController {
         return "user/userIndex";
     }
 
+    @GetMapping("/login2")
+    public String login2(){
+        return "user/loginForm";
+    }
     @GetMapping("/login")
     public String login(){
         return "user/loginForm";
