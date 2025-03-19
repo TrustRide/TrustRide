@@ -203,8 +203,9 @@
         <%
           }else{
         %>
-        <a href="/gearshift/login">로그인</a>
-        <li><a href="#">회원가입</a></li>
+        <a href="${pageContext.request.contextPath}/loginTest">로그인테스트</a>
+        <a href="${pageContext.request.contextPath}/login">로그인</a>
+        <li><a href="${pageContext.request.contextPath}/register">회원가입</a></li>
         <%
           }
         %>

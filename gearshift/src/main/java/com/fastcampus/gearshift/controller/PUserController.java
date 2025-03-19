@@ -16,14 +16,14 @@ public class PUserController {
         return "user/userIndex";
     }
 
-    @GetMapping("/login")
+    @GetMapping("/loginTest")
     public String login(){
         return "user/loginForm";
     }
 
 
     //로그인 테스트
-    @PostMapping("/login")
+    @PostMapping("/loginTest")
     public String login(HttpServletRequest request, HttpServletResponse response, Model model, String id, String pwd){
 
         if(id.equals("user11@example.com")&&pwd.equals("pwd11")) {
