@@ -42,7 +42,7 @@
             </tr>
         </c:forEach>
     </table>
-    <a href="product_add.jsp">새 상품 추가</a>
+    <a href="productAdd.jsp">새 상품 추가</a>
 </main>
 </body>
 </html>
