@@ -18,23 +18,24 @@
     </div>
 
     <div class="payment-buttons">
-      <button type="button" onclick="selectPayment('현금')">현금</button>
-      <button type="button" onclick="selectPayment('신용카드')">신용카드</button>
+      <button type="button" onclick="selectPaymentMethod('현금')">현금</button>
+      <button type="button" onclick="selectPaymentMethod('신용카드')">신용카드</button>
     </div>
     <form action="/gearshift/payment/detail" method="post">
       <!-- 선택한 결제 수단 -->
-      <input type="hidden" name="select-payment" id="select-payment">
+      <input type="hidden" name="selectPayment" id="selectPayment">
 
-      <input type="hidden" name="carModel" value="아반뗴 하이브리드(CN7) HEV모던">
-      <input type="hidden" name="carNumber" value="396고6358">
-      <input type="hidden" name="model-year" value="17년식 1월식">
+      <input type="hidden" name="modelName" value="아반뗴 하이브리드(CN7) HEV모던">
+      <input type="hidden" name="carNum" value="396고6358">
+      <input type="hidden" name="manufactureYear" value="17년식 1월식">
       <input type="hidden" name="mileage" value="142.221km">
-      <input type="hidden" name="fuel" value="디젤">
+      <input type="hidden" name="fuelType" value="디젤">
       <input type="hidden" name="carPrice" value="100">
-      <input type="hidden" name="registrationFee" value="100">
-      <input type="hidden" name="managementFee" value="100">
+      <input type="hidden" name="previousRegistrationFee" value="100">
+      <input type="hidden" name="maintenanceCost" value="100">
       <input type="hidden" name="deliveryFee" value="100">
-      <input type="hidden" name="totalPrice" value="500">
+      <input type="hidden" name="orderAmount" value="500">
+      <input type="hidden" name="imageType" value="/resources/img/trustride.png">
 
 
       <!-- 결제 버튼 -->
@@ -45,7 +46,7 @@
   <!-- 주문 내역 -->
   <aside class="order-summary">
     <h3>주문 내역 확인</h3>
-    <img src="" width="100%">
+    <img src="/gearshift/resources/img/trustride.png" width="200" height="200">
     <p>아반뗴 하이브리드(CN7) HEV모던</p>
     <p>396고6358</p>
     <div>
@@ -67,8 +68,8 @@
 </div>
 
 <script>
-  function selectPayment(method) {
-    document.getElementById("select-payment").value = method;
+  function selectPaymentMethod(method) {
+    document.getElementById("selectPayment").value = method;
   }
 </script>
 </body>
