@@ -136,6 +136,7 @@
 
   </style>
 
+
 </head>
 <body>
 
@@ -148,10 +149,7 @@
 
     <nav>
       <ul>
-        <li><a href="#">내차사기</a></li>
-        <li><a href="#">상품리뷰</a></li>
-        <li><a href="#">로그인</a></li>
-        <li><a href="#">회원가입</a></li>
+
       </ul>
     </nav>
 
@@ -165,6 +163,7 @@
     <img id="slideshow" class="slideshow" src="<c:url value='/resources/img/1car1.png' />" alt="슬라이드 이미지">
   </a>
 </div>
+
 
 <footer class="footer">
   <div class="footer-container">
@@ -186,7 +185,9 @@
     "<c:url value='/resources/img/1car1.png' />",
     "<c:url value='/resources/img/2car2.png' />",
     "<c:url value='/resources/img/3car3.png' />",
+
     "<c:url value='/resources/img/car4.png' />",
+
     "<c:url value='/resources/img/5car5.png' />"
   ];
 
