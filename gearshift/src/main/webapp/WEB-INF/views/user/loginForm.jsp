@@ -166,13 +166,13 @@
 </div>
 
 <div class="topnav">
-    <a href="/ch2_war/login">로그인</a>
+    <a href="${pageContext.request.contextPath}/loginTest">로그인테스트</a>
     <a href="#">내정보&nbsp&nbsp&nbsp&nbsp|</a>
     <a href="#">회원가입&nbsp&nbsp&nbsp&nbsp|</a>
     <a href="#">자유게시판&nbsp&nbsp&nbsp&nbsp| </a>
 </div>
 
-<form action="<c:url value='/login'/>" method="post" onsubmit="return formCheck(this)">
+<form action="<c:url value='/loginTest'/>" method="post" onsubmit="return formCheck(this)">
     <div id="loginForm">
         <div id="login">
 
