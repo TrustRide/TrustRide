@@ -183,14 +183,14 @@
 <header>
   <div class="container header-content">
     <div class="logo-container">
-      <a href="/gearshift/main"><img src="<c:url value='/resources/img/trustride.png' />" alt="Trust Ride Logo" class="logo-img"></a>
+      <a href="${pageContext.request.contextPath}"><img src="<c:url value='/resources/img/trustride.png' />" alt="Trust Ride Logo" class="logo-img"></a>
       <h1 class="logo">Trust Ride</h1>
     </div>
 
     <nav>
       <ul>
         <li><a href="/gearshift/userList">내차사기</a></li>
-        <li><a href="#">상품리뷰</a></li>
+        <li><a href="${pageContext.request.contextPath}/review">상품리뷰</a></li>
         <%
           String userId=(String) session.getAttribute("userId");
         %>
@@ -203,8 +203,9 @@
         <%
         }else{
         %>
-        <a href="/gearshift/login">로그인</a>
-        <li><a href="#">회원가입</a></li>
+        <a href="${pageContext.request.contextPath}/loginTest">로그인테스트</a>
+        <a href="${pageContext.request.contextPath}/login">로그인</a>
+        <li><a href="${pageContext.request.contextPath}/register">회원가입</a></li>
         <%
           }
         %>
