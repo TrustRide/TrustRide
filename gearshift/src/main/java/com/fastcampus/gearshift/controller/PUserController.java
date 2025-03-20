@@ -1,17 +1,29 @@
 package com.fastcampus.gearshift.controller;
 
+import com.fastcampus.gearshift.dto.CarCateDto;
+import com.fastcampus.gearshift.service.PCateService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 @Controller
 public class PUserController {
+    private static final Logger logger = LoggerFactory.getLogger(PUserController.class);
+    @Autowired
+    PCateService cateService;
     @GetMapping("/main")
     public String index(){
         return "user/userIndex";
@@ -51,7 +63,17 @@ public class PUserController {
     }
 
 
+    //카테고리
+    @RequestMapping(value = "/userList", method = RequestMethod.GET)
+    public String getList(Model model) throws Exception {
+        List<CarCateDto> list = cateService.cateList();
 
+        if (list == null || list.isEmpty()) {
+            throw new RuntimeException("cateList 데이터가 비어있습니다!");
+        }
 
+        model.addAttribute("cateList", list);
+        return "user/userCarList";
+    }
 
 }
