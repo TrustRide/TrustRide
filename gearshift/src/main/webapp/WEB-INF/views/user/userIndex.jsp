@@ -137,18 +137,78 @@
   </style>
 
 
+  <style>
+    /* 기존 스타일 유지 */
+
+    /* 채팅 아이콘 기본 스타일 */
+    .chat-icon {
+      position: fixed;
+      bottom: 300px; /* 푸터보다 위 */
+      right: 23px; /* 우측 정렬 */
+      width: 95px; /* 아이콘 크기 */
+      height: 100px;
+      z-index: 999; /* 다른 요소 위로 올리기 */
+      cursor: pointer;
+      animation: pulse 2s infinite; /* 자동 강조 애니메이션 추가 */
+      transition: filter 0.3s ease-in-out; /* 색상 변경 애니메이션 */
+    }
+
+    /* 마우스를 올리면 아이콘이 회색으로 변경 */
+    .chat-icon:hover {
+      filter: grayscale(80%);
+    }
+
+    /* 아이콘이 커졌다가 원래 크기로 돌아오는 애니메이션 */
+    @keyframes pulse {
+      0% {
+        transform: scale(1); /* 기본 크기 */
+      }
+      50% {
+        transform: scale(1.1); /* 20% 확대 */
+      }
+      100% {
+        transform: scale(1); /* 원래 크기 */
+      }
+    }
+
+    .chat-icon:hover {
+      transform: scale(1.1); /* 마우스 올리면 살짝 커짐 */
+    }
+
+  </style>
+
 </head>
 <body>
 
 <header>
   <div class="container header-content">
     <div class="logo-container">
-      <a href="#"><img src="<c:url value='/resources/img/trustride.png' />" alt="Trust Ride Logo" class="logo-img"></a>
+      <a href="/gearshift/main"><img src="<c:url value='/resources/img/trustride.png' />" alt="Trust Ride Logo" class="logo-img"></a>
       <h1 class="logo">Trust Ride</h1>
     </div>
 
     <nav>
       <ul>
+        <li><a href="/gearshift/userList">내차사기</a></li>
+        <li><a href="#">상품리뷰</a></li>
+        <%
+          String userId=(String) session.getAttribute("userId");
+        %>
+        <%
+          if(userId != null){
+        %>
+        <li> 박세준님 환영합니다.</li>
+        <li><a href="#">마이페이지</a></li>
+        <a href="#">로그아웃</a>
+        <%
+        }else{
+        %>
+        <a href="/gearshift/login">로그인</a>
+        <li><a href="#">회원가입</a></li>
+        <%
+          }
+        %>
+
 
       </ul>
     </nav>
@@ -164,6 +224,9 @@
   </a>
 </div>
 
+<a href="/chat">
+  <img src="<c:url value='/resources/img/chat2.png' />" alt="채팅 아이콘" class="chat-icon">
+</a>
 
 <footer class="footer">
   <div class="footer-container">
@@ -185,9 +248,7 @@
     "<c:url value='/resources/img/1car1.png' />",
     "<c:url value='/resources/img/2car2.png' />",
     "<c:url value='/resources/img/3car3.png' />",
-
-    "<c:url value='/resources/img/car4.png' />",
-
+    "<c:url value='/resources/img/4car4.png' />",
     "<c:url value='/resources/img/5car5.png' />"
   ];
 
