@@ -24,19 +24,24 @@ public class PUserController {
     private static final Logger logger = LoggerFactory.getLogger(PUserController.class);
     @Autowired
     PCateService cateService;
-    @GetMapping("/main")
+    @GetMapping("/")
     public String index(){
         return "user/userIndex";
     }
 
-    @GetMapping("/login")
+    @GetMapping("/login2")
+    public String login2(){
+        return "user/loginForm";
+    }
+  
+    @GetMapping("/loginTest")
     public String login(){
         return "user/loginForm";
     }
 
 
     //로그인 테스트
-    @PostMapping("/login")
+    @PostMapping("/loginTest")
     public String login(HttpServletRequest request, HttpServletResponse response, Model model, String id, String pwd){
 
         if(id.equals("user11@example.com")&&pwd.equals("pwd11")) {
@@ -44,9 +49,9 @@ public class PUserController {
             model.addAttribute("pwd", pwd);
 
             request.getSession().setAttribute("userId", id);
-            return "redirect:/main";
+            return "redirect:/";
         }
-        return "redirect:/main";
+        return "redirect:/";
 
     }
 
@@ -55,7 +60,7 @@ public class PUserController {
     public String logout(HttpServletRequest request,HttpServletResponse response){
         HttpSession session =request.getSession();
         session.invalidate();
-        return "redirect:/main";
+        return "redirect:/";
     }
 
 
