@@ -33,6 +33,7 @@ public class PUserController {
     public String login2(){
         return "user/loginForm";
     }
+  
     @GetMapping("/loginTest")
     public String login(){
         return "user/loginForm";
