@@ -9,29 +9,30 @@
 </head>
 <body>
     <h2>회원가입</h2>
-
     <div class="container">
-        <div class="input-group">
-            <label for="id">아이디 *</label>
-            <input type="text" id="id" placeholder="아이디 입력">
-        </div>
+        <form action="${pageContext.request.contextPath}/register" method="post">
+            <div class="input-group">
+                <label for="email">이메일 *</label>
+                <input type="email" id="email" name="userEmail" placeholder="이메일 입력">
+            </div>
 
-        <div class="input-group">
-            <label for="password">비밀번호 *</label>
-            <input type="password" id="password" placeholder="비밀번호 입력">
-        </div>
+            <div class="input-group">
+                <label for="password">비밀번호 *</label>
+                <input type="password" id="password" name="userPassword" placeholder="비밀번호 입력">
+            </div>
 
-        <div class="input-group">
-            <label for="name">이름 *</label>
-            <input type="text" id="name" placeholder="이름 입력">
-        </div>
+            <div class="input-group">
+                <label for="name">이름 *</label>
+                <input type="text" id="name" name="userName" placeholder="이름 입력">
+            </div>
 
-        <div class="input-group">
-            <label for="email">이메일 *</label>
-            <input type="email" id="email" placeholder="이메일 입력">
-        </div>
+            <div class="input-group">
+                <label for="phone">휴대폰번호 *</label>
+                <input type="text" id="phone" name="userPhoneNumber" placeholder="휴대폰번호 입력">
+            </div>
 
-        <button class="signup-btn">가입하기</button>
+            <button class="signup-btn">가입하기</button>
+        </form>
     </div>
 
     <script>

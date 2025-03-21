@@ -56,7 +56,7 @@ public class PUserController {
     }
 
     //로그아웃 테스트
-    @GetMapping("/logout")
+    @GetMapping("/logoutTest")
     public String logout(HttpServletRequest request,HttpServletResponse response){
         HttpSession session =request.getSession();
         session.invalidate();

@@ -12,18 +12,8 @@
     <div class="container">
         <div class="card">
             <img src="${pageContext.request.contextPath}/img/review/car1.jpg" alt="차 리뷰 1" style="width: 100%; height: 180px; object-fit: cover;">
-            <h3>차 모델 1</h3>
+            <h3>리뷰 제목 컬럼 만들기</h3>
             <p>이 차는 최고의 성능을 제공합니다.</p>
-        </div>
-        <div class="card">
-            <img src="${pageContext.request.contextPath}/img/review/car2.jpg" alt="차 리뷰 2" style="width: 100%; height: 180px; object-fit: cover;">
-            <h3>차 모델 2</h3>
-            <p>안정성과 연비가 뛰어난 모델입니다.</p>
-        </div>
-        <div class="card">
-            <img src="${pageContext.request.contextPath}/img/review/car3.jpg" alt="차 리뷰 3" style="width: 100%; height: 180px; object-fit: cover;">
-            <h3>차 모델 3</h3>
-            <p>디자인이 세련된 차량입니다.</p>
         </div>
     </div>
     <div class="pagination">
