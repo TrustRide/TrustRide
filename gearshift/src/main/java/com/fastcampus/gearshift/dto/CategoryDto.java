@@ -7,7 +7,7 @@ import lombok.*;
 @RequiredArgsConstructor
 @ToString
 @AllArgsConstructor
-public class CarCateDto {
+public class CategoryDto {
     private int tier;
     private String cateName;
     private String cateCode;

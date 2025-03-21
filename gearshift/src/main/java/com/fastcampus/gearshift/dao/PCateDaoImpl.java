@@ -1,7 +1,7 @@
 package com.fastcampus.gearshift.dao;
 
 
-import com.fastcampus.gearshift.dto.CarCateDto;
+import com.fastcampus.gearshift.dto.CategoryDto;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -17,7 +17,7 @@ public class PCateDaoImpl implements PCateDao {
     private SqlSession sqlSession; // MyBatis의 SqlSession을 주입
 
     @Override
-    public List<CarCateDto> cateList() {
+    public List<CategoryDto> cateList() {
         return sqlSession.selectList(NAMESPACE + ".cateList");
     }
 }

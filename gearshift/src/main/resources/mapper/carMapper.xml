@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="carMapper">
+
+    <!-- ========================= -->
+    <!--       차량 목록 조회     -->
+    <!-- ========================= -->
+    <select id="getCarList" resultType="carDto">
+        SELECT
+            ci.car_info_id,
+            ci.offer_report_number,
+            ci.vin_number,
+            ci.description,
+            sc.cate_code AS small_cate_code,
+            mc.cate_code AS medium_cate_code,
+            lc.cate_code AS large_cate_code,
+            sc.cate_name AS small_cate_name,
+            mc.cate_name AS medium_cate_name,
+            lc.cate_name AS large_cate_name,
+            info.model_name,
+            info.mileage,
+            info.engine_capacity,
+            info.fuel_type,
+            info.transmission,
+            info.color,
+            info.manufacture_year,
+            info.previous_registration_fee,
+            info.maintenance_cost,
+            info.extended_warranty_price,
+            info.car_location,
+            info.owner_change_count,
+            info.car_price,
+            info.car_num,
+            info.car_amount_price,
+            img.image_id,
+            img.image_url,
+            img.image_type
+        FROM car_information ci
+                 LEFT JOIN car_cate sc ON ci.cate_code = sc.cate_code
+                 LEFT JOIN car_cate mc ON sc.cate_parent = mc.cate_code
+                 LEFT JOIN car_cate lc ON mc.cate_parent = lc.cate_code
+                 LEFT JOIN information info ON ci.car_info_id = info.car_info_id
+                 LEFT JOIN image img ON ci.car_info_id = img.car_info_id
+        WHERE ci.is_deleted = FALSE
+          AND info.is_deleted = FALSE
+    </select>
+
+    <!-- ========================= -->
+    <!--      차량 상세 조회      -->
+    <!-- ========================= -->
+    <select id="getCarById" parameterType="int" resultType="carDto">
+        SELECT
+            ci.car_info_id,
+            ci.offer_report_number,
+            ci.vin_number,
+            ci.description,
+            ci.cate_code AS small_cate_code,
+            -- 중분류, 대분류 필요시 JOIN
+            -- ...
+            info.model_name,
+            info.mileage,
+            info.engine_capacity,
+            info.fuel_type,
+            info.transmission,
+            info.color,
+            info.manufacture_year,
+            info.previous_registration_fee,
+            info.maintenance_cost,
+            info.extended_warranty_price,
+            info.car_location,
+            info.owner_change_count,
+            info.car_price,
+            info.car_num,
+            info.car_amount_price
+        FROM car_information ci
+                 LEFT JOIN information info ON ci.car_info_id = info.car_info_id
+        WHERE ci.is_deleted = FALSE
+          AND info.is_deleted = FALSE
+          AND ci.car_info_id = #{carInfoId}
+    </select>
+
+    <!-- ========================= -->
+    <!--      차량 등록(정보)     -->
+    <!-- ========================= -->
+    <!-- (1) car_information INSERT -->
+    <insert id="insertCarInformation" useGeneratedKeys="true" keyProperty="carInfoId">
+        INSERT INTO car_information (
+            offer_report_number, vin_number, description, cate_code
+        ) VALUES (
+                     #{offerReportNumber}, #{vinNumber}, #{description}, #{smallCateCode}
+                 )
+    </insert>
+
+    <!-- (2) information INSERT -->
+    <insert id="insertCarBasicInfo">
+        INSERT INTO information (
+            car_info_id, model_name, mileage, engine_capacity, fuel_type,
+            transmission, color, manufacture_year, previous_registration_fee,
+            maintenance_cost, extended_warranty_price, car_location,
+            owner_change_count, car_price, car_num, car_amount_price
+        ) VALUES (
+                     #{carInfoId}, #{modelName}, #{mileage}, #{engineCapacity}, #{fuelType},
+                     #{transmission}, #{color}, #{manufactureYear}, #{previousRegistrationFee},
+                     #{maintenanceCost}, #{extendedWarrantyPrice}, #{carLocation},
+                     #{ownerChangeCount}, #{carPrice}, #{carNum}, #{carAmountPrice}
+                 )
+    </insert>
+
+    <!-- (3) image INSERT -->
+    <insert id="insertCarImage">
+        INSERT INTO image (
+            image_url, image_type, car_info_id
+        ) VALUES (
+                     #{imageUrl}, #{imageType}, #{carInfoId}
+                 )
+    </insert>
+
+    <!-- ========================= -->
+    <!--       차량 수정(정보)    -->
+    <!-- ========================= -->
+    <!-- car_information UPDATE -->
+    <update id="updateCarInformation">
+        UPDATE car_information
+        SET offer_report_number = #{offerReportNumber},
+            vin_number = #{vinNumber},
+            description = #{description},
+            cate_code = #{smallCateCode}
+        WHERE car_info_id = #{carInfoId}
+          AND is_deleted = FALSE
+    </update>
+
+    <!-- information UPDATE -->
+    <update id="updateCarBasicInfo">
+        UPDATE information
+        SET model_name = #{modelName},
+            mileage = #{mileage},
+            engine_capacity = #{engineCapacity},
+            fuel_type = #{fuelType},
+            transmission = #{transmission},
+            color = #{color},
+            manufacture_year = #{manufactureYear},
+            previous_registration_fee = #{previousRegistrationFee},
+            maintenance_cost = #{maintenanceCost},
+            extended_warranty_price = #{extendedWarrantyPrice},
+            car_location = #{carLocation},
+            owner_change_count = #{ownerChangeCount},
+            car_price = #{carPrice},
+            car_num = #{carNum},
+            car_amount_price = #{carAmountPrice}
+        WHERE car_info_id = #{carInfoId}
+          AND is_deleted = FALSE
+    </update>
+
+    <!-- ========================= -->
+    <!--       차량 삭제          -->
+    <!-- ========================= -->
+    <!-- 논리삭제 예시(is_deleted = TRUE) -->
+    <update id="deleteCar" >
+        UPDATE car_information
+        SET is_deleted = TRUE
+        WHERE car_info_id = #{carInfoId}
+    </update>
+
+    <update id="deleteCarInfo" >
+        UPDATE information
+        SET is_deleted = TRUE
+        WHERE car_info_id = #{carInfoId}
+    </update>
+
+
+</mapper>

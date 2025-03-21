@@ -1,7 +1,7 @@
 package com.fastcampus.gearshift.service;
 
 import com.fastcampus.gearshift.dao.PCateDao;
-import com.fastcampus.gearshift.dto.CarCateDto;
+import com.fastcampus.gearshift.dto.CategoryDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +14,7 @@ public class PCateServiceImpl implements PCateService {
 
 
     @Override
-    public List<CarCateDto> cateList() {
+    public List<CategoryDto> cateList() {
         return cateDao.cateList();
     }
 }

@@ -1,6 +1,6 @@
-package com.fastcampus.gearshift.controller;
+package com.fastcampus.gearshift.controller.user;
 
-import com.fastcampus.gearshift.dto.CarCateDto;
+import com.fastcampus.gearshift.dto.CategoryDto;
 import com.fastcampus.gearshift.service.PCateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -67,7 +67,7 @@ public class PUserController {
     //카테고리
     @RequestMapping(value = "/userList", method = RequestMethod.GET)
     public String getList(Model model) throws Exception {
-        List<CarCateDto> list = cateService.cateList();
+        List<CategoryDto> list = cateService.cateList();
 
         if (list == null || list.isEmpty()) {
             throw new RuntimeException("cateList 데이터가 비어있습니다!");
