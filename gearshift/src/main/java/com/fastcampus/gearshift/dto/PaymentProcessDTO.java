@@ -1,12 +1,12 @@
 package com.fastcampus.gearshift.dto;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+// 결제
 @Data
 @AllArgsConstructor
-public class PaymentDTO {
+public class PaymentProcessDTO {
 
     private String paymentMethod;  //결제수단
     private String modelName; // 차량 모델명
@@ -20,5 +20,4 @@ public class PaymentDTO {
     private int deliveryFee;        // 배송비
     private int carAmountPrice;     // 차량 총가격
     private String imageUrl;        // 이미지 경로
-
 }

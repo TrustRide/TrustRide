@@ -23,7 +23,7 @@
     </div>
     <form action="/gearshift/payment/detail" method="post">
       <!-- 선택한 결제 수단 -->
-      <input type="hidden" name="selectPayment" id="selectPayment">
+      <input type="hidden" name="paymentMethod" id="paymentMethod">
 
       <input type="hidden" name="modelName" value="아반뗴 하이브리드(CN7) HEV모던">
       <input type="hidden" name="carNum" value="396고6358">
@@ -34,8 +34,8 @@
       <input type="hidden" name="previousRegistrationFee" value="100">
       <input type="hidden" name="maintenanceCost" value="100">
       <input type="hidden" name="deliveryFee" value="100">
-      <input type="hidden" name="orderAmount" value="500">
-      <input type="hidden" name="imageType" value="/resources/img/trustride.png">
+      <input type="hidden" name="carAmountPrice" value="500">
+      <input type="hidden" name="imageUrl" value="/gearshift/resources/img/trustride.png">
 
 
       <!-- 결제 버튼 -->
@@ -69,7 +69,7 @@
 
 <script>
   function selectPaymentMethod(method) {
-    document.getElementById("selectPayment").value = method;
+    document.getElementById("paymentMethod").value = method;
   }
 </script>
 </body>
