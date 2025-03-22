@@ -36,7 +36,7 @@ public class PUserController {
     public String login2(){
         return "user/loginForm";
     }
-    
+
     //카테고리
     @RequestMapping(value = "/userList", method = RequestMethod.GET)
     public String getList(Model model) throws Exception {

@@ -94,3 +94,62 @@ h2 {
     margin-top: 10px;
     font-size: 14px;
 }
+
+.message {
+    color: red;
+    display: none;
+}
+
+.input-with-button {
+    display: flex;
+    gap: 8px;
+}
+
+.input-with-button input {
+    flex: 1;
+    padding: 8px;
+    font-size: 14px;
+}
+
+.input-with-button button {
+    padding: 8px 12px;
+    background-color: #e84e4e;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.input-with-button button:hover {
+    background-color: #d03f3f;
+}
+
+/* 모달창 */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    width: 300px;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    font-size: 20px;
+    cursor: pointer;
+}

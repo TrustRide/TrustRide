@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -8,26 +9,34 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/user/login.css">
 </head>
 <body>
-    <h2>안녕하세요.<br>True Ride 로그인입니다.</h2>
+    <h2>안녕하세요.<br>Trust Ride 로그인입니다.</h2>
+
+    <p style="color:red;">
+        ${empty error ? '🚗' : error}
+    </p>
 
     <div class="container">
-        <div class="tab-menu">
-            <div class="tab active" id="personalTab" onclick="switchTab('personal')">개인회원</div>
-            <div class="tab" id="adminTab" onclick="switchTab('admin')">관리자</div>
-        </div>
-        <div class="input-group">
-            <input type="text" placeholder="아이디">
-        </div>
-        <div class="input-group">
-            <input type="password" placeholder="비밀번호">
-        </div>
 
-        <div class="save-id">
-            <input type="checkbox" id="saveId">
-            <label for="saveId">아이디 저장</label>
-        </div>
+        <form action="${pageContext.request.contextPath}/login" method="post">
+            <div class="tab-menu">
+                <div class="tab active" id="personalTab" onclick="switchTab('personal')">개인회원</div>
+                <div class="tab" id="adminTab" onclick="switchTab('admin')">관리자</div>
+            </div>
+            <div class="input-group">
+                <input type="text" name="userEmail" placeholder="이메일">
+            </div>
+            <div class="input-group">
+                <input type="password" name="userPassword" placeholder="비밀번호">
+            </div>
 
-        <button class="login-btn">로그인</button>
+            <div class="save-id">
+                <input type="checkbox" id="saveId">
+                <label for="saveId">이메일 저장</label>
+            </div>
+
+            <button class="login-btn" type="submit">로그인</button>
+        </form>
+
         <div class="links">
             <a href="#">아이디 찾기</a> |
             <a href="#">비밀번호 찾기</a> |
