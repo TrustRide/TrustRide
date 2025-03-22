@@ -20,6 +20,7 @@ hs_err_pid*
 *.yaml
 !src/main/resources/application*.yml
 !src/main/resources/application*.yaml
+gearshift/src/main/resources/mail.properties
 
 # 바이너리 및 클래스 파일
 *.class
@@ -40,8 +41,3 @@ dist/
 .idea/tasks.xml
 .idea/gradle.xml
 .idea/libraries/
-
-
-
-
-*.properties
