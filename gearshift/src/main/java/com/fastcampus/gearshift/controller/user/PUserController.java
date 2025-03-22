@@ -1,10 +1,9 @@
 package com.fastcampus.gearshift.controller.user;
 
 import com.fastcampus.gearshift.dto.CategoryDto;
-<<<<<<< Updated upstream
-=======
+
 import com.fastcampus.gearshift.dto.UserDto;
->>>>>>> Stashed changes
+
 import com.fastcampus.gearshift.service.PCateService;
 import com.fastcampus.gearshift.service.PHolderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,13 +25,10 @@ public class PUserController {
     private static final Logger logger = LoggerFactory.getLogger(PUserController.class);
     @Autowired
     PCateService cateService;
-<<<<<<< Updated upstream
-    @GetMapping("/")
-=======
+
     @Autowired
     PHolderService pHolderService;
     @GetMapping("/main")
->>>>>>> Stashed changes
     public String index(){
         return "user/userIndex";
     }
