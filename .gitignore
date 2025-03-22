@@ -15,7 +15,7 @@ hs_err_pid*
 
 # 환경 변수 및 보안 파일
 .env
-# *.properties
+*.properties
 *.yml
 *.yaml
 !src/main/resources/application*.yml
