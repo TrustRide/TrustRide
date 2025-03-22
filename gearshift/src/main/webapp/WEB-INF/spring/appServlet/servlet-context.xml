@@ -26,7 +26,5 @@
 
 	<!-- @Controller가 있는 패키지를 스캔 (컨트롤러 자동 등록)  패키지 추가시 경로 추가 필요 -->
 	<context:component-scan base-package="com.fastcampus.gearshift" />
-	
-	
-	
+
 </beans:beans>
