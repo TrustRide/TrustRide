@@ -7,4 +7,5 @@
     select * from trustride.car_cate order by cate_code
 </select>
 
+
 </mapper>

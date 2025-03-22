@@ -1,15 +1,17 @@
 package com.fastcampus.gearshift.controller.user;
 
 import com.fastcampus.gearshift.dto.CategoryDto;
+<<<<<<< Updated upstream
+=======
+import com.fastcampus.gearshift.dto.UserDto;
+>>>>>>> Stashed changes
 import com.fastcampus.gearshift.service.PCateService;
+import com.fastcampus.gearshift.service.PHolderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,7 +26,13 @@ public class PUserController {
     private static final Logger logger = LoggerFactory.getLogger(PUserController.class);
     @Autowired
     PCateService cateService;
+<<<<<<< Updated upstream
     @GetMapping("/")
+=======
+    @Autowired
+    PHolderService pHolderService;
+    @GetMapping("/main")
+>>>>>>> Stashed changes
     public String index(){
         return "user/userIndex";
     }
@@ -75,6 +83,29 @@ public class PUserController {
 
         model.addAttribute("cateList", list);
         return "user/userCarList";
+    }
+
+    //차량 명의
+    @GetMapping("/titleHolder")
+    public String getHolder(){
+        return "user/userTitleHolder";
+    }
+
+    @GetMapping("/delivery")
+    public String getDelivery(@RequestParam(value = "userId", defaultValue = "1")Integer userId,Model model)throws Exception{
+        UserDto userDto = pHolderService.read(userId);
+        model.addAttribute("userDto",userDto);
+
+        return "user/deliveryInformation";
+    }
+
+    @PostMapping("/deliveryInsert")
+    public String postDelivery(UserDto userDto) throws  Exception{
+        pHolderService.modify(userDto);
+        //나중에 유효성 검사 및 경로 수정
+        return "user/userCarList";
+
+
     }
 
 }
