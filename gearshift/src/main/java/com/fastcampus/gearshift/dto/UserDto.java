@@ -1,5 +1,6 @@
 package com.fastcampus.gearshift.dto;
 
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -15,4 +16,14 @@ public class UserDto {
     private String userName;
     private String userGender;
     private String userAccount;
+
+    private String memberResident;
+    private String memberAddr1;
+    private String memberAddr2;
+    private String memberAddr3;
+
+    private String memberLicense;
+
+
+
 }

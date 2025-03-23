@@ -7,17 +7,23 @@ import java.util.List;
 @Data
 public class CarDto {
     // car_information 테이블의 컬럼 (CAR_INFORMATION Table Columns)
-    private int carInfoId;  // 자동차 정보 ID (Primary Key, AUTO_INCREMENT)
+    private Integer carInfoId;  // 자동차 정보 ID (Primary Key, AUTO_INCREMENT)
     private String offerReportNumber;  // 제안 보고서 번호 (Offer Report Number)
     private String vinNumber;  // 차량 식별 번호 (Vehicle Identification Number, VIN)
     private String description;  // 차량 설명 (Car Description)
+    private String soldStatus;  // 판매 여부
 
     // 카테고리 관련 정보 (코드 및 이름)
     private String largeCateCode;  // 대분류 코드 (INSERT용)
+
     private String largeCateName;  // 대분류 명 (조회용)
+
     private String mediumCateCode; // 중분류 코드 (INSERT용)
+
     private String mediumCateName; // 중분류 명 (조회용)
+
     private String smallCateCode;  // 소분류 코드 (INSERT용, 기존 cateCode 역할)
+
     private String smallCateName;  // 소분류 명 (조회용)
 
     // information 테이블의 컬럼 (INFORMATION Table Columns)
@@ -30,7 +36,7 @@ public class CarDto {
     private String manufactureYear;  // 제조 연도 (Manufacture Year)
     private Integer previousRegistrationFee;  // 이전 등록비 (Previous Registration Fee)
     private Integer maintenanceCost;  // 유지보수 비용 (Maintenance Cost)
-    private Integer extendedWarrantyPrice;  // 연장 보증 비용 (Extended Warranty Price)
+    private Integer agencyFee;  // 등록대행수수료 (agency Fee)
     private String carLocation;  // 차량 위치 (Car Location)
     private Integer ownerChangeCount;  // 소유주 변경 횟수 (Owner Change Count)
     private Integer carPrice;  // 차량 가격 (Car Price)
@@ -39,4 +45,9 @@ public class CarDto {
 
     // 이미지 리스트 (선택적으로 등록) (List of Car Images, optional)
     private List<ImageDto> images;
+
+    // 썸네일
+    private String thumbnailUrl;
+    private Integer thumbnailImageId;
+
 }

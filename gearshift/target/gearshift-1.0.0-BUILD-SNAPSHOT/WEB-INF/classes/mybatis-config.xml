@@ -14,5 +14,6 @@
         <typeAlias type="com.fastcampus.gearshift.dto.IssuedCouponDto" alias="issuedCouponDto"></typeAlias>
         <typeAlias type="com.fastcampus.gearshift.dto.CarDto" alias="carDto"></typeAlias>
         <typeAlias type="com.fastcampus.gearshift.dto.CategoryDto" alias="categoryDto"></typeAlias>
+        <typeAlias type="com.fastcampus.gearshift.dto.ImageDto" alias="imageDto"></typeAlias>
     </typeAliases>
 </configuration>

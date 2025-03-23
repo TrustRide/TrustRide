@@ -2,12 +2,14 @@ package com.fastcampus.gearshift.controller.admin;
 
 import com.fastcampus.gearshift.dto.CarDto;
 import com.fastcampus.gearshift.dto.CategoryDto;
+import com.fastcampus.gearshift.dto.ImageDto;
 import com.fastcampus.gearshift.service.JAdminCarService;
 import com.fastcampus.gearshift.service.JCategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -26,6 +28,8 @@ public class JAdminCarController {
         model.addAttribute("carList", carList);
         return "admin/carList";
     }
+
+
 
     // (2) 차량 등록 폼
     @GetMapping("/register")
@@ -50,10 +54,14 @@ public class JAdminCarController {
         return categoryService.getSmallCategories(parentCode);
     }
 
-    // (5) 차량 등록 처리
+
     @PostMapping("/register")
-    public String registerCar(CarDto carDto) {
-        carService.registerCar(carDto);
+    public String registerCar(
+            CarDto carDto,
+            @RequestParam("imageFiles") List<MultipartFile> imageFiles,
+            @RequestParam(name = "thumbnailIndex", required = false, defaultValue = "0") Integer thumbnailIndex
+    ) {
+        carService.registerCarWithFiles(carDto, imageFiles, thumbnailIndex); // ✨ 실제 호출
         return "redirect:/cars";
     }
 
@@ -76,10 +84,7 @@ public class JAdminCarController {
     // (7) 차량 수정 처리
     @PostMapping("/{carInfoId}/edit")
     public String updateCar(@PathVariable("carInfoId") Integer carInfoId, CarDto carDto) {
-        // PK 세팅 (일반적으로 Form에 hidden으로 넘기거나 PathVariable로 넘김)
-
-        System.out.println("carInfoId edit ctrl = " + carInfoId);
-
+        // PK 세팅 (일반적으로 hidden form이나 PathVariable로 넘김)
         carDto.setCarInfoId(carInfoId);
         carService.updateCar(carDto);
         return "redirect:/cars";
@@ -88,9 +93,6 @@ public class JAdminCarController {
     // (8) 차량 삭제 처리
     @GetMapping("/{carInfoId}/delete")
     public String deleteCar(@PathVariable(name = "carInfoId") Integer carInfoId) {
-
-        System.out.println("carInfoId delete 컨트롤러 = " + carInfoId);
-
         carService.deleteCar(carInfoId);
         return "redirect:/cars";
     }

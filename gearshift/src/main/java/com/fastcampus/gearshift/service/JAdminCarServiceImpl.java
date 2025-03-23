@@ -6,14 +6,19 @@ import com.fastcampus.gearshift.dto.ImageDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
 public class JAdminCarServiceImpl implements JAdminCarService {
 
-    private final JAdminCarDao carDao;
+    private final JAdminCarDao carDao; // MyBatis DAO
 
     // 차량 목록 조회
     @Override
@@ -21,28 +26,55 @@ public class JAdminCarServiceImpl implements JAdminCarService {
         return carDao.getCarList();
     }
 
-    // 차량 등록
+
+    // 썸네일 조회
+    public ImageDto getThumbnailByCarId(int carInfoId) {
+        return carDao.getThumbnailByCarId(carInfoId);
+    }
+
+    /**
+     * 차량 등록 + 이미지 파일 처리
+     */
     @Transactional
     @Override
-    public void registerCar(CarDto carDto) {
-        // (1) car_information INSERT
-        carDao.insertCarInformation(carDto);
-
-        // (2) information INSERT
+    public void registerCarWithFiles(CarDto carDto, List<MultipartFile> imageFiles, Integer thumbnailIndex) {
+        // 1) 차량 정보 등록
+        carDao.insertCarInformation(carDto); // PK 생성
         carDao.insertCarBasicInfo(carDto);
 
-        // (3) 이미지 INSERT(반복)
-        if (carDto.getImages() != null) {
-            for (ImageDto image : carDto.getImages()) {
-                image.setCarInfoId(carDto.getCarInfoId());
-                carDao.insertCarImage(image);
+        // 2) 이미지 처리
+        if (imageFiles != null && !imageFiles.isEmpty()) {
+            for (int i = 0; i < imageFiles.size(); i++) {
+                MultipartFile file = imageFiles.get(i);
+                if (!file.isEmpty()) {
+                    try {
+                        String originalName = file.getOriginalFilename();
+                        if (originalName == null) continue;
+
+                        String uuid = UUID.randomUUID().toString();
+                        String savedName = uuid + "_" + originalName;
+
+                        // 저장 경로
+                        File dest = new File("C:/upload/" + savedName);
+                        file.transferTo(dest);
+
+                        // DTO 생성
+                        ImageDto imageDto = new ImageDto();
+                        imageDto.setCarInfoId(carDto.getCarInfoId());
+                        imageDto.setImageUuid(uuid);
+                        imageDto.setImageUrl("/uploads/" + savedName);
+                        imageDto.setImageType(file.getContentType());
+                        imageDto.setIsThumbnail(i == thumbnailIndex); // ✨ 썸네일 지정
+
+                        carDao.insertCarImage(imageDto); // DB 저장
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
             }
         }
     }
-
-    // ================================
-    //         추가된 부분
-    // ================================
+    // ============추가된 부분============
 
     // 차량 상세 조회
     @Override
@@ -54,20 +86,14 @@ public class JAdminCarServiceImpl implements JAdminCarService {
     @Transactional
     @Override
     public void updateCar(CarDto carDto) {
-        // 1) car_information UPDATE
         carDao.updateCarInformation(carDto);
-        // 2) information UPDATE
         carDao.updateCarBasicInfo(carDto);
-        // 3) 이미지 업데이트는 필요시 구현
-        //    예: 일단 이전 이미지 DELETE 후 재삽입 등
     }
 
     // 차량 삭제
     @Transactional
     @Override
     public void deleteCar(Integer carInfoId) {
-
-        System.out.println("carInfoId  서비스= " + carInfoId);
-        carDao.deleteCar(carInfoId);  // 논리삭제(is_deleted를 true) 혹은 물리삭제
+        carDao.deleteCar(carInfoId);
     }
 }
