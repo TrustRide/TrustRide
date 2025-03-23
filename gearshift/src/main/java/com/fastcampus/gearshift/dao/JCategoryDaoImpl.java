@@ -16,7 +16,7 @@ public class JCategoryDaoImpl implements JCategoryDao {
     private static final String NAMESPACE = "categoryMapper.";
 
     @Override
-    public List<CategoryDto> findByTier(int tier) {
+    public List<CategoryDto> findByTier(Integer tier) {
         return sqlSession.selectList(NAMESPACE + "findByTier", tier);
     }
 

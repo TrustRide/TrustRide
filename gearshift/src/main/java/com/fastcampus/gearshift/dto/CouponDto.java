@@ -10,12 +10,12 @@ import java.time.LocalDate;
 @Setter
 @ToString
 public class CouponDto {
-    private int couponId;
+    private Integer couponId;
     private String couponName;
     private String discountType;
-    private int discountValue;
-    private int minOrderAmount;
-    private int discountAmount;
+    private Integer discountValue;
+    private Integer minOrderAmount;
+    private Integer discountAmount;
     private LocalDate startDate;
     private LocalDate endDate;
     private Boolean isActive;

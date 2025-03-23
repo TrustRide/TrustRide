@@ -62,4 +62,10 @@ public class JAdminCarDaoImpl implements JAdminCarDao {
         sqlSession.update(namespace + "deleteCarInfo", carInfoId);  // 따로 실행
     }
 
+    @Override
+    public ImageDto getThumbnailByCarId(Integer carInfoId) {
+
+        return sqlSession.selectOne(namespace + "getThumbnailByCarId", carInfoId);
+    }
+
 }

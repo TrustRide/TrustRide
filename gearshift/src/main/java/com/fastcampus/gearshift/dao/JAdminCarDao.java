@@ -24,4 +24,7 @@ public interface JAdminCarDao {
     void updateCarBasicInfo(CarDto carDto);
 
     void deleteCar(Integer carInfoId);
+
+    ImageDto getThumbnailByCarId(Integer carInfoId);
+
 }
