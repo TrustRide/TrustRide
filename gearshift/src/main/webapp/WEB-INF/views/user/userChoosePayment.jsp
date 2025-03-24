@@ -33,10 +33,14 @@
       <input type="hidden" name="carPrice" value="100">
       <input type="hidden" name="previousRegistrationFee" value="100">
       <input type="hidden" name="maintenanceCost" value="100">
-      <input type="hidden" name="deliveryFee" value="100">
+      <input type="hidden" name="deliveryFee" value="0">
+      <input type="hidden" name="driverPhoneNumber" value="010-8888-7777">
+      <input type="hidden" name="deliveryRequest" value="문 앞">
+      <input type="hidden" name="preferredDate" value="2024-02-03">
+      <input type="hidden" name="deliveryDriverName" value="박상배">
       <input type="hidden" name="carAmountPrice" value="500">
       <input type="hidden" name="imageUrl" value="/gearshift/resources/img/trustride.png">
-
+      <input type="hidden" name="userId" value="1">
 
       <!-- 결제 버튼 -->
       <button type="submit">결제</button>
@@ -61,7 +65,7 @@
       <div class="payment-item"><span>차량가</span><span>20,000,000원</span></div>
       <div class="payment-item"><span>이전등록비</span><span>500,000원</span></div>
       <div class="payment-item"><span>관리비용</span><span>200,000원</span></div>
-      <div class="payment-item"><span>배송비</span><span>100,000원</span></div>
+      <div class="payment-item"><span>배송비</span><span>0원</span></div>
       <div class="payment-item total"><span>합계</span><span>20,800,000원</span></div>
     </div>
   </aside>

@@ -15,5 +15,8 @@
         <typeAlias type="com.fastcampus.gearshift.dto.CarDto" alias="carDto"></typeAlias>
         <typeAlias type="com.fastcampus.gearshift.dto.CategoryDto" alias="categoryDto"></typeAlias>
         <typeAlias type="com.fastcampus.gearshift.dto.ImageDto" alias="imageDto"></typeAlias>
+        <typeAlias type="com.fastcampus.gearshift.dto.LOrderDTO" alias="LOrderDTO"></typeAlias>
+        <typeAlias type="com.fastcampus.gearshift.dto.PaymentProcessDTO" alias="PaymentProcessDTO"></typeAlias>
+        <typeAlias type="com.fastcampus.gearshift.dto.DeliveryDTO" alias="DeliveryDTO"></typeAlias>
     </typeAliases>
 </configuration>
