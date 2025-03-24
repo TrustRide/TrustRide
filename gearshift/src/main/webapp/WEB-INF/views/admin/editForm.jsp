@@ -166,6 +166,10 @@
 
   });
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 </script>
 </body>
 </html>

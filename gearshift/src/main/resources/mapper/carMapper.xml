@@ -246,4 +246,13 @@
         WHERE car_info_id = #{carInfoId}
     </update>
 
+<<<<<<< Updated upstream
 </mapper>
+=======
+    <select id="findByEmail" parameterType="String" resultType="com.fastcampus.gearshift.dto.UserDto">
+        SELECT *
+        FROM trustride.USER
+        WHERE user_email = #{userEmail}
+    </select>
+</mapper>
+>>>>>>> Stashed changes
