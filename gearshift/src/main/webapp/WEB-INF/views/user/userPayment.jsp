@@ -51,6 +51,13 @@
       objs.setAttribute('value', rsp.name);
       form.appendChild(objs);
 
+      // 이미지 경로
+      objs = document.createElement('input');
+      objs.setAttribute('type', 'hidden');
+      objs.setAttribute('name', 'imageUrl');
+      objs.setAttribute('value', `${cardPaymentDTO.imageUrl}`);
+      form.appendChild(objs);
+
       // 결제수단
       objs = document.createElement('input');
       objs.setAttribute('type', 'hidden');
@@ -129,6 +136,7 @@
       objs.setAttribute('value', `${cardPaymentDTO.deliveryDriverName}`);
       form.appendChild(objs);
 
+      // 배송비
       objs = document.createElement('input');
       objs.setAttribute('type', 'hidden');
       objs.setAttribute('name', 'deliveryFee');
