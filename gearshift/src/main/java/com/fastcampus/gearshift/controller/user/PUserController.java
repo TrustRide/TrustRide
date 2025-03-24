@@ -14,16 +14,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-<<<<<<< Updated upstream
-=======
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
->>>>>>> Stashed changes
+
+
+
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import javax.servlet.http.HttpSession;
 
 
 @Controller
@@ -99,6 +98,8 @@ public class PUserController {
         return "user/userCarDetail";
     }
 
+
+
     //차량 명의
     @GetMapping("/titleHolder")
     public String getHolder(@RequestParam("carInfoId")Integer carInfoID,Model model,HttpSession session)throws Exception{
@@ -107,8 +108,6 @@ public class PUserController {
 
         return "user/userTitleHolder";
     }
-
-
 
 
 

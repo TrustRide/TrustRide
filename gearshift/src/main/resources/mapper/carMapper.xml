@@ -10,22 +10,16 @@
     <!-- ========================= -->
     <resultMap id="carWithImagesMap" type="carDto">
         <id property="carInfoId" column="car_info_id" />
-
-        <!-- 기본 정보 -->
         <result property="offerReportNumber" column="offer_report_number" />
         <result property="vinNumber" column="vin_number" />
         <result property="description" column="description" />
         <result property="soldStatus" column="sold_status" />
-
-        <!-- 카테고리 -->
         <result property="smallCateCode" column="small_cate_code" />
         <result property="mediumCateCode" column="medium_cate_code" />
         <result property="largeCateCode" column="large_cate_code" />
         <result property="smallCateName" column="small_cate_name" />
         <result property="mediumCateName" column="medium_cate_name" />
         <result property="largeCateName" column="large_cate_name" />
-
-        <!-- 상세 정보 -->
         <result property="modelName" column="model_name" />
         <result property="mileage" column="mileage" />
         <result property="engineCapacity" column="engine_capacity" />
@@ -41,20 +35,17 @@
         <result property="carPrice" column="car_price" />
         <result property="carNum" column="car_num" />
         <result property="carAmountPrice" column="car_amount_price" />
-
-        <!-- 썸네일 이미지 (별도 필드로 매핑) -->
         <result property="thumbnailImageId" column="thumbnail_image_id" />
         <result property="thumbnailUrl" column="thumbnail_url" />
-
-        <!-- 전체 이미지 리스트는 상세 조회에서만 사용 -->
         <collection property="images" ofType="imageDto">
             <id property="imageId" column="image_id" />
             <result property="imageUrl" column="image_url" />
             <result property="imageType" column="image_type" />
         </collection>
     </resultMap>
+
     <!-- ========================= -->
-    <!-- 차량 목록 조회 (수정됨)  -->
+    <!-- 차량 목록 조회 -->
     <!-- ========================= -->
     <select id="getCarList" resultMap="carWithImagesMap">
         SELECT
@@ -63,15 +54,12 @@
             ci.vin_number,
             ci.description,
             ci.sold_status,
-
             sc.cate_code AS small_cate_code,
             mc.cate_code AS medium_cate_code,
             lc.cate_code AS large_cate_code,
-
             sc.cate_name AS small_cate_name,
             mc.cate_name AS medium_cate_name,
             lc.cate_name AS large_cate_name,
-
             info.model_name,
             info.mileage,
             info.engine_capacity,
@@ -87,10 +75,8 @@
             info.car_price,
             info.car_num,
             info.car_amount_price,
-
             img.image_id AS thumbnail_image_id,
             img.image_url AS thumbnail_url
-
         FROM car_information ci
                  LEFT JOIN car_cate sc ON ci.cate_code = sc.cate_code
                  LEFT JOIN car_cate mc ON sc.cate_parent = mc.cate_code
@@ -99,13 +85,9 @@
                  LEFT JOIN image img ON ci.car_info_id = img.car_info_id AND img.is_thumbnail = true
         WHERE ci.is_deleted = FALSE AND info.is_deleted = FALSE
         ORDER BY car_info_id DESC
-
     </select>
 
-
-    <!-- ========================= -->
-    <!--      차량 상세 조회      -->
-    <!-- ========================= -->
+    <!-- 차량 상세 조회 -->
     <select id="getCarById" parameterType="Integer" resultType="carDto">
         SELECT
             ci.car_info_id,
@@ -131,12 +113,11 @@
             info.car_amount_price
         FROM car_information ci
                  LEFT JOIN information info ON ci.car_info_id = info.car_info_id
-        WHERE ci.is_deleted = FALSE
-          AND info.is_deleted = FALSE
+        WHERE ci.is_deleted = FALSE AND info.is_deleted = FALSE
           AND ci.car_info_id = #{carInfoId}
     </select>
 
-    <!-- 차량 썸네일 이미지 조회 -->
+    <!-- 썸네일 이미지 조회 -->
     <select id="getThumbnailByCarId" parameterType="int" resultType="imageDto">
         SELECT
             image_id,
@@ -150,13 +131,7 @@
           AND is_thumbnail = TRUE
     </select>
 
-
-
-
-    <!-- ========================= -->
-    <!--      차량 등록(정보)     -->
-    <!-- ========================= -->
-    <!-- (1) car_information INSERT -->
+    <!-- 차량 등록 -->
     <insert id="insertCarInformation" useGeneratedKeys="true" keyProperty="carInfoId">
         INSERT INTO car_information (
             offer_report_number, vin_number, description, cate_code, sold_status
@@ -165,7 +140,6 @@
                  )
     </insert>
 
-    <!-- (2) information INSERT -->
     <insert id="insertCarBasicInfo">
         INSERT INTO information (
             car_info_id, model_name, mileage, engine_capacity, fuel_type,
@@ -180,25 +154,15 @@
                  )
     </insert>
 
-    <!-- (3) image INSERT -->
     <insert id="insertCarImage" parameterType="imageDto">
         INSERT INTO image (
-            image_uuid,
-            image_url,
-            image_type,
-            car_info_id,
-            is_thumbnail
+            image_uuid, image_url, image_type, car_info_id, is_thumbnail
         ) VALUES (
-                     #{imageUuid},
-                     #{imageUrl},
-                     #{imageType},
-                     #{carInfoId},
-                     #{isThumbnail}
+                     #{imageUuid}, #{imageUrl}, #{imageType}, #{carInfoId}, #{isThumbnail}
                  )
     </insert>
-    <!-- ========================= -->
-    <!--       차량 수정(정보)    -->
-    <!-- ========================= -->
+
+    <!-- 차량 수정 -->
     <update id="updateCarInformation">
         UPDATE car_information
         SET offer_report_number = #{offerReportNumber},
@@ -231,9 +195,7 @@
           AND is_deleted = FALSE
     </update>
 
-    <!-- ========================= -->
-    <!--       차량 삭제          -->
-    <!-- ========================= -->
+    <!-- 차량 삭제 -->
     <update id="deleteCar">
         UPDATE car_information
         SET is_deleted = TRUE
@@ -246,13 +208,11 @@
         WHERE car_info_id = #{carInfoId}
     </update>
 
-<<<<<<< Updated upstream
-</mapper>
-=======
+    <!-- 🔍 추가된: 유저 이메일로 조회 (보통 userMapper에 두는 게 적절) -->
     <select id="findByEmail" parameterType="String" resultType="com.fastcampus.gearshift.dto.UserDto">
         SELECT *
         FROM trustride.USER
         WHERE user_email = #{userEmail}
     </select>
+
 </mapper>
->>>>>>> Stashed changes
