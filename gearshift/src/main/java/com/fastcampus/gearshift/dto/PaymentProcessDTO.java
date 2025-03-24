@@ -8,10 +8,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class PaymentProcessDTO {
 
+
     // 결제 정보
     private String paymentMethod;   // 결제 수단
     private int orderId;            // 주문 ID
     private String paymentStatus;   // 결제 상태
+
 
     // 차량 정보
     private String modelName;           // 차량 모델명
@@ -31,4 +33,5 @@ public class PaymentProcessDTO {
     public PaymentProcessDTO(String paymentMethod) {
         this.paymentMethod = paymentMethod;
     }
+
 }

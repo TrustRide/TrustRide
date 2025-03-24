@@ -52,10 +52,12 @@
     <label>모델명 (modelName)</label>
     <input name="modelName" type="text" required />
   </div>
+
   <div>
     <label>연식 (manufactureYear)</label>
     <input name="manufactureYear" type="text" required />
   </div>
+
   <div>
     <label>주행 거리 (mileage)</label>
     <input name="mileage" type="text" required />
@@ -76,6 +78,12 @@
     <label>색상 (color)</label>
     <input name="color" type="text" />
   </div>
+
+  <div>
+    <label>제조 연도 (manufactureYear)</label>
+    <input name="manufactureYear" type="text" />
+  </div>
+
   <div>
     <label>이전 등록비 (previousRegistrationFee)</label>
     <input name="previousRegistrationFee" type="number" />

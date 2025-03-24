@@ -31,7 +31,7 @@
       <input type="hidden" name="mileage" value="142.221km">
       <input type="hidden" name="fuelType" value="디젤">
       <input type="hidden" name="carPrice" value="100">
-      <input type="hidden" name="extendedWarrantyPrice" value="100">
+      <input type="hidden" name="previousRegistrationFee" value="100">
       <input type="hidden" name="maintenanceCost" value="100">
       <input type="hidden" name="deliveryFee" value="0">
       <input type="hidden" name="driverPhoneNumber" value="010-8888-7777">

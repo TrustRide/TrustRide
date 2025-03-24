@@ -209,6 +209,28 @@
 
         <input type="text" placeholder="🔍차량을 검색하세요." class="search-bar">
     </div>
+
+
+    <nav>
+      <ul>
+        <li><a href="${pageContext.request.contextPath}/userList">내차사기</a></li>
+        <li><a href="${pageContext.request.contextPath}/review">상품리뷰</a></li>
+
+        <c:if test="${not empty sessionScope.loginUser}">
+          <li>${sessionScope.loginUser.userName}님 환영합니다.</li>
+          <li><a href="#">마이페이지</a></li>
+          <li><a href="${pageContext.request.contextPath}/logout">로그아웃</a></li>
+        </c:if>
+        <c:if test="${empty sessionScope.loginUser}">
+          <a href="${pageContext.request.contextPath}/login">로그인</a>
+          <li><a href="${pageContext.request.contextPath}/register">회원가입</a></li>
+        </c:if>
+      </ul>
+    </nav>
+
+    <input type="text" placeholder="🔍차량을 검색하세요." class="search-bar">
+  </div>
+
 </header>
 
 <!-- 중앙에 자동 변경되는 이미지 -->

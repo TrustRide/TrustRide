@@ -38,7 +38,7 @@
     <div>
       <div>결제상세</div>
       <div>차량가 ${paymentDTO.carPrice}</div>
-      <div>이전등록비 ${paymentDTO.extendedWarrantyPrice}</div>
+      <div>이전등록비 ${paymentDTO.previousRegistrationFee}</div>
       <div>관리비용 ${paymentDTO.maintenanceCost}</div>
       <div>배송비 ${paymentDTO.deliveryFee}</div>
       <div>결제 금액 ${paymentDTO.carAmountPrice}</div>
@@ -61,7 +61,7 @@
       <input type="hidden" name="mileage" value="${paymentDTO.mileage}">
       <input type="hidden" name="fuelType" value="${paymentDTO.fuelType}">
       <input type="hidden" name="carPrice" value="${paymentDTO.carPrice}">
-      <input type="hidden" name="extendedWarrantyPrice" value="${paymentDTO.extendedWarrantyPrice}">
+      <input type="hidden" name="previousRegistrationFee" value="${paymentDTO.previousRegistrationFee}">
       <input type="hidden" name="maintenanceCost" value="${paymentDTO.maintenanceCost}">
       <input type="hidden" name="deliveryFee" value="${paymentDTO.deliveryFee}">
       <input type="hidden" name="driverPhoneNumber" value="${paymentDTO.driverPhoneNumber}">
@@ -92,7 +92,7 @@
     <div class="payment-summary">
       <h3>예상 결제 금액</h3>
       <div class="payment-item"><span>차량가</span><span>${paymentDTO.carPrice}원</span></div>
-      <div class="payment-item"><span>이전등록비</span><span>${paymentDTO.extendedWarrantyPrice}원</span></div>
+      <div class="payment-item"><span>이전등록비</span><span>${paymentDTO.previousRegistrationFee}원</span></div>
       <div class="payment-item"><span>관리비용</span><span>${paymentDTO.maintenanceCost}원</span></div>
       <div class="payment-item"><span>배송비</span><span>${paymentDTO.deliveryFee}원</span></div>
       <div class="payment-item total"><span>합계</span><span>${paymentDTO.carAmountPrice}원</span></div>

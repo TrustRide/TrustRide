@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class LOrderDTO {
 
+
     // 주문 관련 필드
     private Integer orderId;            // 주문ID (PK)
     private String productName;         // 주문 상품명
@@ -18,6 +19,7 @@ public class LOrderDTO {
     private Boolean isJointOwnership;   // 공동 명의 여부
     private String orderStatus;         // 주문 상태
     private Integer userId;             // 유저 ID
+
 
     // 차량 관련 필드
     private String modelName;           // 차량 모델명

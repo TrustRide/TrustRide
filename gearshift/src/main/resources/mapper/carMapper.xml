@@ -208,11 +208,13 @@
         WHERE car_info_id = #{carInfoId}
     </update>
 
+
     <!-- 🔍 추가된: 유저 이메일로 조회 (보통 userMapper에 두는 게 적절) -->
     <select id="findByEmail" parameterType="String" resultType="com.fastcampus.gearshift.dto.UserDto">
         SELECT *
         FROM trustride.USER
         WHERE user_email = #{userEmail}
     </select>
+
 
 </mapper>

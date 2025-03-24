@@ -7,12 +7,14 @@ import lombok.Data;
 @AllArgsConstructor
 public class PaymentDTO {
 
+
     private String paymentMethod;       // 결제 수단
     private String modelName;           // 차량 모델명
     private String carNum;              // 차량 번호판
     private String manufactureYear;     // 연식
     private String mileage;             // 주행거리
     private String fuelType;            // 연료 타입
+
     private Integer carPrice;           // 차량 가격
     private Integer previousRegistrationFee; // 이전등록비
     private Integer maintenanceCost;    // 관리 비용
@@ -21,7 +23,9 @@ public class PaymentDTO {
     private String deliveryRequest;     // 배송 요청 사항
     private String preferredDate;       // 희망 배송일
     private String deliveryDriverName;  // 배송기사 이름
+
     private Integer carAmountPrice;     // 차량 총 가격
     private String imageUrl;            // 이미지 경로
     private Integer userId;             // 유저 아이디
+
 }

@@ -37,7 +37,9 @@ public class CarDto {
     private Integer previousRegistrationFee;  // 이전 등록비 (Previous Registration Fee)
     private Integer maintenanceCost;  // 유지보수 비용 (Maintenance Cost)
 
+
     private Integer agencyFee;  // 대행수수료
+
 
     private String carLocation;  // 차량 위치 (Car Location)
     private Integer ownerChangeCount;  // 소유주 변경 횟수 (Owner Change Count)
