@@ -1,12 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-
 <head>
   <title>결제 상세 페이지</title>
   <script>
     // 결제 방식에 따라 동작 결정
     function handlePayment() {
-      var paymentMethod = document.getElementById("selectPayment").value;   // 선택한 결제 수단 값
+      var paymentMethod = document.getElementById("paymentMethod").value;   // 선택한 결제 수단 값
       var form = document.getElementById("paymentForm");                    // 폼 태그
 
       if (paymentMethod === "현금") {
@@ -48,9 +47,15 @@
     <!-- form 태그: 결제가 완료되는 순간 서버로 데이터를 넘김 -->
     <form id="paymentForm" method="post">
       <!-- 선택한 결제 수단 -->
-      <input type="hidden" name="selectPayment" id="selectPayment" value="${paymentDTO.paymentMethod}">
+      <input type="hidden" name="paymentMethod" id="paymentMethod" value="${paymentDTO.paymentMethod}">
 
-      <input type="hidden" name="modelName" value="${paymentDTO.modelName}">
+      <input type="hidden" name="productName" value="${paymentDTO.modelName}">
+      <input type="hidden" name="orderAmount" value="${paymentDTO.carAmountPrice}">
+      <input type="hidden" name="discountAmount" value="0">
+      <input type="hidden" name="totalAmount" value="${paymentDTO.carAmountPrice-0}">
+      <input type="hidden" name="ownershipType" value="개인명의자">
+      <input type="hidden" name="isJointOwnership" value="false">
+      <input type="hidden" name="userId" value="${paymentDTO.userId}">
       <input type="hidden" name="carNum" value="${paymentDTO.carNum}">
       <input type="hidden" name="manufactureYear" value="${paymentDTO.manufactureYear}">
       <input type="hidden" name="mileage" value="${paymentDTO.mileage}">
@@ -59,7 +64,10 @@
       <input type="hidden" name="previousRegistrationFee" value="${paymentDTO.previousRegistrationFee}">
       <input type="hidden" name="maintenanceCost" value="${paymentDTO.maintenanceCost}">
       <input type="hidden" name="deliveryFee" value="${paymentDTO.deliveryFee}">
-      <input type="hidden" name="carAmountPrice" value="${paymentDTO.carAmountPrice}">
+      <input type="hidden" name="driverPhoneNumber" value="${paymentDTO.driverPhoneNumber}">
+      <input type="hidden" name="deliveryRequest" value="${paymentDTO.deliveryRequest}">
+      <input type="hidden" name="preferredDate" value="${paymentDTO.preferredDate}">
+      <input type="hidden" name="deliveryDriverName" value="${paymentDTO.deliveryDriverName}">
       <input type="hidden" name="imageUrl" value="${paymentDTO.imageUrl}">
 
     </form>
@@ -99,5 +107,4 @@
   <button onclick="proceedToNextPage()">확인</button>
 </div>
 </body>
-
 </html>

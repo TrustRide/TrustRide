@@ -1,5 +1,6 @@
 package com.fastcampus.gearshift.controller.user;
 
+import com.fastcampus.gearshift.dto.CardPaymentDTO;
 import com.fastcampus.gearshift.dto.PaymentDTO;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,7 +27,7 @@ public class LUserPaymentController {
 
     // 카드 결제 페이지 이동
     @PostMapping("/creditCard")
-    public String goToPayment(PaymentDTO paymentDTO) {
+    public String goToPayment(CardPaymentDTO  cardPaymentDTO) {
 
         return "user/userPayment";
     }
