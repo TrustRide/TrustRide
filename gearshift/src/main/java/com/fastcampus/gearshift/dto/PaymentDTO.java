@@ -13,7 +13,6 @@ public class PaymentDTO {
     private String manufactureYear;  // 연식
     private String mileage;          // 주행거리
     private String fuelType;         // 연료타입
-<<<<<<< Updated upstream
     private Integer carPrice;           // 차량 가격
     private Integer previousRegistrationFee;    // 이전등록비
     private Integer maintenanceCost;    // 관리비용
@@ -23,13 +22,6 @@ public class PaymentDTO {
     private String preferredDate;       // 희망 배송일
     private String deliveryDriverName;  // 배송기사 이름
     private Integer carAmountPrice;     // 차량 총가격
-=======
-    private int carPrice;           // 차량 가격
-    private int extendedWarrantyPrice;    // 이전등록비
-    private int maintenanceCost;    // 관리비용
-    private int deliveryFee;        // 배송비
-    private int carAmountPrice;     // 차량 총가격
->>>>>>> Stashed changes
     private String imageUrl;        // 이미지 경로
     private Integer userId;         // 유저 아이디
 
