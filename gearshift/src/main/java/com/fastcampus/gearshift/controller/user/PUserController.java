@@ -31,7 +31,7 @@ public class PUserController {
 
     @Autowired
     PHolderService pHolderService;
-    @GetMapping("/main")
+    @GetMapping("/")
     public String index(){
         return "user/userIndex";
     }

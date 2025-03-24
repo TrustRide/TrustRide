@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/admin")
-public class SAdminQnaController {
+public class SAdminReviewController {
 
-    @GetMapping("/qna")
-    public String loadQnaPage(Model model) {
-        return "admin/qna";
+    @GetMapping("/review")
+    public String loadReviewPage(Model model) {
+        return "admin/review";
     }
 
 }

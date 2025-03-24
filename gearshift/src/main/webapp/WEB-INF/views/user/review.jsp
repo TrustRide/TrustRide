@@ -1,39 +1,38 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>상품리뷰</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/user/review.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/user/review/review.css">
 </head>
 <body>
     <h1 style="text-align:center;">솔직한 이용 후기</h1>
+    <br>
     <div class="container">
-        <div class="card">
-            <img src="${pageContext.request.contextPath}/img/review/car1.jpg" alt="차 리뷰 1" style="width: 100%; height: 180px; object-fit: cover;">
-            <h3>차 모델 1</h3>
-            <p>이 차는 최고의 성능을 제공합니다.</p>
-        </div>
-        <div class="card">
-            <img src="${pageContext.request.contextPath}/img/review/car2.jpg" alt="차 리뷰 2" style="width: 100%; height: 180px; object-fit: cover;">
-            <h3>차 모델 2</h3>
-            <p>안정성과 연비가 뛰어난 모델입니다.</p>
-        </div>
-        <div class="card">
-            <img src="${pageContext.request.contextPath}/img/review/car3.jpg" alt="차 리뷰 3" style="width: 100%; height: 180px; object-fit: cover;">
-            <h3>차 모델 3</h3>
-            <p>디자인이 세련된 차량입니다.</p>
-        </div>
+        <c:forEach var="r" items="${reviews}">
+            <div class="card">
+                <a href="${pageContext.request.contextPath}/review/${r.reviewId}?page=${paging.page}"><img src="${pageContext.request.contextPath}/img/review/car1.jpg" alt="차 리뷰 ${r.reviewId}"></a>
+                <a href="${pageContext.request.contextPath}/review/${r.reviewId}?page=${paging.page}"><h3>${r.reviewTitle}</h3></a>
+                <p>${r.reviewContent}</p>
+            </div>
+        </c:forEach>
     </div>
+    <br><br>
     <div class="pagination">
-        <a href="#">&lt;</a>
-        <a href="#">1</a>
-        <a href="#">2</a>
-        <a href="#">3</a>
-        <a href="#">4</a>
-        <a href="#">5</a>
-        <a href="#">&gt;</a>
+        <c:if test="${paging.hasPrev}">
+            <a href="?page=${paging.startPage - 1}">&lt;</a>
+        </c:if>
+
+        <c:forEach var="i" begin="${paging.startPage}" end="${paging.endPage}">
+            <a href="?page=${i}" class="${i == paging.page ? 'active' : ''}">${i}</a>
+        </c:forEach>
+
+        <c:if test="${paging.hasNext}">
+            <a href="?page=${paging.endPage + 1}">&gt;</a>
+        </c:if>
     </div>
 </body>
 </html>
