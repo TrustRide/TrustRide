@@ -36,7 +36,11 @@ public class CarDto {
     private String manufactureYear;  // 제조 연도 (Manufacture Year)
     private Integer previousRegistrationFee;  // 이전 등록비 (Previous Registration Fee)
     private Integer maintenanceCost;  // 유지보수 비용 (Maintenance Cost)
-    private Integer agencyFee;  // 등록대행수수료 (agency Fee)
+
+
+    private Integer agencyFee;  // 대행수수료
+
+
     private String carLocation;  // 차량 위치 (Car Location)
     private Integer ownerChangeCount;  // 소유주 변경 횟수 (Owner Change Count)
     private Integer carPrice;  // 차량 가격 (Car Price)
@@ -46,8 +50,10 @@ public class CarDto {
     // 이미지 리스트 (선택적으로 등록) (List of Car Images, optional)
     private List<ImageDto> images;
 
+
     // 썸네일
     private String thumbnailUrl;
     private Integer thumbnailImageId;
 
 }
+
