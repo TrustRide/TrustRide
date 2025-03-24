@@ -62,13 +62,6 @@ public class PUserController {
 
     }
 
-    //로그아웃 테스트
-    @GetMapping("/logout")
-    public String logout(HttpServletRequest request,HttpServletResponse response){
-        HttpSession session =request.getSession();
-        session.invalidate();
-        return "redirect:/";
-    }
 
 
     //카테고리
