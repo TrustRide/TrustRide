@@ -11,739 +11,389 @@
 <html>
 <head>
     <title>배송지 입력</title>
-
-    <style>
-        /* ----- 전체 페이지 기본 설정 ----- */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #ffffff;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh; /* 화면 최소 높이 설정 (전체 화면을 채우도록) */
-        }
-
-        /* 헤더 스타일 */
-        header {
-            background: white;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            padding: 15px 0;
-            width: 100%;
-        }
-
-        /* 헤더 내부 정렬 */
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        /* 로고 컨테이너 */
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 8px; /* 이미지와 글자 사이 간격 */
-        }
-
-        /* 로고 이미지 스타일 */
-        .logo-img {
-            height: 50px;
-            width: auto;
-        }
-
-        /* 로고 글자 스타일 */
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: red;
-            margin: 0;
-        }
-
-        /* 네비게이션 스타일 */
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 20px;
-            align-items: center;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #555;
-            font-size: 16px;
-        }
-
-        /* 검색창 스타일 */
-        .search-bar {
-            padding: 8px 12px;
-            border: 1px solid #555;
-            border-radius: 4px;
-        }
-
-        /* ----- 메인 콘텐츠 (Form + Summary) ----- */
-        .container {
-            display: flex;
-            justify-content: space-between;
-            width: 90%;
-            max-width: 1200px;
-            margin: 20px auto;
-            flex: 1;
-        }
-
-        /* 왼쪽 입력 폼 */
-        .form-section {
-            width: 65%;
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        /* 오른쪽 요약 정보 */
-        .summary-section {
-            width: 30%;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        /* ----- 푸터 스타일 수정 ----- */
-        .footer {
-            width: 100%;
-            background-color: #f9f9f9;
-            padding: 20px 0;
-            font-family: Arial, sans-serif;
-            color: #333;
-            border-top: 1px solid #ddd;
-            min-height: 120px; /* 푸터 고정 크기 */
-            margin-top: auto;
-        }
-
-        .footer-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* 푸터 글자 정렬 */
-        .footer-logo {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 10px;
-            text-align: left;
-            color: red;
-        }
-
-        .footer-info {
-            font-size: 14px;
-            line-height: 1.6;
-            text-align: left;
-        }
-
-        .footer-copyright {
-            font-size: 12px;
-            color: #777;
-            margin-top: 10px;
-            text-align: left;
-        }
-
-        /* ----- 반응형 레이아웃 (모바일 대응) ----- */
-        @media (max-width: 1024px) {
-            .container {
-                flex-direction: column;
-            }
-
-            .form-section,
-            .summary-section {
-                width: 100%;
-                margin-bottom: 20px;
-            }
-        }
-
-        h2 {
-            font-size: 22px;
-            font-weight: bold;
-            text-align: left;
-            margin-bottom: 5px;
-        }
-
-        p {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 20px;
-        }
-
-        label {
-            font-weight: bold;
-            display: block;
-            margin-top: 20px;
-            font-size: 14px;
-        }
-
-        input, select {
-            width: 100%;
-            padding: 12px;
-            margin-top: 5px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 14px;
-            background-color: #f9f9f9;
-        }
-
-        .input-group {
-            display: flex;
-            gap: 10px;
-        }
-
-        .input-group input {
-            width: 48%;
-        }
-
-        .address_wrap {
-            margin-top: 20px;
-        }
-
-        .address_button {
-            background: white;
-            border: 1px solid #ccc;
-            padding: 12px 15px;
-            cursor: pointer;
-            border-radius: 5px;
-            width: 100%;
-            text-align: center;
-            margin-top: 5px;
-        }
-
-        .submit-btn {
-            background: #c00;
-            color: white;
-            border: none;
-            padding: 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            width: 100%;
-            margin-top: 30px;
-            font-size: 16px;
-        }
-
-
-    </style>
-
-    <style>
-        .order-box {
-            width: 100%;
-            max-width: 350px;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-
-
-        .order-box img {
-            width: 100%;
-            max-width: 320px;
-            height: auto;
-            border-radius: 5px;
-            margin-bottom: 15px;
-        }
-
-
-
-        .info-buttons {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr); /* 가로 2개씩 배치 */
-            gap: 10px; /* 버튼 사이 여백 */
-            justify-content: center;
-            margin-top: 15px;
-        }
-
-
-        .info-button {
-            padding: 15px 10px;
-            border: 1px solid #ddd;
-            background: white;
-            border-radius: 12px; /* 둥근 모서리 */
-            font-size: 16px;
-            cursor: pointer;
-            text-align: center;
-            transition: all 0.2s ease-in-out;
-            font-weight: bold;
-        }
-
-        .info-button:hover {
-            background: #f1f1f1;
-        }
-
-
-        .price-box {
-            font-size: 22px;
-            color: red;
-            font-weight: bold;
-            margin-top: 10px;
-            text-align: right;
-        }
-    </style>
-
-    <style>
-        /* 🚗 면허 정보 입력 2x2 레이아웃 */
-        .license-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr); /* 2열 배치 */
-            gap: 15px; /* 입력 필드 간 간격 */
-            margin-bottom: 20px;
-        }
-
-        .license-field {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .license-field label {
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        .license-field input,
-        .license-field select {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 14px;
-            background-color: #f9f9f9;
-        }
-    </style>
-
-    <style>
-        /* 모달 스타일 */
-        .modal {
-            display: none; /* 기본적으로 숨김 */
-            position: fixed;
-            z-index: 1000;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            width: 300px;
-            background: white;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-            padding: 20px;
-            text-align: center;
-            border-radius: 10px;
-        }
-
-        .modal-content {
-            position: relative;
-        }
-
-        .close {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            font-size: 18px;
-            cursor: pointer;
-        }
-
-        .confirm-button {
-            width: 100%;
-            background-color: darkred;
-
-            color: white;
-            border: none;
-            padding: 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-
-        .confirm-button:hover {
-            background-color: darkred;
-        }
-    </style>
-
-    <style>
-        /* ✅ 약관 동의 박스 스타일 */
-        .terms-container {
-            background: #f9f9f9;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
-
-        .terms-main {
-            font-size: 13px;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .terms-box {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 0;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .terms-box:last-child {
-            border-bottom: none;
-        }
-
-        .terms-box label {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 13px;
-        }
-
-        .terms-box a {
-            color: darkred;
-            text-decoration: none;
-            font-size: 13px;
-        }
-
-        .terms-box a:hover {
-            text-decoration: underline;
-        }
-    </style>
-
-    <style>
-        .modal {
-            display: none; /* 기본적으로 숨김 */
-            position: fixed;
-            z-index: 1000;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            width: 500px;
-            background: white;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-            padding: 20px;
-            text-align: left;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        /* ✅ 모달 내부 스타일 */
-        .modal-content {
-            position: relative;
-            padding: 20px;
-        }
-
-        /* ✅ 닫기 버튼 스타일 */
-        .close {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            font-size: 22px;
-            cursor: pointer;
-        }
-
-        /* ✅ 확인 버튼 스타일 */
-        .confirm-button {
-            width: 100%;
-            background-color: darkred;
-            color: white;
-            border: none;
-            padding: 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-
-        .confirm-button:hover {
-            background-color: #a00;
-        }
-    </style>
-
-
-    <style>
-        /* ✅ 약관 동의 박스 스타일 */
-        .terms-container {
-            background: #f9f9f9;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
-
-        .terms-main {
-            font-size: 18px;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .terms-box {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 0;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .terms-box:last-child {
-            border-bottom: none;
-        }
-
-        .terms-box label {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 16px;
-        }
-
-        .terms-box a {
-            color: darkred;
-            text-decoration: none;
-            font-size: 14px;
-        }
-
-        .terms-box a:hover {
-            text-decoration: underline;
-        }
-
-        /* ✅ 모달 스타일 */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            width: 600px;
-            background: white;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-            padding: 20px;
-            text-align: left;
-            border-radius: 10px;
-        }
-
-        .modal-content {
-            position: relative;
-        }
-
-        .close {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            font-size: 22px;
-            cursor: pointer;
-        }
-
-        .confirm-button {
-            width: 100%;
-            background-color: darkred;
-            color: white;
-            border: none;
-            padding: 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-
-        .confirm-button:hover {
-            background-color: #a00;
-        }
-
-        /* ✅ 테이블 스타일 */
-        .terms-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-        }
-
-        .terms-table th, .terms-table td {
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: left;
-        }
-
-        .terms-table th {
-            background: #f4f4f4;
-            font-weight: bold;
-        }
-    </style>
-
-    <style>
-        /* ✅ 약관 동의 박스 스타일 */
-        .terms-container {
-            background: #f9f9f9;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
-
-        .terms-main {
-            font-size: 18px;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .terms-box {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 0;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .terms-box:last-child {
-            border-bottom: none;
-        }
-
-        .terms-box label {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 16px;
-        }
-
-        .terms-box a {
-            color: darkred;
-            text-decoration: none;
-            font-size: 14px;
-        }
-
-        .terms-box a:hover {
-            text-decoration: underline;
-        }
-
-        /* ✅ 모달 스타일 */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            width: 600px;
-            background: white;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-            padding: 20px;
-            text-align: left;
-            border-radius: 10px;
-        }
-
-        .modal-content {
-            position: relative;
-        }
-
-        .close {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            font-size: 22px;
-            cursor: pointer;
-        }
-
-        .confirm-button {
-            width: 100%;
-            background-color: darkred;
-            color: white;
-            border: none;
-            padding: 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-
-        .confirm-button:hover {
-            background-color: #a00;
-        }
-
-        /* ✅ 테이블 스타일 */
-        .terms-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-        }
-
-        .terms-table th, .terms-table td {
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: left;
-        }
-
-        .terms-table th {
-            background: #f4f4f4;
-            font-weight: bold;
-        }
-    </style>
-
-    <style>
-        /* ✅ 테이블 스타일 */
-        .terms-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-        }
-
-        .terms-table th, .terms-table td {
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: left;
-        }
-
-        .terms-table th {
-            background: #f4f4f4;
-            font-weight: bold;
-        }
-
-        /* ✅ 모달 스타일 */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            width: 600px;
-            background: white;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-            padding: 20px;
-            text-align: left;
-            border-radius: 10px;
-        }
-
-        .modal-content {
-            position: relative;
-        }
-
-        .close {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            font-size: 22px;
-            cursor: pointer;
-        }
-
-        .confirm-button {
-            width: 100%;
-            background-color: darkred;
-            color: white;
-            border: none;
-            padding: 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-
-        .confirm-button:hover {
-            background-color: #a00;
-        }
-    </style>
+<style>
+    /* ✅ 전체 레이아웃 및 공통 스타일 */
+    body {
+        font-family: Arial, sans-serif;
+        background: #fff;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        width: 90%;
+        max-width: 1200px;
+        margin: 20px auto;
+        flex: 1;
+    }
+
+    h2, h3 {
+        font-size: 22px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    label {
+        font-weight: bold;
+        margin-top: 20px;
+        display: block;
+    }
+
+    input, select {
+        width: 100%;
+        padding: 12px;
+        margin-top: 5px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 14px;
+        background-color: #f9f9f9;
+    }
+
+    button {
+        cursor: pointer;
+    }
+
+    /* ✅ 헤더 스타일 */
+    header {
+        background: white;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        padding: 15px 0;
+        width: 100%;
+    }
+
+    .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .logo-container {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .logo-img {
+        height: 50px;
+    }
+
+    .logo {
+        font-size: 24px;
+        font-weight: bold;
+        color: red;
+    }
+
+    nav ul {
+        display: flex;
+        list-style: none;
+        gap: 20px;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+    }
+
+    nav a {
+        text-decoration: none;
+        color: #555;
+        font-size: 16px;
+    }
+
+    .search-bar {
+        padding: 8px 12px;
+        border: 1px solid #555;
+        border-radius: 4px;
+    }
+
+    /* ✅ 폼 섹션 */
+    .form-section {
+        width: 65%;
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .submit-btn {
+        background: #c00;
+        color: white;
+        padding: 15px;
+        border-radius: 5px;
+        border: none;
+        width: 100%;
+        margin-top: 30px;
+        font-size: 16px;
+    }
+
+
+    .summary-section {
+        width: 30%;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .order-box {
+        width: 100%;
+        max-width: 350px;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    .order-box img {
+        width: 100%;
+        border-radius: 5px;
+        margin-bottom: 15px;
+    }
+
+    .info-buttons {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        margin-top: 15px;
+    }
+
+    .info-button {
+        border: 1px solid #ddd;
+        background: white;
+        border-radius: 12px;
+        font-weight: bold;
+        padding: 12px;
+    }
+
+    .info-button:hover {
+        background: #f1f1f1;
+    }
+
+    .price-box {
+        font-size: 16px;
+        color: #555;
+        margin-top: 15px;
+        text-align: left;
+    }
+
+    .price-box div {
+        margin-bottom: 10px;
+    }
+
+    .total-price {
+        font-weight: bold;
+        color: red;
+        font-size: 18px;
+    }
+
+    .total-price span {
+        font-size: 22px;
+        color: red;
+    }
+
+    /* ✅ 주소입력 */
+    .address_wrap {
+        margin-top: 20px;
+    }
+
+    .address_button {
+        border: 1px solid #ccc;
+        padding: 12px;
+        margin-top: 5px;
+        border-radius: 5px;
+        background: white;
+        text-align: center;
+    }
+
+    /* ✅ 면허 입력 */
+    .license-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+
+    /* ✅ 약관 동의 */
+    .terms-container {
+        background: #f9f9f9;
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 30px;
+    }
+
+    .terms-box {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 0;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .terms-box:last-child {
+        border-bottom: none;
+    }
+
+    .terms-box label {
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .terms-box a {
+        color: darkred;
+        font-size: 13px;
+    }
+
+    /* ✅ 모달 */
+    /* 모달 스타일 */
+    .modal {
+        display: none; /* 기본적으로 숨김 */
+        position: fixed;
+        z-index: 1000;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 600px;
+        background: white;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+        padding: 20px;
+        text-align: left;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    /* 모달 콘텐츠 스타일 */
+    .modal-content {
+        position: relative;
+        padding: 20px;
+    }
+
+    /* 닫기 버튼 스타일 */
+    .close {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 22px;
+        cursor: pointer;
+    }
+
+    /* 확인 버튼 스타일 */
+    .confirm-button {
+        width: 100%;
+        background-color: darkred;
+        color: white;
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    .confirm-button:hover {
+        background-color: #a00;
+    }
+
+    /* 테이블 스타일 */
+    .terms-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+    }
+
+    .terms-table th, .terms-table td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: left;
+    }
+
+    .terms-table th {
+        background: #f4f4f4;
+        font-weight: bold;
+    }
+
+    /* ✅ 푸터 */
+    .footer {
+        width: 100%;
+        background-color: #f9f9f9;
+        padding: 20px 0;
+        border-top: 1px solid #ddd;
+        font-size: 14px;
+        color: #333;
+        margin-top: auto;
+    }
+
+    .footer-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .footer-logo {
+        font-size: 18px;
+        font-weight: bold;
+        color: red;
+        margin-bottom: 10px;
+    }
+
+
+
+    /* 모달 스타일 */
+    .modal {
+        display: none; /* 기본적으로 숨김 */
+        position: fixed;
+        z-index: 1000;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+        max-width: 500px;
+        background: white;
+        padding: 20px;
+        text-align: left;
+        border-radius: 10px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+    }
+
+    /* 모달 콘텐츠 스타일 */
+    .modal-content {
+        position: relative;
+        padding: 20px;
+    }
+
+    /* 닫기 버튼 스타일 */
+    .close {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 22px;
+        cursor: pointer;
+    }
+
+    /* 확인 버튼 스타일 */
+    .confirm-button {
+        width: 100%;
+        background-color: darkred;
+        color: white;
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    .confirm-button:hover {
+        background-color: #a00;
+    }
+
+</style>
 
 
 </head>
@@ -761,7 +411,8 @@
                 <li><a href="/gearshift/userList">내차사기</a></li>
                 <li><a href="#">상품리뷰</a></li>
                 <%
-                    String userId=(String) session.getAttribute("userId");
+                    Integer userIdInt = (Integer) session.getAttribute("userId");  // 올바른 타입
+                    String userId = String.valueOf(userIdInt);  // 필요 시 문자열로 변환
                 %>
                 <%
                     if(userId != null){
@@ -794,24 +445,31 @@
         <form action="/gearshift/deliveryInsert" method="post">
             <input type="hidden" name="userId" value="${userDto.userId}">
 
-            <label>명의자 이름</label>
+            <label>회원 이름</label>
             <input type="text" name="userName" value="${userDto.userName}" readonly>
 
-            <label>명의자 휴대폰 번호</label>
+            <label>회원 휴대폰 번호</label>
             <input type="text" name="userPhoneNumber" value="${userDto.userPhoneNumber}" readonly>
 
+            <label>명의자 이름</label>
+            <input type="text" name="holderName" >
+
+            <label>명의자 전화번호</label>
+            <input type="text" name="holderPhoneNumber">
+
+
             <label>명의자 주민등록번호</label>
-            <input type="text" id="memberResident" name="memberResident" placeholder="13자리 입력" maxlength="13">
+            <input type="text" id="holderResident" name="holderResident" placeholder="13자리 입력" maxlength="13">
 
 
 
 
             <div class="address_wrap">
                 <label>명의자 주민등록 주소지</label>
-                <input type="text" name="memberAddr1" readonly placeholder="우편번호">
+                <input type="text" name="holderAddr1" readonly placeholder="우편번호">
                 <button type="button" class="address_button" onclick="execution_daum_address()">우편번호 찾기</button>
-                <input type="text" name="memberAddr2" readonly placeholder="도로명 주소 또는 지번 주소">
-                <input type="text" name="memberAddr3" placeholder="상세주소 입력">
+                <input type="text" name="holderAddr2" readonly placeholder="도로명 주소 또는 지번 주소">
+                <input type="text" name="holderAddr3" placeholder="상세주소 입력">
             </div>
 
 
@@ -827,8 +485,8 @@
             <div class="license-grid">
                 <!-- 면허 종류 선택 -->
                 <div class="license-field">
-                    <label for="memberLicense">면허 종류</label>
-                    <select id="memberLicense" name="memberLicense">
+                    <label for="holderLicense">면허 종류</label>
+                    <select id="holderLicense" name="holderLicense">
                         <option value="">면허 종류 선택</option>
                         <option value="1종 보통">1종 보통</option>
                         <option value="1종 대형">1종 대형</option>
@@ -837,11 +495,14 @@
                     </select>
                 </div>
 
+
                 <!-- 면허 번호 입력 -->
                 <div class="license-field">
                     <label for="licenseNumber">면허 번호</label>
                     <input type="text" id="licenseNumber" name="licenseNumber" placeholder="예: 12-34-567890">
                 </div>
+
+
 
                 <!-- 면허 발급일 선택 -->
                 <div class="license-field">
@@ -849,12 +510,106 @@
                     <input type="date" id="licenseIssuedDate" name="licenseIssuedDate" onchange="setLicenseExpiryDate()">
                 </div>
 
+
                 <!-- 면허 만료일 (자동 계산) -->
                 <div class="license-field">
                     <label for="licenseExpiryDate">면허 만료일</label>
                     <input type="date" id="licenseExpiryDate" name="licenseExpiryDate" readonly>
                 </div>
             </div>
+
+
+
+            <div class="terms-container">
+                <!-- 배송원1 -->
+                <div class="terms-box">
+                    <label><input type="radio" name="delivery" class="terms-checkbox" value="1,김철수,010-1234-5678" required> 배송원1</label>
+                    <a href="#" onclick="openDeliveryModal(1)">보기</a>
+                </div>
+
+                <!-- 배송원2 -->
+                <div class="terms-box">
+                    <label><input type="radio" name="delivery" class="terms-checkbox" value="2,이영희,010-2345-6789"> 배송원2</label>
+                    <a href="#" onclick="openDeliveryModal(2)">보기</a>
+                </div>
+
+                <!-- 배송원3 -->
+                <div class="terms-box">
+                    <label><input type="radio" name="delivery" class="terms-checkbox" value="3,박민수,010-3456-7890" required> 배송원3</label>
+                    <a href="#" onclick="openDeliveryModal(3)">보기</a>
+                </div>
+
+                <!-- 배송원4 -->
+                <div class="terms-box">
+                    <label><input type="radio" name="delivery" class="terms-checkbox" value="4,최진호,010-4567-8901"> 배송원4</label>
+                    <a href="#" onclick="openDeliveryModal(4)">보기</a>
+                </div>
+            </div>
+
+
+            <div id="deliveryModal1" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal(1)">&times;</span>
+                    <h2>배송원1 정보</h2>
+                    <div class="modal-image">
+                        <img src="<c:url value='/resources/img/di1.jpg' />" alt="배송원 1" class="logo-img"></a>
+                    </div>
+                    <p>배송원1 이름: 김철수</p>
+                    <p>배송원1 연락처: 010-1234-5678</p>
+                    <p>배송원1 주소: 서울시 강남구</p>
+                    <p>배송원1 경력: Trust Ride 근무 3년차</p>
+                    <button class="confirm-button" onclick="closeModal(1)">확인</button>
+                </div>
+            </div>
+
+            <!-- 모달 2 - 배송원2 정보 -->
+            <div id="deliveryModal2" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal(2)">&times;</span>
+                    <h2>배송원2 정보</h2>
+                    <div class="modal-image">
+                        <img src="<c:url value='/resources/img/di1.jpg' />" alt="배송원 2" class="logo-img"></a>
+                    </div>
+                    <p>배송원2 이름: 이영희</p>
+                    <p>배송원2 연락처: 010-2345-6789</p>
+                    <p>배송원2 주소: 서울시 송파구</p>
+                    <p>배송원 2 경력: Trust Ride 근무 2년차</p>
+                    <button class="confirm-button" onclick="closeModal(2)">확인</button>
+                </div>
+            </div>
+
+            <!-- 모달 3 - 배송원3 정보 -->
+            <div id="deliveryModal3" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal(3)">&times;</span>
+                    <h2>배송원3 정보</h2>
+                    <div class="modal-image">
+                        <img src="<c:url value='/resources/img/di1.jpg' />" alt="배송원 3" class="logo-img"></a>
+                    </div>
+                    <p>배송원3 이름: 박민수</p>
+                    <p>배송원3 연락처: 010-3456-7890</p>
+                    <p>배송원3 주소: 서울시 강북구</p>
+                    <p>배송원 3 경력: Trust Ride 근무 6년차</p>
+                    <button class="confirm-button" onclick="closeModal(3)">확인</button>
+                </div>
+            </div>
+
+            <!-- 모달 4 - 배송원4 정보 -->
+            <div id="deliveryModal4" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal(4)">&times;</span>
+                    <h2>배송원4 정보</h2>
+                    <div class="modal-image">
+                        <img src="<c:url value='/resources/img/di1.jpg' />" alt="배송원 4" class="logo-img"></a>
+                    </div>
+                    <p>배송원4 이름: 최진호</p>
+                    <p>배송원4 연락처: 010-4567-8901</p>
+                    <p>배송원4 주소: 서울시 용산구</p>
+                    <p>배송원 4 경력: Trust Ride 근무 5년차</p>
+                    <button class="confirm-button" onclick="closeModal(4)">확인</button>
+                </div>
+            </div>
+
 
 
             <div class="terms-container">
@@ -888,34 +643,41 @@
                     <a href="#" onclick="openBenefitModal()">보기</a>
                 </div>
             </div>
+
+            <!--배송원 정보 -->
+            <input type="hidden" name="selectedDeliveryId">
+            <input type="hidden" name="selectedDeliveryName">
+            <input type="hidden" name="selectedDeliveryPhone">
             <!-- 다음 버튼 -->
             <button type="submit" class="submit-btn">다음</button>
         </form>
+
     </div>
 
 
-<div class="summary-section">
-    <div class="order-box">
-        <img src="<c:url value='/resources/img/3car3.png' />" alt="Trust Ride Logo" class="logo-img">
-        <h3>기아 K3 트렌디</h3>
-        <p>43다5558 | 13년 12월식 (14년형) · 87,121km · 가솔린</p>
+    <div class="summary-section">
+        <div class="order-box">
+            <img src="<c:url value='/resources/img/3car3.png' />" alt="Trust Ride Logo" class="logo-img">
+            <h3>${carDto.modelName}</h3>
+            <p>43다5558 | ${carDto.manufactureYear} ·${carDto.mileage} ·  ${carDto.fuelType}</p>
 
-        <div class="info-buttons">
-            <button class="info-button">차량옵션</button>
-            <button class="info-button">성능·상태 점검기록부</button>
-            <button class="info-button">Trust Ride 진단서</button>
-            <button class="info-button">보험이력조회</button>
+            <div class="info-buttons">
+                <button class="info-button">차량옵션</button>
+                <button class="info-button">성능·상태 점검기록부</button>
+                <button class="info-button">Trust Ride 진단서</button>
+                <button class="info-button">보험이력조회</button>
+            </div>
+
+            <hr>
+
+            <div>차량가격: <span>${carDto.carPrice}원</span></div>
+            <div>이전등록비: <span>${carDto.previousRegistrationFee}원</span></div>
+            <div>등록대행수수료: <span>${carDto.agencyFee}원</span></div>
+            <div>배송비: <span>0원</span></div><hr>
+            <div class="total-price">총 합계: <span>${carDto.carAmountPrice}원</span></div>
         </div>
-
-        <hr>
-
-        <div class="price-box">7,720,000원</div>
-
-
     </div>
 </div>
-</div>
-
 
 
 <div id="errorModal" class="modal">
@@ -1026,6 +788,7 @@
     </div>
 </div>
 
+
 <div id="benefitModal" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeBenefitModal()">&times;</span>
@@ -1054,7 +817,9 @@
 
         <p>귀하는 동의를 거부할 권리가 있으나, 동의하지 않을 경우 맞춤 서비스 제공이 제한될 수 있습니다.</p>
 
+
         <button class="confirm-button" onclick="closeBenefitModal()">확인</button>
+
     </div>
 </div>
 
@@ -1076,6 +841,38 @@
 
 
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+
+
+<script>
+    document.querySelector(".submit-btn").addEventListener("click", function(event) {
+        // 선택된 배송원 라디오 버튼 찾기
+        const selectedDelivery = document.querySelector('input[name="delivery"]:checked');
+
+        if (selectedDelivery) {
+            // 선택된 배송원 정보 가져오기 (value값)
+            const deliveryInfo = selectedDelivery.value.split(',');
+
+            // 배송원 정보 (ID, 이름, 전화번호)
+            const deliveryId = deliveryInfo[0];
+            const deliveryName = deliveryInfo[1];
+            const deliveryPhone = deliveryInfo[2];
+
+            // hidden input 필드에 값 넣기
+            document.querySelector("[name='selectedDeliveryId']").value = deliveryId;
+            document.querySelector("[name='selectedDeliveryName']").value = deliveryName;
+            document.querySelector("[name='selectedDeliveryPhone']").value = deliveryPhone;
+
+            // 폼 제출
+            document.querySelector("form").submit();
+        } else {
+            // 배송원 선택 안한 경우 에러 메시지 표시
+            openModal("배송원을 선택해 주세요.");
+            event.preventDefault(); // 폼 제출 막기
+        }
+    });
+</script>
+
 
 
 <script>
@@ -1175,12 +972,7 @@
             return false;
         }
 
-        // 전화번호 유효성 검사 (숫자만 허용)
-        let phoneRegex = /^[0-9]{10,11}$/;
-        if (!phoneRegex.test(userPhoneNumber)) {
-            openModal("휴대폰 번호는 10~11자리 숫자만 입력해 주세요.");
-            return false;
-        }
+
 
         // 면허 번호 유효성 검사 (예: 12-34-567890)
         let licenseRegex = /^[0-9]{2}-[0-9]{2}-[0-9]{6}$/;
@@ -1288,6 +1080,35 @@
         let modal = document.getElementById("thirdPartyModal");
         if (event.target === modal) {
             modal.style.display = "none";
+        }
+    }
+</script>
+
+<script>
+    // 배송원 정보 모달 열기
+    function openDeliveryModal(deliveryId) {
+        // 해당 배송원 모달을 표시
+        var modal = document.getElementById("deliveryModal" + deliveryId);
+        if (modal) {
+            modal.style.display = "block";
+        }
+    }
+
+    // 모달 닫기
+    function closeModal(deliveryId) {
+        var modal = document.getElementById("deliveryModal" + deliveryId);
+        if (modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    // 바깥 클릭 시 모달 닫기
+    window.onclick = function(event) {
+        for (let i = 1; i <= 4; i++) {
+            let modal = document.getElementById("deliveryModal" + i);
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
         }
     }
 </script>
