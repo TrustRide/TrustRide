@@ -25,8 +25,7 @@
     <label>설명 (description)</label>
     <input name="description" type="text" value="${carDto.description}" />
   </div>
-
-  <!-- 대 / 중 / 소 카테고리 선택 -->
+  <!--  대 / 중 / 소 카테고리 선택 -->
   <div>
     <label>대분류 (largeCateCode)</label>
     <select name="largeCateCode" id="largeCate" required>
@@ -50,7 +49,6 @@
       <!-- AJAX로 채워질 영역 -->
     </select>
   </div>
-
   <!-- 차량 상세 정보 -->
   <div>
     <label>모델명 (modelName)</label>
@@ -119,24 +117,31 @@
     <input name="soldStatus" type="text" value="${carDto.soldStatus}" />
   </div>
 
-  <!-- 이미지 업로드 -->
+  <!-- 이미지 정보 -->
+
+
+  <!-- 새 이미지 파일 업로드 (여러 개 가능) -->
   <div>
     <label>새 이미지 파일 첨부</label><br/>
     <input type="file" name="imageFiles" multiple />
   </div>
+
 
   <button type="submit">차량 수정</button>
 </form>
 
 <script>
   $(document).ready(function () {
-    // 대분류 선택 시 중분류 로드
+    // ======================
+    //  1) 카테고리 동적 로드
+    // ======================
     $('#largeCate').change(function () {
       const largeCateCode = $(this).val();
       $('#mediumCate').html('<option value="">중분류 선택</option>');
       $('#smallCate').html('<option value="">소분류 선택</option>');
 
       if (largeCateCode) {
+        // AJAX 호출 (대분류 -> 중분류)
         $.get('${pageContext.request.contextPath}/cars/categories/medium?parentCode=' + largeCateCode, function (data) {
           $.each(data, function (index, item) {
             $('#mediumCate').append('<option value="' + item.cateCode + '">' + item.cateName + '</option>');
@@ -145,12 +150,12 @@
       }
     });
 
-    // 중분류 선택 시 소분류 로드
     $('#mediumCate').change(function () {
       const mediumCateCode = $(this).val();
       $('#smallCate').html('<option value="">소분류 선택</option>');
 
       if (mediumCateCode) {
+        // AJAX 호출 (중분류 -> 소분류)
         $.get('${pageContext.request.contextPath}/cars/categories/small?parentCode=' + mediumCateCode, function (data) {
           $.each(data, function (index, item) {
             $('#smallCate').append('<option value="' + item.cateCode + '">' + item.cateName + '</option>');
@@ -158,6 +163,7 @@
         });
       }
     });
+
   });
 
 </script>

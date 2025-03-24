@@ -12,12 +12,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import javax.servlet.http.HttpSession;
 
 
 @Controller
@@ -73,29 +70,5 @@ public class PUserController {
         //나중에 유효성 검사 및 경로 수정
         return "user/userCarList";
     }
-
-
-    @GetMapping("/carDetail")
-    public String getDetail(@RequestParam("carInfoId") Integer carInfoId, Model model) throws Exception {
-        CarDto carDto = pHolderService.carSelect(carInfoId);
-        System.out.println(" 요청된 carInfoId = " + carInfoId);
-        System.out.println(" 조회된 carDto = " + carDto);
-        model.addAttribute("carDto", carDto);
-        return "user/userCarDetail";
-    }
-
-
-
-    //차량 명의
-    @GetMapping("/titleHolder")
-    public String getHolder(@RequestParam("carInfoId")Integer carInfoID,Model model,HttpSession session)throws Exception{
-        CarDto carDto = pHolderService.carSelect(carInfoID);
-        model.addAttribute("carDto",carDto);
-
-        return "user/userTitleHolder";
-    }
-
-
-
 
 }
