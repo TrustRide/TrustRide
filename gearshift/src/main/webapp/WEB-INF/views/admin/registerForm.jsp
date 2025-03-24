@@ -56,12 +56,6 @@
     <label>모델명 (modelName)</label>
     <input name="modelName" type="text" required />
   </div>
-
-  <div>
-    <label>연식 (manufactureYear)</label>
-    <input name="manufactureYear" type="text" required />
-  </div>
-
   <div>
     <label>주행 거리 (mileage)</label>
     <input name="mileage" type="text" required />
@@ -82,20 +76,6 @@
     <label>색상 (color)</label>
     <input name="color" type="text" />
   </div>
-<<<<<<< Updated upstream
-=======
-
-  <div>
-    <label>이전등록비</label>
-    <input name="previousRegistrationFee" type="text" />
-  </div>
-
-  <label>등록대행 수수료  (agencyFee)</label>
-  <input name="agencyFee" type="text" />
-  </div>
-
-  <!-- 🚗 차량 가격 정보 -->
->>>>>>> Stashed changes
   <div>
     <label>제조 연도 (manufactureYear)</label>
     <input name="manufactureYear" type="text" />
