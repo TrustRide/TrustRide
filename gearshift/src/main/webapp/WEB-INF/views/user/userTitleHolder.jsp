@@ -248,12 +248,61 @@
         }
 
 
-        .price-box {
+        .price-summary {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 350px; /* 최대 너비 설정 */
+            margin: 20px auto;
+            font-family: Arial, sans-serif;
+        }
+
+        .price-summary h3 {
             font-size: 22px;
-            color: red;
             font-weight: bold;
-            margin-top: 10px;
-            text-align: right;
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .price-item {
+            display: flex;
+            justify-content: space-between;
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .price-item .label {
+            font-weight: bold;
+        }
+
+        .price-item .value {
+            color: #333;
+        }
+
+        .total .label {
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .total .value {
+            color: red;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        /* Responsive Design (모바일 대응) */
+        @media (max-width: 768px) {
+            .price-summary {
+                max-width: 100%; /* 화면 크기에 맞게 너비 조정 */
+                padding: 15px;
+            }
+            .price-item {
+                font-size: 14px; /* 작은 화면에서 글씨 크기 줄이기 */
+            }
         }
 
 
@@ -349,7 +398,7 @@
             </label>
         </div>
 
-
++
         <button class="next-button" onclick="goToDelivery()">다음</button>
     </div>
 
@@ -358,7 +407,7 @@
         <div class="order-box">
             <img src="<c:url value='/resources/img/3car3.png' />" alt="Trust Ride Logo" class="logo-img">
             <h3>기아 K3 트렌디</h3>
-            <p>43다5558 | 13년 12월식 (14년형) · 87,121km · 가솔린</p>
+            <p>${carDto.carNum} | {carDto.manufactureYear} 식  · ${carDto.mileage}km · ${carDto.fuelType}</p>
 
             <div class="info-buttons">
                 <button class="info-button">차량옵션</button>
@@ -369,7 +418,29 @@
 
             <hr>
 
-            <div class="price-box">7,720,000원</div>
+            <div class="price-summary">
+                <h3>예상 결제 금액</h3>
+                <div class="price-item">
+                    <span class="label">차량가격</span>
+                    <span class="value">${carDto.carPrice}원</span>
+                </div>
+                <div class="price-item">
+                    <span class="label">이전등록비</span>
+                    <span class="value">${carDto.previousRegistrationFee}원</span>
+                </div>
+                <div class="price-item">
+                    <span class="label">등록대행수수료</span>
+                    <span class="value">${carDto.agencyFee}원</span>
+                </div>
+                <div class="price-item">
+                    <span class="label">배송비</span>
+                    <span class="value">0원</span>
+                </div><hr>
+                <div class="price-item total">
+                    <span class="label">총 합계</span>
+                    <span class="value">${carDto.carAmountPrice}원</span>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -413,27 +484,22 @@
     }
 
     function goToDelivery() {
-
         if (selectedTitle === "") {
             showModal("차량 명의자를 선택해 주세요.");
             return;
         }
 
-
         let agreement = document.querySelector("input[name='agreement']:checked");
-        if (!agreement) {
+        if (!agreement || agreement.value === "disagree") {
             showModal("회원정보 이용에 동의해야 진행할 수 있습니다.");
             return;
         }
 
+        // ✅ carInfoId 넘기기
+        const carInfoId = ${carDto.carInfoId};
 
-        if (agreement.value === "disagree") {
-            showModal("동의하지 않아 결제가 불가능합니다.");
-            return;
-        }
-
-
-        window.location.href = "/gearshift/delivery?title=" + encodeURIComponent(selectedTitle);
+        // ✅ title + carInfoId 함께 전달
+        window.location.href = "/gearshift/delivery?title=" + encodeURIComponent(selectedTitle) + "&carInfoId=" + carInfoId;
     }
 
     function showModal(message) {
