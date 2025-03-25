@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="reviewMapper">
+
+    <select id="countAllReviews" resultType="int">
+        SELECT COUNT(review_id)
+        FROM review
+        WHERE is_deleted = 0
+    </select>
+
+    <select id="selectReviewsWithPaging" resultType="com.fastcampus.gearshift.dto.ReviewDto">
+        SELECT
+            review_id
+            , review_title
+            , review_content
+        FROM review
+        WHERE is_deleted = 0
+        ORDER BY review_id DESC
+            LIMIT #{limit} OFFSET #{offset}
+    </select>
+
+    <select id="findById" resultType="com.fastcampus.gearshift.dto.ReviewDto">
+        SELECT
+            r.review_id
+            , r.review_title
+            , r.review_content
+            , r.rating
+            , r.user_id
+            , r.is_deleted
+            , r.created_at
+            , u.user_name
+        FROM review r
+            LEFT JOIN user u ON r.user_id = u.user_id
+        WHERE r.review_id = #{id}
+          AND r.is_deleted = 0
+    </select>
+
+    <insert id="insertReview" parameterType="com.fastcampus.gearshift.dto.ReviewDto">
+        INSERT INTO review (review_title, review_content, rating, order_id, car_info_id, user_id)
+        VALUES (#{reviewTitle}, #{reviewContent}, #{rating}, #{orderId}, #{carInfoId}, #{userId})
+    </insert>
+
+    <update id="deleteReview" parameterType="int">
+        UPDATE review
+        SET is_deleted = 1
+        WHERE order_id = #{orderId}
+    </update>
+
+</mapper>

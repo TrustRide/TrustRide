@@ -40,5 +40,14 @@ public class PHolderDaoImpl implements  PHolderDao{
         return session.selectOne(namespace+"userSelect",userId);
     }
 
+    //메인화면 검색
+    @Override
+    public List<CarDto> searchCarsByTitle(String title) throws Exception {
+        return session.selectList(namespace+"searchCarsByTitle","%"+title+"%");
+    }
 
-}
+
+    }
+
+
+

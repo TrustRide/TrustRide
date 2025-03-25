@@ -6,11 +6,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/admin/qna")
+@RequestMapping("/admin")
 public class SAdminQnaController {
 
-    @GetMapping("/list")
-    public String loadAdminPage(Model model) {
+    @GetMapping("/qna")
+    public String loadQnaPage(Model model) {
         return "admin/qna";
     }
 

@@ -1,23 +1,28 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원 관리</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin/styles.css">
 </head>
 <body>
 
-<!-- 헤더 포함 -->
+<!-- 관리자 공통 헤더/사이드바 포함 -->
 <jsp:include page="include/header.jsp"/>
-
-<!-- 사이드바 포함 -->
 <jsp:include page="include/sidebar.jsp"/>
-
 
 <main class="content">
     <h2>회원 관리</h2>
+
+    <!-- Flash 메시지 알림 -->
+    <c:if test="${not empty message}">
+        <script>
+            alert("${message}");
+        </script>
+    </c:if>
+
     <table border="1">
         <thead>
         <tr>
@@ -28,6 +33,7 @@
             <th>이메일</th>
             <th>유저등록일</th>
             <th>성별</th>
+            <th>관리</th>
         </tr>
         </thead>
         <tbody>
@@ -35,12 +41,27 @@
             <tr>
                 <td>${user.userId}</td>
                 <td>${user.userName}</td>
-                <td>${user.userAccount}</td>
+                <td>
+                    <c:choose>
+                        <c:when test="${empty user.userAccount}">
+                            미입력
+                        </c:when>
+                        <c:otherwise>
+                            ${user.userAccount}
+                        </c:otherwise>
+                    </c:choose>
+                </td>
                 <td>${user.userPhoneNumber}</td>
                 <td>${user.userEmail}</td>
                 <td>${user.createdAt}</td>
                 <td>${user.userGender}</td>
-
+                <td>
+                    <form action="${pageContext.request.contextPath}/admin/userList/delete" method="post"
+                          onsubmit="return confirm('정말 삭제하시겠습니까?');">
+                        <input type="hidden" name="userId" value="${user.userId}" />
+                        <button type="submit">삭제</button>
+                    </form>
+                </td>
             </tr>
         </c:forEach>
         </tbody>

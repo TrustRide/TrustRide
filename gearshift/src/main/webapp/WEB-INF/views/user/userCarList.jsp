@@ -258,12 +258,14 @@
 </footer>
 
 <script>
+
     function toggleCategory(id) {
         var element = document.getElementById(id);
         if (element) {
             element.classList.toggle("hidden");
         }
     }
+
 </script>
 </body>
 </html>

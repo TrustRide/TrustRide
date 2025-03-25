@@ -1,12 +1,12 @@
 package com.fastcampus.gearshift.service;
 
-import com.fastcampus.gearshift.dto.NUserFormDto;
+import com.fastcampus.gearshift.dto.UserDto;
 
 import java.util.List;
 
 public interface NUserFormService {
-    List<NUserFormDto> userForm();
-    NUserFormDto getUserFormById(Integer userId);
-    void updateUserForm(Integer userId, NUserFormDto updatedUserForm);
+    List<UserDto> userForm();
+    UserDto getUserFormById(Integer userId);
+    void updateUserForm(Integer userId, UserDto updatedUserForm);
     void deleteUser(Integer userId);
 }

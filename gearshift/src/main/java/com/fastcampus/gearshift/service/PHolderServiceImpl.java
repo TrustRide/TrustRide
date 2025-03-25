@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class PHolderServiceImpl implements PHolderService{
+public class  PHolderServiceImpl implements PHolderService{
     @Autowired
     PHolderDao pHolderDao;
 
@@ -42,6 +42,13 @@ public class PHolderServiceImpl implements PHolderService{
         UserDto userDto =pHolderDao.userSelect(userId);
         return userDto;
     }
+
+    @Override
+    public List<CarDto> searchCarsByTitle(String title) throws Exception {
+        return pHolderDao.searchCarsByTitle(title);
+    }
+
+
 
 
 }
