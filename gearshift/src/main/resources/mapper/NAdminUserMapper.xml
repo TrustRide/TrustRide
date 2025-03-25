@@ -4,7 +4,7 @@
 
 <mapper namespace="adminUserList">
 
-    <select id="userList" resultType="com.fastcampus.gearshift.dto.NUserListDto">
+    <select id="userList" resultType="com.fastcampus.gearshift.dto.UserDto">
         SELECT
             user_id,
             user_name,
@@ -16,5 +16,12 @@
         FROM user
         ORDER BY user_id
     </select>
+
+
+    <delete id="deleteUser" parameterType="Integer">
+        DELETE
+        FROM user
+        WHERE user_id = #{userId}
+    </delete>
 
 </mapper>
