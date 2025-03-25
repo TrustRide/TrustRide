@@ -136,6 +136,29 @@
 
   </style>
 
+  <style>
+    /* 검색 버튼 스타일 */
+    .search-btn {
+      padding: 10px 15px;
+      margin-left: 10px;
+      background-color: #ff5722; /* 버튼 배경색 */
+      color: white; /* 글자 색 */
+      border: none; /* 테두리 없앰 */
+      border-radius: 4px; /* 둥근 모서리 */
+      cursor: pointer; /* 마우스 커서 변경 */
+      font-size: 16px; /* 글자 크기 */
+      transition: background-color 0.3s ease; /* 호버 효과 */
+    }
+
+    .search-btn:hover {
+      background-color: #e64a19; /* 호버 시 버튼 색상 */
+    }
+
+    .search-btn:focus {
+      outline: none; /* 포커스 시 테두리 제거 */
+    }
+  </style>
+
 
   <style>
     /* 기존 스타일 유지 */
@@ -192,7 +215,7 @@
         <li><a href="/gearshift/userList">내차사기</a></li>
         <li><a href="${pageContext.request.contextPath}/review">상품리뷰</a></li>
         <%
-        Integer userId = (Integer) session.getAttribute("userId");
+          Integer userId = (Integer) session.getAttribute("userId");
         %>
         <%
           if(userId != null){
@@ -210,11 +233,16 @@
           }
         %>
 
-
       </ul>
     </nav>
 
-    <input type="text" placeholder="🔍차량을 검색하세요." class="search-bar">
+
+    <form action="/gearshift/searchCar" method="get" style="display: flex; align-items: center;">
+      <input type="text" name="searchQuery" placeholder="🔍차량을 검색하세요." class="search-bar" style="padding: 10px; border-radius: 4px; border: 1px solid #ddd; flex: 1;">
+      <button type="submit" class="search-btn">검색</button>
+    </form>
+
+
   </div>
 </header>
 
@@ -282,6 +310,8 @@
       imgElement.style.opacity = 1; // 페이드인 효과
     }, 1000); // 1초 후 이미지 변경
   }
+
+
 
   // 5초마다 이미지 변경 실행
   setInterval(changeImage, 5000);

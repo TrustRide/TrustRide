@@ -367,7 +367,7 @@
                 <li><a href="#">회원가입</a></li>
             </ul>
         </nav>
-        <input type="text" placeholder="🔍차량을 검색하세요." class="search-bar">
+
     </div>
 </header>
 
@@ -398,7 +398,7 @@
             </label>
         </div>
 
-+
+
         <button class="next-button" onclick="goToDelivery()">다음</button>
     </div>
 
@@ -406,8 +406,8 @@
     <div class="right-section">
         <div class="order-box">
             <img src="<c:url value='/resources/img/3car3.png' />" alt="Trust Ride Logo" class="logo-img">
-            <h3>기아 K3 트렌디</h3>
-            <p>${carDto.carNum} | {carDto.manufactureYear} 식  · ${carDto.mileage}km · ${carDto.fuelType}</p>
+            <h3>${carDto.modelName}</h3>
+            <p>${carDto.carNum} | ${carDto.manufactureYear} 식  · ${carDto.mileage}km · ${carDto.fuelType}</p>
 
             <div class="info-buttons">
                 <button class="info-button">차량옵션</button>

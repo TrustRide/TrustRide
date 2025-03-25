@@ -20,6 +20,10 @@ public interface PHolderService {
     //유저 상세 조회
     UserDto userSelect(Integer userId) throws Exception;
 
+    //메인화면 검색
+    List<CarDto> searchCarsByTitle(String title) throws Exception;
+
+
 
 
 }

@@ -283,7 +283,7 @@
                 <li><a href="/gearshift/userList">내차사기</a></li>
                 <li><a href="${pageContext.request.contextPath}/review">상품리뷰</a></li>
                 <%
-                  Integer userId = (Integer) session.getAttribute("userId");
+                    Integer userId = (Integer) session.getAttribute("userId");
                 %>
                 <%
                     if(userId != null){
@@ -330,7 +330,7 @@
         <div class="car-title">${carDto.modelName}</div>
 
         <div>${carDto.manufactureYear}년식 · ${carDto.mileage}km · ${carDto.fuelType}</div>
-       <hr>
+        <hr>
 
         <div class="price-box">
             총 구매 예상비용 <hr>
@@ -390,7 +390,7 @@
         <hr>
         차량 설명<br>
 
-            ${carDto.description}
+        ${carDto.description}
 
         <hr>
 

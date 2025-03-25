@@ -7,7 +7,7 @@
 
 
     <!-- 특정 계층(대/중/소)에 해당하는 카테고리 조회 -->
-    <select id="findByTier" parameterType="Integer" resultType="categoryDto">
+    <select id="findByTier" parameterType="int" resultType="categoryDto">
         SELECT cate_code, cate_name, cate_parent FROM car_cate WHERE tier = #{tier}
     </select>
 
@@ -15,7 +15,6 @@
     <select id="findByParentCode" parameterType="string" resultType="categoryDto">
         SELECT cate_code, cate_name, cate_parent FROM car_cate WHERE cate_parent = #{parentCode}
     </select>
-
 
 
 </mapper>

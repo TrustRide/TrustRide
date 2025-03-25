@@ -40,7 +40,7 @@ public class PUserController {
     public String login2(){
         return "user/loginForm";
     }
-  
+
     @GetMapping("/loginTest")
     public String login(){
         return "user/loginForm";
@@ -62,6 +62,13 @@ public class PUserController {
 
     }
 
+    //로그아웃 테스트
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request,HttpServletResponse response){
+        HttpSession session =request.getSession();
+        session.invalidate();
+        return "redirect:/";
+    }
 
 
     //카테고리
@@ -88,7 +95,7 @@ public class PUserController {
             session.setAttribute("userId", 2); // userId=1번 계정으로 임시 테스트
         }
 
-         Integer userId = (Integer) session.getAttribute("userId");
+        Integer userId = (Integer) session.getAttribute("userId");
 
         // userId로 유저 정보 조회
         UserDto userDto = pHolderService.userSelect(userId);
@@ -126,8 +133,15 @@ public class PUserController {
         return "user/userTitleHolder";
     }
 
+    //메인화면 + 상품리스트 검색
+    @GetMapping("/searchCar")
+    public String searchCar(@RequestParam("searchQuery") String searchQuery,Model model) throws Exception{
+        //페이지 크기 설정(예:10)
 
-
+        List<CarDto> searchResults = pHolderService.searchCarsByTitle(searchQuery);
+        model.addAttribute("userCarList",searchResults);
+        return "user/userCarList";
+    }
 
 
 }
