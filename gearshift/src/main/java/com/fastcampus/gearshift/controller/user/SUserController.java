@@ -31,7 +31,7 @@ public class SUserController {
     @PostMapping("/register")
     public String processRegister(@ModelAttribute UserDto user, Model model) {
         userService.registerUser(user);
-        return "redirect:/";
+        return "redirect:/login";
     }
 
     @GetMapping("/login")
@@ -52,7 +52,18 @@ public class SUserController {
         }
 
         session.setAttribute("loginUser", user); // 세션에 사용자 저장
-        return "redirect:/";
+        // 로그인 전 요청한 URL로 리다이렉트
+        String redirectUrl = (String) session.getAttribute("redirectAfterLogin");
+
+        //디버깅 테스트
+        System.out.println("redirectAfterLogin = " + redirectUrl);
+
+        if (redirectUrl != null) {
+            session.removeAttribute("redirectAfterLogin"); // 사용 후 제거
+            return "redirect:" + redirectUrl;
+        }
+
+        return "redirect:/"; // 없으면 기본으로
     }
 
     @GetMapping("/logout")
