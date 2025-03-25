@@ -1,102 +1,157 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
+    <meta charset="UTF-8">
     <title>차량 목록</title>
-    <meta charset="UTF-8"/>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: "Pretendard", sans-serif;
+            background-color: #f4f6f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .register-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #ff6f00;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            transition: background-color 0.3s;
+        }
+
+        .register-btn:hover {
+            background-color: #e65c00;
+        }
+
+        .table-container {
+            max-width: 1200px;
+            margin: auto;
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 80px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        th {
+            background-color: #f8f9fa;
+            color: #495057;
+        }
+
+        tbody tr:hover {
+            background-color: #f1f3f5;
+        }
+
+        img {
+            border-radius: 8px;
+        }
+
+        .action-buttons a {
+            text-decoration: none;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            transition: background-color 0.2s;
+        }
+
+        .edit-btn {
+            background-color: #4caf50;
+        }
+
+        .delete-btn {
+            background-color: #f44336;
+        }
+
+        .edit-btn:hover {
+            background-color: #388e3c;
+        }
+
+        .delete-btn:hover {
+            background-color: #d32f2f;
+        }
+
+    </style>
     <script>
         function confirmDelete(carInfoId) {
             if (confirm('정말 삭제하시겠습니까?')) {
-                window.location.href = '${pageContext.request.contextPath}/cars/' + carInfoId + '/delete';
+                window.location.href = '${pageContext.request.contextPath}/admin/cars/' + carInfoId + '/delete';
             }
         }
     </script>
 </head>
 <body>
-<h1> 차량 목록</h1>
 
-<!-- 차량 등록 페이지로 이동 -->
-<a href="${pageContext.request.contextPath}/cars/register">+ 차량 등록</a>
+<h1>🚗 차량 목록</h1>
 
-<!-- 차량 목록 테이블 -->
-<table border="1">
-    <thead>
-    <tr>
-        <th>carInfoId<br/>(차량 ID)</th>
-        <th>offerReportNumber<br/>(제안서 번호)</th>
-        <th>vinNumber<br/>(차대 번호)</th>
-        <th>description<br/>(설명)</th>
-        <th>largeCateCode<br/>(대분류 코드)</th>
-        <th>mediumCateCode<br/>(중분류 코드)</th>
-        <th>smallCateCode<br/>(소분류 코드)</th>
-        <th>modelName<br/>(모델명)</th>
-        <th>mileage<br/>(주행 거리)</th>
+<a href="${pageContext.request.contextPath}/admin/cars/register" class="register-btn">+ 차량 등록</a>
 
-        <th>manufactureYear<br/>(연식)</th>
-        <th>engineCapacity<br/>(배기량)</th>
-        <th>fuelType<br/>(연료)</th>
-        <th>transmission<br/>(변속기)</th>
-        <th>color<br/>(색상)</th>
-        <th>manufactureYear<br/>(연식)</th>
-        <th>previousRegistrationFee<br/>(이전 등록비)</th>
-        <th>maintenanceCost<br/>(유지비)</th>
-        <th>agencyFee<br/>(등록대행 수수료)</th>
-        <th>carLocation<br/>(위치)</th>
-        <th>ownerChangeCount<br/>(소유 변경 수)</th>
-        <th>carPrice<br/>(차량 가격)</th>
-        <th>carNum<br/>(차량 번호)</th>
-        <th>carAmountPrice<br/>(총 차량 금액)</th>
-        <th>soldStatus<br/>(판매상태)</th>
-
-        <th>Images<br/>(이미지 정보)</th>
-        <th>수정</th>
-        <th>삭제</th>
-    </tr>
-    </thead>
-    <tbody>
-    <c:forEach var="car" items="${carList}">
+<div class="table-container">
+    <table>
+        <thead>
         <tr>
-            <td>${car.carInfoId}</td>
-            <td>${car.offerReportNumber}</td>
-            <td>${car.vinNumber}</td>
-            <td>${car.description}</td>
-            <td>${car.largeCateCode}</td>
-            <td>${car.mediumCateCode}</td>
-            <td>${car.smallCateCode}</td>
-            <td>${car.modelName}</td>
-            <td>${car.mileage}</td>
-            <td>${car.manufactureYear}</td>
-            <td>${car.engineCapacity}</td>
-            <td>${car.fuelType}</td>
-            <td>${car.transmission}</td>
-            <td>${car.color}</td>
-            <td>${car.previousRegistrationFee}</td>
-            <td>${car.maintenanceCost}</td>
-            <td>${car.agencyFee}</td>
-            <td>${car.carLocation}</td>
-            <td>${car.ownerChangeCount}</td>
-            <td>${car.carPrice}</td>
-            <td>${car.carNum}</td>
-            <td>${car.carAmountPrice}</td>
-            <td>${car.soldStatus}</td>
-
-
-            <td>
-                <c:if test="${not empty car.thumbnailUrl}">
-                    <img src="${pageContext.request.contextPath}${car.thumbnailUrl}" width="100" height="70" alt="썸네일" />
-                </c:if>
-            </td>
-            <td>
-                <a href="${pageContext.request.contextPath}/cars/${car.carInfoId}/edit">수정</a>
-            </td>
-            <td>
-                <a href="javascript:void(0);" onclick="confirmDelete('${car.carInfoId}');">삭제</a>
-            </td>
+            <th>상품 코드</th>
+            <th>상품명</th>
+            <th>판매가</th>
+            <th>상태</th>
+            <th>연료 종류</th>
+            <th>상품 이미지</th>
+            <th>수정</th>
+            <th>삭제</th>
         </tr>
-    </c:forEach>
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+        <c:forEach var="car" items="${carList}">
+            <tr>
+                <td>${car.carInfoId}</td>
+                <td>${car.modelName}</td>
+                <td>${car.carPrice}</td>
+                <td>${car.soldStatus}</td>
+                <td>${car.fuelType}</td>
+                <td>
+                    <c:if test="${not empty car.thumbnailUrl}">
+                        <img src="${pageContext.request.contextPath}${car.thumbnailUrl}" width="100" height="70" alt="썸네일" />
+                    </c:if>
+                </td>
+                <td class="action-buttons">
+                    <a href="${pageContext.request.contextPath}/admin/cars/${car.carInfoId}/edit" class="edit-btn">수정</a>
+                </td>
+                <td class="action-buttons">
+                    <a href="javascript:void(0);" onclick="confirmDelete('${car.carInfoId}');" class="delete-btn">삭제</a>
+                </td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
+</div>
 
 </body>
 </html>

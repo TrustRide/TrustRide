@@ -2,172 +2,174 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-  <title>차량 등록</title>
+  <title>중고차 등록</title>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap');
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f0f4f8;
+      margin: 0;
+      padding: 40px 0;
+    }
+
+    .container {
+      width: 450px;
+      height: 650px;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+      overflow-y: auto;
+    }
+    h1 {
+      text-align: center;
+      position: sticky;
+      top: 0;
+      background: white; /* 배경색 필수 */
+      padding-bottom: 10px;
+      z-index: 100; /* z-index를 높게 설정 */
+      border-bottom: 2px solid #f0f0f0; /* 구분선 추가 (선택적) */
+    }
+
+
+    label {
+      font-weight: 500;
+      display: block;
+      margin-top: 15px;
+      color: #555;
+      font-size: 15px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px 12px;
+      margin-top: 5px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      transition: border-color 0.3s, box-shadow 0.3s;
+      font-size: 14px;
+    }
+
+    input:focus, select:focus {
+      border-color: #ff6b6b;
+      box-shadow: 0 0 8px rgba(255, 107, 107, 0.2);
+      outline: none;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 25px;
+      background: linear-gradient(to right, #ff6b6b, #f06595);
+      color: white;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 5px 10px rgba(255, 107, 107, 0.3);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 15px rgba(255, 107, 107, 0.35);
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background-color: #ff6b6b;
+      border-radius: 20px;
+    }
+  </style>
 </head>
 <body>
-<h1>차량 등록 폼</h1>
-
-<form action="${pageContext.request.contextPath}/admin/cars/register" method="post" enctype="multipart/form-data" >
-
-  <!-- 차량 기본 정보 입력 -->
-  <div>
-    <label>제안 보고서 번호 (offerReportNumber)</label>
-    <input name="offerReportNumber" type="text" required />
-  </div>
-  <div>
-    <label>차량 식별 번호 (VIN, vinNumber)</label>
-    <input name="vinNumber" type="text" required />
-  </div>
-  <div>
-    <label>설명 (description)</label>
-    <input name="description" type="text" />
-  </div>
-
-
-
-  <!--  대 / 중 / 소 카테고리 선택 -->
-  <div>
-    <label>대분류 (largeCateCode)</label>
+<div class="container">
+  <h1>중고차 등록</h1>
+  <form action="${pageContext.request.contextPath}/cars/register" method="post" enctype="multipart/form-data">
+    <label>차량 번호</label>
+    <input name="carNum" type="text" required />
+    <label>모델명</label>
+    <input name="modelName" type="text" required />
+    <label>주행 거리 (km)</label>
+    <input name="mileage" type="number" required />
+    <label>배기량</label>
+    <input name="engineCapacity" type="number" />
+    <label>연료</label>
+    <input name="fuelType" type="text" required />
+    <label>변속기</label>
+    <input name="transmission" type="text" required />
+    <label>차량 키 개수</label>
+    <input name="keyCount" type="number" required />
+    <label>색상</label>
+    <input name="color" type="text" required />
+    <label>가격</label>
+    <input name="price" type="number" required />
+    <label>연식</label>
+    <input name="manufactureYear" type="text" required />
+    <label>차량 이미지 업로드</label>
+    <input type="file" name="imageFiles" accept="image/*" multiple required />
+    <label>카테고리 선택</label>
     <select name="largeCateCode" id="largeCate" required>
       <option value="">대분류 선택</option>
       <c:forEach var="large" items="${largeCategories}">
         <option value="${large.cateCode}">${large.cateName}</option>
       </c:forEach>
     </select>
-  </div>
-  <div>
-    <label>중분류 (mediumCateCode)</label>
     <select name="mediumCateCode" id="mediumCate" required>
       <option value="">중분류 선택</option>
-      <!-- AJAX로 채워질 영역 -->
     </select>
-  </div>
-  <div>
-    <label>소분류 (smallCateCode)</label>
     <select name="smallCateCode" id="smallCate" required>
       <option value="">소분류 선택</option>
-      <!-- AJAX로 채워질 영역 -->
     </select>
-  </div>
-
-  <!-- 차량 상세 정보 -->
-  <div>
-    <label>모델명 (modelName)</label>
-    <input name="modelName" type="text" required />
-  </div>
-  <div>
-    <label>주행 거리 (mileage)</label>
-    <input name="mileage" type="text" required />
-  </div>
-  <div>
-    <label>엔진 배기량 (engineCapacity)</label>
-    <input name="engineCapacity" type="text" />
-  </div>
-  <div>
-    <label>연료 유형 (fuelType)</label>
-    <input name="fuelType" type="text" />
-  </div>
-  <div>
-    <label>변속기 (transmission)</label>
-    <input name="transmission" type="text" />
-  </div>
-  <div>
-    <label>색상 (color)</label>
-    <input name="color" type="text" />
-  </div>
-  <div>
-    <label>제조 연도 (manufactureYear)</label>
-    <input name="manufactureYear" type="text" />
-  </div>
-  <div>
-    <label>이전 등록비 (previousRegistrationFee)</label>
-    <input name="previousRegistrationFee" type="number" />
-  </div>
-  <div>
-    <label>유지보수 비용 (maintenanceCost)</label>
-    <input name="maintenanceCost" type="number" />
-  </div>
-  <div>
-
-    <label>등록대행 수수료 (agencyFee)</label>
-    <input name="agencyFee" type="number" />
-  </div>
-  <div>
-    <label>차량 위치 (carLocation)</label>
-    <input name="carLocation" type="text" />
-  </div>
-  <div>
-    <label>소유주 변경 횟수 (ownerChangeCount)</label>
-    <input name="ownerChangeCount" type="number" />
-  </div>
-
-  <!-- 가격 정보 -->
-  <div>
-    <label>차량 가격 (carPrice)</label>
-    <input name="carPrice" type="number" required />
-  </div>
-  <div>
-    <label>차량 번호 (carNum)</label>
-    <input name="carNum" type="text" />
-  </div>
-  <div>
-    <label>총 차량 금액 (carAmountPrice)</label>
-    <input name="carAmountPrice" type="number" />
-  </div>
-
-  <div>
-    <label> 판매여부 (soldStatus)</label>
-    <input name="soldStatus" type="text" />
-  </div>
-
-
-  <div>
-    <label>이미지 파일 업로드</label><br/>
-    <!-- multiple 속성 제거 & name="imageFile" 으로 변경 -->
-    <input type="file" name="imageFiles" multiple />
-
-  </div>
-
-  <button type="submit">차량 등록</button>
-
-
-</form>
-
+    <label>판매 시기</label>
+    <select name="salePeriod" required>
+      <option value="즉시">즉시</option>
+      <option value="7일 이내">7일 이내</option>
+      <option value="14일 이내">14일 이내</option>
+      <option value="30일 이내">30일 이내</option>
+      <option value="30일 이후">30일 이후</option>
+    </select>
+    <button type="submit">등록</button>
+  </form>
+</div>
 <script>
   $(document).ready(function () {
-    // ======================
-    //  1) 카테고리 동적 로드
-    // ======================
     $('#largeCate').change(function () {
       const largeCateCode = $(this).val();
       $('#mediumCate').html('<option value="">중분류 선택</option>');
       $('#smallCate').html('<option value="">소분류 선택</option>');
-
       if (largeCateCode) {
-        // AJAX 호출 (대분류 -> 중분류)
-        $.get('${pageContext.request.contextPath}/admin/cars/categories/medium?parentCode=' + largeCateCode, function (data) {
+        $.get('${pageContext.request.contextPath}/cars/categories/medium?parentCode=' + largeCateCode, function (data) {
           $.each(data, function (index, item) {
             $('#mediumCate').append('<option value="' + item.cateCode + '">' + item.cateName + '</option>');
           });
         });
       }
     });
-
     $('#mediumCate').change(function () {
       const mediumCateCode = $(this).val();
       $('#smallCate').html('<option value="">소분류 선택</option>');
-
       if (mediumCateCode) {
-        // AJAX 호출 (중분류 -> 소분류)
-        $.get('${pageContext.request.contextPath}/admin/cars/categories/small?parentCode=' + mediumCateCode, function (data) {
+        $.get('${pageContext.request.contextPath}/cars/categories/small?parentCode=' + mediumCateCode, function (data) {
           $.each(data, function (index, item) {
             $('#smallCate').append('<option value="' + item.cateCode + '">' + item.cateName + '</option>');
           });
         });
       }
     });
-
   });
 </script>
 </body>
