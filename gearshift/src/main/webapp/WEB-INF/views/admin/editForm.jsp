@@ -8,7 +8,7 @@
 <body>
 <h1>차량 수정 폼</h1>
 
-<form action="${pageContext.request.contextPath}/cars/${carDto.carInfoId}/edit" method="post" enctype="multipart/form-data">
+<form action="${pageContext.request.contextPath}/admin/cars/${carDto.carInfoId}/edit" method="post" enctype="multipart/form-data">
 
   <input type="hidden" name="carInfoId" value="${carDto.carInfoId}" />
 
@@ -142,7 +142,7 @@
 
       if (largeCateCode) {
         // AJAX 호출 (대분류 -> 중분류)
-        $.get('${pageContext.request.contextPath}/cars/categories/medium?parentCode=' + largeCateCode, function (data) {
+        $.get('${pageContext.request.contextPath}/admin/cars/categories/medium?parentCode=' + largeCateCode, function (data) {
           $.each(data, function (index, item) {
             $('#mediumCate').append('<option value="' + item.cateCode + '">' + item.cateName + '</option>');
           });
@@ -156,7 +156,7 @@
 
       if (mediumCateCode) {
         // AJAX 호출 (중분류 -> 소분류)
-        $.get('${pageContext.request.contextPath}/cars/categories/small?parentCode=' + mediumCateCode, function (data) {
+        $.get('${pageContext.request.contextPath}/admin/cars/categories/small?parentCode=' + mediumCateCode, function (data) {
           $.each(data, function (index, item) {
             $('#smallCate').append('<option value="' + item.cateCode + '">' + item.cateName + '</option>');
           });

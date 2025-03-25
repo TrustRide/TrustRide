@@ -4,7 +4,9 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+
 import java.time.LocalDate;
+
 
 @Getter
 @Setter
@@ -19,5 +21,4 @@ public class CouponDto {
     private LocalDate startDate;
     private LocalDate endDate;
     private Boolean isActive;
-    private String codeId;
 }

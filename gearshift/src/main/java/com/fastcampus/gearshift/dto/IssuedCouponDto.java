@@ -16,5 +16,4 @@ public class IssuedCouponDto {
     private Date usedDate;
     private Integer couponId;
     private Integer userId;
-    private Integer orderId;
 }
