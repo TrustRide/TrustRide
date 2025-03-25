@@ -44,10 +44,12 @@ public class SUserController {
                                @RequestParam String userPassword,
                                HttpSession session,
                                Model model) {
+
         UserDto user = userService.findUserByEmail(userEmail);
 
         if (user == null || !user.getUserPassword().equals(userPassword)) {
             model.addAttribute("error", "이메일 또는 비밀번호가 틀렸습니다.");
+            model.addAttribute("userEmail", userEmail);
             return "user/login";
         }
 

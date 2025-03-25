@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/user/login.css">
 </head>
 <body>
+    <c:set var="loginType" value="${empty loginType ? 'personal' : loginType}" />
     <h2>안녕하세요.<br>Trust Ride 로그인입니다.</h2>
 
     <p style="color:red;">
@@ -17,13 +18,13 @@
 
     <div class="container">
 
-        <form action="${pageContext.request.contextPath}/login" method="post">
+        <form id="loginForm" action="#" method="post">
             <div class="tab-menu">
-                <div class="tab active" id="personalTab" onclick="switchTab('personal')">개인회원</div>
-                <div class="tab" id="adminTab" onclick="switchTab('admin')">관리자</div>
+                <div class="tab ${loginType eq 'personal' ? 'active' : ''}" id="personalTab" onclick="switchTab('personal')">개인회원</div>
+                <div class="tab ${loginType eq 'admin' ? 'active' : ''}" id="adminTab" onclick="switchTab('admin')">관리자</div>
             </div>
             <div class="input-group">
-                <input type="text" name="userEmail" placeholder="이메일">
+                <input type="text" name="userEmail" placeholder="이메일" value="${userEmail}">
             </div>
             <div class="input-group">
                 <input type="password" name="userPassword" placeholder="비밀번호">
@@ -56,6 +57,7 @@
         const adminTab = document.getElementById('adminTab');
         const quickLogin = document.querySelector('.quick-login');
         const links = document.querySelector('.links');
+        const loginForm = document.getElementById('loginForm');
 
         function switchTab(tab) {
             if (tab === 'personal') {
@@ -63,11 +65,13 @@
                 adminTab.classList.remove('active');
                 quickLogin.classList.remove('hidden');
                 links.classList.remove('hidden');
+                loginForm.action = '${pageContext.request.contextPath}/login';
             } else {
                 personalTab.classList.remove('active');
                 adminTab.classList.add('active');
                 quickLogin.classList.add('hidden');
                 links.classList.add('hidden');
+                loginForm.action = '${pageContext.request.contextPath}/admin/login';
             }
         }
     </script>
