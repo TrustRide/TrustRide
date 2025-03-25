@@ -23,9 +23,22 @@ public class JAdminCarServiceImpl implements JAdminCarService {
     // 차량 목록 조회
     @Override
     public List<CarDto> getCarList() {
-        return carDao.getCarList();
-    }
+        List<CarDto> carList = carDao.getCarList(); // images 포함된 전체 리스트 조회
 
+        for (CarDto car : carList) {
+            if (car.getImages() != null) {
+                car.getImages().stream()
+                        .filter(ImageDto::getIsThumbnail)
+                        .findFirst()
+                        .ifPresent(thumbnail -> {
+                            car.setThumbnailUrl(thumbnail.getImageUrl());
+                            car.setThumbnailImageId(thumbnail.getImageId());
+                        });
+            }
+        }
+
+        return carList;
+    }
 
     // 썸네일 조회
     public ImageDto getThumbnailByCarId(int carInfoId) {
@@ -64,7 +77,7 @@ public class JAdminCarServiceImpl implements JAdminCarService {
                         imageDto.setImageUuid(uuid);
                         imageDto.setImageUrl("/uploads/" + savedName);
                         imageDto.setImageType(file.getContentType());
-                        imageDto.setIsThumbnail(i == thumbnailIndex); // ✨ 썸네일 지정
+                        imageDto.setIsThumbnail(i == thumbnailIndex); // 썸네일 지정
 
                         carDao.insertCarImage(imageDto); // DB 저장
                     } catch (IOException e) {

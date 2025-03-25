@@ -2,7 +2,6 @@ package com.fastcampus.gearshift.controller.admin;
 
 import com.fastcampus.gearshift.dto.CarDto;
 import com.fastcampus.gearshift.dto.CategoryDto;
-import com.fastcampus.gearshift.dto.ImageDto;
 import com.fastcampus.gearshift.service.JAdminCarService;
 import com.fastcampus.gearshift.service.JCategoryService;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 
 @Controller
-@RequestMapping("/cars")
+@RequestMapping("/admin/cars")
 @RequiredArgsConstructor
 public class JAdminCarController {
 
@@ -22,10 +21,12 @@ public class JAdminCarController {
     private final JCategoryService categoryService;
 
     // (1) 차량 목록 페이지
-    @GetMapping
+    @GetMapping("/list")
     public String getCarList(Model model) {
         List<CarDto> carList = carService.getCarList();
         model.addAttribute("carList", carList);
+
+
         return "admin/carList";
     }
 
@@ -33,8 +34,8 @@ public class JAdminCarController {
 
     // (2) 차량 등록 폼
     @GetMapping("/register")
-    public String showRegisterForm(Model model) {
-        model.addAttribute("carDto", new CarDto());
+    public String showRegisterForm(@ModelAttribute("carDto") CarDto carDto, Model model) {
+
         // 대분류 목록 추가
         model.addAttribute("largeCategories", categoryService.getLargeCategories());
         return "admin/registerForm";
@@ -61,8 +62,8 @@ public class JAdminCarController {
             @RequestParam("imageFiles") List<MultipartFile> imageFiles,
             @RequestParam(name = "thumbnailIndex", required = false, defaultValue = "0") Integer thumbnailIndex
     ) {
-        carService.registerCarWithFiles(carDto, imageFiles, thumbnailIndex); // ✨ 실제 호출
-        return "redirect:/cars";
+        carService.registerCarWithFiles(carDto, imageFiles, thumbnailIndex); // 실제 호출
+        return "redirect:/admin/cars/list";
     }
 
     // ================================
@@ -87,13 +88,13 @@ public class JAdminCarController {
         // PK 세팅 (일반적으로 hidden form이나 PathVariable로 넘김)
         carDto.setCarInfoId(carInfoId);
         carService.updateCar(carDto);
-        return "redirect:/cars";
+        return "redirect:/admin/cars/list";
     }
 
     // (8) 차량 삭제 처리
     @GetMapping("/{carInfoId}/delete")
     public String deleteCar(@PathVariable(name = "carInfoId") Integer carInfoId) {
         carService.deleteCar(carInfoId);
-        return "redirect:/cars";
+        return "redirect:/admin/cars/list";
     }
 }

@@ -8,7 +8,7 @@ import lombok.*;
 @ToString
 @AllArgsConstructor
 public class CategoryDto {
-    private int tier;
+    private Integer tier;
     private String cateName;
     private String cateCode;
     private String cateParent;
