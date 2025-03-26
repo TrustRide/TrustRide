@@ -361,10 +361,20 @@
         </div>
         <nav>
             <ul>
-                <li><a href="/gearshift/userList">내차사기</a></li>
-                <li><a href="#">상품리뷰</a></li>
-                <a href="/gearshift/login">로그인</a>
-                <li><a href="#">회원가입</a></li>
+                <li><a href="${pageContext.request.contextPath}/userList">내차사기</a></li>
+                <li><a href="${pageContext.request.contextPath}/review">상품리뷰</a></li>
+
+
+                <c:if test="${not empty sessionScope.loginUser}">
+                    <li>${sessionScope.loginUser.userName}님 환영합니다.</li>
+                    <li><a href="#">마이페이지</a></li>
+                    <li><a href="${pageContext.request.contextPath}/logout">로그아웃</a></li>
+                </c:if>
+                <c:if test="${empty sessionScope.loginUser}">
+                    <a href="${pageContext.request.contextPath}/login">로그인</a>
+                    <li><a href="${pageContext.request.contextPath}/register">회원가입</a></li>
+                </c:if>
+
             </ul>
         </nav>
 
@@ -377,11 +387,11 @@
         <h2>차량 명의자를 선택해 주세요.</h2>
 
 
-        <button class="option-button" onclick="selectOption('개인 명의를 선택했습니다', this)">개인 명의로 등록할게요.</button>
-        <button class="option-button" onclick="selectOption('개인 공동 명의를 선택하셨습니다.', this)">개인 명의로 등록하고, 공동 명의자가 있어요.</button>
-        <button class="option-button" onclick="selectOption('개인사업자 명의를 선택하셨습니다.', this)">개인사업자 명의로 등록할게요.</button>
-        <button class="option-button" onclick="selectOption('개인사업자 공동 명의를 선택하셨습니다.', this)">개인사업자 명의로 등록하고, 공동 명의자가 있어요.</button>
-        <button class="option-button" onclick="selectOption('법인사업자 명의를 선택하셨습니다.', this)">법인사업자 명의로 등록할게요.</button>
+        <button class="option-button" onclick="selectOption('개인 명의', this)">개인 명의로 등록할게요.</button>
+        <button class="option-button" onclick="selectOption('개인 공동 명의', this)">개인 명의로 등록하고, 공동 명의자가 있어요.</button>
+        <button class="option-button" onclick="selectOption('개인사업자 명의', this)">개인사업자 명의로 등록할게요.</button>
+        <button class="option-button" onclick="selectOption('개인사업자 공동 명의', this)">개인사업자 명의로 등록하고, 공동 명의자가 있어요.</button>
+        <button class="option-button" onclick="selectOption('법인사업자 명의', this)">법인사업자 명의로 등록할게요.</button>
 
 
         <div class="info-box">
@@ -401,6 +411,7 @@
 
         <button class="next-button" onclick="goToDelivery()">다음</button>
     </div>
+
 
     <!-- 오른쪽 주문 섹션 -->
     <div class="right-section">
@@ -434,7 +445,7 @@
                 </div>
                 <div class="price-item">
                     <span class="label">배송비</span>
-                    <span class="value">0원</span>
+                    <span class="value">0</span>
                 </div><hr>
                 <div class="price-item total">
                     <span class="label">총 합계</span>
@@ -444,6 +455,7 @@
         </div>
     </div>
 </div>
+
 
 
 <footer class="footer">
@@ -495,10 +507,13 @@
             return;
         }
 
-        // ✅ carInfoId 넘기기
+
+        // carInfoId 넘기기
         const carInfoId = ${carDto.carInfoId};
 
-        // ✅ title + carInfoId 함께 전달
+
+
+        //  title + carInfoId 함께 전달
         window.location.href = "/gearshift/delivery?title=" + encodeURIComponent(selectedTitle) + "&carInfoId=" + carInfoId;
     }
 

@@ -1,12 +1,16 @@
 package com.fastcampus.gearshift.dao;
 
 import com.fastcampus.gearshift.dto.CarDto;
+import com.fastcampus.gearshift.dto.CarInfoDto;
+import com.fastcampus.gearshift.dto.CarListDto;
 import com.fastcampus.gearshift.dto.UserDto;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class PHolderDaoImpl implements  PHolderDao{
@@ -15,10 +19,7 @@ public class PHolderDaoImpl implements  PHolderDao{
     private static final String namespace = "com.fastcampus.gearshift.";
 
 
-    @Override
-    public int update(UserDto userDto) throws Exception {
-        return session.update(namespace+"update",userDto);
-    }
+
 
     @Override
     public UserDto select(Integer userId) throws Exception {
@@ -26,12 +27,12 @@ public class PHolderDaoImpl implements  PHolderDao{
     }
 
     @Override
-    public List<CarDto> carselect() {
+    public List<CarListDto> carselect() {
         return session.selectList(namespace+"selectList");
     }
 
     @Override
-    public CarDto carSelect(Integer carInfoId) throws Exception {
+    public CarInfoDto carSelect(Integer carInfoId) throws Exception {
         return session.selectOne(namespace+"carSelect",carInfoId);
     }
 
@@ -40,14 +41,28 @@ public class PHolderDaoImpl implements  PHolderDao{
         return session.selectOne(namespace+"userSelect",userId);
     }
 
+
     //메인화면 검색
     @Override
-    public List<CarDto> searchCarsByTitle(String title) throws Exception {
+    public List<CarListDto> searchCarsByTitle(String title) throws Exception {
         return session.selectList(namespace+"searchCarsByTitle","%"+title+"%");
     }
 
 
+    @Override
+    public List<CarListDto> carselect(int offset, int pageSize) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("offset", offset);
+        params.put("pageSize", pageSize);
+        return session.selectList(namespace + "selectList", params);
     }
+    @Override
+    public int getCarCount() {
+        return session.selectOne(namespace+"getCarCount");
+    }
+
+
+}
 
 
 

@@ -398,7 +398,7 @@
 
 </head>
 
-<body>
+c<body>
 <header>
     <div class="container header-content">
         <div class="logo-container">
@@ -408,27 +408,19 @@
 
         <nav>
             <ul>
-                <li><a href="/gearshift/userList">내차사기</a></li>
-                <li><a href="#">상품리뷰</a></li>
-                <%
-                    Integer userIdInt = (Integer) session.getAttribute("userId");  // 올바른 타입
-                    String userId = String.valueOf(userIdInt);  // 필요 시 문자열로 변환
-                %>
-                <%
-                    if(userId != null){
-                %>
-                <li> 박세준님 환영합니다.</li>
-                <li><a href="#">마이페이지</a></li>
-                <a href="#">로그아웃</a>
-                <%
-                }else{
-                %>
-                <a href="/gearshift/login">로그인</a>
-                <li><a href="#">회원가입</a></li>
-                <%
-                    }
-                %>
+                <li><a href="${pageContext.request.contextPath}/userList">내차사기</a></li>
+                <li><a href="${pageContext.request.contextPath}/review">상품리뷰</a></li>
 
+
+                <c:if test="${not empty sessionScope.loginUser}">
+                    <li>${sessionScope.loginUser.userName}님 환영합니다.</li>
+                    <li><a href="#">마이페이지</a></li>
+                    <li><a href="${pageContext.request.contextPath}/logout">로그아웃</a></li>
+                </c:if>
+                <c:if test="${empty sessionScope.loginUser}">
+                    <a href="${pageContext.request.contextPath}/login">로그인</a>
+                    <li><a href="${pageContext.request.contextPath}/register">회원가입</a></li>
+                </c:if>
 
             </ul>
         </nav>
@@ -440,30 +432,41 @@
 <div class="container">
     <!-- 왼쪽 폼 섹션 -->
     <div class="form-section">
-        <h2><%= title %></h2> <!-- 선택한 버튼에 따라 제목 변경됨 -->
+
+
+        <h2><%= title %>를 선택했습니다.</h2> <!-- 선택한 버튼에 따라 제목 변경됨 -->
         <p>이제 명의자 정보와 배송 정보를 입력해 주세요.</p>
-        <form action="/gearshift/deliveryInsert" method="post">
+        <form action="/gearshift/payment/select" method="post">
             <input type="hidden" name="userId" value="${userDto.userId}">
 
+            <!--명의 종류 값 넘김-->
+            <input type="hidden" name="holderTitle" value="<%= title %>">
+
+            <!--회원 이름 값 안넘김 -->
             <label>회원 이름</label>
             <input type="text" name="userName" value="${userDto.userName}" readonly>
 
+            <!--명의자 전화번호 값 넘김 -->
             <label>회원 휴대폰 번호</label>
             <input type="text" name="userPhoneNumber" value="${userDto.userPhoneNumber}" readonly>
 
+
+            <!-- 명의자 이름 값 넘김 -->
             <label>명의자 이름</label>
             <input type="text" name="holderName" >
 
+            <!-- 명의자 전화번호 값 넘김 -->
             <label>명의자 전화번호</label>
             <input type="text" name="holderPhoneNumber">
 
 
+            <!-- 명의자 주민등록번호 값 넘김 -->
             <label>명의자 주민등록번호</label>
             <input type="text" id="holderResident" name="holderResident" placeholder="13자리 입력" maxlength="13">
 
 
 
-
+            <!--명의자 주소 값 넘김 -->
             <div class="address_wrap">
                 <label>명의자 주민등록 주소지</label>
                 <input type="text" name="holderAddr1" readonly placeholder="우편번호">
@@ -483,7 +486,7 @@
             <!-- 면허 종류 선택 -->
             <h3>면허 정보 입력</h3>
             <div class="license-grid">
-                <!-- 면허 종류 선택 -->
+                <!-- 면허 종류 선택 값넘김 -->
                 <div class="license-field">
                     <label for="holderLicense">면허 종류</label>
                     <select id="holderLicense" name="holderLicense">
@@ -496,7 +499,7 @@
                 </div>
 
 
-                <!-- 면허 번호 입력 -->
+                <!-- 면허 번호 입력  안넘김-->
                 <div class="license-field">
                     <label for="licenseNumber">면허 번호</label>
                     <input type="text" id="licenseNumber" name="licenseNumber" placeholder="예: 12-34-567890">
@@ -504,14 +507,14 @@
 
 
 
-                <!-- 면허 발급일 선택 -->
+                <!-- 면허 발급일 선택  값 안넘김-->
                 <div class="license-field">
                     <label for="licenseIssuedDate">면허 발급일</label>
                     <input type="date" id="licenseIssuedDate" name="licenseIssuedDate" onchange="setLicenseExpiryDate()">
                 </div>
 
 
-                <!-- 면허 만료일 (자동 계산) -->
+                <!-- 면허 만료일 (자동 계산) 값 안넘김 -->
                 <div class="license-field">
                     <label for="licenseExpiryDate">면허 만료일</label>
                     <input type="date" id="licenseExpiryDate" name="licenseExpiryDate" readonly>
@@ -523,25 +526,25 @@
             <div class="terms-container">
                 <!-- 배송원1 -->
                 <div class="terms-box">
-                    <label><input type="radio" name="delivery" class="terms-checkbox" value="1,김철수,010-1234-5678" required> 배송원1</label>
+                    <label><input type="radio" name="delivery" class="terms-checkbox" value="김철수,010-1234-5678" required> 배송원1</label>
                     <a href="#" onclick="openDeliveryModal(1)">보기</a>
                 </div>
 
                 <!-- 배송원2 -->
                 <div class="terms-box">
-                    <label><input type="radio" name="delivery" class="terms-checkbox" value="2,이영희,010-2345-6789"> 배송원2</label>
+                    <label><input type="radio" name="delivery" class="terms-checkbox" value="이영희,010-2345-6789"> 배송원2</label>
                     <a href="#" onclick="openDeliveryModal(2)">보기</a>
                 </div>
 
                 <!-- 배송원3 -->
                 <div class="terms-box">
-                    <label><input type="radio" name="delivery" class="terms-checkbox" value="3,박민수,010-3456-7890" required> 배송원3</label>
+                    <label><input type="radio" name="delivery" class="terms-checkbox" value="박민수,010-3456-7890" required> 배송원3</label>
                     <a href="#" onclick="openDeliveryModal(3)">보기</a>
                 </div>
 
                 <!-- 배송원4 -->
                 <div class="terms-box">
-                    <label><input type="radio" name="delivery" class="terms-checkbox" value="4,최진호,010-4567-8901"> 배송원4</label>
+                    <label><input type="radio" name="delivery" class="terms-checkbox" value="최진호,010-4567-8901"> 배송원4</label>
                     <a href="#" onclick="openDeliveryModal(4)">보기</a>
                 </div>
             </div>
@@ -617,37 +620,49 @@
 
                 <!-- 전체 동의 -->
                 <label class="terms-main">
-                    <input type="checkbox" id="allAgree" onclick="toggleAllCheckboxes(this)"> <strong>전체 동의하기</strong>
+                    <input type="checkbox" id="allAgree" onclick="toggleAllCheckboxes(this)">
+                    <strong>전체 동의하기</strong>
                 </label>
 
                 <!-- 개별 약관 -->
                 <div class="terms-box">
-                    <label><input type="checkbox" class="terms-checkbox" required> 개인정보 수집/이용 동의 (필수)</label>
+                    <label>
+                        <input type="checkbox" class="agreement-checkbox" name="agreePrivacy" value="false" required onchange="updateCheckboxValue(this)">
+                        개인정보 수집/이용 동의 (필수)
+                    </label>
                     <a href="#" onclick="openTermsModal()">보기</a>
                 </div>
 
                 <div class="terms-box">
-                    <label><input type="checkbox" class="terms-checkbox"> 개인정보 제3자 제공/이용 동의 (선택)</label>
+                    <label>
+                        <input type="checkbox" class="agreement-checkbox" name="agreeThirdParty" value="false" onchange="updateCheckboxValue(this)">
+                        개인정보 제3자 제공/이용 동의 (선택)
+                    </label>
                     <a href="#" onclick="openThirdPartyModal()">보기</a>
                 </div>
 
                 <div class="terms-box">
                     <label>
-                        <input type="checkbox" class="terms-checkbox" required> 고유식별정보 수집/이용 동의 (필수)
+                        <input type="checkbox" class="agreement-checkbox" name="agreeResident" value="false" required onchange="updateCheckboxValue(this)">
+                        고유식별정보 수집/이용 동의 (필수)
                     </label>
                     <a href="#" onclick="openIdentificationModal()">보기</a>
                 </div>
 
                 <div class="terms-box">
-                    <label><input type="checkbox" class="terms-checkbox"> 맞춤 서비스 제공 등 혜택/정보 수신 동의 (선택)</label>
+                    <label>
+                        <input type="checkbox" class="agreement-checkbox" name="agreeMarketing" value="false" onchange="updateCheckboxValue(this)">
+                        맞춤 서비스 제공 등 혜택/정보 수신 동의 (선택)
+                    </label>
                     <a href="#" onclick="openBenefitModal()">보기</a>
                 </div>
             </div>
 
+
             <!--배송원 정보 -->
-            <input type="hidden" name="selectedDeliveryId">
-            <input type="hidden" name="selectedDeliveryName">
-            <input type="hidden" name="selectedDeliveryPhone">
+
+            <input type="hidden" name="deliveryDriverName">
+            <input type="hidden" name="driverPhoneNumber">
             <!-- 다음 버튼 -->
             <button type="submit" class="submit-btn">다음</button>
         </form>
@@ -854,14 +869,13 @@
             const deliveryInfo = selectedDelivery.value.split(',');
 
             // 배송원 정보 (ID, 이름, 전화번호)
-            const deliveryId = deliveryInfo[0];
-            const deliveryName = deliveryInfo[1];
-            const deliveryPhone = deliveryInfo[2];
+            const deliveryName = deliveryInfo[0];
+            const deliveryPhone = deliveryInfo[1];
+
 
             // hidden input 필드에 값 넣기
-            document.querySelector("[name='selectedDeliveryId']").value = deliveryId;
-            document.querySelector("[name='selectedDeliveryName']").value = deliveryName;
-            document.querySelector("[name='selectedDeliveryPhone']").value = deliveryPhone;
+            document.querySelector("[name='deliveryDriverName']").value = deliveryName;
+            document.querySelector("[name='driverPhoneNumber']").value = deliveryPhone;
 
             // 폼 제출
             document.querySelector("form").submit();
@@ -872,7 +886,6 @@
         }
     });
 </script>
-
 
 
 <script>
@@ -995,17 +1008,15 @@
     function execution_daum_address() {
         new daum.Postcode({
             oncomplete: function (data) {
-                var addr = ''; // 주소 변수
-                var extraAddr = ''; // 참고항목 변수
+                var addr = '';
+                var extraAddr = '';
 
-                // 도로명 주소 선택 시
                 if (data.userSelectedType === 'R') {
                     addr = data.roadAddress;
-                } else { // 지번 주소 선택 시
+                } else {
                     addr = data.jibunAddress;
                 }
 
-                // 도로명 주소 선택 시 추가 정보 (법정동, 건물명 등)
                 if (data.userSelectedType === 'R') {
                     if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) {
                         extraAddr += data.bname;
@@ -1016,16 +1027,13 @@
                     if (extraAddr !== '') {
                         extraAddr = ' (' + extraAddr + ')';
                     }
-                    addr += extraAddr; // 도로명 주소 + 참고항목 추가
+                    addr += extraAddr;
                 }
 
-                // 입력 필드에 값 채우기
-                document.querySelector("[name=memberAddr1]").value = data.zonecode;  // 우편번호
-                document.querySelector("[name=memberAddr2]").value = addr;  // 도로명 주소 또는 지번 주소
-                document.querySelector("[name=memberAddr3]").removeAttribute("readonly"); // 상세주소 입력 가능하게
-
-                // 상세주소 입력란으로 포커스 이동
-                document.querySelector("[name=memberAddr3]").focus();
+                document.querySelector("[name=holderAddr1]").value = data.zonecode;
+                document.querySelector("[name=holderAddr2]").value = addr;
+                document.querySelector("[name=holderAddr3]").removeAttribute("readonly");
+                document.querySelector("[name=holderAddr3]").focus();
             }
         }).open();
     }
@@ -1112,6 +1120,56 @@
         }
     }
 </script>
+<script>
+    // 체크박스 값 업데이트 함수
+    function updateCheckboxValue(checkbox) {
+        checkbox.value = checkbox.checked ? "true" : "false";
+    }
+
+    // 전체 동의 체크박스 클릭 시, 개별 체크박스 자동 체크/해제
+    function toggleAllCheckboxes(masterCheckbox) {
+        const checkboxes = document.querySelectorAll('.agreement-checkbox');
+        checkboxes.forEach(cb => {
+            cb.checked = masterCheckbox.checked;
+            updateCheckboxValue(cb);
+        });
+    }
+
+    // 유효성 검사 함수
+    function validateForm(event) {
+        event.preventDefault(); // 기본 제출 동작 방지
+
+        // 약관 동의 체크박스 값 확인
+        const agreePrivacy = document.querySelector("[name='agreePrivacy']").checked;
+        const agreeResident = document.querySelector("[name='agreeResident']").checked;
+        const allAgree = document.querySelector("#allAgree").checked;
+
+        // 전체 동의 체크박스가 체크되면, 필수 약관도 자동으로 체크하도록 설정
+        if (allAgree) {
+            document.querySelector("[name='agreePrivacy']").checked = true;
+            document.querySelector("[name='agreeResident']").checked = true;
+        }
+
+        // 필수 동의 항목이 체크되지 않으면 에러 표시
+        if (!agreePrivacy || !agreeResident) {
+            openModal("모든 필수 약관에 동의해 주세요.");
+            return false; // 폼 제출 방지
+        }
+
+        // 모든 검사 통과 시 폼 제출
+        document.querySelector("form").submit();
+    }
+
+    // 폼 제출 버튼에 이벤트 리스너 추가
+    document.addEventListener("DOMContentLoaded", function () {
+        document.querySelector(".submit-btn").addEventListener("click", validateForm);
+    });
+</script>
+
+
+
+
+
 
 </body>
 </html>

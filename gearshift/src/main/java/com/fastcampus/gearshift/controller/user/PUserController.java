@@ -1,10 +1,6 @@
 package com.fastcampus.gearshift.controller.user;
 
-import com.fastcampus.gearshift.dto.CarDto;
-import com.fastcampus.gearshift.dto.CategoryDto;
-
-import com.fastcampus.gearshift.dto.HolderDTO;
-import com.fastcampus.gearshift.dto.UserDto;
+import com.fastcampus.gearshift.dto.*;
 
 import com.fastcampus.gearshift.service.PCateService;
 import com.fastcampus.gearshift.service.PHolderService;
@@ -47,69 +43,60 @@ public class PUserController {
     }
 
 
-    //로그인 테스트
-    @PostMapping("/loginTest")
-    public String login(HttpServletRequest request, HttpServletResponse response, Model model, String id, String pwd){
 
-        if(id.equals("user11@example.com")&&pwd.equals("pwd11")) {
-            model.addAttribute("id", id);
-            model.addAttribute("pwd", pwd);
-
-            request.getSession().setAttribute("userId", id);
-            return "redirect:/";
-        }
-        return "redirect:/";
-
-    }
-
-    //로그아웃 테스트
-    @GetMapping("/logout")
-    public String logout(HttpServletRequest request,HttpServletResponse response){
-        HttpSession session =request.getSession();
-        session.invalidate();
-        return "redirect:/";
-    }
-
-
-    //카테고리
     @RequestMapping(value = "/userList", method = RequestMethod.GET)
-    public String getList(Model model) throws Exception {
-        List<CategoryDto> list = cateService.cateList();
+    public String getList(@RequestParam(defaultValue = "1") int page, Model model) throws Exception {
+        int pageSize = 9; // 한 페이지에 표시할 상품 개수
+        int totalCount = pHolderService.getCarCount(); // 전체 상품 개수 조회
+        int totalPages = (int) Math.ceil((double) totalCount / pageSize); // 총 페이지 수 계산
 
-        if (list == null || list.isEmpty()) {
+        // 카테고리 목록 가져오기
+        List<CategoryDto> cateList = cateService.cateList();
+        if (cateList == null || cateList.isEmpty()) {
             throw new RuntimeException("cateList 데이터가 비어있습니다!");
         }
-        List<CarDto> userCarList =pHolderService.carselect();
 
-        model.addAttribute("cateList", list);
-        model.addAttribute("userCarList",userCarList);
+        // 페이징된 차량 목록 조회
+        List<CarListDto> userCarList = pHolderService.carselect(page, pageSize);
+
+        // 모델에 데이터 추가
+        model.addAttribute("cateList", cateList);
+        model.addAttribute("userCarList", userCarList);
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", totalPages);
+
         return "user/userCarList";
     }
 
 
-    @GetMapping("/delivery")
-    public String getDelivery(@RequestParam("carInfoId") Integer carInfoId, HttpSession session, Model model) throws Exception {
 
-        // ⭐ 테스트용 userId 강제 주입 (나중에 로그인 구현되면 삭제)
-        if (session.getAttribute("userId") == null) {
-            session.setAttribute("userId", 2); // userId=1번 계정으로 임시 테스트
+    @GetMapping("/delivery")
+    public String getDelivery(
+            @RequestParam("carInfoId") Integer carInfoId,
+            HttpSession session,
+            Model model
+    ) throws Exception {
+
+        UserDto userDto = (UserDto) session.getAttribute("loginUser"); // 세션에서 로그인 사용자 꺼내기
+        if (userDto == null) {
+            return "redirect:/login";
         }
 
-        Integer userId = (Integer) session.getAttribute("userId");
+        Integer userId = userDto.getUserId(); // userId 추출
 
-        // userId로 유저 정보 조회
-        UserDto userDto = pHolderService.userSelect(userId);
-        CarDto carDto = pHolderService.carSelect(carInfoId);
+        UserDto selectedUser = pHolderService.userSelect(userId);
+        CarInfoDto carInfoDto = pHolderService.carSelect(carInfoId);
 
-        model.addAttribute("userDto", userDto);
-        model.addAttribute("carDto", carDto);
+        model.addAttribute("userDto", selectedUser);
+        model.addAttribute("carDto", carInfoDto);
 
         return "user/deliveryInformation";
     }
 
+
     @PostMapping("/deliveryInsert")
     public String postDelivery(UserDto userDto) throws  Exception{
-        pHolderService.modify(userDto);
+
         //나중에 유효성 검사 및 경로 수정
         return "user/userCarList";
     }
@@ -117,31 +104,49 @@ public class PUserController {
 
     @GetMapping("/carDetail")
     public String getDetail(@RequestParam("carInfoId") Integer carInfoId, Model model) throws Exception {
-        CarDto carDto = pHolderService.carSelect(carInfoId);
-        System.out.println(" 요청된 carInfoId = " + carInfoId);
-        System.out.println(" 조회된 carDto = " + carDto);
-        model.addAttribute("carDto", carDto);
+        CarInfoDto carInfoDto = pHolderService.carSelect(carInfoId);
+
+        logger.debug("요청된 carInfoId = {}", carInfoId);
+        logger.debug("조회된 carInfoDto = {}", carInfoDto);
+
+        model.addAttribute("carDto", carInfoDto);
         return "user/userCarDetail";
     }
 
+
+
     //차량 명의
     @GetMapping("/titleHolder")
-    public String getHolder(@RequestParam("carInfoId")Integer carInfoID,Model model,HttpSession session)throws Exception{
-        CarDto carDto = pHolderService.carSelect(carInfoID);
-        model.addAttribute("carDto",carDto);
+    public String getHolder(
+            @RequestParam("carInfoId") Integer carInfoId,
+            Model model,
+            HttpSession session
+    ) throws Exception {
+        // 여기를 "loginUser"로 변경해야 세션에서 제대로 꺼낼 수 있음
+
+
+
+
+        CarInfoDto carInfoDto = pHolderService.carSelect(carInfoId);
+
+        model.addAttribute("carDto", carInfoDto);
+
 
         return "user/userTitleHolder";
     }
+
+
 
     //메인화면 + 상품리스트 검색
     @GetMapping("/searchCar")
     public String searchCar(@RequestParam("searchQuery") String searchQuery,Model model) throws Exception{
         //페이지 크기 설정(예:10)
 
-        List<CarDto> searchResults = pHolderService.searchCarsByTitle(searchQuery);
+        List<CarListDto> searchResults = pHolderService.searchCarsByTitle(searchQuery);
         model.addAttribute("userCarList",searchResults);
         return "user/userCarList";
     }
+
 
 
 }

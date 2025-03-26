@@ -2,6 +2,8 @@ package com.fastcampus.gearshift.service;
 
 import com.fastcampus.gearshift.dao.PHolderDao;
 import com.fastcampus.gearshift.dto.CarDto;
+import com.fastcampus.gearshift.dto.CarInfoDto;
+import com.fastcampus.gearshift.dto.CarListDto;
 import com.fastcampus.gearshift.dto.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,10 +16,7 @@ public class  PHolderServiceImpl implements PHolderService{
     PHolderDao pHolderDao;
 
 
-    @Override
-    public int modify(UserDto userDto) throws Exception {
-        return pHolderDao.update(userDto);
-    }
+
 
     @Override
     public UserDto read(Integer userId) throws Exception {
@@ -27,14 +26,14 @@ public class  PHolderServiceImpl implements PHolderService{
 
     //차량 리스트 조회
     @Override
-    public List<CarDto> carselect() {
+    public List<CarListDto> carselect() {
         return pHolderDao.carselect();
     }
 
     @Override
-    public CarDto carSelect(Integer carInfoId) throws Exception {
-        CarDto carDto = pHolderDao.carSelect(carInfoId);
-        return carDto;
+    public CarInfoDto carSelect(Integer carInfoId) throws Exception {
+        CarInfoDto carInfoDto = pHolderDao.carSelect(carInfoId);
+        return carInfoDto;
     }
 
     @Override
@@ -44,11 +43,21 @@ public class  PHolderServiceImpl implements PHolderService{
     }
 
     @Override
-    public List<CarDto> searchCarsByTitle(String title) throws Exception {
+    public List<CarListDto> searchCarsByTitle(String title) throws Exception {
         return pHolderDao.searchCarsByTitle(title);
     }
 
+    @Override
+    public List<CarListDto> carselect(int page, int pageSize) throws Exception {
+        int offset = (page -1) * pageSize;
 
+        return pHolderDao.carselect(offset,pageSize);
+    }
+
+    @Override
+    public int getCarCount() throws Exception {
+        return pHolderDao.getCarCount();
+    }
 
 
 }

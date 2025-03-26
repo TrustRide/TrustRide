@@ -156,6 +156,28 @@
             display: none;
         }
     </style>
+    <style>
+        .pagination {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .pagination a {
+            display: inline-block;
+            padding: 8px 12px;
+            margin: 0 4px;
+            border: 1px solid #ddd;
+            text-decoration: none;
+            color: #333;
+            border-radius: 4px;
+        }
+        .pagination a.active {
+            background-color: red;
+            color: white;
+        }
+        .pagination a:hover {
+            background-color: #ddd;
+        }
+    </style>
 </head>
 <body>
 <header>
@@ -166,26 +188,26 @@
         </div>
         <nav>
             <ul>
-                <li><a href="/gearshift/userList">내차사기</a></li>
-                <li><a href="#">상품리뷰</a></li>
-                <%
-                    String userId = String.valueOf(session.getAttribute("userId"));
-                    if(userId != null){
-                %>
-                <li><strong><%= userId %></strong>님 환영합니다.</li>
-                <li><a href="#">마이페이지</a></li>
-                <li><a href="#">로그아웃</a></li>
-                <%
-                } else {
-                %>
-                <li><a href="/gearshift/login">로그인</a></li>
-                <li><a href="#">회원가입</a></li>
-                <%
-                    }
-                %>
+                <li><a href="${pageContext.request.contextPath}/userList">내차사기</a></li>
+                <li><a href="${pageContext.request.contextPath}/review">상품리뷰</a></li>
+
+
+                <c:if test="${not empty sessionScope.loginUser}">
+                    <li>${sessionScope.loginUser.userName}님 환영합니다.</li>
+                    <li><a href="#">마이페이지</a></li>
+                    <li><a href="${pageContext.request.contextPath}/logout">로그아웃</a></li>
+                </c:if>
+                <c:if test="${empty sessionScope.loginUser}">
+                    <a href="${pageContext.request.contextPath}/login">로그인</a>
+                    <li><a href="${pageContext.request.contextPath}/register">회원가입</a></li>
+                </c:if>
+
             </ul>
         </nav>
-        <input type="text" placeholder="🔍차량을 검색하세요." class="search-bar">
+        <form action="/gearshift/searchCar" method="get" style="display: flex; align-items: center;">
+            <input type="text" name="searchQuery" placeholder="🔍차량을 검색하세요." class="search-bar" style="padding: 10px; border-radius: 4px; border: 1px solid #ddd; flex: 1;">
+            <button type="submit" class="search-btn">검색</button>
+        </form>
     </div>
 </header>
 
@@ -208,6 +230,22 @@
             </a>
         </c:forEach>
     </div>
+
+
+    <div class="pagination">
+        <c:if test="${currentPage > 1}">
+            <a href="/gearshift/userList?page=${currentPage - 1}">« 이전</a>
+        </c:if>
+
+        <c:forEach begin="1" end="${totalPages}" var="page">
+            <a href="/gearshift/userList?page=${page}" class="${currentPage == page ? 'active' : ''}">${page}</a>
+        </c:forEach>
+
+        <c:if test="${currentPage < totalPages}">
+            <a href="/gearshift/userList?page=${currentPage + 1}">다음 »</a>
+        </c:if>
+    </div>
+
 </section>
 
 <div class="category-container">
