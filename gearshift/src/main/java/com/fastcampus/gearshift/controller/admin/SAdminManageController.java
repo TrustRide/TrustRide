@@ -50,31 +50,4 @@ public class SAdminManageController {
         return "redirect:/admin/manage";
     }
 
-<<<<<<< Updated upstream
-    @GetMapping("/main")
-    public String loadMainPage(Model model) {
-        return "admin/main";
-    }
-=======
-    @PostMapping("/login")
-    public String processLogin(@RequestParam("userEmail") String adminEmail,
-                               @RequestParam("userPassword") String adminPassword,
-                               HttpSession session,
-                               Model model) {
-
-        AdminDto admin = adminService.findUserByEmail(adminEmail);
-
-        if (admin == null || !admin.getAdminPassword().equals(adminPassword)) {
-            model.addAttribute("error", "이메일 또는 비밀번호가 틀렸습니다.");
-            model.addAttribute("userEmail", adminEmail);
-            model.addAttribute("loginType", "admin");
-            return "user/login";
-        }
-
-        session.setAttribute("adminUser", admin);
-        return "redirect:/admin/main";
-    }
-
->>>>>>> Stashed changes
-
 }
