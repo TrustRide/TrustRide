@@ -5,18 +5,6 @@
 <mapper namespace="com.fastcampus.gearshift">
 
 
-    <!-- 유저 정보 업데이트  -->
-    <update id="update" parameterType="com.fastcampus.gearshift.dto.UserDto">
-        UPDATE trustride.USER
-        SET
-            member_resident = #{memberResident},
-            member_addr1 = #{memberAddr1},
-            member_addr2 = #{memberAddr2},
-            member_addr3 = #{memberAddr3},
-            member_license = #{memberLicense}
-
-        WHERE user_id = #{userId}
-    </update>
 
 
     <!-- 수정 반영 조회  -->
@@ -27,51 +15,65 @@
     </select>
 
     <!-- 차량 리스트 조회 -->
-    <select id="selectList" resultType="com.fastcampus.gearshift.dto.CarDto">
-
-    select
-        ci.car_info_id,
-        info.model_name,
-        info.manufacture_year,
-        info.mileage,
-        info.transmission,
-        info.car_price,
-        info.fuel_type
-    from car_information ci
-    left join information info on ci.car_info_id = info.car_info_id
-    where  ci.is_deleted=false
-    and info.is_deleted=false
-
+    <!-- 전체 차량 개수 조회 -->
+    <select id="getCarCount" resultType="int">
+        SELECT COUNT(*) FROM car_information WHERE is_deleted = false
     </select>
 
-
-    <select id="carSelect" parameterType="Integer" resultType="com.fastcampus.gearshift.dto.CarDto">
+    <!-- 페이징된 차량 리스트 조회 -->
+    <select id="selectList" resultType="com.fastcampus.gearshift.dto.CarListDto">
         SELECT
             ci.car_info_id,
             info.model_name,
-            ci.description,
             info.manufacture_year,
             info.mileage,
             info.transmission,
             info.car_price,
-            info.fuel_type,
-            info.color,
-            info.previous_registration_fee AS previousRegistrationFee,
-            info.maintenance_cost AS maintenanceCost,
-            info.agency_fee AS agencyFee,
-            info.car_location AS carLocation,
-            info.owner_change_count AS ownerChangeCount,
-            info.car_price AS carPrice,
-            info.car_num AS carNum,
-            info.car_amount_price AS carAmountPrice,
-            info.engine_capacity AS engineCapacity
+            info.fuel_type
         FROM car_information ci
                  LEFT JOIN information info ON ci.car_info_id = info.car_info_id
         WHERE ci.is_deleted = false
           AND info.is_deleted = false
-          AND ci.car_info_id = #{carInfoId}
+        ORDER BY ci.car_info_id DESC
+            LIMIT #{pageSize} OFFSET #{offset}
+    </select>
+
+
+
+
+    <select id="carSelect" parameterType="Integer" resultType="com.fastcampus.gearshift.dto.CarInfoDto">
+
+        SELECT
+            ci.car_info_id,                                  --  (추가)
+            info.model_name,                                 -- modelName
+            info.car_num AS carNum,                          -- carNum
+            info.manufacture_year,                           -- manufactureYear
+            info.mileage,                                    -- mileage
+            info.fuel_type,                                  -- fuelType
+            info.engine_capacity AS engineCapacity,          -- engineCapacity
+            info.transmission,                               -- transmission
+            info.color,                                      -- color
+            info.car_price,                                  -- carPrice
+            info.previous_registration_fee AS previousRegistrationFee, -- previousRegistrationFee
+            info.maintenance_cost AS maintenanceCost,        -- maintenanceCost
+            info.agency_fee AS agencyFee,                    -- agencyFee
+            info.car_amount_price AS carAmountPrice,         -- carAmountPrice
+            ci.description,                                  -- description
+            ci.offer_report_number,                          -- offerReportNumber
+            ci.vin_number,                                   -- vinNumber
+            info.car_location AS carLocation                 -- carLocation
+
+        FROM car_information ci
+                 JOIN information info ON ci.car_info_id = info.car_info_id
+        WHERE ci.car_info_id = #{carInfoId}
+
+
+
+
 
     </select>
+
+
 
 
 
@@ -84,7 +86,7 @@
 
 
     <!-- 차량 리스트 검색 (제목 일부) --> <!-- 페이징 -->
-    <select id="searchCarsByTitle" parameterType="map" resultType="com.fastcampus.gearshift.dto.CarDto">
+    <select id="searchCarsByTitle" parameterType="map" resultType="com.fastcampus.gearshift.dto.CarListDto">
         SELECT
         ci.car_info_id,
         info.model_name,
