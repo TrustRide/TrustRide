@@ -12,25 +12,25 @@
     background-color: #45a049;
 }
 
-.admin-table {
+.table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
     font-size: 14px;
 }
 
-.admin-table th, .admin-table td {
+.table th, .table td {
     border: 1px solid #ddd;
     padding: 10px;
     text-align: center;
 }
 
-.admin-table th {
+.table th {
     background-color: #f2f2f2;
     color: #333;
 }
 
-.admin-table tr:nth-child(even) {
+.table tr:nth-child(even) {
     background-color: #fafafa;
 }
 

@@ -11,7 +11,8 @@
     </insert>
 
     <select id="findByEmail" parameterType="String" resultType="com.fastcampus.gearshift.dto.UserDto">
-        SELECT * FROM user WHERE user_email = #{email}
+        SELECT *
+        FROM user WHERE user_email = #{email}
     </select>
 
 </mapper>
