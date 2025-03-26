@@ -19,7 +19,7 @@
         <li><a href="#">리뷰관리</a></li>
         <li><a href="#">찜 리스트</a></li>
         <li><h4>MY 정보</h4></li>
-        <li><a href="#">개인정보확인/수정</a></li>
+        <li><a href="${pageContext.request.contextPath}/user/userForm">개인정보확인/수정</a></li>
     </ul>
 </aside>
 
