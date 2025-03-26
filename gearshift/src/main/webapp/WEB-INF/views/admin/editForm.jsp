@@ -4,144 +4,192 @@
 <head>
   <title>차량 수정</title>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap');
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f0f4f8;
+      margin: 0;
+      padding: 40px 0;
+    }
+
+    .container {
+      width: 450px;
+      height: 650px;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+      overflow-y: auto;
+    }
+    h1 {
+      text-align: center;
+      position: sticky;
+      top: 0;
+      background: white;
+      padding-bottom: 10px;
+      z-index: 100;
+      border-bottom: 2px solid #f0f0f0;
+    }
+
+    label {
+      font-weight: 500;
+      display: block;
+      margin-top: 15px;
+      color: #555;
+      font-size: 15px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px 12px;
+      margin-top: 5px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      transition: border-color 0.3s, box-shadow 0.3s;
+      font-size: 14px;
+    }
+
+    input:focus, select:focus {
+      border-color: #ff6b6b;
+      box-shadow: 0 0 8px rgba(255, 107, 107, 0.2);
+      outline: none;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 25px;
+      background: linear-gradient(to right, #ff6b6b, #f06595);
+      color: white;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 5px 10px rgba(255, 107, 107, 0.3);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 15px rgba(255, 107, 107, 0.35);
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background-color: #ff6b6b;
+      border-radius: 20px;
+    }
+  </style>
 </head>
 <body>
-<h1>차량 수정 폼</h1>
+<div class="container">
+  <h1>차량 수정</h1>
 
-<form action="${pageContext.request.contextPath}/admin/cars/${carDto.carInfoId}/edit" method="post" enctype="multipart/form-data">
+  <form action="${pageContext.request.contextPath}/admin/cars/${carDto.carInfoId}/edit" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="carInfoId" value="${carDto.carInfoId}" />
 
-  <input type="hidden" name="carInfoId" value="${carDto.carInfoId}" />
-
-  <!-- 차량 기본 정보 -->
-  <div>
-    <label>제안 보고서 번호 (offerReportNumber)</label>
+    <label>제안 보고서 번호</label>
     <input name="offerReportNumber" type="text" value="${carDto.offerReportNumber}" required />
-  </div>
-  <div>
-    <label>차량 식별 번호 (vinNumber)</label>
+
+    <label>차량 식별 번호</label>
     <input name="vinNumber" type="text" value="${carDto.vinNumber}" required />
-  </div>
-  <div>
-    <label>설명 (description)</label>
+
+    <label>설명</label>
     <input name="description" type="text" value="${carDto.description}" />
-  </div>
-  <!--  대 / 중 / 소 카테고리 선택 -->
-  <div>
-    <label>대분류 (largeCateCode)</label>
+
+    <label>대분류</label>
     <select name="largeCateCode" id="largeCate" required>
       <option value="">대분류 선택</option>
       <c:forEach var="large" items="${largeCategories}">
         <option value="${large.cateCode}">${large.cateName}</option>
       </c:forEach>
     </select>
-  </div>
-  <div>
-    <label>중분류 (mediumCateCode)</label>
+
+    <label>중분류</label>
     <select name="mediumCateCode" id="mediumCate" required>
       <option value="">중분류 선택</option>
-      <!-- AJAX로 채워질 영역 -->
     </select>
-  </div>
-  <div>
-    <label>소분류 (smallCateCode)</label>
+
+    <label>소분류</label>
     <select name="smallCateCode" id="smallCate" required>
       <option value="">소분류 선택</option>
-      <!-- AJAX로 채워질 영역 -->
     </select>
-  </div>
-  <!-- 차량 상세 정보 -->
-  <div>
-    <label>모델명 (modelName)</label>
+
+    <label>모델명</label>
     <input name="modelName" type="text" value="${carDto.modelName}" required />
-  </div>
-  <div>
-    <label>주행 거리 (mileage)</label>
+
+    <label>주행 거리</label>
     <input name="mileage" type="text" value="${carDto.mileage}" required />
-  </div>
-  <div>
-    <label>엔진 배기량 (engineCapacity)</label>
+
+    <label>엔진 배기량</label>
     <input name="engineCapacity" type="text" value="${carDto.engineCapacity}" />
-  </div>
-  <div>
-    <label>연료 유형 (fuelType)</label>
+
+    <label>연료 유형</label>
     <input name="fuelType" type="text" value="${carDto.fuelType}" />
-  </div>
-  <div>
-    <label>변속기 (transmission)</label>
+
+    <label>변속기</label>
     <input name="transmission" type="text" value="${carDto.transmission}" />
-  </div>
-  <div>
-    <label>색상 (color)</label>
+
+    <label>색상</label>
     <input name="color" type="text" value="${carDto.color}" />
-  </div>
-  <div>
-    <label>제조 연도 (manufactureYear)</label>
+
+    <label>제조 연도</label>
     <input name="manufactureYear" type="text" value="${carDto.manufactureYear}" />
-  </div>
-  <div>
-    <label>이전 등록비 (previousRegistrationFee)</label>
+
+    <label>이전 등록비</label>
     <input name="previousRegistrationFee" type="number" value="${carDto.previousRegistrationFee}" />
-  </div>
-  <div>
-    <label>유지보수 비용 (maintenanceCost)</label>
+
+    <label>유지보수 비용</label>
     <input name="maintenanceCost" type="number" value="${carDto.maintenanceCost}" />
-  </div>
-  <div>
-    <label>등록대행 수수료 (agencyFee)</label>
+
+    <label>등록대행 수수료</label>
     <input name="agencyFee" type="number" value="${carDto.agencyFee}" />
-  </div>
-  <div>
-    <label>차량 위치 (carLocation)</label>
+
+    <label>차량 위치</label>
     <input name="carLocation" type="text" value="${carDto.carLocation}" />
-  </div>
-  <div>
-    <label>소유주 변경 횟수 (ownerChangeCount)</label>
+
+    <label>소유주 변경 횟수</label>
     <input name="ownerChangeCount" type="number" value="${carDto.ownerChangeCount}" />
-  </div>
 
-  <!-- 가격 정보 -->
-  <div>
-    <label>차량 가격 (carPrice)</label>
+    <label>차량 가격</label>
     <input name="carPrice" type="number" value="${carDto.carPrice}" required />
-  </div>
-  <div>
-    <label>차량 번호 (carNum)</label>
+
+    <label>차량 번호</label>
     <input name="carNum" type="text" value="${carDto.carNum}" />
-  </div>
-  <div>
-    <label>총 차량 금액 (carAmountPrice)</label>
+
+    <label>총 차량 금액</label>
     <input name="carAmountPrice" type="number" value="${carDto.carAmountPrice}" />
-  </div>
-  <div>
-    <label>판매 여부 (soldStatus)</label>
+
+    <label>판매 여부</label>
     <input name="soldStatus" type="text" value="${carDto.soldStatus}" />
-  </div>
 
-  <!-- 이미지 정보 -->
-
-
-  <!-- 새 이미지 파일 업로드 (여러 개 가능) -->
-  <div>
-    <label>새 이미지 파일 첨부</label><br/>
+    <label>새 이미지 파일 첨부</label>
     <input type="file" name="imageFiles" multiple />
-  </div>
 
-
-  <button type="submit">차량 수정</button>
-</form>
+    <button type="submit">차량 수정</button>
+  </form>
+</div>
 
 <script>
   $(document).ready(function () {
-    // ======================
-    //  1) 카테고리 동적 로드
-    // ======================
     $('#largeCate').change(function () {
       const largeCateCode = $(this).val();
       $('#mediumCate').html('<option value="">중분류 선택</option>');
       $('#smallCate').html('<option value="">소분류 선택</option>');
-
       if (largeCateCode) {
-        // AJAX 호출 (대분류 -> 중분류)
         $.get('${pageContext.request.contextPath}/admin/cars/categories/medium?parentCode=' + largeCateCode, function (data) {
           $.each(data, function (index, item) {
             $('#mediumCate').append('<option value="' + item.cateCode + '">' + item.cateName + '</option>');
@@ -153,9 +201,7 @@
     $('#mediumCate').change(function () {
       const mediumCateCode = $(this).val();
       $('#smallCate').html('<option value="">소분류 선택</option>');
-
       if (mediumCateCode) {
-        // AJAX 호출 (중분류 -> 소분류)
         $.get('${pageContext.request.contextPath}/admin/cars/categories/small?parentCode=' + mediumCateCode, function (data) {
           $.each(data, function (index, item) {
             $('#smallCate').append('<option value="' + item.cateCode + '">' + item.cateName + '</option>');
@@ -163,9 +209,7 @@
         });
       }
     });
-
   });
-
 </script>
 </body>
 </html>
