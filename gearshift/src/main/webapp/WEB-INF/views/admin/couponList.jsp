@@ -9,6 +9,14 @@
 <body>
 <h1>쿠폰 목록</h1>
 
+<!-- 헤더 포함 -->
+<jsp:include page="include/header.jsp"/>
+
+<!-- 사이드바 포함 -->
+<jsp:include page="include/sidebar.jsp"/>
+
+
+
 <!-- 쿠폰 생성 버튼 -->
 <a href="${pageContext.request.contextPath}/admin/coupons/create" class="button">새 쿠폰 만들기</a>
 
