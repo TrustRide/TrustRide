@@ -50,9 +50,4 @@ public class SAdminManageController {
         return "redirect:/admin/manage";
     }
 
-    @GetMapping("/main")
-    public String loadMainPage(Model model) {
-        return "admin/main";
-    }
-
 }

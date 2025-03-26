@@ -136,7 +136,7 @@
             </thead>
             <tbody>
             <c:forEach var="car" items="${carList}">
-                <tr>
+                <tr onclick="location.href='${pageContext.request.contextPath}/admin/cars/${car.carInfoId}'" style="cursor: pointer;">
                     <td>${car.carInfoId}</td>
                     <td>${car.modelName}</td>
                     <td>${car.carPrice}</td>
