@@ -16,11 +16,6 @@
     <label>쿠폰명:</label>
     <input type="text" name="couponName" value="${couponDto.couponName}" required><br>
 
-    <label>할인 타입:</label>
-    <select name="discountType">
-        <option value="RATE" ${couponDto.discountType == 'RATE' ? 'selected' : ''}>퍼센트 할인</option>
-        <option value="FIXED" ${couponDto.discountType == 'FIXED' ? 'selected' : ''}>고정 금액 할인</option>
-    </select><br>
 
     <label>할인 값:</label>
     <input type="number" name="discountValue" value="${couponDto.discountValue}" required><br>

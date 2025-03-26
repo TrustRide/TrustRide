@@ -16,4 +16,8 @@ public class IssuedCouponDto {
     private Date usedDate;
     private Integer couponId;
     private Integer userId;
+
+    // 추가 필드
+    private String couponName;
+    private Integer discountValue;
 }

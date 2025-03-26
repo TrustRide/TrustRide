@@ -14,7 +14,6 @@ import java.time.LocalDate;
 public class CouponDto {
     private Integer couponId;
     private String couponName;
-    private String discountType;
     private Integer discountValue;
     private Integer minOrderAmount;
     private Integer discountAmount;
