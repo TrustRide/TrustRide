@@ -31,6 +31,47 @@
             display: none;
         }
     </style>
+</head>
+<body>
+
+    <h2>회원 프로필</h2>
+
+    <!-- 비밀번호 확인 영역 -->
+    <div id="passwordCheckArea">
+        <label>비밀번호:</label>
+        <input type="password" id="checkPassword" />
+        <button onclick="checkPassword()">확인</button>
+    </div>
+
+    <!-- 정보 수정 폼 -->
+    <form id="profileForm" action="${pageContext.request.contextPath}/user/userForm/update" method="post">
+        <input type="hidden" name="userId" value="${user.userId}" />
+        <input type="hidden" name="currentPassword" id="currentPassword" />
+
+        <label>이메일:</label>
+        <input type="email" name="userEmail" value="${user.userEmail}" readonly /><br/>
+
+        <label>고객명:</label>
+        <input type="text" name="userName" value="${user.userName}" /><br/>
+
+        <label>연락처:</label>
+        <input type="text" name="userPhoneNumber" value="${user.userPhoneNumber}" /><br/>
+
+        <div id="newPasswordRow">
+            <label>새 비밀번호:</label>
+            <input type="password" name="userPassword" /><br/>
+        </div>
+
+        <button type="submit">변경하기</button>
+    </form>
+
+    <!-- 탈퇴 폼 -->
+    <form id="deleteForm" action="${pageContext.request.contextPath}/user/userForm/delete" method="post"
+          onsubmit="return confirm('정말 탈퇴하시겠습니까?');">
+        <input type="hidden" name="currentPassword" id="currentPasswordDel" />
+        <button type="submit" style="background-color:#f44336; color:white;">탈퇴하기</button>
+    </form>
+
     <script>
         function checkPassword() {
             const password = document.getElementById("checkPassword").value;
@@ -55,46 +96,5 @@
                 });
         }
     </script>
-</head>
-<body>
-
-<h2>회원 프로필</h2>
-
-<!-- 비밀번호 확인 영역 -->
-<div id="passwordCheckArea">
-    <label>비밀번호:</label>
-    <input type="password" id="checkPassword" />
-    <button onclick="checkPassword()">확인</button>
-</div>
-
-<!-- 정보 수정 폼 -->
-<form id="profileForm" action="${pageContext.request.contextPath}/user/userForm/update" method="post">
-    <input type="hidden" name="userId" value="${user.userId}" />
-    <input type="hidden" name="currentPassword" id="currentPassword" />
-
-    <label>고객명:</label>
-    <input type="text" name="userName" value="${user.userName}" readonly /><br/>
-
-    <label>이메일:</label>
-    <input type="email" name="userEmail" value="${user.userEmail}" /><br/>
-
-    <label>연락처:</label>
-    <input type="text" name="userPhoneNumber" value="${user.userPhoneNumber}" /><br/>
-
-    <div id="newPasswordRow">
-        <label>새 비밀번호:</label>
-        <input type="password" name="userPassword" /><br/>
-    </div>
-
-    <button type="submit">변경하기</button>
-</form>
-
-<!-- 탈퇴 폼 -->
-<form id="deleteForm" action="${pageContext.request.contextPath}/user/userForm/delete" method="post"
-      onsubmit="return confirm('정말 탈퇴하시겠습니까?');">
-    <input type="hidden" name="currentPassword" id="currentPasswordDel" />
-    <button type="submit" style="background-color:#f44336; color:white;">탈퇴하기</button>
-</form>
-
 </body>
 </html>
