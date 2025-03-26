@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>회원 프로필</title>
+    <title>개인정보확인/수정</title>
     <style>
         body {
             font-family: Arial, sans-serif;

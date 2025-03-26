@@ -1,4 +1,4 @@
-package com.fastcampus.gearshift.controller.user;
+package com.fastcampus.gearshift.controller.admin;
 
 import com.fastcampus.gearshift.dto.UserDto;
 import com.fastcampus.gearshift.service.NUserListService;
