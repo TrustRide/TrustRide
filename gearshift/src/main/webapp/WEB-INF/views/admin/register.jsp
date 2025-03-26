@@ -18,6 +18,7 @@
     <!-- 본문 컨텐츠 -->
     <main class="content">
         <form action="${pageContext.request.contextPath}/admin/register" method="post">
+            <input type="hidden" id="csrf-token" name="${_csrf.parameterName}" value="${_csrf.token}" />
             <h2>관리자 회원가입</h2>
 
             <div class="form-group">

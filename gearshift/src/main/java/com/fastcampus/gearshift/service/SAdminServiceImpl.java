@@ -3,6 +3,7 @@ package com.fastcampus.gearshift.service;
 import com.fastcampus.gearshift.dao.SAdminDao;
 import com.fastcampus.gearshift.dto.AdminDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,8 +14,13 @@ public class SAdminServiceImpl implements SAdminService {
     @Autowired
     private SAdminDao adminDao;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+
     @Override
     public void registerUser(AdminDto user) {
+        user.setAdminPassword(passwordEncoder.encode(user.getAdminPassword()));
         adminDao.insertUser(user);
     }
 

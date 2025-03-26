@@ -48,7 +48,8 @@
     </select>
 
     <select id="findByEmail" parameterType="String" resultType="com.fastcampus.gearshift.dto.AdminDto">
-        SELECT * FROM admin WHERE admin_email = #{email}
+        SELECT *
+        FROM admin WHERE admin_email = #{email}
     </select>
 
 </mapper>

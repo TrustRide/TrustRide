@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>  <%-- 이 줄 추가 --%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -9,22 +10,24 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/user/login.css">
 </head>
 <body>
-    <c:set var="loginType" value="${empty loginType ? 'personal' : loginType}" />
+    <c:set var="loginType" value="${empty param.loginType ? 'personal' : param.loginType}" />
     <h2>안녕하세요.<br>Trust Ride 로그인입니다.</h2>
-
     <p style="color:red;">
-        ${empty error ? '🚗' : error}
+        ${param.error == 'true' ? '아이디 또는 비밀번호가 올바르지 않습니다.' : '🚗'}
     </p>
 
     <div class="container">
 
-        <form id="loginForm" action="#" method="post">
+        <form id="loginForm" action="${pageContext.request.contextPath}/loginUser" method="post">
+            <sec:csrfInput/> <%-- CSRF 토큰 추가 --%>
+            <input type="hidden" id="roleType" name="roleType" value="USER">
+
             <div class="tab-menu">
                 <div class="tab ${loginType eq 'personal' ? 'active' : ''}" id="personalTab" onclick="switchTab('personal')">개인회원</div>
                 <div class="tab ${loginType eq 'admin' ? 'active' : ''}" id="adminTab" onclick="switchTab('admin')">관리자</div>
             </div>
             <div class="input-group">
-                <input type="text" name="userEmail" placeholder="이메일" value="${userEmail}">
+                <input type="text" id="emailInput" name="userEmail" placeholder="이메일" value="${userEmail}">
             </div>
             <div class="input-group">
                 <input type="password" name="userPassword" placeholder="비밀번호">
@@ -53,11 +56,18 @@
     </div>
 
     <script>
+        window.addEventListener("DOMContentLoaded", function () {
+            const defaultTab = "${loginType}"; // 'personal' or 'admin'
+            switchTab(defaultTab); // 초기 탭 상태 설정
+        });
+
         const personalTab = document.getElementById('personalTab');
         const adminTab = document.getElementById('adminTab');
         const quickLogin = document.querySelector('.quick-login');
         const links = document.querySelector('.links');
         const loginForm = document.getElementById('loginForm');
+        const emailInput = document.getElementById('emailInput');
+        const roleTypeInput = document.getElementById('roleType');
 
         function switchTab(tab) {
             if (tab === 'personal') {
@@ -65,15 +75,26 @@
                 adminTab.classList.remove('active');
                 quickLogin.classList.remove('hidden');
                 links.classList.remove('hidden');
-                loginForm.action = '${pageContext.request.contextPath}/login';
+                roleTypeInput.value = 'USER';
             } else {
                 personalTab.classList.remove('active');
                 adminTab.classList.add('active');
                 quickLogin.classList.add('hidden');
                 links.classList.add('hidden');
-                loginForm.action = '${pageContext.request.contextPath}/admin/login';
+                roleTypeInput.value = 'ADMIN';
             }
         }
+
+        loginForm.addEventListener('submit', function (e) {
+            const role = roleTypeInput.value; // "USER" or "ADMIN"
+            const email = emailInput.value;
+
+            if (role === 'USER') {
+                emailInput.value = "user:" + email;
+            } else if (role === 'ADMIN') {
+                emailInput.value = "admin:" + email;
+            }
+        });
     </script>
 </body>
 </html>

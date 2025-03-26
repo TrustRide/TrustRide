@@ -1,9 +1,0 @@
-<changelist name="25__3__18__오후_1_38,_체크아웃_전에_커밋되지_않은_변경_내용_[변경]1" date="1742272726116" recycled="true" deleted="true">
-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/25__3__18__오후_1_38,_체크아웃_전에_커밋되지_않은_변경_내용_[변경]1/shelved.patch" />
-  <option name="DESCRIPTION" value="25. 3. 18. 오후 1:38, 체크아웃 전에 커밋되지 않은 변경 내용 [변경]" />
-  <binary>
-    <option name="BEFORE_PATH" value="src/main/webapp/WEB-INF/views/admin/image/trustride.png" />
-    <option name="AFTER_PATH" value="src/main/webapp/WEB-INF/views/image/trustride.png" />
-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/25__3__18__오후_1_38,_체크아웃_전에_커밋되지_않은_변경_내용_[변경]1/trustride.png" />
-  </binary>
-</changelist>

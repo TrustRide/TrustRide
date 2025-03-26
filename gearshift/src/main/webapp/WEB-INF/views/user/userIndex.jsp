@@ -1,5 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
+<sec:authorize access="isAuthenticated()">
+  <c:set var="_csrf" value="${_csrf}" />
+</sec:authorize>
 <html>
 <head>
   <title>회원 메인페이지</title>
@@ -222,7 +227,7 @@
           <li><a href="${pageContext.request.contextPath}/logout">로그아웃</a></li>
         </c:if>
         <c:if test="${empty sessionScope.loginUser}">
-          <a href="${pageContext.request.contextPath}/login">로그인</a>
+          <a href="${pageContext.request.contextPath}/login.do">로그인</a>
           <li><a href="${pageContext.request.contextPath}/register">회원가입</a></li>
         </c:if>
 
@@ -234,9 +239,11 @@
       <input type="text" name="searchQuery" placeholder="🔍차량을 검색하세요." class="search-bar" style="padding: 10px; border-radius: 4px; border: 1px solid #ddd; flex: 1;">
       <button type="submit" class="search-btn">검색</button>
     </form>
-
-
   </div>
+
+  <form id="logoutForm" action="${pageContext.request.contextPath}/logout" method="post" style="display:none;">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+  </form>
 </header>
 
 <!-- 중앙에 자동 변경되는 이미지 -->
@@ -308,6 +315,10 @@
 
   // 5초마다 이미지 변경 실행
   setInterval(changeImage, 5000);
+
+  function logout() {
+    document.getElementById('logoutForm').submit();
+  }
 </script>
 
 </body>

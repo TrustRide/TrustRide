@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>관리자정보</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin/manage.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin/custom.css">
 </head>
 <body>
 
@@ -21,7 +21,7 @@
         <h2>관리자정보</h2>
         <a href="${pageContext.request.contextPath}/admin/register" class="register-btn">＋ 관리자등록</a>
 
-        <table class="admin-table">
+        <table class="table">
             <thead>
             <tr>
                 <th>#</th>
