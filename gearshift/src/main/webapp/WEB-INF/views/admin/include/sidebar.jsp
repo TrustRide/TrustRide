@@ -5,10 +5,10 @@
         <a href="${pageContext.request.contextPath}/admin/main"><h3>Trust Ride</h3></a>
     </div>
     <ul>
-         <li><a href="#">상품등록</a></li>
-         <li><a href="#">상품관리</a></li>
+         <li><a href="${pageContext.request.contextPath}/admin/cars/register">상품등록</a></li>
+         <li><a href="${pageContext.request.contextPath}/admin/cars/list">상품관리</a></li>
          <li><a href="${pageContext.request.contextPath}/admin/orderList">주문관리</a></li>
-         <li><a href="#">채팅관리</a></li>
+         <li><a href="${pageContext.request.contextPath}/admin/chat">채팅관리</a></li>
 	     <li><a href="${pageContext.request.contextPath}/admin/qna">문의관리</a></li>
          <li><a href="#">쿠폰관리</a></li>
          <li><a href="${pageContext.request.contextPath}/admin/review">리뷰관리</a></li>
