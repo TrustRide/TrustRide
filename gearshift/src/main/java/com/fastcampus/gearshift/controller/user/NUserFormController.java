@@ -3,6 +3,7 @@ package com.fastcampus.gearshift.controller.user;
 import com.fastcampus.gearshift.dto.UserDto;
 import com.fastcampus.gearshift.service.NUserFormService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +19,9 @@ public class NUserFormController {
     @Autowired
     private NUserFormService userFormService;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
 
     // 사용자 프로필 조회
     @GetMapping("")
@@ -28,7 +32,7 @@ public class NUserFormController {
         UserDto loginUser = (UserDto) session.getAttribute("loginUser");
         if (loginUser == null) {
             session.setAttribute("redirectAfterLogin", "/user/userForm");
-            return "redirect:/login";
+            return "redirect:/login.do";
         }
 
         Integer userId = loginUser.getUserId();
@@ -51,7 +55,7 @@ public class NUserFormController {
         UserDto loginUser = (UserDto) session.getAttribute("loginUser");
         if (loginUser == null) {
             session.setAttribute("redirectAfterLogin", "/user/userForm");
-            return "redirect:/login";
+            return "redirect:/login.do";
         }
 
         // 🔐 비밀번호 검증
@@ -96,7 +100,7 @@ public class NUserFormController {
 
         if (loginUser == null) {
             session.setAttribute("redirectAfterLogin", "/user/userForm");
-            return "redirect:/login";
+            return "redirect:/login.do";
         }
 
         // 🔐 비밀번호 검증
@@ -127,10 +131,14 @@ public class NUserFormController {
     @ResponseBody
     public Map<String, Boolean> checkPassword(HttpSession session, @RequestBody Map<String, String> body) {
         UserDto loginUser = (UserDto) session.getAttribute("loginUser");
-        String rawPassword = body.get("password");
 
-        boolean verified = loginUser != null &&
-                rawPassword.equals(loginUser.getUserPassword());
+        if(loginUser == null) {
+            return Map.of("verified", false);
+        }
+
+        String rawPassword = body.get("password");
+        String encodedPassword = loginUser.getUserPassword();
+        boolean verified = passwordEncoder.matches(rawPassword, encodedPassword);
 
         return Map.of("verified", verified);
     }
