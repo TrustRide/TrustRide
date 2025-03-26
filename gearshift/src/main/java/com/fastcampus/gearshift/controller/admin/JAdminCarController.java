@@ -97,4 +97,12 @@ public class JAdminCarController {
         carService.deleteCar(carInfoId);
         return "redirect:/admin/cars/list";
     }
+
+    //(9}차량 상세 페이지 처리
+    @GetMapping("/{carInfoId}")
+    public String carDetail(@PathVariable Integer carInfoId, Model model) {
+        CarDto car = carService.getCarById(carInfoId); // carService에서 차량 조회
+        model.addAttribute("car", car);
+        return "admin/carDetail";
+    }
 }
