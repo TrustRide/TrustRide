@@ -61,6 +61,25 @@ public class PHolderDaoImpl implements  PHolderDao{
         return session.selectOne(namespace+"getCarCount");
     }
 
+    @Override
+    public List<CarListDto> carselectByCate(String cateCode, int offset, int pageSize) {
+
+        // cateCode 디버깅
+        System.out.println("cateCode Dao 디버깅 = " + cateCode);
+
+        Map<String, Object> params = new HashMap<>();
+        params.put("cateCode", cateCode);
+        params.put("offset", offset);
+        params.put("pageSize", pageSize);
+        return session.selectList(namespace + "selectListByCate", params);
+    }
+
+    @Override
+    public int getCarCountByCate(String cateCode) {
+        return session.selectOne(namespace + "getCarCountByCate", cateCode);
+    }
+
+
 
 }
 

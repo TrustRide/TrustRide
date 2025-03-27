@@ -27,4 +27,9 @@ public interface PHolderDao {
      List<CarListDto> carselect(int offset, int pageSize);
 
      int getCarCount();
+
+    List<CarListDto> carselectByCate(String cateCode, int offset, int pageSize);
+
+    int getCarCountByCate(String cateCode);
+
 }

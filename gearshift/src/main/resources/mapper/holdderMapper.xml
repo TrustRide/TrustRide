@@ -41,7 +41,7 @@
 
 
 
-    <select id="carSelect" parameterType="Integer" resultType="com.fastcampus.gearshift.dto.CarInfoDto">
+    <select id="carSelect" parameterType="Integer" resultType="com.fastcampus.gearshift.dto.CarListDto">
 
         SELECT
             ci.car_info_id,                                  --  (추가)
@@ -115,6 +115,30 @@
     </select>
 
 
+    <!-- 카테고리 조회 -->
+    <select id="selectListByCate" resultType="com.fastcampus.gearshift.dto.CarListDto">
+        SELECT
+            ci.car_info_id,
+            info.model_name,
+            info.manufacture_year,
+            info.mileage,
+            info.transmission,
+            info.car_price,
+            info.fuel_type
+        FROM car_information ci
+                 LEFT JOIN information info ON ci.car_info_id = info.car_info_id
+        WHERE ci.is_deleted = false
+          AND info.is_deleted = false
+          AND ci.cate_code = #{cateCode}
+        ORDER BY ci.car_info_id DESC
+            LIMIT #{pageSize} OFFSET #{offset}
+    </select>
+
+    <select id="getCarCountByCate" resultType="int">
+        SELECT COUNT(*)
+        FROM car_information
+        WHERE is_deleted = false AND cate_code = #{cateCode}
+    </select>
 
 
 

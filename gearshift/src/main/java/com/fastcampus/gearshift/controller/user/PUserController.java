@@ -11,8 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import java.util.List;
@@ -26,11 +24,14 @@ public class PUserController {
     @Autowired
     PCateService cateService;
 
+
     @Autowired
     JWishlistService wishlistService;
 
     @Autowired
     PHolderService pHolderService;
+
+
     @GetMapping("/")
     public String index(){
         return "user/userIndex";
@@ -49,18 +50,28 @@ public class PUserController {
 
 
     @RequestMapping(value = "/userList", method = RequestMethod.GET)
-    public String getList(@RequestParam(defaultValue = "1") int page, Model model, HttpSession session) throws Exception {
+    public String getList(@RequestParam(defaultValue = "1") int page,
+                          @RequestParam(required = false) String cateCode,
+                          Model model, HttpSession session) throws Exception {
         int pageSize = 9; // 한 페이지에 표시할 상품 개수
-        int totalCount = pHolderService.getCarCount(); // 전체 상품 개수 조회
+
+        // 전체 상품 개수 조회
+        int totalCount = (cateCode == null) ? pHolderService.getCarCount() : pHolderService.getCarCountByCate(cateCode);
         int totalPages = (int) Math.ceil((double) totalCount / pageSize); // 총 페이지 수 계산
 
 
-        // 페이징된 차량 목록 조회
-        List<CarListDto> userCarList = pHolderService.carselect(page, pageSize);
+        List<CarListDto> userCarList;
+        if (cateCode == null) {
+            userCarList = pHolderService.carselect(page, pageSize);
+        } else {
+            userCarList = pHolderService.carselectByCate(cateCode, page, pageSize);
+        }
+
 
         // ★ 로그인 유저
         UserDto user = (UserDto) session.getAttribute("loginUser");
         Integer userId = (user != null) ? user.getUserId() : null;
+
 
         if(userId != null) {
             // 각 차량에 대해 isWished 설정
