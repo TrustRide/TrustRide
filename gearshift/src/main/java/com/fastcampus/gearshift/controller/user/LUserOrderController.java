@@ -1,8 +1,8 @@
 package com.fastcampus.gearshift.controller.user;
 
-import com.fastcampus.gearshift.dto.DeliveryDTO;
-import com.fastcampus.gearshift.dto.LOrderDTO;
-import com.fastcampus.gearshift.dto.PaymentProcessDTO;
+import com.fastcampus.gearshift.dto.DeliveryDto;
+import com.fastcampus.gearshift.dto.LOrderDto;
+import com.fastcampus.gearshift.dto.PaymentProcessDto;
 import com.fastcampus.gearshift.service.LDeliveryService;
 import com.fastcampus.gearshift.service.LOrderService;
 import com.fastcampus.gearshift.service.LPaymentService;
@@ -28,8 +28,8 @@ public class LUserOrderController {
 
     // 현금 결제 후 주문내역/배송조회 페이지 이동
     @PostMapping("/status/cash")
-    public String getOrderHistory(@ModelAttribute LOrderDTO lOrderDTO ,@ModelAttribute PaymentProcessDTO paymentProcessDTO,
-                                  @ModelAttribute DeliveryDTO deliveryDTO){
+    public String getOrderHistory(@ModelAttribute LOrderDto lOrderDTO , @ModelAttribute PaymentProcessDto paymentProcessDTO,
+                                  @ModelAttribute DeliveryDto deliveryDTO){
 
         // 주문 상태
         lOrderDTO.setOrderStatus("주문완료");
@@ -66,8 +66,8 @@ public class LUserOrderController {
 
     // 신용카드 결제 후 주문내역/배송조회 페이지 이동
     @PostMapping("status/credit")
-    public String getOrderHistory2(@ModelAttribute LOrderDTO lOrderDTO, @ModelAttribute PaymentProcessDTO paymentProcessDTO,
-                                   @ModelAttribute DeliveryDTO deliveryDTO){
+    public String getOrderHistory2(@ModelAttribute LOrderDto lOrderDTO, @ModelAttribute PaymentProcessDto paymentProcessDTO,
+                                   @ModelAttribute DeliveryDto deliveryDTO){
 
 
         // 주문 상태

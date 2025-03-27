@@ -1,9 +1,9 @@
 package com.fastcampus.gearshift.dao;
 
-import com.fastcampus.gearshift.dto.DeliveryDTO;
+import com.fastcampus.gearshift.dto.DeliveryDto;
 
 public interface LDeliveryDao {
 
     // 배송 정보 저장
-    int insert(DeliveryDTO deliveryDTO);
+    int insert(DeliveryDto deliveryDTO);
 }
