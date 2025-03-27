@@ -1,7 +1,7 @@
 package com.fastcampus.gearshift.service;
 
 import com.fastcampus.gearshift.dao.LPaymentDao;
-import com.fastcampus.gearshift.dto.PaymentProcessDTO;
+import com.fastcampus.gearshift.dto.PaymentProcessDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +14,7 @@ public class LPaymentServiceImpl implements LPaymentService {
 
     // 결제 정보 저장
     @Override
-    public int insert(PaymentProcessDTO paymentProcessDTO) {
+    public int insert(PaymentProcessDto paymentProcessDTO) {
 
         return paymentDao.insert(paymentProcessDTO);
     }

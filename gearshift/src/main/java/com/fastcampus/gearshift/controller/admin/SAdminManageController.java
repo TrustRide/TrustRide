@@ -1,16 +1,13 @@
 package com.fastcampus.gearshift.controller.admin;
 
 import com.fastcampus.gearshift.dto.AdminDto;
-import com.fastcampus.gearshift.dto.ReviewDto;
 import com.fastcampus.gearshift.dto.SPagingDto;
-import com.fastcampus.gearshift.dto.UserDto;
 import com.fastcampus.gearshift.service.SAdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller

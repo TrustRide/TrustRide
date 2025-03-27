@@ -1,6 +1,6 @@
 package com.fastcampus.gearshift.dao;
 
-import com.fastcampus.gearshift.dto.PaymentProcessDTO;
+import com.fastcampus.gearshift.dto.PaymentProcessDto;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -14,7 +14,7 @@ public class LPaymentDaoImpl implements LPaymentDao{
 
     // 결제 정보 저장
     @Override
-    public int insert(PaymentProcessDTO paymentProcessDTO) {
+    public int insert(PaymentProcessDto paymentProcessDTO) {
 
         return session.insert(namespace + "insert", paymentProcessDTO);
     }
