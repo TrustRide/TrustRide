@@ -19,4 +19,8 @@ public class CarListDto {
     // 썸네일
 //    private String thumbnailUrl;
 //    private Integer thumbnailImageId;
+
+    // DB와 상관x 있어도 다른거에 영향x
+    private Boolean isWished;
+
 }

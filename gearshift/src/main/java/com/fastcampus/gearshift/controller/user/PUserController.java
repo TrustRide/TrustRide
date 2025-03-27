@@ -2,6 +2,7 @@ package com.fastcampus.gearshift.controller.user;
 
 import com.fastcampus.gearshift.dto.*;
 
+import com.fastcampus.gearshift.service.JWishlistService;
 import com.fastcampus.gearshift.service.PCateService;
 import com.fastcampus.gearshift.service.PHolderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,9 @@ public class PUserController {
     PCateService cateService;
 
     @Autowired
+    JWishlistService wishlistService;
+
+    @Autowired
     PHolderService pHolderService;
     @GetMapping("/")
     public String index(){
@@ -45,19 +49,33 @@ public class PUserController {
 
 
     @RequestMapping(value = "/userList", method = RequestMethod.GET)
-    public String getList(@RequestParam(defaultValue = "1") int page, Model model) throws Exception {
+    public String getList(@RequestParam(defaultValue = "1") int page, Model model, HttpSession session) throws Exception {
         int pageSize = 9; // 한 페이지에 표시할 상품 개수
         int totalCount = pHolderService.getCarCount(); // 전체 상품 개수 조회
         int totalPages = (int) Math.ceil((double) totalCount / pageSize); // 총 페이지 수 계산
+
+
+        // 페이징된 차량 목록 조회
+        List<CarListDto> userCarList = pHolderService.carselect(page, pageSize);
+
+        // ★ 로그인 유저
+        UserDto user = (UserDto) session.getAttribute("loginUser");
+        Integer userId = (user != null) ? user.getUserId() : null;
+
+        if(userId != null) {
+            // 각 차량에 대해 isWished 설정
+            for (CarListDto car : userCarList) {
+                boolean wished = wishlistService.isWished(userId, car.getCarInfoId());
+                car.setIsWished(wished);
+            }
+        }
+        model.addAttribute("userCarList", userCarList);
 
         // 카테고리 목록 가져오기
         List<CategoryDto> cateList = cateService.cateList();
         if (cateList == null || cateList.isEmpty()) {
             throw new RuntimeException("cateList 데이터가 비어있습니다!");
         }
-
-        // 페이징된 차량 목록 조회
-        List<CarListDto> userCarList = pHolderService.carselect(page, pageSize);
 
         // 모델에 데이터 추가
         model.addAttribute("cateList", cateList);

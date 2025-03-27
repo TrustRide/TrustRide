@@ -29,6 +29,9 @@ public class CarInfoDto {
     private Integer deliveryFee;//배송비
     private String carLocation;
 
+    // DB와 상관x 있어도 다른거에 영향x
+    private Boolean isWished;
+
 
     public CarInfoDto(String modelName, String carNum, String manufactureYear, String mileage, String fuelType, Integer carPrice, Integer previousRegistrationFee, Integer agencyFee, Integer carAmountPrice) {
 

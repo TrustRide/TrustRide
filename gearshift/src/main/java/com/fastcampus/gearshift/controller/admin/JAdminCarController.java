@@ -38,7 +38,7 @@ public class JAdminCarController {
 
         // 대분류 목록 추가
         model.addAttribute("largeCategories", categoryService.getLargeCategories());
-        return "admin/registerForm";
+        return "admin/carRegisterForm";
     }
 
     // (3) AJAX: 중분류 목록 반환
@@ -86,7 +86,7 @@ public class JAdminCarController {
         model.addAttribute("largeCategories", categoryService.getLargeCategories());
         // 화면단에서 기존값을 보여주기 위해 model에 세팅
         model.addAttribute("carDto", carDto);
-        return "admin/editForm";
+        return "admin/carEditForm";
     }
 
     // (7) 차량 수정 처리
