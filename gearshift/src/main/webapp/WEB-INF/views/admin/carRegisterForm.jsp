@@ -116,7 +116,7 @@
     <label>색상</label>
     <input name="color" type="text" required />
     <label>차량 가격</label>
-    <input name="price" type="number" required />
+    <input name="carPrice" type="number" required />
     <label>이전 등록비</label>
     <input name="previousRegistrationFee" type="number" required />
     <label>유지보수 비용</label>
@@ -140,13 +140,12 @@
     <select name="smallCateCode" id="smallCate" required>
       <option value="">소분류 선택</option>
     </select>
-    <label>판매 시기</label>
-    <select name="salePeriod" required>
-      <option value="즉시">즉시</option>
-      <option value="7일 이내">7일 이내</option>
-      <option value="14일 이내">14일 이내</option>
-      <option value="30일 이내">30일 이내</option>
-      <option value="30일 이후">30일 이후</option>
+    <label>판매 상태</label>
+    <select name="saleStatus" required>
+      <option value="판매준비중">판매준비중</option>
+      <option value="판매중">판매중</option>
+      <option value="판매완료">판매완료</option>
+
     </select>
     <button type="submit">등록</button>
   </form>

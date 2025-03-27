@@ -86,6 +86,8 @@ public class JAdminCarServiceImpl implements JAdminCarService {
                 }
             }
         }
+
+        System.out.println("carDto 서비스 = " + carDto);
     }
     // ============추가된 부분============
 

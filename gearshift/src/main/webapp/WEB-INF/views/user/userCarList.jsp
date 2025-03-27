@@ -219,15 +219,38 @@
     <h2>홈서비스 타임딜</h2>
     <div class="car-grid">
         <c:forEach var="car" items="${userCarList}">
-            <a href="/gearshift/carDetail?carInfoId=${car.carInfoId}" class="car-card">
+            <div class="car-card">
+                <a href="/gearshift/carDetail?carInfoId=${car.carInfoId}">
+                    <img src="${pageContext.request.contextPath}/resources/img/자동차7.png" alt="Car Image" />
+                    <div class="car-card-content">
+                        <h2>${car.modelName}</h2>
+                        <h4>${car.manufactureYear}년식 · ${car.mileage}km · ${car.fuelType}</h4>
+                        <h1><fmt:formatNumber value="${car.carPrice}" type="number" />만원</h1>
+                    </div>
+                </a>
 
-                <img src="${pageContext.request.contextPath}/resources/img/자동차7.png" alt="Car Image">
-                <div class="car-card-content">
-                    <h2>${car.modelName}</h2>
-                    <h4>${car.manufactureYear}년식 · ${car.mileage}km · ${car.fuelType}</h4>
-                    <h1><fmt:formatNumber value="${car.carPrice}" type="number" />만원</h1>
+                <!-- 찜 여부에 따라 버튼 보여주기 -->
+                <div style="text-align: center; margin: 10px 0;">
+                    <c:choose>
+                        <c:when test="${car.isWished}">
+                            <form action="${pageContext.request.contextPath}/wishlist/remove" method="post">
+                                <input type="hidden" name="carInfoId" value="${car.carInfoId}" />
+                                <button type="submit" style="background: none; border: none; color: red; font-size: 20px;">
+                                    ❤️ 찜 해제
+                                </button>
+                            </form>
+                        </c:when>
+                        <c:otherwise>
+                            <form action="${pageContext.request.contextPath}/wishlist/add" method="post">
+                                <input type="hidden" name="carInfoId" value="${car.carInfoId}" />
+                                <button type="submit" style="background: none; border: none; font-size: 20px;">
+                                    🤍 찜하기
+                                </button>
+                            </form>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
-            </a>
+            </div>
         </c:forEach>
     </div>
 

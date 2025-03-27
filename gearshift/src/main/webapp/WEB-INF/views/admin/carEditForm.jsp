@@ -173,7 +173,7 @@
     <label>총 차량 금액</label>
     <input name="carAmountPrice" type="number" value="${carDto.carAmountPrice}" />
 
-    <label>판매 여부</label>
+    <label>판매 상태</label>
     <input name="soldStatus" type="text" value="${carDto.soldStatus}" />
 
     <label>새 이미지 파일 첨부</label>
@@ -197,19 +197,3 @@
         });
       }
     });
-
-    $('#mediumCate').change(function () {
-      const mediumCateCode = $(this).val();
-      $('#smallCate').html('<option value="">소분류 선택</option>');
-      if (mediumCateCode) {
-        $.get('${pageContext.request.contextPath}/admin/cars/categories/small?parentCode=' + mediumCateCode, function (data) {
-          $.each(data, function (index, item) {
-            $('#smallCate').append('<option value="' + item.cateCode + '">' + item.cateName + '</option>');
-          });
-        });
-      }
-    });
-  });
-</script>
-</body>
-</html>
