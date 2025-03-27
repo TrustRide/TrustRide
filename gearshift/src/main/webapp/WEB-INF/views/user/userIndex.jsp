@@ -220,19 +220,21 @@
         <li><a href="${pageContext.request.contextPath}/userList">내차사기</a></li>
         <li><a href="${pageContext.request.contextPath}/review">상품리뷰</a></li>
 
-
         <c:if test="${not empty sessionScope.loginUser}">
-          <li>${sessionScope.loginUser.userName}님 환영합니다.</li>
-          <li><a href="#">마이페이지</a></li>
+          <li><strong>${sessionScope.loginUser.userName}</strong>님 환영합니다.</li>
+          <li><a href="${pageContext.request.contextPath}/user/mypage">마이페이지</a></li>
           <li><a href="${pageContext.request.contextPath}/logout">로그아웃</a></li>
         </c:if>
+
         <c:if test="${empty sessionScope.loginUser}">
+
           <a href="${pageContext.request.contextPath}/login.do">로그인</a>
+
           <li><a href="${pageContext.request.contextPath}/register">회원가입</a></li>
         </c:if>
-
       </ul>
     </nav>
+
 
 
     <form action="/gearshift/searchCar" method="get" style="display: flex; align-items: center;">
