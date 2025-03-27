@@ -115,6 +115,8 @@
     <input name="keyCount" type="number" required />
     <label>색상</label>
     <input name="color" type="text" required />
+    <label>차량 가격</label>
+    <input name="price" type="number" required />
     <label>이전 등록비</label>
     <input name="previousRegistrationFee" type="number" required />
     <label>유지보수 비용</label>

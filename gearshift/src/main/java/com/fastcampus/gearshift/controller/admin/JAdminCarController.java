@@ -62,6 +62,13 @@ public class JAdminCarController {
             @RequestParam("imageFiles") List<MultipartFile> imageFiles,
             @RequestParam(name = "thumbnailIndex", required = false, defaultValue = "0") Integer thumbnailIndex
     ) {
+
+        // 차량 총 합계
+        carDto.setCarAmountPrice(carDto.getCarPrice()+carDto.getAgencyFee()+carDto.getMaintenanceCost()+carDto.getPreviousRegistrationFee());
+
+
+        System.out.println("carDto 컨트롤러 = " + carDto);
+        
         carService.registerCarWithFiles(carDto, imageFiles, thumbnailIndex); // 실제 호출
         return "redirect:/admin/cars/list";
     }
