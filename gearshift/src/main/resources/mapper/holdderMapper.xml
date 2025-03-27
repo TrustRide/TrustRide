@@ -41,7 +41,7 @@
 
 
 
-    <select id="carSelect" parameterType="Integer" resultType="com.fastcampus.gearshift.dto.CarListDto">
+    <select id="carSelect" parameterType="Integer" resultType="com.fastcampus.gearshift.dto.CarInfoDto">
 
         SELECT
             ci.car_info_id,                                  --  (추가)
