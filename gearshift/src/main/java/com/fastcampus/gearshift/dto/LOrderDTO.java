@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 // 주문
 @Data
 @NoArgsConstructor
-public class LOrderDto {
+public class LOrderDTO {
 
     private Integer orderId;        // 주문ID (PK) <- 여기에 자동 생성된 값이 들어옴
     private String productName;    // 주문 상품명(필요)
@@ -18,7 +18,7 @@ public class LOrderDto {
     private String orderStatus;       // 주문상태
     private Integer userId;           // 유저 아이디
 
-    public LOrderDto(String productName, Integer orderAmount, Integer discountAmount, Integer totalAmount, String ownershipType, Boolean isJointOwnership, Integer userId) {
+    public LOrderDTO(String productName, Integer orderAmount, Integer discountAmount, Integer totalAmount, String ownershipType, Boolean isJointOwnership, Integer userId) {
 
         this.productName = productName; // 상품명
         this.orderAmount =  orderAmount; // 주문금액 = 자동차가격

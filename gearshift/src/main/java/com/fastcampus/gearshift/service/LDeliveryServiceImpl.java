@@ -1,7 +1,7 @@
 package com.fastcampus.gearshift.service;
 
 import com.fastcampus.gearshift.dao.LDeliveryDao;
-import com.fastcampus.gearshift.dto.DeliveryDto;
+import com.fastcampus.gearshift.dto.DeliveryDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +13,7 @@ public class LDeliveryServiceImpl implements LDeliveryService {
 
     // 배송 정보 저장
     @Override
-    public int insert(DeliveryDto deliveryDTO) {
+    public int insert(DeliveryDTO deliveryDTO) {
         return deliveryDao.insert(deliveryDTO);
     }
 }

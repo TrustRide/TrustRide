@@ -1,7 +1,7 @@
 package com.fastcampus.gearshift.service;
 
 import com.fastcampus.gearshift.dao.LOrderDao;
-import com.fastcampus.gearshift.dto.LOrderDto;
+import com.fastcampus.gearshift.dto.LOrderDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +14,7 @@ public class LOrderServiceImpl implements LOrderService{
 
     // 주문 정보 저장
     @Override
-    public int insertOrder(LOrderDto orderDto) {
+    public int insertOrder(LOrderDTO orderDto) {
         return orderDao.insertOrder(orderDto);
     }
 

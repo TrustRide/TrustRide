@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class PaymentDto {
+public class PaymentDTO {
 
     private String paymentMethod;  //결제수단
     private String modelName; // 차량 모델명
