@@ -115,8 +115,12 @@
     <input name="keyCount" type="number" required />
     <label>색상</label>
     <input name="color" type="text" required />
-    <label>가격</label>
-    <input name="price" type="number" required />
+    <label>이전 등록비</label>
+    <input name="previousRegistrationFee" type="number" required />
+    <label>유지보수 비용</label>
+    <input name="maintenanceCost" type="number" required />
+    <label>등록대행수수료</label>
+    <input name="agencyFee" type="number" required />
     <label>연식</label>
     <input name="manufactureYear" type="text" required />
     <label>차량 이미지 업로드</label>
