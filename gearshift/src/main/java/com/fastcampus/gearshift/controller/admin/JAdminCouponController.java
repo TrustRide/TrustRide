@@ -58,7 +58,7 @@ public class JAdminCouponController {
     // 3. 쿠폰 생성 처리
     @PostMapping("/create")
     public String createCoupon(@ModelAttribute("couponDto") CouponDto couponDto) {
-        System.out.println("couponDto 생성컨트롤러 = " + couponDto); // couponDto 출력
+//        System.out.println("couponDto 생성컨트롤러 = " + couponDto); // couponDto 출력
 
         jAdminCouponService.createCoupon(couponDto);
         return "redirect:/admin/coupons/list"; // 생성 후 목록으로 이동

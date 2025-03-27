@@ -290,6 +290,7 @@
                             }
                         });
                     </script>
+
                 </c:when>
                 <c:when test="${cate.tier == 3}">
                     <c:set var="parentId" value="tier3-${cate.cateParent}" />
@@ -297,7 +298,9 @@
                         document.addEventListener("DOMContentLoaded", function() {
                             var parentElement = document.getElementById("${parentId}");
                             if (parentElement) {
-                                parentElement.innerHTML += '<li class="category-tier-3">${cate.cateName}</li>';
+                                parentElement.innerHTML += '<li class="category-tier-3">' +
+                                    '<a href="${pageContext.request.contextPath}/userList?cateCode=${cate.cateCode}" style="text-decoration:none; color:#333;">${cate.cateName}</a>' +
+                                    '</li>';
                             }
                         });
                     </script>

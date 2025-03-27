@@ -98,7 +98,7 @@
 <body>
 <div class="container">
   <h1>중고차 등록</h1>
-  <form action="${pageContext.request.contextPath}/cars/register" method="post" enctype="multipart/form-data">
+  <form action="${pageContext.request.contextPath}/admin/cars/register" method="post" enctype="multipart/form-data">
     <label>차량 번호</label>
     <input name="carNum" type="text" required />
     <label>모델명</label>
@@ -141,7 +141,7 @@
       <option value="">소분류 선택</option>
     </select>
     <label>판매 상태</label>
-    <select name="saleStatus" required>
+    <select name="soldStatus" required>
       <option value="판매준비중">판매준비중</option>
       <option value="판매중">판매중</option>
       <option value="판매완료">판매완료</option>
@@ -157,7 +157,7 @@
       $('#mediumCate').html('<option value="">중분류 선택</option>');
       $('#smallCate').html('<option value="">소분류 선택</option>');
       if (largeCateCode) {
-        $.get('${pageContext.request.contextPath}/cars/categories/medium?parentCode=' + largeCateCode, function (data) {
+        $.get('${pageContext.request.contextPath}/admin/cars/categories/medium?parentCode=' + largeCateCode, function (data) {
           $.each(data, function (index, item) {
             $('#mediumCate').append('<option value="' + item.cateCode + '">' + item.cateName + '</option>');
           });
@@ -168,7 +168,7 @@
       const mediumCateCode = $(this).val();
       $('#smallCate').html('<option value="">소분류 선택</option>');
       if (mediumCateCode) {
-        $.get('${pageContext.request.contextPath}/cars/categories/small?parentCode=' + mediumCateCode, function (data) {
+        $.get('${pageContext.request.contextPath}/admin/cars/categories/small?parentCode=' + mediumCateCode, function (data) {
           $.each(data, function (index, item) {
             $('#smallCate').append('<option value="' + item.cateCode + '">' + item.cateName + '</option>');
           });

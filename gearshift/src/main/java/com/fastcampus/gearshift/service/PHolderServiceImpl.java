@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class  PHolderServiceImpl implements PHolderService{
+public class  PHolderServiceImpl implements PHolderService {
     @Autowired
     PHolderDao pHolderDao;
 
@@ -57,6 +57,19 @@ public class  PHolderServiceImpl implements PHolderService{
     @Override
     public int getCarCount() throws Exception {
         return pHolderDao.getCarCount();
+    }
+    @Override
+    public List<CarListDto> carselectByCate(String cateCode, int page, int pageSize) {
+
+        System.out.println("cateCode 서비스 = " + cateCode);
+        
+        int offset = (page - 1) * pageSize;
+        return pHolderDao.carselectByCate(cateCode, offset, pageSize);
+    }
+
+    @Override
+    public int getCarCountByCate(String cateCode) {
+        return pHolderDao.getCarCountByCate(cateCode);
     }
 
 
