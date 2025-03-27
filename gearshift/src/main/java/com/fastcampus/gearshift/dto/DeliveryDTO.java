@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 // 배송
 @Data
 @NoArgsConstructor
-public class DeliveryDto {
+public class DeliveryDTO {
 
     private Integer deliveryFee; // 배송비
     private String driverPhoneNumber; // 배송기사 전화번호
@@ -16,7 +16,7 @@ public class DeliveryDto {
     private int orderId;           // 주문 번호
     private String deliveryStatus; // 배송상태
 
-    public DeliveryDto(Integer deliveryFee, String driverPhoneNumber, String deliveryRequest, String preferredDate, String deliveryDriverName) {
+    public DeliveryDTO(Integer deliveryFee, String driverPhoneNumber, String deliveryRequest, String preferredDate, String deliveryDriverName) {
         this.deliveryFee = deliveryFee;
         this.driverPhoneNumber = driverPhoneNumber;
         this.deliveryRequest = deliveryRequest;

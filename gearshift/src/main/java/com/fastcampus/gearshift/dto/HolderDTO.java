@@ -8,7 +8,7 @@ import lombok.*;
 @Setter
 @Getter
 @ToString
-public class HolderDto {
+public class HolderDTO {
 
     private Integer holderId;
     private String holderName;
