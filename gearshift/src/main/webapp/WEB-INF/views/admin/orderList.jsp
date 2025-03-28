@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>주문 목록</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin/styles.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin/custom.css">
 </head>
 <body>
 
@@ -18,7 +18,7 @@
 
 <main class="content">
     <h2>주문 관리</h2>
-    <table border="1">
+    <table class="table">
         <thead>
         <tr>
             <th>회원이름</th>
