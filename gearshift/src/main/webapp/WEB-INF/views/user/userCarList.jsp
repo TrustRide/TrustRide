@@ -44,7 +44,7 @@
     내 차 20만원 할인 받는 법!
 </section>
 
-<<<<<<< Updated upstream
+
 <section class="car-section">
     <h2>홈서비스 타임딜</h2>
     <div class="car-grid">
@@ -83,7 +83,7 @@
             </div>
         </c:forEach>
     </div>
-=======
+
 <!-- 좌우 2단 영역 구성 -->
 <div class="car-page-layout">
 
@@ -151,7 +151,6 @@
                 </div>
             </c:forEach>
         </div>
->>>>>>> Stashed changes
 
         <!-- 페이지네이션 -->
         <div class="pagination">
@@ -163,10 +162,6 @@
                 <a href="/gearshift/userList?page=${page}" class="${currentPage == page ? 'active' : ''}">${page}</a>
             </c:forEach>
 
-<<<<<<< Updated upstream
-        <c:forEach begin="1" end="${totalPages}" var="page">
-            <a href="/gearshift/userList?page=${page}" class="${currentPage == page ? 'active' : ''}">${page}</a>
-        </c:forEach>
 
         <c:if test="${currentPage < totalPages}">
             <a href="/gearshift/userList?page=${currentPage + 1}">다음 »</a>
@@ -212,13 +207,8 @@
             </c:choose>
         </c:forEach>
     </ul>
-=======
-            <c:if test="${currentPage < totalPages}">
-                <a href="/gearshift/userList?page=${currentPage + 1}">다음 »</a>
-            </c:if>
-        </div>
-    </section>
->>>>>>> Stashed changes
+
+          
 </div>
 
 <footer class="footer">
