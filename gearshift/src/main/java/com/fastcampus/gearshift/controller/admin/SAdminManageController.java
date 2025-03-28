@@ -63,4 +63,18 @@ public class SAdminManageController {
         return ResponseEntity.ok("success");
     }
 
+    @PostMapping("/deactivate")
+    @ResponseBody
+    public ResponseEntity<String> deactivateAdmin(@RequestBody AdminDto admin) {
+        adminService.deleteUser(admin.getAdminId());
+        return ResponseEntity.ok("success");
+    }
+
+    @PostMapping("/activate")
+    @ResponseBody
+    public ResponseEntity<String> activateAdmin(@RequestBody AdminDto admin) {
+        adminService.activateUser(admin.getAdminId());
+        return ResponseEntity.ok("success");
+    }
+
 }
