@@ -186,7 +186,7 @@
                         <li><a href="/gearshift/logout">로그아웃</a></li>
                     </c:when>
                     <c:otherwise>
-                        <li><a href="/gearshift/login">로그인</a></li>
+                        <li><a href="/gearshift/login.do">로그인</a></li>
                         <li><a href="/gearshift/register">회원가입</a></li>
                     </c:otherwise>
                 </c:choose>

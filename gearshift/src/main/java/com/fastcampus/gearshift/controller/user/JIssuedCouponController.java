@@ -30,7 +30,7 @@ public class JIssuedCouponController {
         UserDto loginUser = (UserDto) session.getAttribute("loginUser");
         if (loginUser == null) {
             // 로그인되지 않았다면 로그인 페이지로 리다이렉트
-            return "redirect:/login";
+            return "redirect:/login.do";
         }
 
         // 로그인된 유저의 userId
@@ -54,7 +54,7 @@ public class JIssuedCouponController {
         // 세션에서 로그인 사용자 객체 꺼내기
         UserDto loginUser = (UserDto) session.getAttribute("loginUser");
         if (loginUser == null) {
-            return "redirect:/login";
+            return "redirect:/login.do";
         }
 
         Integer userId = loginUser.getUserId();

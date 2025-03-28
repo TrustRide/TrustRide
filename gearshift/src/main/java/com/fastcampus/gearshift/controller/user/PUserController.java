@@ -110,7 +110,7 @@ public class PUserController {
 
         UserDto userDto = (UserDto) session.getAttribute("loginUser");
         if (userDto == null) {
-            return "redirect:/login";
+            return "redirect:/login.do";
         }
 
         Integer userId = userDto.getUserId();

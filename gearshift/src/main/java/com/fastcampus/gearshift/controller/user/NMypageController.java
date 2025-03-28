@@ -17,7 +17,7 @@ public class NMypageController {
         if (loginUser == null) {
             // 로그인 안 된 경우 로그인 페이지로 리다이렉트
             session.setAttribute("redirectAfterLogin", "/user/mypage");
-            return "redirect:/login";
+            return "redirect:/login.do";
         }
 
         // 사용자 정보 전달 (JSP에서 ${loginUser.userName} 등 사용 가능)

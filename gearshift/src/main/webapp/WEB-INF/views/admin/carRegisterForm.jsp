@@ -95,6 +95,12 @@
   </style>
 </head>
 <body>
+<!-- 헤더 포함 -->
+<jsp:include page="include/header.jsp"/>
+
+<!-- 사이드바 포함 -->
+<jsp:include page="include/sidebar.jsp"/>
+
 <div class="container">
   <h1>중고차 등록</h1>
   <form action="${pageContext.request.contextPath}/admin/cars/register" method="post" enctype="multipart/form-data">

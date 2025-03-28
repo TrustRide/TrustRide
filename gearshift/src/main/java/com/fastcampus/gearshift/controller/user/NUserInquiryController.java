@@ -26,7 +26,7 @@ public class NUserInquiryController {
         UserDto loginUser = (UserDto) session.getAttribute("loginUser");
         if (loginUser == null) {
             session.setAttribute("redirectAfterLogin", request.getRequestURI());
-            return "redirect:/login";
+            return "redirect:/login.do";
         }
 
         List<NInquiryDto> list = inquiryService.getAll();
@@ -40,7 +40,7 @@ public class NUserInquiryController {
         UserDto loginUser = (UserDto) session.getAttribute("loginUser");
         if (loginUser == null) {
             session.setAttribute("redirectAfterLogin", request.getRequestURI());
-            return "redirect:/login";
+            return "redirect:/login.do";
         }
 
         model.addAttribute("inquiry", new NInquiryDto());
@@ -54,7 +54,7 @@ public class NUserInquiryController {
 
         if (loginUser == null) {
             session.setAttribute("redirectAfterLogin", request.getRequestURI());
-            return "redirect:/login";
+            return "redirect:/login.do";
         }
 
         dto.setUserId(loginUser.getUserId());
@@ -75,7 +75,7 @@ public class NUserInquiryController {
     @GetMapping("/read")
     public String read(@RequestParam("inquiryId") Integer inquiryId, Model model, HttpSession session) {
         UserDto loginUser = (UserDto) session.getAttribute("loginUser");
-        if (loginUser == null) return "redirect:/login";
+        if (loginUser == null) return "redirect:/login.do";
 
         NInquiryDto dto = inquiryService.getById(inquiryId);
         model.addAttribute("inquiry", dto);
@@ -87,7 +87,7 @@ public class NUserInquiryController {
     @GetMapping("/modify")
     public String modifyForm(@RequestParam("inquiryId") Integer inquiryId, HttpSession session, Model model) {
         UserDto loginUser = (UserDto) session.getAttribute("loginUser");
-        if (loginUser == null) return "redirect:/login";
+        if (loginUser == null) return "redirect:/login.do";
 
         NInquiryDto dto = inquiryService.getById(inquiryId);
         model.addAttribute("inquiry", dto);
@@ -98,7 +98,7 @@ public class NUserInquiryController {
     @PostMapping("/modify")
     public String modify(NInquiryDto dto, HttpSession session, RedirectAttributes rattr) {
         UserDto loginUser = (UserDto) session.getAttribute("loginUser");
-        if (loginUser == null) return "redirect:/login";
+        if (loginUser == null) return "redirect:/login.do";
 
         dto.setUserId(loginUser.getUserId()); // 보안상 확인 용도
 
