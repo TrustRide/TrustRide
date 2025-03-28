@@ -18,7 +18,6 @@ public class LUserCarInfoServiceImpl implements LUserCarInfoService {
 
         int totalPrice = carInfo.getCarPrice()
                 + carInfo.getPreviousRegistrationFee()
-                + carInfo.getMaintenanceCost()
                 + carInfo.getAgencyFee()
                 + 0;
 

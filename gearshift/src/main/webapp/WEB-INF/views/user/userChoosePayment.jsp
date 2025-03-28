@@ -39,6 +39,8 @@
       <input type="hidden" name="holderAddr2" value="${carInfoDto.holderAddr2}">
       <input type="hidden" name="holderAddr3" value="${carInfoDto.holderAddr3}">
       <input type="hidden" name="holderlicense" value="${carInfoDto.holderLicense}">
+      <input type="hidden" name="ownershipType" value="${carInfoDto.ownershipType}">
+      <input type="hidden" name="isJointOwnership" value="${carInfoDto.isJointOwnership}">
 
       <!-- 결제 버튼 -->
       <button type="submit">결제</button>

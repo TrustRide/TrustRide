@@ -65,8 +65,8 @@
       <input type="hidden" name="license" value="${carInfoDto.holderLicense}">
       <input type="hidden" name="holderAddr3" value="${carInfoDto.holderAddr3}">
       <input type="hidden" name="license" value="${carInfoDto.holderLicense}">
-      <input type="hidden" name="ownershipType" value="개인명의자">
-      <input type="hidden" name="isJointOwnership" value="false">
+      <input type="hidden" name="ownershipType" value="${carInfoDto.ownershipType}">
+      <input type="hidden" name="isJointOwnership" value="${carInfoDto.isJointOwnership}">
     </form>
 
     <!-- 결제 버튼 -->
