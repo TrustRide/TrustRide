@@ -12,22 +12,17 @@ import java.util.List;
 @Data
 public class CarListDto {
     private Integer carInfoId;
-    private String modelName;// 자동차 정보 ID (Primary Key, AUTO_INCREMENT)
-    private String manufactureYear;  // 제조 연도 (Manufacture Year)
-    private String mileage;  // 주행 거리 (Mileage)
-    private String fuelType;  // 연료 종류 (Fuel Type: Gasoline, Diesel, etc.)
+    private String modelName;
+    private String manufactureYear;
+    private String mileage;
+    private String fuelType;
+    private Integer carPrice;
 
-    private Integer carPrice;  // 차량 가격 (Car Price)
+    private List<ImageDto> images;
+    private String thumbnailUrl;
+    private Integer thumbnailImageId;
 
-    //private List<ImageDto> images;
-    // 썸네일
-//    private String thumbnailUrl;
-//    private Integer thumbnailImageId;
 
-    private String cateCode;
-
-    // DB와 상관x 있어도 다른거에 영향x
+    // 찜 여부 필드 추가
     private Boolean isWished;
-
-
 }

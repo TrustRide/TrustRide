@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("licenseIssuedDate").addEventListener("change", setLicenseExpiryDate);
 
     // 📌 에러 모달 확인 버튼 이벤트 연결
-    document.querySelectorAll(".confirm-button").forEach(btn => {
+    document.querySelectorAll("#errorModal .confirm-button").forEach(btn => {
         btn.addEventListener("click", closeErrorModal);
     });
 });
@@ -162,8 +162,6 @@ function execution_daum_address() {
             document.querySelector("[name=holderAddr2]").value = addr;
             document.querySelector("[name=holderAddr3]").removeAttribute("readonly");
             document.querySelector("[name=holderAddr3]").focus();
-
-
         }
     }).open();
 }
