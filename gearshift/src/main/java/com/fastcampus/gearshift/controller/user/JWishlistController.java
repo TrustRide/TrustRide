@@ -18,7 +18,7 @@ import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/wishlist")
+@RequestMapping("/user/wishlist")
 public class JWishlistController {
 
     private final JWishlistService wishlistService;
@@ -52,7 +52,7 @@ public class JWishlistController {
     }
 
     // [C] 내 찜 목록 페이지
-    @GetMapping("/list")
+    @GetMapping
     public String myWishlist(HttpSession session, Model model) {
         UserDto user = (UserDto) session.getAttribute("loginUser");
         if (user == null) {

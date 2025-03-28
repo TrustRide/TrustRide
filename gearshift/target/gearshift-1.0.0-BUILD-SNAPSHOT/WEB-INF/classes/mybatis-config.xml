@@ -18,5 +18,11 @@
         <typeAlias type="com.fastcampus.gearshift.dto.LOrderDTO" alias="LOrderDTO"></typeAlias>
         <typeAlias type="com.fastcampus.gearshift.dto.PaymentProcessDTO" alias="PaymentProcessDTO"></typeAlias>
         <typeAlias type="com.fastcampus.gearshift.dto.DeliveryDTO" alias="DeliveryDTO"></typeAlias>
+        <typeAlias type="com.fastcampus.gearshift.dto.LOrderListDTO" alias="LOrderListDTO"></typeAlias>
+        <typeAlias type="com.fastcampus.gearshift.dto.LRefundAbleListDTO" alias="LRefundAbleListDTO"></typeAlias>
+        <typeAlias type="com.fastcampus.gearshift.dto.LRefundDTO" alias="LRefundDTO"></typeAlias>
+        <typeAlias type="com.fastcampus.gearshift.dto.CarDetailDto" alias="CarDetailDto"></typeAlias>
+        <typeAlias type="com.fastcampus.gearshift.dto.LHolderDTO" alias="LHolderDTO"></typeAlias>
+
     </typeAliases>
 </configuration>
