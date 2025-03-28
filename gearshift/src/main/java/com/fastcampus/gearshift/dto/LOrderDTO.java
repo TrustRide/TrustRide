@@ -20,18 +20,7 @@ public class LOrderDTO {
     private Integer holderId;         // 명의자 아이디
     private Integer carAmountPrice;   // 차량 총가격
 
-<<<<<<< Updated upstream
-    public LOrderDTO(String productName, Integer orderAmount, Integer discountAmount, Integer totalAmount, String ownershipType, Boolean isJointOwnership, Integer userId) {
 
-        this.productName = productName; // 상품명
-        this.orderAmount =  orderAmount; // 주문금액 = 자동차가격
-        this.discountAmount = discountAmount;           // 할인된 금액
-        this.totalAmount = totalAmount;    // 주문금액 - 할인된 금액
-        this.ownershipType = ownershipType;  // 소유유형
-        this.isJointOwnership = isJointOwnership;    // 공동명의 여부
-        this.userId = userId;      // 유저 아이디
-
-=======
     public LOrderDTO (Integer carInfoId, Integer orderAmount, Integer discountAmount,
                  String ownershipType, Boolean isJointOwnership, String orderStatus, Integer userId, Integer holderId) {
         this.carInfoId = carInfoId;
@@ -43,6 +32,5 @@ public class LOrderDTO {
         this.orderStatus = orderStatus;
         this.userId = userId;
         this.holderId = holderId;
->>>>>>> Stashed changes
     }
 }
