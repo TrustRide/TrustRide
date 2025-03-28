@@ -50,4 +50,15 @@
         WHERE order_id = #{orderId}
     </update>
 
+    <!--  환불 목록 조회  -->
+
+    <select id="getRefundList" resultType="LRefundDTO">
+        SELECT o.order_id, o.total_amount, o.refund_status, i.model_name
+        FROM orders o
+                 JOIN information i ON o.car_info_id = i.car_info_id
+        WHERE o.user_id = #{userId}
+          AND o.refund_status IS NOT NULL
+    </select>
+
+
 </mapper>

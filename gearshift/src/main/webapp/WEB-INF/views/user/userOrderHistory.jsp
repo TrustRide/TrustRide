@@ -8,15 +8,16 @@
     <%-- 사이드바 --%>
 <jsp:include page="include/sidebar.jsp"/>
 
-<main class="order-list">
-    <section>
-        <h2>2025. 3. 13 주문</h2>
-        <div>
-            <p>취소중</p>
-            <p>로켓와우 새우깡 미니팩, 120g, 1개</p>
-            <p>2,250 원 - 1개</p>
-        </div>
-    </section>
+    <c:forEach var="refund" items="${refundListDTO}">
+        <section>
+
+            <div>
+                <p>${refund.refundStatus}</p>
+                <p>${refund.modelName}</p>
+                <p>${refund.totalAmount}</p>
+            </div>
+        </section>
+    </c:forEach>
 <c:forEach var="order" items="${orderList}">
     <section>
         <h2>${order.orderCompletedDate} 주문</h2>

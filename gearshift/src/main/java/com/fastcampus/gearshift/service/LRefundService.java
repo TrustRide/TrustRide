@@ -20,4 +20,7 @@ public interface LRefundService {
     // 주문 정보 수정
     int modifyOrder(LRefundDTO refundDto);
 
+    // 환불 신청 목록 조회
+    List<LRefundDTO> getRefundList(Integer userId);
+
 }

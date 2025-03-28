@@ -38,4 +38,10 @@ public class LRefundDaoImpl implements LRefundDao {
     public int modifyOrder(LRefundDTO refundDto) {
         return session.update(namespace + "modifyOrder", refundDto);
     }
+
+    // 환불 목록 조회
+    @Override
+    public List<LRefundDTO> getRefundList(Integer userId) {
+        return  session.selectList(namespace + "getRefundList", userId);
+    }
 }

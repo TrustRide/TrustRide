@@ -7,8 +7,7 @@
     <div class="w3-container w3-padding-16">
         <h3 class="w3-wide"><b>MY PAGE</b></h3>
     </div>
-
-
+    
     <div class="mypage-section">
         <div class="mypage-section-title">MY 쇼핑</div>
         <a href="${pageContext.request.contextPath}/user/orders/status/orderList" class="mypage-link">주문목록/배송조회</a>
