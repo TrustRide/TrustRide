@@ -57,6 +57,12 @@
 </head>
 <body>
 
+<!-- 헤더 포함 -->
+<jsp:include page="include/header.jsp"/>
+
+<!-- 사이드바 포함 -->
+<jsp:include page="include/sidebar.jsp"/>
+
 <div class="container">
   <!-- 썸네일 이미지 출력 -->
   <c:if test="${not empty car.thumbnailUrl}">

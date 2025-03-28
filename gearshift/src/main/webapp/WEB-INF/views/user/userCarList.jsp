@@ -27,7 +27,7 @@
                     <li><a href="${pageContext.request.contextPath}/logout">로그아웃</a></li>
                 </c:if>
                 <c:if test="${empty sessionScope.loginUser}">
-                    <a href="${pageContext.request.contextPath}/login">로그인</a>
+                    <a href="${pageContext.request.contextPath}/login.do">로그인</a>
                     <li><a href="${pageContext.request.contextPath}/register">회원가입</a></li>
                 </c:if>
             </ul>

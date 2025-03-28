@@ -95,6 +95,13 @@
   </style>
 </head>
 <body>
+
+<!-- 헤더 포함 -->
+<jsp:include page="include/header.jsp"/>
+
+<!-- 사이드바 포함 -->
+<jsp:include page="include/sidebar.jsp"/>
+
 <div class="container">
   <h1>차량 수정</h1>
 

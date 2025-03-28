@@ -32,7 +32,7 @@ public class JWishlistController {
         System.out.println("user 컨트롤러 = " + user);
         
 //        if (user == null) {
-//            return "redirect:/login";
+//            return "redirect:/login.do";
 //        }
         wishlistService.addWishlist(user.getUserId(), carInfoId);
         // 등록 후 어디로 이동할지(차량 상세나 목록) 결정
@@ -45,7 +45,7 @@ public class JWishlistController {
                                  HttpSession session) {
         UserDto user = (UserDto) session.getAttribute("loginUser");
         if (user == null) {
-            return "redirect:/login";
+            return "redirect:/login.do";
         }
         wishlistService.removeWishlist(user.getUserId(), carInfoId);
         return "redirect:/userList"; // 취향에 맞게
@@ -56,7 +56,7 @@ public class JWishlistController {
     public String myWishlist(HttpSession session, Model model) {
         UserDto user = (UserDto) session.getAttribute("loginUser");
         if (user == null) {
-            return "redirect:/login";
+            return "redirect:/login.do";
         }
         List<CarListDto> wishlistCars = wishlistService.getWishlistCars(user.getUserId());
         model.addAttribute("wishlistCars", wishlistCars);

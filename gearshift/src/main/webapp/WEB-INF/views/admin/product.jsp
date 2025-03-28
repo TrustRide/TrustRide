@@ -41,7 +41,7 @@
             </tr>
         </c:forEach>
     </table>
-    <a href="productAdd.jsp">새 상품 추가</a>
+    <a href="carRegisterForm.jsp">새 상품 추가</a>
 </main>
 </body>
 </html>
