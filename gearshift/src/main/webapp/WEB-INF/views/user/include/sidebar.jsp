@@ -1,29 +1,37 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
 
-<aside class="sidebar">
-    <div>
-        <h3>주문목록</h3>
+<!-- ✅ 마이페이지 sidebar 전용 CSS -->
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/sidebar.css" />
+
+<nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top" style="z-index:3;width:250px;" id="mySidebar">
+    <div class="w3-container w3-padding-16">
+        <h3 class="w3-wide"><b>MY PAGE</b></h3>
     </div>
-    <ul>
-        <li><h4>MY 쇼핑</h4></li>
 
-        <li><a href="/gearshift/user/orders/status/orderList">주문목록/배송조회</a></li>
-        <li><a href="/gearshift/user/orders/refundable">환불/환불내역</a></li>
 
-        <li><h4>MY 혜택</h4></li>
-        <li><a href="#">할인코드</a></li>
-        <li><h4>MY 활동</h4></li>
-        <li><a href="${pageContext.request.contextPath}/user/review/list">리뷰관리</a></li>
-        <li><a href="#">찜 리스트</a></li>
-        <li><h4>MY 정보</h4></li>
-        <li><a href="${pageContext.request.contextPath}/user/userForm">개인정보확인/수정</a></li>
-    </ul>
-</aside>
+    <div class="mypage-section">
+        <div class="mypage-section-title">MY 쇼핑</div>
+        <a href="${pageContext.request.contextPath}/user/orders/status/orderList" class="mypage-link">주문목록/배송조회</a>
+        <a href="${pageContext.request.contextPath}/user/orders/refundable" class="mypage-link">환불/환불내역</a>
+    </div>
 
-</body>
-</html>
+    <div class="mypage-section">
+        <div class="mypage-section-title">MY 혜택</div>
+        <a href="${pageContext.request.contextPath}/user/coupons/list" class="mypage-link">쿠폰함</a>
+    </div>
+
+    <div class="mypage-section">
+        <div class="mypage-section-title">MY 활동</div>
+        <a href="${pageContext.request.contextPath}/user/inquiry" class="mypage-link">문의하기</a>
+        <a href="${pageContext.request.contextPath}/user/review/list" class="mypage-link">리뷰하기</a>
+        <a href="${pageContext.request.contextPath}/wishlist/list" class="mypage-link">찜 리스트</a>
+    </div>
+
+    <div class="mypage-section">
+        <div class="mypage-section-title">MY 정보</div>
+        <a href="${pageContext.request.contextPath}/user/userForm" class="mypage-link">개인정보확인/수정</a>
+    </div>
+</nav>
+
+
+
