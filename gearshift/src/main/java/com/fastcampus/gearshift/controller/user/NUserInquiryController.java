@@ -1,5 +1,6 @@
 package com.fastcampus.gearshift.controller.user;
 
+import com.fastcampus.gearshift.dto.InquiryDto;
 import com.fastcampus.gearshift.dto.NInquiryDto;
 import com.fastcampus.gearshift.dto.UserDto;
 import com.fastcampus.gearshift.service.NInquiryService;
@@ -29,7 +30,7 @@ public class NUserInquiryController {
             return "redirect:/login.do";
         }
 
-        List<NInquiryDto> list = inquiryService.getAll();
+        List<NInquiryDto> list = inquiryService.findByUserId(loginUser.getUserId());
         model.addAttribute("inquiryList", list);
         return "user/userInquiry";
     }
@@ -71,17 +72,14 @@ public class NUserInquiryController {
         return "redirect:/user/inquiry";
     }
 
-    // 4. 상세 조회
-    @GetMapping("/read")
-    public String read(@RequestParam("inquiryId") Integer inquiryId, Model model, HttpSession session) {
-        UserDto loginUser = (UserDto) session.getAttribute("loginUser");
-        if (loginUser == null) return "redirect:/login.do";
-
-        NInquiryDto dto = inquiryService.getById(inquiryId);
-        model.addAttribute("inquiry", dto);
-
-        return "user/userInquiryForm";
+    @GetMapping("/read/{inquiryId}")
+    public String readInquiry(@PathVariable Integer inquiryId, Model model) {
+        NInquiryDto inquiry = inquiryService.getById(inquiryId);
+        model.addAttribute("inquiry", inquiry);
+        return "user/userInquiryDetail";
     }
+
+
 
     // 5. 수정 폼 진입
     @GetMapping("/modify")

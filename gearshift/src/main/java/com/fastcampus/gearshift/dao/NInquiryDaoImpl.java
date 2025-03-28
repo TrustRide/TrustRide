@@ -15,8 +15,8 @@ public class NInquiryDaoImpl implements NInquiryDao {
     private SqlSessionTemplate sqlSession;
 
     @Override
-    public List<NInquiryDto> findAll() {
-        return sqlSession.selectList(NAMESPACE + ".findAll");
+    public List<NInquiryDto> findByUserId(Integer userId) {
+        return sqlSession.selectList(NAMESPACE + ".findByUserId", userId);
     }
 
     @Override

@@ -27,7 +27,7 @@ public class JIssuedCouponController {
     @GetMapping("/list")
     public String listUserCoupons(HttpSession session, Model model) {
         // 세션에서 로그인 사용자 객체 꺼내기
-        UserDto loginUser = (UserDto) session.getAttribute("loginUser");
+        UserDto loginUser = (UserDto)session.getAttribute("loginUser");
         if (loginUser == null) {
             // 로그인되지 않았다면 로그인 페이지로 리다이렉트
             return "redirect:/login.do";

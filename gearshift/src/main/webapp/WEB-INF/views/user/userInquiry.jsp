@@ -21,7 +21,7 @@
     </thead>
     <tbody>
     <c:forEach var="inq" items="${inquiryList}">
-        <tr onclick="location.href='${pageContext.request.contextPath}/user/inquiry/read?inquiryId=${inq.inquiryId}'" style="cursor:pointer;">
+        <tr onclick="location.href='${pageContext.request.contextPath}/user/inquiry/read/${inq.inquiryId}'" style="cursor:pointer;">
             <td>${inq.inquiryId}</td>
             <td>${inq.inquiryName}</td>
             <td>${inq.inquiryType}</td>

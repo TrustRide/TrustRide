@@ -3,6 +3,7 @@ package com.fastcampus.gearshift.dto;
 import lombok.*;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 @Getter
 @Setter
@@ -21,4 +22,9 @@ public class NInquiryDto {
     private Boolean isDeleted;
     private Timestamp createdAt;
     private Timestamp updatedAt;
+
+    // 댓글 포함용
+    private List<InquiryCommentDto> comments;
 }
+
+

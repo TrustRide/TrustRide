@@ -15,6 +15,9 @@
   <label>제목</label><br/>
   <input type="text" name="inquiryName" value="${inquiry.inquiryName}" required/><br/>
 
+  <label>모델명</label><br/>
+  <input type="text" name="inquiryName" value="${inquiry.modelName}" required/><br/>
+
   <label>문의 내용</label><br/>
   <textarea name="inquiryContent" rows="5" required>${inquiry.inquiryContent}</textarea><br/>
 
@@ -33,6 +36,7 @@
       <input type="hidden" name="inquiryId" value="${inquiry.inquiryId}" />
       <button type="submit">수정하기</button>
     </form>
+
   </c:if>
   <c:if test="${inquiry.inquiryId == null}">
     <button type="submit">등록</button>
