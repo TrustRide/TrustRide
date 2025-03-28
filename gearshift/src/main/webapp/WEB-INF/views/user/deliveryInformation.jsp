@@ -11,390 +11,7 @@
 <html>
 <head>
     <title>배송지 입력</title>
-<style>
-    /* ✅ 전체 레이아웃 및 공통 스타일 */
-    body {
-        font-family: Arial, sans-serif;
-        background: #fff;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-    }
-
-    .container {
-        display: flex;
-        justify-content: space-between;
-        width: 90%;
-        max-width: 1200px;
-        margin: 20px auto;
-        flex: 1;
-    }
-
-    h2, h3 {
-        font-size: 22px;
-        font-weight: bold;
-        margin-bottom: 10px;
-    }
-
-    label {
-        font-weight: bold;
-        margin-top: 20px;
-        display: block;
-    }
-
-    input, select {
-        width: 100%;
-        padding: 12px;
-        margin-top: 5px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        font-size: 14px;
-        background-color: #f9f9f9;
-    }
-
-    button {
-        cursor: pointer;
-    }
-
-    /* ✅ 헤더 스타일 */
-    header {
-        background: white;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        padding: 15px 0;
-        width: 100%;
-    }
-
-    .header-content {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 90%;
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-
-    .logo-container {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-    }
-
-    .logo-img {
-        height: 50px;
-    }
-
-    .logo {
-        font-size: 24px;
-        font-weight: bold;
-        color: red;
-    }
-
-    nav ul {
-        display: flex;
-        list-style: none;
-        gap: 20px;
-        align-items: center;
-        margin: 0;
-        padding: 0;
-    }
-
-    nav a {
-        text-decoration: none;
-        color: #555;
-        font-size: 16px;
-    }
-
-    .search-bar {
-        padding: 8px 12px;
-        border: 1px solid #555;
-        border-radius: 4px;
-    }
-
-    /* ✅ 폼 섹션 */
-    .form-section {
-        width: 65%;
-        background: white;
-        padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-
-    .submit-btn {
-        background: #c00;
-        color: white;
-        padding: 15px;
-        border-radius: 5px;
-        border: none;
-        width: 100%;
-        margin-top: 30px;
-        font-size: 16px;
-    }
-
-
-    .summary-section {
-        width: 30%;
-        background: white;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .order-box {
-        width: 100%;
-        max-width: 350px;
-        background: white;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        text-align: center;
-    }
-
-    .order-box img {
-        width: 100%;
-        border-radius: 5px;
-        margin-bottom: 15px;
-    }
-
-    .info-buttons {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-        margin-top: 15px;
-    }
-
-    .info-button {
-        border: 1px solid #ddd;
-        background: white;
-        border-radius: 12px;
-        font-weight: bold;
-        padding: 12px;
-    }
-
-    .info-button:hover {
-        background: #f1f1f1;
-    }
-
-    .price-box {
-        font-size: 16px;
-        color: #555;
-        margin-top: 15px;
-        text-align: left;
-    }
-
-    .price-box div {
-        margin-bottom: 10px;
-    }
-
-    .total-price {
-        font-weight: bold;
-        color: red;
-        font-size: 18px;
-    }
-
-    .total-price span {
-        font-size: 22px;
-        color: red;
-    }
-
-    /* ✅ 주소입력 */
-    .address_wrap {
-        margin-top: 20px;
-    }
-
-    .address_button {
-        border: 1px solid #ccc;
-        padding: 12px;
-        margin-top: 5px;
-        border-radius: 5px;
-        background: white;
-        text-align: center;
-    }
-
-    /* ✅ 면허 입력 */
-    .license-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
-        margin-bottom: 20px;
-    }
-
-    /* ✅ 약관 동의 */
-    .terms-container {
-        background: #f9f9f9;
-        padding: 20px;
-        border-radius: 10px;
-        margin-top: 30px;
-    }
-
-    .terms-box {
-        display: flex;
-        justify-content: space-between;
-        padding: 10px 0;
-        border-bottom: 1px solid #ddd;
-    }
-
-    .terms-box:last-child {
-        border-bottom: none;
-    }
-
-    .terms-box label {
-        font-size: 14px;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-
-    .terms-box a {
-        color: darkred;
-        font-size: 13px;
-    }
-
-    /* ✅ 모달 */
-    /* 모달 스타일 */
-    .modal {
-        display: none; /* 기본적으로 숨김 */
-        position: fixed;
-        z-index: 1000;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        width: 600px;
-        background: white;
-        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-        padding: 20px;
-        text-align: left;
-        border-radius: 10px;
-        overflow: hidden;
-    }
-
-    /* 모달 콘텐츠 스타일 */
-    .modal-content {
-        position: relative;
-        padding: 20px;
-    }
-
-    /* 닫기 버튼 스타일 */
-    .close {
-        position: absolute;
-        top: 10px;
-        right: 15px;
-        font-size: 22px;
-        cursor: pointer;
-    }
-
-    /* 확인 버튼 스타일 */
-    .confirm-button {
-        width: 100%;
-        background-color: darkred;
-        color: white;
-        border: none;
-        padding: 10px;
-        border-radius: 5px;
-        cursor: pointer;
-        margin-top: 10px;
-    }
-
-    .confirm-button:hover {
-        background-color: #a00;
-    }
-
-    /* 테이블 스타일 */
-    .terms-table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 15px;
-    }
-
-    .terms-table th, .terms-table td {
-        border: 1px solid #ddd;
-        padding: 10px;
-        text-align: left;
-    }
-
-    .terms-table th {
-        background: #f4f4f4;
-        font-weight: bold;
-    }
-
-    /* ✅ 푸터 */
-    .footer {
-        width: 100%;
-        background-color: #f9f9f9;
-        padding: 20px 0;
-        border-top: 1px solid #ddd;
-        font-size: 14px;
-        color: #333;
-        margin-top: auto;
-    }
-
-    .footer-container {
-        max-width: 1000px;
-        margin: 0 auto;
-        padding: 0 20px;
-    }
-
-    .footer-logo {
-        font-size: 18px;
-        font-weight: bold;
-        color: red;
-        margin-bottom: 10px;
-    }
-
-
-
-    /* 모달 스타일 */
-    .modal {
-        display: none; /* 기본적으로 숨김 */
-        position: fixed;
-        z-index: 1000;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        width: 80%;
-        max-width: 500px;
-        background: white;
-        padding: 20px;
-        text-align: left;
-        border-radius: 10px;
-        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-        overflow: hidden;
-    }
-
-    /* 모달 콘텐츠 스타일 */
-    .modal-content {
-        position: relative;
-        padding: 20px;
-    }
-
-    /* 닫기 버튼 스타일 */
-    .close {
-        position: absolute;
-        top: 10px;
-        right: 15px;
-        font-size: 22px;
-        cursor: pointer;
-    }
-
-    /* 확인 버튼 스타일 */
-    .confirm-button {
-        width: 100%;
-        background-color: darkred;
-        color: white;
-        border: none;
-        padding: 10px;
-        border-radius: 5px;
-        cursor: pointer;
-        margin-top: 10px;
-    }
-
-    .confirm-button:hover {
-        background-color: #a00;
-    }
-
-</style>
-
+    <link rel="stylesheet" href="<c:url value='/resources/css/user/deliveryInformation.css' />">
 
 </head>
 
@@ -402,7 +19,7 @@
 <header>
     <div class="container header-content">
         <div class="logo-container">
-            <a href="/gearshift/main"><img src="<c:url value='/resources/img/trustride.png' />" alt="Trust Ride Logo" class="logo-img"></a>
+            <a href="/gearshift/"><img src="<c:url value='/resources/img/trustride.png' />" alt="Trust Ride Logo" class="logo-img"></a>
             <h1 class="logo">Trust Ride</h1>
         </div>
 
@@ -436,7 +53,14 @@
 
         <h2><%= title %>를 선택했습니다.</h2> <!-- 선택한 버튼에 따라 제목 변경됨 -->
         <p>이제 명의자 정보와 배송 정보를 입력해 주세요.</p>
-        <form action="/gearshift/payment/select" method="post">
+
+
+
+        <form action="/gearshift/user/payment/select" method="post">
+            <!-- 명의자 타입 여부 -->
+            <input type="hidden" name="ownershipType" value="${carDto.ownershipType}">
+            <input type="hidden" name="isJointOwnerShip" value="${carDto.isJointOwnerShip}">
+
             <input type="hidden" name="userId" value="${userDto.userId}">
 
             <!--명의 종류 값 넘김-->
@@ -522,6 +146,7 @@
                     <input type="date" id="licenseExpiryDate" name="licenseExpiryDate" readonly>
                 </div>
             </div>
+
 
 
 
@@ -620,11 +245,7 @@
             <div class="terms-container">
                 <h3>약관 동의</h3>
 
-                <!-- 전체 동의 -->
-                <label class="terms-main">
-                    <input type="checkbox" id="allAgree" onclick="toggleAllCheckboxes(this)">
-                    <strong>전체 동의하기</strong>
-                </label>
+
 
                 <!-- 개별 약관 -->
                 <div class="terms-box">
@@ -674,7 +295,29 @@
 
     <div class="summary-section">
         <div class="order-box">
-            <img src="<c:url value='/resources/img/3car3.png' />" alt="Trust Ride Logo" class="logo-img">
+            <hr>
+
+            <div class="order-progress">
+
+                <div class="step-title">배송지 입력</div> <!--  단계 이름 -->
+                <div class="progress-bar-wrapper">
+                    <div class="progress-bar-fill" style="width: 50%;"></div> <!--  2단계 진행률 -->
+                </div>
+                <div class="step-count">2/4</div> <!--  단계 표시 -->
+            </div>
+
+
+            <c:choose>
+                <c:when test="${not empty carDto.images}">
+                    <img src="${pageContext.request.contextPath}${carDto.images[0].imageUrl}" alt="대표 이미지"
+                         style="width: 100%; max-width: 320px; border-radius: 8px; margin-bottom: 15px;" />
+                </c:when>
+                <c:otherwise>
+                    <img src="${pageContext.request.contextPath}/resources/img/자동차7.png" alt="기본 이미지"
+                         style="width: 100%; max-width: 320px; border-radius: 8px; margin-bottom: 15px;" />
+                </c:otherwise>
+            </c:choose>
+
             <h3>${carDto.modelName}</h3>
             <p>43다5558 | ${carDto.manufactureYear} ·${carDto.mileage} ·  ${carDto.fuelType}</p>
 
@@ -686,6 +329,34 @@
             </div>
 
             <hr>
+            <div class="price-summary">
+                <h3>예상 결제 금액</h3>
+                <div class="price-item">
+                    <span class="label">차량가격</span>
+                    <span class="value">${carDto.carPrice}원</span>
+                </div>
+
+
+                <div class="price-item">
+                    <span class="label">이전등록비</span>
+                    <span class="value">${carDto.previousRegistrationFee}원</span>
+                </div>
+                <div class="price-item">
+                    <span class="label">등록대행수수료</span>
+                    <span class="value">${carDto.agencyFee}원</span>
+                </div>
+                <div class="price-item">
+                    <span class="label">배송비</span>
+                    <span class="value">0</span>
+                </div>
+                <hr>
+                <div class="price-item total">
+                    <span class="label">총 합계</span>
+                    <span class="value">${carDto.carAmountPrice}원</span>
+                </div>
+            </div>
+
+
 
             <div>차량가격: <span>${carDto.carPrice}원</span></div>
             <div>이전등록비: <span>${carDto.previousRegistrationFee}원</span></div>
@@ -857,310 +528,12 @@
 </footer>
 
 
+
+
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
+<script src="${pageContext.request.contextPath}/resources/js/deliveryInformation.js"></script>
 
-
-<script>
-    document.querySelector(".submit-btn").addEventListener("click", function(event) {
-        // 선택된 배송원 라디오 버튼 찾기
-        const selectedDelivery = document.querySelector('input[name="delivery"]:checked');
-
-        if (selectedDelivery) {
-            // 선택된 배송원 정보 가져오기 (value값)
-            const deliveryInfo = selectedDelivery.value.split(',');
-
-            // 배송원 정보 (ID, 이름, 전화번호)
-            const deliveryName = deliveryInfo[0];
-            const deliveryPhone = deliveryInfo[1];
-
-
-            // hidden input 필드에 값 넣기
-            document.querySelector("[name='deliveryDriverName']").value = deliveryName;
-            document.querySelector("[name='driverPhoneNumber']").value = deliveryPhone;
-
-            // 폼 제출
-
-        } else {
-            // 배송원 선택 안한 경우 에러 메시지 표시
-            openModal("배송원을 선택해 주세요.");
-            event.preventDefault(); // 폼 제출 막기
-        }
-    });
-</script>
-
-
-<script>
-    function openBenefitModal() {
-        document.getElementById("benefitModal").style.display = "block";
-    }
-
-    function closeBenefitModal() {
-        document.getElementById("benefitModal").style.display = "none";
-    }
-
-    // 바깥 클릭 시 모달 닫기
-    window.onclick = function(event) {
-        let modal = document.getElementById("benefitModal");
-        if (event.target === modal) {
-            modal.style.display = "none";
-        }
-    }
-</script>
-
-
-<script>
-    function openTermsModal() {
-        document.getElementById("termsModal").style.display = "block";
-    }
-
-    function closeTermsModal() {
-        document.getElementById("termsModal").style.display = "none";
-    }
-
-    // 모달 바깥 클릭 시 닫기
-    window.onclick = function(event) {
-        let modal = document.getElementById("termsModal");
-        if (event.target === modal) {
-            modal.style.display = "none";
-        }
-    }
-</script>
-
-
-<script>
-    //  "보기" 버튼 클릭 시 모달 열기
-    function openIdentificationModal() {
-        document.getElementById("identificationModal").style.display = "block";
-    }
-
-    //  모달 닫기
-    function closeIdentificationModal() {
-        document.getElementById("identificationModal").style.display = "none";
-    }
-
-    //  바깥 클릭 시 모달 닫기
-    window.onclick = function(event) {
-        let modal = document.getElementById("identificationModal");
-        if (event.target === modal) {
-            modal.style.display = "none";
-        }
-    }
-</script>
-
-<script>
-    // 모달 창 열기
-    function openModal(message) {
-        document.getElementById("errorMessage").innerText = message;
-        document.getElementById("errorModal").style.display = "block";
-    }
-
-    // 모달 창 닫기
-    function closeModal() {
-        document.getElementById("errorModal").style.display = "none";
-    }
-
-    // 유효성 검사 함수
-    function validateForm(event) {
-        event.preventDefault(); // 기본 제출 동작 방지
-
-        let userName = document.querySelector("[name='userName']").value.trim();
-        let userPhoneNumber = document.querySelector("[name='userPhoneNumber']").value.trim();
-        let memberResident = document.querySelector("[name='memberResident']").value.trim();
-        let memberAddr1 = document.querySelector("[name='memberAddr1']").value.trim();
-        let memberAddr2 = document.querySelector("[name='memberAddr2']").value.trim();
-        let deliveryDate = document.querySelector("[name='deliveryDate']").value.trim();
-        let memberLicense = document.querySelector("[name='memberLicense']").value.trim();
-        let licenseNumber = document.querySelector("[name='licenseNumber']").value.trim();
-        let licenseIssuedDate = document.querySelector("[name='licenseIssuedDate']").value.trim();
-        let licenseExpiryDate = document.querySelector("[name='licenseExpiryDate']").value.trim();
-
-        // 필수 입력값이 하나라도 비어있는 경우
-        if (!userName || !userPhoneNumber || !memberResident || !memberAddr1 || !memberAddr2 || !deliveryDate || !memberLicense || !licenseNumber || !licenseIssuedDate || !licenseExpiryDate) {
-            openModal("모든 필수 정보를 입력해 주세요.");
-            return false; // 제출 방지
-        }
-
-        // 주민등록번호 길이 검사 (13자리)
-        if (memberResident.length !== 13) {
-            openModal("주민등록번호는 13자리여야 합니다.");
-            return false;
-        }
-
-
-
-        // 면허 번호 유효성 검사 (예: 12-34-567890)
-        let licenseRegex = /^[0-9]{2}-[0-9]{2}-[0-9]{6}$/;
-        if (!licenseRegex.test(licenseNumber)) {
-            openModal("면허 번호는 형식에 맞게 입력해 주세요 (예: 12-34-567890).");
-            return false;
-        }
-
-        // 모든 검사 통과 시 폼 제출
-
-    }
-
-    // 폼 제출 버튼에 이벤트 리스너 추가
-
-</script>
-
-<script>
-    function execution_daum_address() {
-        new daum.Postcode({
-            oncomplete: function (data) {
-                var addr = '';
-                var extraAddr = '';
-
-                if (data.userSelectedType === 'R') {
-                    addr = data.roadAddress;
-                } else {
-                    addr = data.jibunAddress;
-                }
-
-                if (data.userSelectedType === 'R') {
-                    if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) {
-                        extraAddr += data.bname;
-                    }
-                    if (data.buildingName !== '' && data.apartment === 'Y') {
-                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-                    }
-                    if (extraAddr !== '') {
-                        extraAddr = ' (' + extraAddr + ')';
-                    }
-                    addr += extraAddr;
-                }
-
-                document.querySelector("[name=holderAddr1]").value = data.zonecode;
-                document.querySelector("[name=holderAddr2]").value = addr;
-                document.querySelector("[name=holderAddr3]").removeAttribute("readonly");
-                document.querySelector("[name=holderAddr3]").focus();
-            }
-        }).open();
-    }
-
-</script>
-
-<script>
-    // 오늘 날짜를 구해서 input의 min 값으로 설정 (과거 날짜 선택 불가)
-    document.addEventListener("DOMContentLoaded", function() {
-        let today = new Date().toISOString().split("T")[0];
-        document.getElementById("deliveryDate").setAttribute("min", today);
-    });
-</script>
-
-
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        let today = new Date().toISOString().split("T")[0];
-
-        // 면허 발급일은 과거 날짜 선택 가능, 하지만 미래 날짜는 제한
-        document.getElementById("licenseIssuedDate").setAttribute("max", today);
-    });
-
-    // 면허 발급일 선택 시, 만료일 자동 계산 (10년 후)
-    function setLicenseExpiryDate() {
-        let issueDate = document.getElementById("licenseIssuedDate").value;
-        if (issueDate) {
-            let expiryDate = new Date(issueDate);
-            expiryDate.setFullYear(expiryDate.getFullYear() + 10); // 10년 후 만료
-            document.getElementById("licenseExpiryDate").value = expiryDate.toISOString().split("T")[0];
-        }
-    }
-
-    // 면허 발급일 선택 시 만료일 자동 변경되도록 이벤트 리스너 추가
-    document.getElementById("licenseIssuedDate").addEventListener("change", setLicenseExpiryDate);
-</script>
-
-<script>
-    // "보기" 버튼 클릭 시 개인정보 제3자 제공/이용 동의 모달 열기
-    function openThirdPartyModal() {
-        document.getElementById("thirdPartyModal").style.display = "block";
-    }
-
-    //  모달 닫기
-    function closeThirdPartyModal() {
-        document.getElementById("thirdPartyModal").style.display = "none";
-    }
-
-    // 바깥 클릭 시 모달 닫기
-    window.onclick = function(event) {
-        let modal = document.getElementById("thirdPartyModal");
-        if (event.target === modal) {
-            modal.style.display = "none";
-        }
-    }
-</script>
-
-<script>
-    // 배송원 정보 모달 열기
-    function openDeliveryModal(deliveryId) {
-        // 해당 배송원 모달을 표시
-        var modal = document.getElementById("deliveryModal" + deliveryId);
-        if (modal) {
-            modal.style.display = "block";
-        }
-    }
-
-    // 모달 닫기
-    function closeModal(deliveryId) {
-        var modal = document.getElementById("deliveryModal" + deliveryId);
-        if (modal) {
-            modal.style.display = "none";
-        }
-    }
-
-    // 바깥 클릭 시 모달 닫기
-    window.onclick = function(event) {
-        for (let i = 1; i <= 4; i++) {
-            let modal = document.getElementById("deliveryModal" + i);
-            if (event.target === modal) {
-                modal.style.display = "none";
-            }
-        }
-    }
-</script>
-<script>
-    // 체크박스 값 업데이트 함수
-    function updateCheckboxValue(checkbox) {
-        checkbox.value = checkbox.checked ? "true" : "false";
-    }
-
-    // 전체 동의 체크박스 클릭 시, 개별 체크박스 자동 체크/해제
-    function toggleAllCheckboxes(masterCheckbox) {
-        const checkboxes = document.querySelectorAll('.agreement-checkbox');
-        checkboxes.forEach(cb => {
-            cb.checked = masterCheckbox.checked;
-            updateCheckboxValue(cb);
-        });
-    }
-
-    // 유효성 검사 함수
-    function validateForm(event) {
-        event.preventDefault(); // 기본 제출 동작 방지
-
-        // 약관 동의 체크박스 값 확인
-        const agreePrivacy = document.querySelector("[name='agreePrivacy']").checked;
-        const agreeResident = document.querySelector("[name='agreeResident']").checked;
-        const allAgree = document.querySelector("#allAgree").checked;
-
-        // 전체 동의 체크박스가 체크되면, 필수 약관도 자동으로 체크하도록 설정
-        if (allAgree) {
-            document.querySelector("[name='agreePrivacy']").checked = true;
-            document.querySelector("[name='agreeResident']").checked = true;
-        }
-
-        // 필수 동의 항목이 체크되지 않으면 에러 표시
-        if (!agreePrivacy || !agreeResident) {
-            openModal("모든 필수 약관에 동의해 주세요.");
-            return false; // 폼 제출 방지
-        }
-
-        // 모든 검사 통과 시 폼 제출
-        document.querySelector("form").submit();
-    }
-
-</script>
 
 
 

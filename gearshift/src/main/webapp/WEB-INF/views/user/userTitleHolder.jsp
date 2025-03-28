@@ -196,7 +196,7 @@
         let isJoint = selectedTitle.includes("공동") ? "true" : "false";
 
         // title + carInfoId + isJointHolder 전달
-        window.location.href = "/gearshift/delivery?title=" + encodeURIComponent(selectedTitle)
+        window.location.href = "/gearshift/user/delivery?title=" + encodeURIComponent(selectedTitle)
             + "&carInfoId=" + carInfoId
             + "&isJointHolder=" + isJoint;
     }

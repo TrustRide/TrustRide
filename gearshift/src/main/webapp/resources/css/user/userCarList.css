@@ -221,13 +221,14 @@ nav a {
 }
 .car-page-layout {
     display: flex;
-    align-items: flex-start;
-    /* 기존 값보다 줄이기 (1400 → 1200) */
+    align-items: center;  /* ← 위에서 중앙으로 변경 */
     max-width: 1200px;
     margin: 0 auto;
-    padding: 40px 20px; /* 좌우 패딩 살짝 추가 */
+    padding: 40px 20px;
     gap: 40px;
+    min-height: 600px;  /* ← 중앙 정렬을 위한 높이 확보 */
 }
+
 .category-tier-1 {
     font-weight: bold;
     background-color: #f8f8f8;
