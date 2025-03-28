@@ -115,7 +115,6 @@
     </select>
 
 
-<<<<<<< Updated upstream
     <!-- 카테고리 조회 -->
     <select id="selectListByCate" resultType="com.fastcampus.gearshift.dto.CarListDto">
         SELECT
@@ -140,7 +139,7 @@
         FROM car_information
         WHERE is_deleted = false AND cate_code = #{cateCode}
     </select>
-=======
+
     <resultMap id="CarInfoWithImagesResultMap" type="com.fastcampus.gearshift.dto.CarInfoDto">
         <id property="carInfoId" column="car_info_id"/>
         <result property="modelName" column="model_name"/>
@@ -167,7 +166,7 @@
             <result property="isThumbnail" column="is_thumbnail"/>
         </collection>
     </resultMap>
->>>>>>> Stashed changes
+
 
 
 
