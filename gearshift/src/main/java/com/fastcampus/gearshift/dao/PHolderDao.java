@@ -26,14 +26,11 @@ public interface PHolderDao {
 
     List<CarListDto> carselect(int offset, int pageSize);
 
-<<<<<<< Updated upstream
+
      int getCarCount();
 
     List<CarListDto> carselectByCate(String cateCode, int offset, int pageSize);
 
     int getCarCountByCate(String cateCode);
 
-=======
-    int getCarCount();
->>>>>>> Stashed changes
 }
