@@ -62,6 +62,7 @@
             <span class="close" id="closeModal">&times;</span>
             <h3>✉️ 이메일 인증</h3>
             <p>이메일로 발송된 인증번호를 입력해주세요.</p>
+            <p id="emailTimer" style="color: #555; font-weight: bold;">남은 시간: 03:00</p>
             <div class="input-with-button">
                 <input type="text" id="emailCodeInput" placeholder="인증번호 입력">
                 <button id="verifyEmailCodeBtn">확인</button>
@@ -144,11 +145,12 @@
                 });
             }
             // "이메일 인증" 버튼 누르면 모달 열기
-/*            else {
+            else {
                 emailModal.style.display = "block";
+                document.getElementById("emailCodeInput").value = '';
 
                 // 인증메일 전송 요청
-                fetch("<%-- ${pageContext.request.contextPath} --%>/send-auth-email", {
+                fetch("${pageContext.request.contextPath}/send-auth-email", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
@@ -159,7 +161,9 @@
                 .then(data => {
                     if (data.success) {
                         console.log("인증 메일 전송 성공!");
-                        // 필요하면 UI에 표시도 가능
+
+                        startEmailTimer();
+                        document.getElementById("verifyEmailCodeBtn").disabled = false;
                     } else {
                         console.error("인증 메일 전송 실패!");
                         emailModal.style.display = "none";
@@ -171,14 +175,6 @@
                     emailModal.style.display = "none";
                     alert("서버 오류로 인증 메일 전송에 실패했습니다.");
                 });
-            }*/
-        });
-
-        // "이메일 인증" 버튼 누르면 모달 열기
-        emailBtn.addEventListener("click", function () {
-            if (isEmailChecked) {
-                // 인증메일 전송 fetch 성공 시
-                emailModal.style.display = "block";
             }
         });
 
@@ -190,14 +186,14 @@
 
 
         // 이메일 인증
-/*        const verifyEmailCodeBtn = document.getElementById("verifyEmailCodeBtn");
+        const verifyEmailCodeBtn = document.getElementById("verifyEmailCodeBtn");
 
         verifyEmailCodeBtn.addEventListener("click", function () {
             const email = document.getElementById("email").value;
             const code = document.getElementById("emailCodeInput").value;
             const emailCodeMessage = document.getElementById("emailCodeMessage");
 
-            fetch("<%-- ${pageContext.request.contextPath} --%>/verify-email-code", {
+            fetch("${pageContext.request.contextPath}/verify-email-code", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -236,7 +232,7 @@
                     console.error("인증번호 확인 중 오류:", error);
                     alert("서버 오류로 인증 확인에 실패했습니다.");
                 });
-        });*/
+        });
 
 
 
@@ -332,10 +328,10 @@
                 msg.style.display !== "none" // 숨겨진 건 무시
             );
 
-//            const isEmailReadonly = emailInput.readOnly; // 이메일 인증 관련 주석 처리
+            const isEmailReadonly = emailInput.readOnly; // 이메일 인증 관련 주석 처리
 
-//            if (allFilled && !hasRedMessage && isEmailReadonly) { // 이메일 인증 관련 주석 처리
-            if (allFilled && !hasRedMessage) {
+            if (allFilled && !hasRedMessage && isEmailReadonly) { // 이메일 인증 관련 주석 처리
+//            if (allFilled && !hasRedMessage) {
                 signupBtn.classList.add("active"); // 빨간색으로 변경
                 signupBtn.removeAttribute("disabled"); // 버튼 활성화
             } else {
@@ -348,6 +344,43 @@
         inputs.forEach(input => {
             input.addEventListener("input", checkInputs);
         });
+
+
+
+
+        // 이메일 3분 내 인증
+        let emailTimer; // 타이머 변수
+        let timeLeft = 180; // 3분 = 180초
+
+        function startEmailTimer() {
+            document.getElementById("verifyEmailCodeBtn").disabled = false;
+            document.getElementById("emailTimer").textContent = "남은 시간: 03:00";
+
+            clearInterval(emailTimer); // 기존 타이머 제거 (중복 방지)
+            timeLeft = 180;
+
+            updateEmailTimerDisplay();
+
+            emailTimer = setInterval(() => {
+                timeLeft--;
+
+                if (timeLeft <= 0) {
+                    clearInterval(emailTimer);
+                    document.getElementById("emailTimer").textContent = "⏰ 인증 시간이 만료되었습니다.";
+                    document.getElementById("verifyEmailCodeBtn").disabled = true;
+                    return;
+                }
+
+                updateEmailTimerDisplay();
+            }, 1000);
+        }
+
+        function updateEmailTimerDisplay() {
+            console.log("timeLeft:", timeLeft, typeof timeLeft);
+            const minutes = String(Math.floor(timeLeft / 60)).padStart(2, '0');
+            const seconds = String(timeLeft % 60).padStart(2, '0');
+            document.getElementById("emailTimer").textContent = "남은 시간: " + minutes + ":" + seconds;
+        }
 
     </script>
 </body>

@@ -42,12 +42,12 @@
         </form>
 
         <div class="links">
-            <a href="#">아이디 찾기</a> |
-            <a href="#">비밀번호 찾기</a> |
+<%--            <a href="#">아이디 찾기</a> |--%>
+<%--            <a href="#">비밀번호 찾기</a> |--%>
             <a href="${pageContext.request.contextPath}/register">회원가입</a>
         </div>
         <br>
-        <div class="quick-login">
+        <div class="quick-login" style="display: none">
             <p>간편 로그인</p>
             <img src="${pageContext.request.contextPath}/img/login/btn_naver.svg" alt="네이버 로그인">
             <img src="${pageContext.request.contextPath}/img/login/btn_kakao.svg" alt="카카오 로그인">
@@ -55,7 +55,12 @@
         </div>
     </div>
 
+
     <script>
+        <c:if test="${not empty completeMessage}">
+            alert("${completeMessage}");
+        </c:if>
+
         window.addEventListener("DOMContentLoaded", function () {
             const defaultTab = "${loginType}"; // 'personal' or 'admin'
             switchTab(defaultTab); // 초기 탭 상태 설정
