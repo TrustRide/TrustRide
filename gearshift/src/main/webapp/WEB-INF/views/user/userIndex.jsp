@@ -50,10 +50,7 @@
       <input type="text" name="searchQuery" placeholder="🔍차량을 검색하세요." class="search-bar" style="padding: 10px; border-radius: 4px; border: 1px solid #ddd; flex: 1;">
       <button type="submit" class="search-btn">검색</button>
     </form>
-<<<<<<< Updated upstream
-=======
 
->>>>>>> Stashed changes
   </div>
 
   <form id="logoutForm" action="${pageContext.request.contextPath}/logout" method="post" style="display:none;">
