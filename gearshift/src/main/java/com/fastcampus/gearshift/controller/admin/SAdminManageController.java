@@ -49,11 +49,6 @@ public class SAdminManageController {
     }
 
 
-    @GetMapping("/main")
-    public String loadMainPage(Model model) {
-        return "admin/main";
-    }
-
     @PostMapping("/deactivate")
     @ResponseBody
     public ResponseEntity<String> deactivateAdmin(@RequestBody AdminDto admin) {
