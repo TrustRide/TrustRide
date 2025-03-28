@@ -35,9 +35,26 @@ public class LUserOrderController {
 
     // 현금 결제 후 주문내역/배송조회 페이지 이동
     @PostMapping("/status/cash")
+    public String getOrderHistory(@ModelAttribute LOrderDTO lOrderDTO ,@ModelAttribute PaymentProcessDTO paymentProcessDTO,
+                                  @ModelAttribute LHolderDTO lHolderDTO,  @ModelAttribute DeliveryDTO deliveryDTO, Model model, HttpSession session){
 
-    public String getOrderHistory(@ModelAttribute LOrderDTO lOrderDTO , @ModelAttribute PaymentProcessDTO paymentProcessDTO,
-                                  @ModelAttribute DeliveryDTO deliveryDTO){
+
+        // userId를 session에서 꺼내주기
+        UserDto userDto =  (UserDto)session.getAttribute("loginUser");
+        Integer userId = userDto.getUserId();
+
+        // 명의자 정보 저장
+        holderService.insertHolder(lHolderDTO);
+
+        // 명의자 Id(PK) 가져오기
+        Integer holderId = lHolderDTO.getHolderId();
+
+        // dto에 userId를 넣어준다.
+        lOrderDTO.setUserId(userId);
+
+        // dto에 holderId를 넣어준다.
+        lOrderDTO.setHolderId(holderId);
+
 
         // 주문
         orderService.insertOrder(lOrderDTO);
