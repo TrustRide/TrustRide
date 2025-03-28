@@ -48,9 +48,9 @@
         <h2>차량 명의자를 선택해 주세요.</h2>
 
         <button class="option-button" onclick="selectOption('개인 명의', this)">개인 명의로 등록할게요.</button>
-        <button class="option-button" onclick="selectOption('개인 공동 명의', this)">개인 명의로 등록하고, 공동 명의자가 있어요.</button>
+        <button class="option-button" onclick="selectOption('개인 명의', this)">개인 명의로 등록하고, 공동 명의자가 있어요.</button>
         <button class="option-button" onclick="selectOption('개인사업자 명의', this)">개인사업자 명의로 등록할게요.</button>
-        <button class="option-button" onclick="selectOption('개인사업자 공동 명의', this)">개인사업자 명의로 등록하고, 공동 명의자가 있어요.</button>
+        <button class="option-button" onclick="selectOption('개인사업자 명의', this)">개인사업자 명의로 등록하고, 공동 명의자가 있어요.</button>
         <button class="option-button" onclick="selectOption('법인사업자 명의', this)">법인사업자 명의로 등록할게요.</button>
 
 

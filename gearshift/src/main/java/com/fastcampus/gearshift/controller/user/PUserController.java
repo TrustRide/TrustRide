@@ -119,7 +119,8 @@ public class PUserController {
 
         // 👉 여기서 DTO에 값 주입
         carInfoDto.setOwnershipType(title);
-        carInfoDto.setIsJointOwnerShip(isJointHolder);
+        carInfoDto.getOwnershipType();
+
 
         model.addAttribute("userDto", selectedUser);
         model.addAttribute("carDto", carInfoDto);

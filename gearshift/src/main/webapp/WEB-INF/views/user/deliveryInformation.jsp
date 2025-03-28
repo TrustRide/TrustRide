@@ -59,7 +59,7 @@
         <form action="/gearshift/user/payment/select" method="post">
             <!-- 명의자 타입 여부 -->
             <input type="hidden" name="ownershipType" value="${carDto.ownershipType}">
-            <input type="hidden" name="isJointOwnerShip" value="${carDto.isJointOwnerShip}">
+            <input type="hidden" name="isJointOwnership" value="${carDto.isJointOwnership}">
 
             <input type="hidden" name="userId" value="${userDto.userId}">
 
@@ -188,7 +188,7 @@
                     <p>배송원1 연락처: 010-1234-5678</p>
                     <p>배송원1 주소: 서울시 강남구</p>
                     <p>배송원1 경력: Trust Ride 근무 3년차</p>
-                    <button class="confirm-button" onclick="closeModal(1)">확인</button>
+                    <button class="confirm-button" onclick="closeDeliveryModal(1)">확인</button>
                 </div>
             </div>
 
@@ -204,7 +204,7 @@
                     <p>배송원2 연락처: 010-2345-6789</p>
                     <p>배송원2 주소: 서울시 송파구</p>
                     <p>배송원 2 경력: Trust Ride 근무 2년차</p>
-                    <button class="confirm-button" onclick="closeModal(2)">확인</button>
+                    <button class="confirm-button" onclick="closeDeliveryModal(2)">확인</button>
                 </div>
             </div>
 
@@ -220,7 +220,7 @@
                     <p>배송원3 연락처: 010-3456-7890</p>
                     <p>배송원3 주소: 서울시 강북구</p>
                     <p>배송원 3 경력: Trust Ride 근무 6년차</p>
-                    <button class="confirm-button" onclick="closeModal(3)">확인</button>
+                    <button class="confirm-button" onclick="closeDeliveryModal(3)">확인</button>
                 </div>
             </div>
 
@@ -236,15 +236,13 @@
                     <p>배송원4 연락처: 010-4567-8901</p>
                     <p>배송원4 주소: 서울시 용산구</p>
                     <p>배송원 4 경력: Trust Ride 근무 5년차</p>
-                    <button class="confirm-button" onclick="closeModal(4)">확인</button>
+                    <button class="confirm-button" onclick="closeDeliveryModal(4)">확인</button>
                 </div>
             </div>
 
 
-
             <div class="terms-container">
                 <h3>약관 동의</h3>
-
 
 
                 <!-- 개별 약관 -->
@@ -333,26 +331,29 @@
                 <h3>예상 결제 금액</h3>
                 <div class="price-item">
                     <span class="label">차량가격</span>
-                    <span class="value">${carDto.carPrice}원</span>
+                    <span class="value">${carDto.carPrice}000원</span>
                 </div>
 
 
                 <div class="price-item">
                     <span class="label">이전등록비</span>
-                    <span class="value">${carDto.previousRegistrationFee}원</span>
+                    <span class="value">${carDto.previousRegistrationFee}000원</span>
                 </div>
                 <div class="price-item">
                     <span class="label">등록대행수수료</span>
-                    <span class="value">${carDto.agencyFee}원</span>
+                    <span class="value">${carDto.agencyFee}000원</span>
                 </div>
                 <div class="price-item">
                     <span class="label">배송비</span>
-                    <span class="value">0</span>
+                    <span class="value">0원</span>
+
                 </div>
+
                 <hr>
+
                 <div class="price-item total">
                     <span class="label">총 합계</span>
-                    <span class="value">${carDto.carAmountPrice}원</span>
+                    <span class="value">${carDto.carAmountPrice}000원</span>
                 </div>
             </div>
 
