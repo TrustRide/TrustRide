@@ -42,7 +42,7 @@
             </ul>
         </nav>
 
-        <input type="text" placeholder="🔍차량을 검색하세요." class="search-bar">
+        
     </div>
 </header>
 
@@ -358,11 +358,7 @@
 
 
 
-            <div>차량가격: <span>${carDto.carPrice}원</span></div>
-            <div>이전등록비: <span>${carDto.previousRegistrationFee}원</span></div>
-            <div>등록대행수수료: <span>${carDto.agencyFee}원</span></div>
-            <div>배송비: <span>0원</span></div><hr>
-            <div class="total-price">총 합계: <span>${carDto.carAmountPrice}원</span></div>
+
         </div>
     </div>
 </div>

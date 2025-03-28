@@ -10,7 +10,7 @@
 <header>
     <div class="container header-content">
         <div class="logo-container">
-            <a href="/gearshift/main"><img src="<c:url value='/resources/img/trustride.png' />" alt="Trust Ride Logo" class="logo-img"></a>
+            <a href="/gearshift/"><img src="<c:url value='/resources/img/trustride.png' />" alt="Trust Ride Logo" class="logo-img"></a>
             <h1 class="logo">Trust Ride</h1>
         </div>
         <nav>
@@ -88,8 +88,17 @@
         <div class="car-grid">
             <c:forEach var="car" items="${userCarList}">
                 <div class="car-card">
-                    <a href="/gearshift/carDetail?carInfoId=${car.carInfoId}">
-                        <img src="${pageContext.request.contextPath}/resources/img/자동차7.png" alt="Car Image" />
+                    <a href="/gearshift/carDetail?carInfoId=${car.carInfoId}" class="car-card">
+
+                        <c:choose>
+                            <c:when test="${not empty car.thumbnailUrl}">
+                                <img src="${pageContext.request.contextPath}${car.thumbnailUrl}" alt="Car Image">
+                            </c:when>
+                            <c:otherwise>
+                                <img src="${pageContext.request.contextPath}/resources/img/자동차7.png" alt="기본 이미지">
+                            </c:otherwise>
+                        </c:choose>
+
                         <div class="car-card-content">
                             <h2>${car.modelName}</h2>
                             <h4>${car.manufactureYear}년식 · ${car.mileage}km · ${car.fuelType}</h4>

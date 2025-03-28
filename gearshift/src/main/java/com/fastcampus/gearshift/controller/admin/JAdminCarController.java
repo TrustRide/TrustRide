@@ -64,7 +64,7 @@ public class JAdminCarController {
     ) {
 
         // 차량 총 합계
-        carDto.setCarAmountPrice(carDto.getCarPrice()+carDto.getAgencyFee()+carDto.getMaintenanceCost()+carDto.getPreviousRegistrationFee());
+        carDto.setCarAmountPrice(carDto.getCarPrice()+carDto.getAgencyFee()+carDto.getPreviousRegistrationFee());
 
 
         System.out.println("carDto 컨트롤러 = " + carDto);
