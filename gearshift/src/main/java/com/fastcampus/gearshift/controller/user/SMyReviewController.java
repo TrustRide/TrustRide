@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
-@RequestMapping("/mypage/review")
+@RequestMapping("/user/review")
 public class SMyReviewController {
 
     @Autowired
@@ -57,14 +57,14 @@ public class SMyReviewController {
         reviewDto.setOrderId(orderId);
         reviewDto.setUserId(userId);
         reviewService.registerReview(reviewDto, image);
-        return "redirect:/mypage/review/list"; // 등록 후 리뷰 목록으로 이동
+        return "redirect:/user/review/list"; // 등록 후 리뷰 목록으로 이동
     }
 
     @PostMapping("/delete/{reviewId}")
     public String deleteReview(@PathVariable Integer reviewId, RedirectAttributes redirectAttributes) {
         reviewService.deleteReview(reviewId);
         redirectAttributes.addFlashAttribute("message", "삭제가 완료되었습니다.");
-        return "redirect:/mypage/review/list"; // 등록 후 리뷰 목록으로 이동
+        return "redirect:/user/review/list"; // 등록 후 리뷰 목록으로 이동
     }
 
 }

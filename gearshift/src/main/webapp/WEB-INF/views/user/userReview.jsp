@@ -52,13 +52,13 @@
                                     data-commentdate="${order.review.reviewComment.formattedCreatedAt}">
                             리뷰 보기
                             </button>
-                            <form action="${pageContext.request.contextPath}/mypage/review/delete/${order.review.reviewId}" method="post">
+                            <form action="${pageContext.request.contextPath}/user/review/delete/${order.review.reviewId}" method="post">
                                 <button class="delete-button">리뷰 삭제</button>
                             </form>
                         </div>
                     </c:when>
                     <c:otherwise>
-                        <form action="${pageContext.request.contextPath}/mypage/review/register" method="post">
+                        <form action="${pageContext.request.contextPath}/user/review/register" method="post">
                             <input type="hidden" name="orderId" value="${order.orderId}" />
                             <input type="hidden" name="carInfoId" value="${order.carInfoId}" />
                             <input type="hidden" name="modelName" value="${order.modelName}" />
