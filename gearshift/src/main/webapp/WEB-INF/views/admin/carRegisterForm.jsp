@@ -25,6 +25,7 @@
       border-radius: 15px;
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
       overflow-y: auto;
+      margin-top: 80px;
     }
     h1 {
       text-align: center;
@@ -60,7 +61,7 @@
       outline: none;
     }
 
-    button {
+    submit-btn {
       width: 100%;
       padding: 12px;
       margin-top: 25px;
@@ -75,20 +76,20 @@
       transition: transform 0.2s, box-shadow 0.2s;
     }
 
-    button:hover {
+    submit-btn:hover {
       transform: translateY(-2px);
       box-shadow: 0 8px 15px rgba(255, 107, 107, 0.35);
     }
 
-    ::-webkit-scrollbar {
+    .container::-webkit-scrollbar {
       width: 6px;
     }
 
-    ::-webkit-scrollbar-track {
+    .container::-webkit-scrollbar-track {
       background: transparent;
     }
 
-    ::-webkit-scrollbar-thumb {
+    .container::-webkit-scrollbar-thumb {
       background-color: #ff6b6b;
       border-radius: 20px;
     }
@@ -187,7 +188,7 @@
 
     </select>
 
-    <button type="submit">등록</button>
+    <button class="submit-btn" type="submit">등록</button>
   </form>
 </div>
 
