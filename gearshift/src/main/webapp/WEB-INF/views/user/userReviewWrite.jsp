@@ -30,7 +30,7 @@
 
         <h2>리뷰 작성하기</h2>
 
-        <form action="${pageContext.request.contextPath}/mypage/review/register/${orderId}" method="post" enctype="multipart/form-data">
+        <form action="${pageContext.request.contextPath}/user/review/register/${orderId}" method="post" enctype="multipart/form-data">
             <input type="hidden" name="carInfoId" value="${carInfoId}" />
 
             <label for="title">제목</label>

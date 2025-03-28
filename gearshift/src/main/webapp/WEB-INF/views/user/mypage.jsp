@@ -131,7 +131,7 @@
         <c:choose>
           <c:when test="${not empty sessionScope.loginUser}">
             <li><strong>${sessionScope.loginUser.userName}</strong>님 환영합니다.</li>
-            <li><a href="/gearshift/user/mypage">마이페이지</a></li>
+            <li><a href="/gearshift">마이페이지</a></li>
             <li><a href="/gearshift/logout">로그아웃</a></li>
           </c:when>
         </c:choose>
