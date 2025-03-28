@@ -5,11 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <title>차량 목록</title>
-<<<<<<< Updated upstream
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-=======
 
->>>>>>> Stashed changes
     <link href="https://fonts.googleapis.com/css2?family=Pretendard&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin/styles.css">
     <style>
@@ -126,10 +123,6 @@
 
     <a href="${pageContext.request.contextPath}/admin/cars/register" class="register-btn">+ 차량 등록</a>
 
-    <div class="table-container">
-        <table>
-            <thead>
-=======
 <div class="table-container">
     <table>
         <thead>
@@ -148,18 +141,8 @@
 
         <tbody>
         <c:forEach var="car" items="${carList}">
->>>>>>> Stashed changes
-            <tr>
-                <th>상품 코드</th>
-                <th>상품명</th>
-                <th>판매가</th>
-                <th>상태</th>
-                <th>연료 종류</th>
-                <th>상품 이미지</th>
-                <th>수정</th>
-                <th>삭제</th>
-            </tr>
-            </thead>
+
+      
             <tbody>
             <c:forEach var="car" items="${carList}">
                 <tr onclick="location.href='${pageContext.request.contextPath}/admin/cars/${car.carInfoId}'" style="cursor: pointer;">
