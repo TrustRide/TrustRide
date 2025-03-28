@@ -13,14 +13,14 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/user/orders")
 public class LUserRefundController {
 
     @Autowired
     private LRefundService refundService;
 
     // 환불 할 수 있는 상품 목록 조회
-    @GetMapping("/orders/refundable")
+    @GetMapping("/refundable")
     public String getRefundableOrdersPage(Model model, HttpSession session) {
 
         // 세션에 저장된 userId 가져오기
@@ -35,7 +35,7 @@ public class LUserRefundController {
     }
 
     // 선택한 환불 상품 조회
-    @GetMapping("/orders/select/refund")
+    @GetMapping("/select/refund")
     public String selectRefund(@ModelAttribute LRefundDTO refundDTO, Model model) {
 
         // 선택한 상품의 주문 아이디

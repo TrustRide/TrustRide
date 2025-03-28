@@ -13,7 +13,7 @@
         document.getElementById("accountModal").style.display = "block";
       } else {
         // 신용카드 결제일 경우, 결제 API 페이지로 이동하도록 form action 변경
-        form.action = "/gearshift/payment/creditCard";
+        form.action = "/gearshift/user/payment/creditCard";
         form.submit(); // 즉시 form 제출
       }
     }
@@ -21,7 +21,7 @@
     // 현금 결제 확인 후 다음 페이지 이동
     function proceedToNextPage() {
       var form = document.getElementById("paymentForm");     // 폼 태그
-      form.action = "/gearshift/orders/status/cash"; // 현금 결제 성공 페이지로 이동하도록 action 변경
+      form.action = "/gearshift/user/orders/status/cash"; // 현금 결제 성공 페이지로 이동하도록 action 변경
       form.submit(); // form 제출
     }
   </script>

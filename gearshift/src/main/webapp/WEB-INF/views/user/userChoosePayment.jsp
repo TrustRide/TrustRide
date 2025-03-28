@@ -20,7 +20,7 @@
       <button type="button" onclick="selectPaymentMethod('현금')">현금</button>
       <button type="button" onclick="selectPaymentMethod('신용카드')">신용카드</button>
     </div>
-    <form action="/gearshift/payment/detail" method="post">
+    <form action="/gearshift/user/payment/detail" method="post">
       <!-- 선택한 결제 수단 -->
       <input type="hidden" name="paymentMethod" id="paymentMethod">
 
