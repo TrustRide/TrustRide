@@ -91,7 +91,7 @@
                     <p class="price"><fmt:formatNumber value="${car.carPrice}" type="number" />만원</p>
 
                     <!-- 찜 해제 버튼 -->
-                    <form class="unwish-form" method="post" action="${pageContext.request.contextPath}/wishlist/remove">
+                    <form class="unwish-form" method="post" action="${pageContext.request.contextPath}/user/wishlist/remove">
                         <input type="hidden" name="carInfoId" value="${car.carInfoId}" />
                         <button title="찜 해제">❤️</button>
                     </form>
