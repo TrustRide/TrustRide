@@ -18,7 +18,7 @@ import java.util.List;
 
 
 @Controller
-@RequestMapping("/orders")
+@RequestMapping("/user/orders")
 public class LUserOrderController {
 
     @Autowired
@@ -76,13 +76,7 @@ public class LUserOrderController {
         // 배송 정보 저장
         deliveryService.insert(deliveryDTO);
 
-
-        // 주문 목록 조회
-        List<LOrderListDTO> orderListDTO = orderService.getLOrderList(userId);
-        model.addAttribute("orderList", orderListDTO);
-
-
-        return  "user/userOrderHistory";
+        return  "redirect:/user/orders/status/orderList";
     }
 
     // 신용카드 결제 후 주문내역/배송조회 페이지 이동
@@ -129,12 +123,7 @@ public class LUserOrderController {
         // 배송 정보 저장
         deliveryService.insert(deliveryDTO);
 
-
-        // 주문 목록 조회
-        List<LOrderListDTO> orderListDTO = orderService.getLOrderList(userId);
-        model.addAttribute("orderList", orderListDTO);
-
-        return  "user/userOrderHistory";
+        return  "redirect:/user/orders/status/orderList";
     }
 
     // 주문 목록 리스트
@@ -145,6 +134,7 @@ public class LUserOrderController {
         UserDto userDto =  (UserDto)session.getAttribute("loginUser");
         Integer userId = userDto.getUserId();
 
+        // 주문 목록 조회
         List<LOrderListDTO> orderListDTO = orderService.getLOrderList(userId);
         model.addAttribute("orderList", orderListDTO);
 

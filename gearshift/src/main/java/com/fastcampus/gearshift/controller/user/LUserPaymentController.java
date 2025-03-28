@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpSession;
 
 @Controller
-@RequestMapping("/payment")
+@RequestMapping("/user/payment")
 public class LUserPaymentController {
 
     @Autowired

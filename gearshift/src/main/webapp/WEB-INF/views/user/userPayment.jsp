@@ -36,7 +36,7 @@
         var msg = '결제에 실패하였습니다.';
         msg += '에러내용 : ' + rsp.error_msg;
 
-        location.href="/gearshift/payment/select";
+        location.href="/gearshift/user/payment/select";
       }
     });
 
@@ -200,7 +200,7 @@
 
 
       form.setAttribute('method', 'post');
-      form.setAttribute('action', "/gearshift/orders/status/credit");
+      form.setAttribute('action', "/gearshift/user/orders/status/credit");
       document.body.appendChild(form);
       form.submit();
     }

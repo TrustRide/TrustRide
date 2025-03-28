@@ -17,7 +17,7 @@
             <p>${refundInfo.totalAmount} 만원</p>
         </section>
         <section>
-            <button onclick="window.location.href='/gearshift/orders/status/orderList'">신청내역 확인하기</button>
+            <button onclick="window.location.href='/gearshift/user/orders/status/orderList'">신청내역 확인하기</button>
             <button onclick="window.location.href='/gearshift/userList'">쇼핑 계속하기</button>
         </section>
     </main>
