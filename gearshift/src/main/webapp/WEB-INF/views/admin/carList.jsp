@@ -141,30 +141,27 @@
 
         <tbody>
         <c:forEach var="car" items="${carList}">
+            <tr onclick="location.href='${pageContext.request.contextPath}/admin/cars/${car.carInfoId}'" style="cursor: pointer;">
+                <td>${car.carInfoId}</td>
+                <td>${car.modelName}</td>
+                <td>${car.carPrice}</td>
+                <td>${car.soldStatus}</td>
+                <td>${car.fuelType}</td>
+                <td>
+                    <c:if test="${not empty car.thumbnailUrl}">
+                        <img src="${pageContext.request.contextPath}${car.thumbnailUrl}" width="100" height="70" alt="썸네일" />
+                    </c:if>
+                </td>
+                <td class="action-buttons">
+                    <a href="${pageContext.request.contextPath}/admin/cars/${car.carInfoId}/edit" class="edit-btn">수정</a>
+                </td>
+                <td class="action-buttons">
+                    <a href="javascript:void(0);" onclick="confirmDelete('${car.carInfoId}');" class="delete-btn">삭제</a>
+                </td>
+            </tr>
+        </c:forEach>
+        </tbody>
 
-      
-            <tbody>
-            <c:forEach var="car" items="${carList}">
-                <tr onclick="location.href='${pageContext.request.contextPath}/admin/cars/${car.carInfoId}'" style="cursor: pointer;">
-                    <td>${car.carInfoId}</td>
-                    <td>${car.modelName}</td>
-                    <td>${car.carPrice}</td>
-                    <td>${car.soldStatus}</td>
-                    <td>${car.fuelType}</td>
-                    <td>
-                        <c:if test="${not empty car.thumbnailUrl}">
-                            <img src="${pageContext.request.contextPath}${car.thumbnailUrl}" width="100" height="70" alt="썸네일" />
-                        </c:if>
-                    </td>
-                    <td class="action-buttons">
-                        <a href="${pageContext.request.contextPath}/admin/cars/${car.carInfoId}/edit" class="edit-btn">수정</a>
-                    </td>
-                    <td class="action-buttons">
-                        <a href="javascript:void(0);" onclick="confirmDelete('${car.carInfoId}');" class="delete-btn">삭제</a>
-                    </td>
-                </tr>
-            </c:forEach>
-            </tbody>
         </table>
     </div>
 </main>

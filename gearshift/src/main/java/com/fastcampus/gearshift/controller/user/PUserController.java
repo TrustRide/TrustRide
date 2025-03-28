@@ -99,7 +99,7 @@ public class PUserController {
 
 
 
-    @GetMapping("/delivery")
+    @GetMapping("/user/delivery")
     public String getDelivery(
             @RequestParam("carInfoId") Integer carInfoId,
             @RequestParam("title") String title,
