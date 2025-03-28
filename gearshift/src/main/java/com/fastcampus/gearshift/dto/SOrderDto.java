@@ -15,5 +15,6 @@ public class SOrderDto {
     private Integer carInfoId;
     private String modelName;
     private String reviewStatus;
+    private String carImageUrl;
     private ReviewDto review;
 }

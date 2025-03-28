@@ -48,10 +48,10 @@
                     <td>
                         <c:choose>
                             <c:when test="${!a.isDeleted}">
-                                <button class="deactivate-btn">사용중지</button>
+                                <button class="deactivate-btn" onclick="toggleStatus(${a.adminId}, true)">사용중지</button>
                             </c:when>
                             <c:otherwise>
-                                <button class="activate-btn">사용전환</button>
+                                <button class="activate-btn" onclick="toggleStatus(${a.adminId}, false)">사용전환</button>
                             </c:otherwise>
                         </c:choose>
                     </td>
@@ -78,5 +78,32 @@
         </div>
     </main>
 
+    <script>
+        function toggleStatus(adminId, isCurrentlyActive) {
+            const targetUrl = isCurrentlyActive
+                ? "${pageContext.request.contextPath}/admin/deactivate"
+                : "${pageContext.request.contextPath}/admin/activate";
+
+            fetch(targetUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ adminId: adminId })
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert("상태가 변경되었습니다!");
+                    location.reload();
+                } else {
+                    alert("상태 변경 실패!");
+                }
+            })
+            .catch(error => {
+                console.error("에러 발생:", error);
+                alert("요청 중 에러가 발생했습니다.");
+            });
+        }
+    </script>
 </body>
 </html>

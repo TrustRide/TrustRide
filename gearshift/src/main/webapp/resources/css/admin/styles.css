@@ -132,3 +132,8 @@ body {
     text-align: center;
     width: 150px;
 }
+
+.selected {
+    font-weight: bold;
+    background: #444;
+}

@@ -45,4 +45,14 @@ public class SAdminDaoImpl implements SAdminDao {
         return sqlSession.selectOne(namespace + "findByEmail", email);
     }
 
+    @Override
+    public void deleteUser(Integer adminId) {
+        sqlSession.delete(namespace + "deleteUser", adminId);
+    }
+
+    @Override
+    public void activateUser(Integer adminId) {
+        sqlSession.update(namespace + "activateUser", adminId);
+    }
+
 }

@@ -10,4 +10,6 @@ public interface SAdminService {
     int getTotalUserCount();
     List<AdminDto> getUsersWithPaging(int offset, int limit);
     AdminDto findUserByEmail(String email);
+    void deleteUser(Integer adminId);
+    void activateUser(Integer adminId);
 }

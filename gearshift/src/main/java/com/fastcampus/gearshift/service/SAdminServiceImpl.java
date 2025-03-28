@@ -44,4 +44,14 @@ public class SAdminServiceImpl implements SAdminService {
         return adminDao.findByEmail(email);
     }
 
+    @Override
+    public void deleteUser(Integer adminId) {
+        adminDao.deleteUser(adminId);
+    }
+
+    @Override
+    public void activateUser(Integer adminId) {
+        adminDao.activateUser(adminId);
+    }
+
 }

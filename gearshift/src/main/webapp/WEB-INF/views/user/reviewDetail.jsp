@@ -12,7 +12,14 @@
     <c:set var="r" value="${review}" />
     <div class="container">
         <div class="image-container">
-            <img src="${pageContext.request.contextPath}/img/review/car1.jpg" alt="차량리뷰 상세이미지">
+            <c:choose>
+                <c:when test="${not empty r.imageUrl}">
+                    <img src="${pageContext.request.contextPath}${r.imageUrl}" alt="차량리뷰 이미지">
+                </c:when>
+                <c:otherwise>
+                    <img src="${pageContext.request.contextPath}/img/di1.jpg" alt="기본 이미지">
+                </c:otherwise>
+            </c:choose>
         </div>
 
         <div class="title-row">
@@ -37,15 +44,18 @@
         </div>
 
         <div class="comment-section">
-            <div class="comment-list">
-                <div class="comment">
-                    <div class="comment-header">
-                        <div class="author">관리자</div>
-                        <div class="comment-time meta-info">2025.03.22 16:35</div>
+            <c:if test="${not empty r.reviewComment}">
+                <div class="comment-list">
+                    <div class="comment">
+                        <div class="comment-header">
+                            <div class="author">관리자</div>
+                            <div class="comment-time meta-info">${r.reviewComment.formattedCreatedAt}</div>
+                        </div>
+                        <div class="text">${r.reviewComment.commentContent}</div>
                     </div>
-                    <div class="text">차가 마음에 드셨다니 저희도 기쁩니다. 소중한 리뷰 감사합니다 고객님~</div>
                 </div>
-            </div>
+            </c:if>
+
             <div>
                 <div class="button-wrapper">
                     <a href="${pageContext.request.contextPath}/review?page=${page}"><button class="back-link">← 목록으로 돌아가기</button></a>

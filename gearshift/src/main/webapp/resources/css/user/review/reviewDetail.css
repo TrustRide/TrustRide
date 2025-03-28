@@ -116,3 +116,31 @@ body {
 .meta-info .writer::after {
     content: "  ·  ";
 }
+
+
+/* 댓글 등록 (관리자) */
+.comment textarea {
+    width: 100%;
+    box-sizing: border-box;
+    resize: vertical;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 5px;
+    height: 120px;
+}
+
+.button {
+    background-color: #2b78e4;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #1c5bbf;
+}
