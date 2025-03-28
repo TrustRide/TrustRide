@@ -31,9 +31,9 @@ public class JWishlistController {
         UserDto user = (UserDto) session.getAttribute("loginUser");
         System.out.println("user 컨트롤러 = " + user);
         
-//        if (user == null) {
-//            return "redirect:/login.do";
-//        }
+        if (user == null) {
+            return "redirect:/login.do";
+        }
         wishlistService.addWishlist(user.getUserId(), carInfoId);
         // 등록 후 어디로 이동할지(차량 상세나 목록) 결정
         return "redirect:/userList"; // 혹은 carDetail?carInfoId=carInfoId
