@@ -10,10 +10,11 @@
 <body>
 
 <!-- 헤더 포함 -->
-<jsp:include page="include/header.jsp"/>
+<%--<jsp:include page="include/header.jsp"/>--%>
 
 <!-- 사이드바 포함 -->
-<jsp:include page="include/sidebar.jsp"/>
+<%--<jsp:include page="include/sidebar.jsp"/>--%>
+
 <table border="1">
     <tr>
         <th>처리상태</th>
@@ -28,7 +29,6 @@
             </c:choose>
         </td>
     </tr>
-
     <tr><th>제목</th><td>${inquiry.inquiryName}</td></tr>
     <tr><th>문의내용</th><td>${inquiry.inquiryContent}</td></tr>
     <tr><th>유형</th><td>${inquiry.inquiryType}</td></tr>
@@ -46,19 +46,24 @@
     </div>
 </c:forEach>
 
+<!-- 답변 등록 폼 -->
 <form method="post" action="${pageContext.request.contextPath}/admin/inquiry/reply">
     <input type="hidden" name="inquiryId" value="${inquiry.inquiryId}" />
     <textarea name="commentContent" rows="5" cols="50" required></textarea><br/>
     <button type="submit">등록하기</button>
 </form>
 
+<!-- 목록으로 이동 -->
 <form method="get" action="${pageContext.request.contextPath}/admin/inquiry">
     <input type="hidden" name="inquiryId" value="${inquiry.inquiryId}" />
     <button type="submit">목록으로</button>
+</form>
 
+<!-- 문의 삭제 -->
 <form method="post" action="${pageContext.request.contextPath}/admin/inquiry/delete">
     <input type="hidden" name="inquiryId" value="${inquiry.inquiryId}" />
     <button type="submit">삭제</button>
 </form>
+
 </body>
 </html>

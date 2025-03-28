@@ -5,8 +5,11 @@
 
 <mapper namespace="nInquiry">
 
-    <select id="findAll" resultType="com.fastcampus.gearshift.dto.NInquiryDto">
-        SELECT * FROM inquiry WHERE is_deleted = 0 ORDER BY created_at DESC
+    <select id="findByUserId" parameterType="Integer" resultType="com.fastcampus.gearshift.dto.NInquiryDto">
+        SELECT *
+        FROM inquiry
+        WHERE user_id = #{userId} AND is_deleted = 0
+        ORDER BY created_at DESC
     </select>
 
     <select id="findById" parameterType="int" resultType="com.fastcampus.gearshift.dto.NInquiryDto">
@@ -15,11 +18,11 @@
 
     <insert id="insert" parameterType="com.fastcampus.gearshift.dto.NInquiryDto">
         INSERT INTO inquiry (
-            inquiry_status, inquiry_type, inquiry_name, inquiry_content,
+            inquiry_type, inquiry_name, inquiry_content,
              model_name, user_id, user_name,
             is_deleted, created_at, updated_at
         ) VALUES (
-                     #{inquiryStatus}, #{inquiryType}, #{inquiryName}, #{inquiryContent},
+                      #{inquiryType}, #{inquiryName}, #{inquiryContent},
                       #{modelName}, #{userId}, #{userName},
                      0, NOW(), NOW()
                  )

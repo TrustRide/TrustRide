@@ -5,7 +5,7 @@ import com.fastcampus.gearshift.dto.NInquiryDto;
 import java.util.List;
 
 public interface NInquiryDao {
-    List<NInquiryDto> findAll();
+    List<NInquiryDto> findByUserId(Integer userId);
 
     NInquiryDto findById(Integer inquiryId);
 
