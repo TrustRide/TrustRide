@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>회원 관리</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin/styles.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin/custom.css">
 </head>
 <body>
 
@@ -23,7 +23,7 @@
         </script>
     </c:if>
 
-    <table border="1">
+    <table class="table">
         <thead>
         <tr>
             <th>회원코드</th>
@@ -59,7 +59,7 @@
                     <form action="${pageContext.request.contextPath}/admin/userList/delete" method="post"
                           onsubmit="return confirm('정말 삭제하시겠습니까?');">
                         <input type="hidden" name="userId" value="${user.userId}" />
-                        <button type="submit">삭제</button>
+                        <button type="submit" class="deactivate-btn">삭제</button>
                     </form>
                 </td>
             </tr>
