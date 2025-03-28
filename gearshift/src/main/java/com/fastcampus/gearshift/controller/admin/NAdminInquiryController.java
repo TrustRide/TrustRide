@@ -23,17 +23,29 @@ public class NAdminInquiryController {
     private InquiryService inquiryService;
 
     @GetMapping({"", "/"})
-    public String getList(Model model,HttpSession session) {
-        Integer adminId = ((AdminDto) session.getAttribute("adminUser")).getAdminId();
+    public String getList(Model model, HttpSession session) {
+        AdminDto admin = (AdminDto) session.getAttribute("adminUser");
 
+        if (admin == null) {
+            session.setAttribute("redirectAfterLogin", "/admin/inquiry");
+            return "redirect:/login.do";
+        }
+
+        Integer adminId = admin.getAdminId();
         List<InquiryDto> list = inquiryService.inquiryList();
         model.addAttribute("inquiryList", list);
-//        System.out.println(list);
+
         return "admin/adminInquiry";
     }
 
     @GetMapping("/read")
     public String read(@RequestParam("inquiryId") Integer inquiryId, Model model,HttpSession session) {
+        AdminDto admin = (AdminDto) session.getAttribute("adminUser");
+
+        if (admin == null) {
+            session.setAttribute("redirectAfterLogin", "/admin/inquiry");
+            return "redirect:/login.do";  // 관리자 로그인 페이지 경로
+        }
         Integer adminId = ((AdminDto) session.getAttribute("adminUser")).getAdminId();
         InquiryDto inquiry = inquiryService.getInquiryById(inquiryId);
         model.addAttribute("inquiry", inquiry);
@@ -46,7 +58,12 @@ public class NAdminInquiryController {
                              @RequestParam("commentContent") String commentContent,
                              HttpSession session,
                              RedirectAttributes rattr) {
+        AdminDto admin = (AdminDto) session.getAttribute("adminUser");
 
+        if (admin == null) {
+            session.setAttribute("redirectAfterLogin", "/admin/inquiry");
+            return "redirect:/login.do";  // 관리자 로그인 페이지 경로
+        }
 
         try {
             Integer adminId = ((AdminDto) session.getAttribute("adminUser")).getAdminId();
@@ -66,6 +83,12 @@ public class NAdminInquiryController {
 
     @PostMapping("/delete")
     public String remove(@RequestParam("inquiryId") Integer inquiryId, RedirectAttributes rattr,HttpSession session) {
+        AdminDto admin = (AdminDto) session.getAttribute("adminUser");
+
+        if (admin == null) {
+            session.setAttribute("redirectAfterLogin", "/admin/inquiry");
+            return "redirect:/login.do";  // 관리자 로그인 페이지 경로
+        }
         Integer adminId = ((AdminDto) session.getAttribute("adminUser")).getAdminId();
         try {
             int result = inquiryService.delete(inquiryId, null); // 관리자 삭제 시 userId는 null

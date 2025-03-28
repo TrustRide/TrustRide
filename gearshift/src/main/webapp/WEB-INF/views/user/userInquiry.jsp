@@ -2,35 +2,41 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>나의 문의 목록</title>
+    <title>문의 목록</title>
 </head>
 <body>
-<h2>내 문의 목록</h2>
-<a href="/user/inquiry/write">새 문의 작성</a>
-<table border="1">
+<h2>문의 목록</h2>
+<a href="${pageContext.request.contextPath}/user/inquiry/write">새 문의 작성</a>
+<br/><br/>
+<table border="1" cellpadding="8">
     <thead>
     <tr>
-        <th>상태</th>
+        <th>번호</th>
         <th>제목</th>
-        <th>작성일시</th>
+        <th>문의유형</th>
+        <th>작성자</th>
+        <th>상태</th>
+        <th>작성일</th>
     </tr>
     </thead>
     <tbody>
-    <c:forEach var="inquiry" items="${inquiryList}">
-        <tr onclick="location.href='inquiry/read?inquiryId=${inquiry.inquiryId}'">
+    <c:forEach var="inq" items="${inquiryList}">
+        <tr onclick="location.href='${pageContext.request.contextPath}/user/inquiry/read?inquiryId=${inq.inquiryId}'" style="cursor:pointer;">
+            <td>${inq.inquiryId}</td>
+            <td>${inq.inquiryName}</td>
+            <td>${inq.inquiryType}</td>
+            <td>${inq.userName}</td>
             <td>
                 <c:choose>
-                    <c:when test="${inquiry.inquiryStatus eq '처리완료'}">
-                        <span style="color:green; font-weight:bold;">${inquiry.inquiryStatus}</span>
+                    <c:when test="${inq.inquiryStatus eq '처리완료'}">
+                        <span style="color:green;">${inq.inquiryStatus}</span>
                     </c:when>
                     <c:otherwise>
-                        <span style="color:orange; font-weight:bold;">${inquiry.inquiryStatus}</span>
+                        <span style="color:orange;">${inq.inquiryStatus}</span>
                     </c:otherwise>
                 </c:choose>
             </td>
-
-            <td>${inquiry.inquiryName}</td>
-            <td>${inquiry.createdAt}</td>
+            <td>${inq.createdAt}</td>
         </tr>
     </c:forEach>
     </tbody>

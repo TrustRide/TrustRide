@@ -10,7 +10,7 @@
          <li><a href="${pageContext.request.contextPath}/admin/orderList">주문관리</a></li>
 
          <li><a href="${pageContext.request.contextPath}/admin/chat">채팅관리</a></li>
-	     <li><a href="${pageContext.request.contextPath}/admin/qna">문의관리</a></li>
+	     <li><a href="${pageContext.request.contextPath}/admin/inquiry">문의관리</a></li>
          <li><a href="${pageContext.request.contextPath}/admin/coupons/list">쿠폰관리</a></li>
 
          <li><a href="${pageContext.request.contextPath}/admin/review">리뷰관리</a></li>

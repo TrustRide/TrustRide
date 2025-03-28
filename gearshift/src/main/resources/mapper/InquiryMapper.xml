@@ -26,7 +26,6 @@
             inquiry_name = #{inquiryName},
             inquiry_content = #{inquiryContent},
             model_name = #{modelName},
-            car_info_id = #{carInfoId},
             updated_at = NOW()
         WHERE inquiry_id = #{inquiryId} AND user_id = #{userId}
     </update>
@@ -51,10 +50,10 @@
     <insert id="write" parameterType="com.fastcampus.gearshift.dto.InquiryDto">
         INSERT INTO inquiry (
             inquiry_status, inquiry_type, inquiry_name, inquiry_content,
-            car_info_id, model_name, user_name, user_id, is_deleted, created_at, updated_at
+             model_name, user_name, user_id, is_deleted, created_at, updated_at
         ) VALUES (
                      '처리대기', #{inquiryType}, #{inquiryName}, #{inquiryContent},
-                     #{carInfoId}, #{modelName}, #{userName}, #{userId},
+                     #{modelName}, #{userName}, #{userId},
                      0, NOW(), NOW()
                  )
     </insert>
