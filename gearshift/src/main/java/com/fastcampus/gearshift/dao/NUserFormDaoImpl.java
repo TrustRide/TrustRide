@@ -29,12 +29,14 @@ public class NUserFormDaoImpl implements NUserFormDao {
     @Override
     public void updateUserForm(Integer userId, UserDto updatedUserForm) {
         updatedUserForm.setUserId(userId); // 필수
-        sqlSession.update(NAMESPACE + ".updateUserForm", updatedUserForm);
-        System.out.println("변경 요청 비밀번호: " + updatedUserForm.getUserPassword());
-        //update결과 db반영확인 : 0이면 update 반영 실패 , 1이나오는데 db반영안되면 컬럼명 mismatch
+        // 확인용 로그
+        System.out.println("변경 요청 : " + updatedUserForm);
+        // 업데이트 실행
         int result = sqlSession.update(NAMESPACE + ".updateUserForm", updatedUserForm);
         System.out.println("업데이트 결과 row count: " + result);
+        System.out.println("변경된 form : " + updatedUserForm);
     }
+
 
     @Override
     public void deleteUser(Integer userId) {

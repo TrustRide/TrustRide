@@ -179,7 +179,7 @@
                 <li><a href="/gearshift/userList">내차사기</a></li>
                 <li><a href="#">상품리뷰</a></li>
 
-                <c:choose><<<<<<< Updated upstream
+                <c:choose>
                     <c:when test="${not empty sessionScope.loginUser}">
                         <li><strong>${sessionScope.loginUser.userName}</strong>님 환영합니다.</li>
                         <li><a href="/gearshift/user/mypage">마이페이지</a></li>

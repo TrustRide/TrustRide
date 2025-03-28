@@ -26,8 +26,8 @@ public class NUserFormController {
     // 사용자 프로필 조회
     @GetMapping("")
     public String getUserForm(HttpSession session, Model model) {
-        //디버깅테스트
-        System.out.println("로그인 안 됨 → 세션에 redirectAfterLogin 설정: /user/userForm");
+       //디버깅테스트
+//        System.out.println("로그인 안 됨 → 세션에 redirectAfterLogin 설정: /user/userForm");
 
         UserDto loginUser = (UserDto) session.getAttribute("loginUser");
         if (loginUser == null) {
@@ -46,7 +46,7 @@ public class NUserFormController {
         return "user/userForm";
     }
 
-    // 사용자 정보 수정
+    // 사용자 정보 수정 --이름 빼고 다 변경 가능
     @PostMapping("/update")
     public String updateUserForm(HttpSession session,
                                  @RequestParam("currentPassword") String currentPassword,
@@ -58,14 +58,10 @@ public class NUserFormController {
             return "redirect:/login.do";
         }
 
-        // 🔐 비밀번호 검증
-        if (!loginUser.getUserPassword().equals(currentPassword)) {
-            redirectAttributes.addFlashAttribute("message", "비밀번호가 일치하지 않습니다.");
-            return "redirect:/user/userForm";
-        }
 
         Integer userId = loginUser.getUserId();
         updatedUserForm.setUserId(userId); // ✅ 핵심 추가
+        updatedUserForm.setUserPassword(passwordEncoder.encode(updatedUserForm.getUserPassword()));
         try {
             userFormService.updateUserForm(userId, updatedUserForm);
 
@@ -88,39 +84,20 @@ public class NUserFormController {
                              RedirectAttributes redirectAttributes) {
         UserDto loginUser = (UserDto) session.getAttribute("loginUser");
 
-//        //테스트용 로그 찍기
-//        System.out.println("[탈퇴 요청] currentPassword = " + currentPassword);
-//        if (loginUser != null) {
-//            System.out.println("[탈퇴 요청] 세션 비밀번호 = " + loginUser.getUserPassword());
-//        } else {
-//            System.out.println("[탈퇴 요청] 세션이 없음");
-//        }
-
-
-
         if (loginUser == null) {
             session.setAttribute("redirectAfterLogin", "/user/userForm");
             return "redirect:/login.do";
         }
 
-        // 🔐 비밀번호 검증
-        if (!loginUser.getUserPassword().equals(currentPassword)) {
-//            System.out.println("[탈퇴 실패] 비밀번호 불일치");      //테스트용 로그 찍기
-            redirectAttributes.addFlashAttribute("message", "비밀번호가 일치하지 않습니다.");
-            return "redirect:/user/userForm";
-        }
-
         Integer userId = loginUser.getUserId();
-//        System.out.println("[탈퇴 요청] userId = " + userId);   //테스트용 로그 찍기
-
         try {
             userFormService.deleteUser(userId);
             session.invalidate(); // 세션 제거
             redirectAttributes.addFlashAttribute("message", "회원 탈퇴가 완료되었습니다.");
-//            System.out.println("[탈퇴 성공]");   //테스트용 로그
+
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("message", "회원 탈퇴에 실패했습니다.");
-//            System.out.println("[탈퇴 실패] Exception: " + e.getMessage());  //테스트용 로그
+
         }
 
         return "redirect:/"; // 명확히 메인 페이지로 이동

@@ -40,11 +40,6 @@
         WHERE user_id = #{userId}
     </update>
 
-<!--    <delete id="deleteUser" parameterType="Integer">-->
-<!--        UPDATE user-->
-<!--        SET is_deleted = 1-->
-<!--        WHERE user_id = #{userId}-->
-<!--    </delete>-->
 
     <delete id="deleteUser" parameterType="Integer">
         DELETE FROM user WHERE user_id = #{userId}

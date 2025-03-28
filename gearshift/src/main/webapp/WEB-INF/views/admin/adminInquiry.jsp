@@ -8,6 +8,14 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin/inquiry.css">
 </head>
 <body>
+
+<!-- 헤더 포함 -->
+<jsp:include page="include/header.jsp"/>
+
+<!-- 사이드바 포함 -->
+<jsp:include page="include/sidebar.jsp"/>
+
+
 <main class="content">
   <h2>문의관리</h2>
   <h2>고객 문의 목록</h2>

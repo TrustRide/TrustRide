@@ -2,10 +2,18 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>문의 상세</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin/styles.css">
 </head>
 <body>
-<h2>문의 상세 정보</h2>
+
+<!-- 헤더 포함 -->
+<jsp:include page="include/header.jsp"/>
+
+<!-- 사이드바 포함 -->
+<jsp:include page="include/sidebar.jsp"/>
 <table border="1">
     <tr>
         <th>처리상태</th>
@@ -43,6 +51,10 @@
     <textarea name="commentContent" rows="5" cols="50" required></textarea><br/>
     <button type="submit">등록하기</button>
 </form>
+
+<form method="get" action="${pageContext.request.contextPath}/admin/inquiry">
+    <input type="hidden" name="inquiryId" value="${inquiry.inquiryId}" />
+    <button type="submit">목록으로</button>
 
 <form method="post" action="${pageContext.request.contextPath}/admin/inquiry/delete">
     <input type="hidden" name="inquiryId" value="${inquiry.inquiryId}" />
