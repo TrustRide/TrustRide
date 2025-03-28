@@ -15,8 +15,20 @@
         <typeAlias type="com.fastcampus.gearshift.dto.CarDto" alias="carDto"></typeAlias>
         <typeAlias type="com.fastcampus.gearshift.dto.CategoryDto" alias="categoryDto"></typeAlias>
         <typeAlias type="com.fastcampus.gearshift.dto.ImageDto" alias="imageDto"></typeAlias>
+<<<<<<< Updated upstream
         <typeAlias type="com.fastcampus.gearshift.dto.LOrderDto" alias="LOrderDto"></typeAlias>
         <typeAlias type="com.fastcampus.gearshift.dto.PaymentProcessDto" alias="PaymentProcessDto"></typeAlias>
         <typeAlias type="com.fastcampus.gearshift.dto.DeliveryDto" alias="DeliveryDto"></typeAlias>
+=======
+        <typeAlias type="com.fastcampus.gearshift.dto.LOrderDTO" alias="LOrderDTO"></typeAlias>
+        <typeAlias type="com.fastcampus.gearshift.dto.PaymentProcessDTO" alias="PaymentProcessDTO"></typeAlias>
+        <typeAlias type="com.fastcampus.gearshift.dto.DeliveryDTO" alias="DeliveryDTO"></typeAlias>
+        <typeAlias type="com.fastcampus.gearshift.dto.LOrderListDTO" alias="LOrderListDTO"></typeAlias>
+        <typeAlias type="com.fastcampus.gearshift.dto.LRefundAbleListDTO" alias="LRefundAbleListDTO"></typeAlias>
+        <typeAlias type="com.fastcampus.gearshift.dto.LRefundDTO" alias="LRefundDTO"></typeAlias>
+        <typeAlias type="com.fastcampus.gearshift.dto.CarDetailDto" alias="CarDetailDto"></typeAlias>
+        <typeAlias type="com.fastcampus.gearshift.dto.LHolderDTO" alias="LHolderDTO"></typeAlias>
+
+>>>>>>> Stashed changes
     </typeAliases>
 </configuration>

@@ -9,7 +9,7 @@
     <insert id="insertOrder" parameterType="LOrderDTO" >
 
         INSERT INTO orders (
-            product_name,
+            car_info_id,
             order_amount,
             discount_amount,
             total_amount,
@@ -17,9 +17,10 @@
             ownership_type,
             is_joint_ownership,
             order_status,
-            user_id
+            user_id,
+            holder_id
         ) VALUES (
-                     #{productName},
+                     #{carInfoId},
                      #{orderAmount},
                      #{discountAmount},
                      #{totalAmount},
@@ -27,7 +28,8 @@
                      #{ownershipType},
                      #{isJointOwnership},
                      #{orderStatus},
-                     #{userId}
+                     #{userId},
+                     #{holderId}
                  )
     </insert>
 
@@ -35,5 +37,22 @@
     <select id="getLastOrderId" resultType="int">
         SELECT MAX(order_id) FROM orders;
     </select>
+
+    <!-- 주문 목록 조회 -->
+    <select id="getLOrderList"  resultType="LOrderListDTO">
+        SELECT
+            DATE_FORMAT(o.order_completed_date, '%Y.%c.%e') AS orderCompletedDate,
+            i.model_name AS modelName,
+            o.total_amount AS totalAmount,
+            d.delivery_status AS deliveryStatus,
+            DATE_FORMAT(DATE_ADD(d.delivery_started_at, INTERVAL 1 DAY), '%Y.%c.%e') AS arrivalDate,
+            DAYNAME(DATE_ADD(d.delivery_started_at, INTERVAL 1 DAY)) AS arrivalDay
+        FROM orders o
+                 JOIN information i ON o.car_info_id = i.car_info_id
+                 JOIN delivery d ON o.order_id = d.order_id
+        WHERE o.user_id = #{userId}
+        ORDER BY FIELD(d.delivery_status, '배송준비중', '배송중', '배송완료')
+    </select>
+
 
 </mapper>

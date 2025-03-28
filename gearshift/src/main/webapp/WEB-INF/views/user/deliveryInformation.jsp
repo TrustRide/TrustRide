@@ -398,7 +398,7 @@
 
 </head>
 
-c<body>
+<body>
 <header>
     <div class="container header-content">
         <div class="logo-container">
@@ -440,7 +440,7 @@ c<body>
             <input type="hidden" name="userId" value="${userDto.userId}">
 
             <!--명의 종류 값 넘김-->
-            <input type="hidden" name="holderTitle" value="<%= title %>">
+            <input type="hidden" name="ownershipType" value="<%= title %>">
 
             <!--회원 이름 값 안넘김 -->
             <label>회원 이름</label>
@@ -478,7 +478,8 @@ c<body>
 
             <label for="deliveryDate">희망 배송일</label>
             <input type="date" id="deliveryDate" name="deliveryDate" min="">
-
+            <label for="deliveryDate">요청사항</label>
+            <input type="text" name="deliveryRequest">
 
 
 
@@ -498,6 +499,7 @@ c<body>
                     </select>
                 </div>
 
+                <input type="hidden" name="deliveryFee" value="0">
 
                 <!-- 면허 번호 입력  안넘김-->
                 <div class="license-field">
@@ -658,7 +660,7 @@ c<body>
                 </div>
             </div>
 
-
+            <input type="hidden" name="carInfoId" value="${carDto.carInfoId}">
             <!--배송원 정보 -->
 
             <input type="hidden" name="deliveryDriverName">
@@ -878,7 +880,7 @@ c<body>
             document.querySelector("[name='driverPhoneNumber']").value = deliveryPhone;
 
             // 폼 제출
-            document.querySelector("form").submit();
+
         } else {
             // 배송원 선택 안한 경우 에러 메시지 표시
             openModal("배송원을 선택해 주세요.");
@@ -995,13 +997,11 @@ c<body>
         }
 
         // 모든 검사 통과 시 폼 제출
-        document.querySelector("form").submit();
+
     }
 
     // 폼 제출 버튼에 이벤트 리스너 추가
-    document.addEventListener("DOMContentLoaded", function () {
-        document.querySelector(".submit-btn").addEventListener("click", validateForm);
-    });
+
 </script>
 
 <script>
@@ -1160,10 +1160,6 @@ c<body>
         document.querySelector("form").submit();
     }
 
-    // 폼 제출 버튼에 이벤트 리스너 추가
-    document.addEventListener("DOMContentLoaded", function () {
-        document.querySelector(".submit-btn").addEventListener("click", validateForm);
-    });
 </script>
 
 

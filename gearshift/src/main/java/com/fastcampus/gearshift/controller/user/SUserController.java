@@ -31,6 +31,7 @@ public class SUserController {
     @PostMapping("/register")
     public String processRegister(@ModelAttribute UserDto user, Model model) {
         userService.registerUser(user);
+<<<<<<< Updated upstream
         return "redirect:/login.do";
     }
 
@@ -43,6 +44,49 @@ public class SUserController {
         return "user/login";
     }
 
+=======
+        return "redirect:/login";
+    }
+
+    @GetMapping("/login")
+    public String loadLoginPage(Model model) {
+        return "user/login";
+    }
+
+    @PostMapping("/login")
+    public String processLogin(@RequestParam String userEmail,
+                               @RequestParam String userPassword,
+                               HttpSession session,
+                               Model model) {
+        UserDto user = userService.findUserByEmail(userEmail);
+
+        if (user == null || !user.getUserPassword().equals(userPassword)) {
+            model.addAttribute("error", "이메일 또는 비밀번호가 틀렸습니다.");
+            return "user/login";
+        }
+
+        session.setAttribute("loginUser", user); // 세션에 사용자 저장
+        // 로그인 전 요청한 URL로 리다이렉트
+        String redirectUrl = (String) session.getAttribute("redirectAfterLogin");
+
+        //디버깅 테스트
+        System.out.println("redirectAfterLogin = " + redirectUrl);
+
+        if (redirectUrl != null) {
+            session.removeAttribute("redirectAfterLogin"); // 사용 후 제거
+            return "redirect:" + redirectUrl;
+        }
+
+        return "redirect:/"; // 없으면 기본으로
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate(); // 세션 비우기
+        return "redirect:/";
+    }
+
+>>>>>>> Stashed changes
     @PostMapping("/check-email")
     @ResponseBody
     public Map<String, Boolean> checkEmail(@RequestBody Map<String, String> body) {
@@ -73,6 +117,7 @@ public class SUserController {
         return Map.of("verified", result);
     }
 
+<<<<<<< Updated upstream
     @GetMapping("/error403")
     public String handle403() {
         return "error/403";
@@ -83,4 +128,6 @@ public class SUserController {
         return "error/404";
     }
 
+=======
+>>>>>>> Stashed changes
 }
