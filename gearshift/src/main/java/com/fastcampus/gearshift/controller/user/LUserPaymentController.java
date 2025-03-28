@@ -57,9 +57,6 @@ public class LUserPaymentController {
 
     // 카드 결제 페이지 이동
     @PostMapping("/creditCard")
-<<<<<<< Updated upstream
-    public String goToPayment(CardPaymentDTO cardPaymentDTO) {
-=======
     public String goToPayment(@ModelAttribute CarDetailDto dto, Model model, HttpSession session) {
 
         // 세션에 저장된 userId 가져오기
@@ -83,7 +80,6 @@ public class LUserPaymentController {
 
         // 유저 정보
         model.addAttribute("userInfo", userInfoDto);
->>>>>>> Stashed changes
 
         return "user/userPayment";
     }
