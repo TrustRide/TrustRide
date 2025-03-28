@@ -118,7 +118,6 @@
 
     <label>색상</label>
     <input name="color" type="text" required />
-<<<<<<< Updated upstream:gearshift/src/main/webapp/WEB-INF/views/admin/carRegisterForm.jsp
     <label>차량 가격</label>
     <input name="carPrice" type="number" required />
     <label>이전 등록비</label>
@@ -127,12 +126,9 @@
     <input name="maintenanceCost" type="number" required />
     <label>등록대행수수료</label>
     <input name="agencyFee" type="number" required />
-=======
-
     <label>가격</label>
     <input name="carPrice" type="number" required />
 
->>>>>>> Stashed changes:gearshift/src/main/webapp/WEB-INF/views/admin/registerForm.jsp
     <label>연식</label>
     <input name="manufactureYear" type="text" required />
 
@@ -166,14 +162,14 @@
     <select name="smallCateCode" id="smallCate" required>
       <option value="">소분류 선택</option>
     </select>
-<<<<<<< Updated upstream:gearshift/src/main/webapp/WEB-INF/views/admin/carRegisterForm.jsp
+
     <label>판매 상태</label>
     <select name="soldStatus" required>
       <option value="판매준비중">판매준비중</option>
       <option value="판매중">판매중</option>
       <option value="판매완료">판매완료</option>
 
-=======
+
 
     <label>판매 시기</label>
     <select name="soldStatus" required>
@@ -182,7 +178,7 @@
       <option value="14일 이내">14일 이내</option>
       <option value="30일 이내">30일 이내</option>
       <option value="30일 이후">30일 이후</option>
->>>>>>> Stashed changes:gearshift/src/main/webapp/WEB-INF/views/admin/registerForm.jsp
+
     </select>
 
     <button type="submit">등록</button>
