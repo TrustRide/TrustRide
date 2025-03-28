@@ -119,8 +119,18 @@ public class PUserController {
 
         // 👉 여기서 DTO에 값 주입
         carInfoDto.setOwnershipType(title);
-        carInfoDto.setIsJointOwnerShip(isJointHolder);
+        carInfoDto.getOwnershipType();
 
+<<<<<<< Updated upstream
+=======
+        // 👉 로그 또는 콘솔로 확인
+        System.out.println("선택된 명의자 타입: " + carInfoDto.getOwnershipType());
+        System.out.println("공동 명의 여부: " + carInfoDto.getOwnershipType());
+
+        System.out.println(carInfoDto.getOwnershipType());
+        System.out.println(carInfoDto.getOwnershipType());
+
+>>>>>>> Stashed changes
         model.addAttribute("userDto", selectedUser);
         model.addAttribute("carDto", carInfoDto);
 

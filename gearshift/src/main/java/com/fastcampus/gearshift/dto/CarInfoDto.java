@@ -4,9 +4,10 @@ import lombok.*;
 
 import java.util.List;
 
+@Data
+
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
 public class CarInfoDto {
 
     private Integer carInfoId;  // 자동차 정보 ID (Primary Key, AUTO_INCREMENT)
@@ -29,7 +30,7 @@ public class CarInfoDto {
     private String vinNumber;  // 차량 식별 번호 (Vehicle Identification Number, VIN)
     private Integer deliveryFee;//배송비
     private String ownershipType;// 명의자 타입
-    private Boolean isJointOwnerShip;//명의자 불리언
+    private Boolean isJointOwnership;//명의자 불리언
     private String carLocation;
 
     // DB와 상관x 있어도 다른거에 영향x
@@ -103,4 +104,6 @@ public class CarInfoDto {
     public void setDeliveryFee(Integer deliveryFee) {
         this.deliveryFee = 0;
     }
+
+
 }
