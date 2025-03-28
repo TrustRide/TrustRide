@@ -22,14 +22,10 @@
 
 
     <http auto-config="true" use-expressions="true">
-        <!-- 인증 없이 접근 가능한 경로 -->
-<!--        <intercept-url pattern="/login.do" access="permitAll" />-->
-<!--        <intercept-url pattern="/login.do/**" access="permitAll" />-->
-<!--        <intercept-url pattern="/admin/register" access="permitAll" />-->
 
-<!--        &lt;!&ndash; 권한별 접근 &ndash;&gt;-->
-<!--        <intercept-url pattern="/admin/**" access="hasRole('ADMIN')" />-->
-<!--        <intercept-url pattern="/user/**" access="hasRole('USER')" />-->
+        <!-- 권한별 접근 -->
+        <intercept-url pattern="/admin/**" access="hasRole('ADMIN')" />
+        <intercept-url pattern="/user/**" access="hasRole('USER')" />
         <intercept-url pattern="/**" access="permitAll" />
 
         <!-- 로그인 설정 -->
