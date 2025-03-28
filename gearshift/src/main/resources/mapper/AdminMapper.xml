@@ -52,4 +52,16 @@
         FROM admin WHERE admin_email = #{email}
     </select>
 
+    <update id="deleteUser" parameterType="int">
+        UPDATE admin
+        SET is_deleted = 1
+        WHERE admin_id = #{adminId}
+    </update>
+
+    <update id="activateUser" parameterType="int">
+        UPDATE admin
+        SET is_deleted = 0
+        WHERE admin_id = #{adminId}
+    </update>
+
 </mapper>

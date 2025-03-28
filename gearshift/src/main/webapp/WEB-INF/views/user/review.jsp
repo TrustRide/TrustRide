@@ -14,7 +14,17 @@
     <div class="container">
         <c:forEach var="r" items="${reviews}">
             <div class="card">
-                <a href="${pageContext.request.contextPath}/review/${r.reviewId}?page=${paging.page}"><img src="${pageContext.request.contextPath}/img/review/car1.jpg" alt="차 리뷰 ${r.reviewId}"></a>
+                <a href="${pageContext.request.contextPath}/review/${r.reviewId}?page=${paging.page}">
+                    <c:choose>
+                        <c:when test="${not empty r.imageUrl}">
+                            <img src="${pageContext.request.contextPath}${r.imageUrl}" alt="차 리뷰 ${r.reviewId}">
+                        </c:when>
+                        <c:otherwise>
+                            <img src="${pageContext.request.contextPath}/img/di1.jpg" alt="기본 이미지">
+                        </c:otherwise>
+                    </c:choose>
+                </a>
+
                 <a href="${pageContext.request.contextPath}/review/${r.reviewId}?page=${paging.page}"><h3>${r.reviewTitle}</h3></a>
                 <p>${r.reviewContent}</p>
             </div>

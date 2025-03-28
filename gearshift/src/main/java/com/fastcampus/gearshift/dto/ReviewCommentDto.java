@@ -5,27 +5,17 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
 
 @Getter
 @Setter
-public class ReviewDto {
+public class ReviewCommentDto {
+    private Integer reviewCommentId;
+    private String commentContent;
     private Integer reviewId;
-    private String reviewTitle;
-    private String reviewContent;
-    private Integer rating;
-    private Integer orderId;
-    private Integer carInfoId;
-    private String modelName;
-    private Integer userId;
-    private String userName;
-    private String userEmail;
+    private Integer adminId;
     private Boolean isDeleted;
-    private Boolean isAnswered;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-    private String imageUrl;
-    private ReviewCommentDto reviewComment;
 
     public String getFormattedCreatedAt() {
         return createdAt.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));

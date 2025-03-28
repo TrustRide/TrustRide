@@ -4,6 +4,7 @@ import com.fastcampus.gearshift.dto.AdminDto;
 import com.fastcampus.gearshift.dto.SPagingDto;
 import com.fastcampus.gearshift.service.SAdminService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -45,6 +46,20 @@ public class SAdminManageController {
     public String processRegister(@ModelAttribute AdminDto user, Model model) {
         adminService.registerUser(user);
         return "redirect:/admin/manage";
+    }
+
+    @PostMapping("/deactivate")
+    @ResponseBody
+    public ResponseEntity<String> deactivateAdmin(@RequestBody AdminDto admin) {
+        adminService.deleteUser(admin.getAdminId());
+        return ResponseEntity.ok("success");
+    }
+
+    @PostMapping("/activate")
+    @ResponseBody
+    public ResponseEntity<String> activateAdmin(@RequestBody AdminDto admin) {
+        adminService.activateUser(admin.getAdminId());
+        return ResponseEntity.ok("success");
     }
 
 }

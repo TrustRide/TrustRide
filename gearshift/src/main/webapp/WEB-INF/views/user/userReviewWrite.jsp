@@ -13,7 +13,15 @@
     <div class="container">
 
         <div class="product-info-box">
-            <img src="https://cdn-icons-png.flaticon.com/512/2969/2969266.png" alt="${modelName} 이미지">
+            <c:choose>
+                <c:when test="${not empty carImageUrl}">
+                    <img src="${pageContext.request.contextPath}${carImageUrl}" alt="${modelName} 이미지">
+                </c:when>
+                <c:otherwise>
+                    <img src="${pageContext.request.contextPath}/img/di1.jpg" alt="기본 이미지">
+                </c:otherwise>
+            </c:choose>
+
             <div class="product-text">
                 <div class="product-name">${modelName}</div>
                 <div class="product-date">${orderCompletedDate} 배송</div>

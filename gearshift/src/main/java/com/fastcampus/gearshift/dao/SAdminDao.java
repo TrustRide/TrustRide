@@ -10,4 +10,6 @@ public interface SAdminDao {
     int countAllUsers();
     List<AdminDto> selectUsersWithPaging(int offset, int limit);
     AdminDto findByEmail(String email);
+    void deleteUser(Integer adminId);
+    void activateUser(Integer adminId);
 }

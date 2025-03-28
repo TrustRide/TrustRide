@@ -19,10 +19,11 @@ public class SReviewController {
     SReviewService reviewService;
 
     @GetMapping("/review")
-    public String loadReviewPage(@RequestParam(defaultValue = "1") int page, Model model) {
+    public String loadReviewPage(@RequestParam(defaultValue = "1") int page,
+                                 Model model) {
         int totalCount = reviewService.getTotalReviewCount();
         SPagingDto paging = SPagingDto.fromGrid(page, totalCount);
-        List<ReviewDto> reviews = reviewService.getReviewsWithPaging(paging.getOffset(), paging.getLimit());
+        List<ReviewDto> reviews = reviewService.getReviewsWithPagingFiltered(paging.getOffset(), paging.getLimit(), null);
 
         model.addAttribute("reviews", reviews);
         model.addAttribute("paging", paging);
