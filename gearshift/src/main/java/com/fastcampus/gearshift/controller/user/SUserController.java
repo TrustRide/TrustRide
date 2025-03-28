@@ -74,7 +74,6 @@ public class SUserController {
         return Map.of("verified", result);
     }
 
-<<<<<<< Updated upstream
     @GetMapping("/error403")
     public String handle403() {
         return "error/403";
@@ -84,7 +83,4 @@ public class SUserController {
     public String handle404() {
         return "error/404";
     }
-
-=======
->>>>>>> Stashed changes
 }
