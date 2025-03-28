@@ -30,12 +30,11 @@
       text-align: center;
       position: sticky;
       top: 0;
-      background: white; /* 배경색 필수 */
+      background: white;
       padding-bottom: 10px;
-      z-index: 100; /* z-index를 높게 설정 */
-      border-bottom: 2px solid #f0f0f0; /* 구분선 추가 (선택적) */
+      z-index: 100;
+      border-bottom: 2px solid #f0f0f0;
     }
-
 
     label {
       font-weight: 500;
@@ -101,18 +100,22 @@
   <form action="${pageContext.request.contextPath}/admin/cars/register" method="post" enctype="multipart/form-data">
     <label>차량 번호</label>
     <input name="carNum" type="text" required />
+
     <label>모델명</label>
     <input name="modelName" type="text" required />
+
     <label>주행 거리 (km)</label>
-    <input name="mileage" type="number" required />
+    <input name="mileage" type="text" required />
+
     <label>배기량</label>
-    <input name="engineCapacity" type="number" />
+    <input name="engineCapacity" type="text" />
+
     <label>연료</label>
     <input name="fuelType" type="text" required />
+
     <label>변속기</label>
     <input name="transmission" type="text" required />
-    <label>차량 키 개수</label>
-    <input name="keyCount" type="number" required />
+
     <label>색상</label>
     <input name="color" type="text" required />
     <label>차량 가격</label>
@@ -123,10 +126,27 @@
     <input name="maintenanceCost" type="number" required />
     <label>등록대행수수료</label>
     <input name="agencyFee" type="number" required />
+    <label>가격</label>
+    <input name="carPrice" type="number" required />
+
     <label>연식</label>
     <input name="manufactureYear" type="text" required />
+
+    <label>차량 설명</label>
+    <input name="description" type="text" />
+
+    <label>VIN 번호</label>
+    <input name="vinNumber" type="text" />
+
+    <label>제안 보고서 번호</label>
+    <input name="offerReportNumber" type="text" />
+
+    <label>차량 위치</label>
+    <input name="carLocation" type="text" />
+
     <label>차량 이미지 업로드</label>
     <input type="file" name="imageFiles" accept="image/*" multiple required />
+
     <label>카테고리 선택</label>
     <select name="largeCateCode" id="largeCate" required>
       <option value="">대분류 선택</option>
@@ -134,22 +154,37 @@
         <option value="${large.cateCode}">${large.cateName}</option>
       </c:forEach>
     </select>
+
     <select name="mediumCateCode" id="mediumCate" required>
       <option value="">중분류 선택</option>
     </select>
+
     <select name="smallCateCode" id="smallCate" required>
       <option value="">소분류 선택</option>
     </select>
+
     <label>판매 상태</label>
     <select name="soldStatus" required>
       <option value="판매준비중">판매준비중</option>
       <option value="판매중">판매중</option>
       <option value="판매완료">판매완료</option>
 
+
+
+    <label>판매 시기</label>
+    <select name="soldStatus" required>
+      <option value="즉시">즉시</option>
+      <option value="7일 이내">7일 이내</option>
+      <option value="14일 이내">14일 이내</option>
+      <option value="30일 이내">30일 이내</option>
+      <option value="30일 이후">30일 이후</option>
+
     </select>
+
     <button type="submit">등록</button>
   </form>
 </div>
+
 <script>
   $(document).ready(function () {
     $('#largeCate').change(function () {
@@ -164,6 +199,7 @@
         });
       }
     });
+
     $('#mediumCate').change(function () {
       const mediumCateCode = $(this).val();
       $('#smallCate').html('<option value="">소분류 선택</option>');

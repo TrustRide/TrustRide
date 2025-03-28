@@ -102,25 +102,38 @@ public class PUserController {
     @GetMapping("/delivery")
     public String getDelivery(
             @RequestParam("carInfoId") Integer carInfoId,
+            @RequestParam("title") String title,
+            @RequestParam("isJointHolder") Boolean isJointHolder,
             HttpSession session,
             Model model
     ) throws Exception {
 
-        UserDto userDto = (UserDto) session.getAttribute("loginUser"); // 세션에서 로그인 사용자 꺼내기
+        UserDto userDto = (UserDto) session.getAttribute("loginUser");
         if (userDto == null) {
             return "redirect:/login";
         }
 
-        Integer userId = userDto.getUserId(); // userId 추출
-
+        Integer userId = userDto.getUserId();
         UserDto selectedUser = pHolderService.userSelect(userId);
         CarInfoDto carInfoDto = pHolderService.carSelect(carInfoId);
+
+        // 👉 여기서 DTO에 값 주입
+        carInfoDto.setOwnershipType(title);
+        carInfoDto.setIsJointOwnerShip(isJointHolder);
+
+        // 👉 로그 또는 콘솔로 확인
+        System.out.println("선택된 명의자 타입: " + carInfoDto.getOwnershipType());
+        System.out.println("공동 명의 여부: " + carInfoDto.getIsJointOwnerShip());
+
+        System.out.println(carInfoDto.getOwnershipType());
+        System.out.println(carInfoDto.getIsJointOwnerShip());
 
         model.addAttribute("userDto", selectedUser);
         model.addAttribute("carDto", carInfoDto);
 
         return "user/deliveryInformation";
     }
+
 
 
     @PostMapping("/deliveryInsert")
@@ -132,13 +145,15 @@ public class PUserController {
 
 
     @GetMapping("/carDetail")
-    public String getDetail(@RequestParam("carInfoId") Integer carInfoId, Model model) throws Exception {
+    public String getDetail(@RequestParam("carInfoId") Integer carInfoId, Model model,CarInfoDto dto) throws Exception {
         CarInfoDto carInfoDto = pHolderService.carSelect(carInfoId);
 
         logger.debug("요청된 carInfoId = {}", carInfoId);
         logger.debug("조회된 carInfoDto = {}", carInfoDto);
 
         model.addAttribute("carDto", carInfoDto);
+        model.addAttribute("dto", dto);
+
         return "user/userCarDetail";
     }
 
@@ -175,7 +190,6 @@ public class PUserController {
         model.addAttribute("userCarList",searchResults);
         return "user/userCarList";
     }
-
 
 
 }

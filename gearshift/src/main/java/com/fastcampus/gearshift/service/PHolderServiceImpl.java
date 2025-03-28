@@ -20,8 +20,8 @@ public class  PHolderServiceImpl implements PHolderService {
 
     @Override
     public UserDto read(Integer userId) throws Exception {
-       UserDto userDto = pHolderDao.select(userId);
-       return userDto;
+        UserDto userDto = pHolderDao.select(userId);
+        return userDto;
     }
 
     //차량 리스트 조회

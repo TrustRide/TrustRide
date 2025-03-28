@@ -4,7 +4,8 @@ import lombok.*;
 
 import java.util.List;
 
-
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
 public class CarInfoDto {
 
@@ -18,15 +19,17 @@ public class CarInfoDto {
     private String transmission;  // 변속기 유형 (Transmission Type: Automatic, Manual)
     private String color;  // 차량 색상 (Car Color)
     private Integer carPrice;  // 차량 가격 (Car Price)
-    private Integer previousRegistrationFee;  // 이전 등록비 (Previous Registration Fee)
+    private Integer previousRegistrationFee; // 이전 등록비 (Previous Registration Fee)
     private Integer maintenanceCost;  // 유지보수 비용 (Maintenance Cost)
     private Integer agencyFee;  // 등록대행수수료 (agency Fee)
     private Integer carAmountPrice;  // 총 차량 금액 (Total Car Amount Price)
-    //private List<ImageDto> images;
+    private List<ImageDto> images;
     private String description;  // 차량 설명 (Car Description)
     private String offerReportNumber;  // 제안 보고서 번호 (Offer Report Number)
     private String vinNumber;  // 차량 식별 번호 (Vehicle Identification Number, VIN)
     private Integer deliveryFee;//배송비
+    private String ownershipType;// 명의자 타입
+    private Boolean isJointOwnerShip;//명의자 불리언
     private String carLocation;
 
     // DB와 상관x 있어도 다른거에 영향x
@@ -66,7 +69,7 @@ public class CarInfoDto {
         this.description = description;
         this.offerReportNumber = offerReportNumber;
         this.vinNumber = vinNumber;
-        this.carLocation = carLocation;
+
     }
 
 
@@ -91,7 +94,7 @@ public class CarInfoDto {
         this.description = description;
         this.offerReportNumber = offerReportNumber;
         this.vinNumber = vinNumber;
-        this.carLocation = carLocation;
+
 
     }
 

@@ -1,0 +1,270 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+}
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+header {
+    background: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 15px 0;
+}
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.logo-img {
+    height: 50px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: red;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    margin: 10px 0;
+}
+nav a {
+    text-decoration: none;
+    color: #555;
+    font-size: 16px;
+}
+.search-bar {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 30px;
+}
+
+.search-bar input[type="text"] {
+    flex: 1;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: #fff;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+    transition: border-color 0.3s;
+}
+
+.search-bar input[type="text"]:focus {
+    border-color: #ff5722;
+    outline: none;
+}
+
+.search-btn {
+    padding: 10px 15px;
+    background-color: #ff5722;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.search-btn:hover {
+    background-color: #e64a19;
+}
+
+
+
+
+
+.banner {
+    width: 100%;
+    height: 200px;
+    background: red;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+.car-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+    padding: 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.car-card {
+    position: relative;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease;
+    height: 420px;
+}
+
+.car-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.car-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.car-card-content {
+    padding: 14px 16px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.car-card-content h2 {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.car-card-content h4 {
+    font-size: 13px;
+    color: #777;
+    margin: 6px 0;
+}
+
+.car-card-content h1 {
+    font-size: 18px;
+    color: #d8232a;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* 추가: 타임딜, 무료배송 뱃지 */
+.badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #d8232a;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.footer {
+    background-color: #f9f9f9;
+    padding: 20px 0;
+    color: #333;
+    border-top: 1px solid #ddd;
+}
+.footer-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.footer-logo {
+    font-size: 18px;
+    font-weight: bold;
+    color: red;
+}
+.footer-info, .footer-copyright {
+    font-size: 14px;
+    line-height: 1.6;
+}
+.category-container {
+    position: static;
+    width: 250px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    overflow-y: auto;
+    max-height: 80vh;
+    flex-shrink: 0;
+}
+.car-section {
+    flex: 1;
+}
+.category-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.category-tier-1, .category-tier-2, .category-tier-3 {
+    padding: 10px;
+    cursor: pointer;
+}
+.car-page-layout {
+    display: flex;
+    align-items: flex-start;
+    /* 기존 값보다 줄이기 (1400 → 1200) */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px; /* 좌우 패딩 살짝 추가 */
+    gap: 40px;
+}
+.category-tier-1 {
+    font-weight: bold;
+    background-color: #f8f8f8;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+.category-tier-2 {
+    border-left: 3px solid #ddd;
+    padding-left: 15px;
+}
+.category-tier-3 {
+    color: #666;
+    border-left: 3px solid #ccc;
+    padding-left: 25px;
+}
+.hidden {
+    display: none;
+}
+
+ .pagination {
+     text-align: center;
+     margin: 20px 0;
+ }
+.pagination a {
+    display: inline-block;
+    padding: 8px 12px;
+    margin: 0 4px;
+    border: 1px solid #ddd;
+    text-decoration: none;
+    color: #333;
+    border-radius: 4px;
+}
+.pagination a.active {
+    background-color: red;
+    color: white;
+}
+.pagination a:hover {
+    background-color: #ddd;
+}
