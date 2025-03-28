@@ -18,8 +18,15 @@ public interface PHolderService {
     UserDto userSelect(Integer userId) throws Exception;
 
     List<CarListDto> searchCarsByTitle(String title) throws Exception;
+<<<<<<< Updated upstream
 
     List<CarListDto> carselect(int page, int pageSize) throws Exception;
+=======
+    //페이징 관련 기능
+    List<CarListDto> carselect(int page, int pageSize) throws Exception;
+    //전체 갯수 조회
+    int getCarCount() throws Exception; //전체 차량 개수 조회
+>>>>>>> Stashed changes
 
     int getCarCount() throws Exception;
 

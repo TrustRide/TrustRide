@@ -6,266 +6,8 @@
     <title>상품 상세페이지</title>
 
 
-    <style>
-        /* 헤더 스타일 */
-        header {
-            background: white;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            padding: 15px 0;
-        }
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .logo-img {
-            height: 50px;
-        }
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: red;
-        }
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 20px;
-            margin: 10px 0;
-        }
-        nav a {
-            text-decoration: none;
-            color: #555;
-            font-size: 16px;
-        }
-        .search-bar {
-            padding: 8px 12px;
-            border: 1px solid #555;
-            border-radius: 4px;
-        }
+    <link rel="stylesheet" href="<c:url value='/resources/css/user/userCarDetail.css' />">
 
-        .footer {
-            background-color: #f9f9f9;
-            padding: 20px 0;
-            color: #333;
-            border-top: 1px solid #ddd;
-        }
-        .footer-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        .footer-logo {
-            font-size: 18px;
-            font-weight: bold;
-            color: red;
-        }
-        .footer-info, .footer-copyright {
-            font-size: 14px;
-            line-height: 1.6;
-        }
-    </style>
-
-
-
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f8f9fb;
-            margin: 0;
-            padding: 0;
-        }
-
-        header {
-            background: white;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            padding: 15px 0;
-        }
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: auto;
-        }
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .logo-img {
-            height: 50px;
-        }
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: red;
-        }
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 20px;
-            margin: 10px 0;
-        }
-        nav a {
-            text-decoration: none;
-            color: #555;
-            font-size: 16px;
-        }
-        .search-bar {
-            padding: 8px 12px;
-            border: 1px solid #555;
-            border-radius: 4px;
-        }
-
-        .footer {
-            background-color: #f9f9f9;
-            padding: 10px 0;
-            color: #333;
-            border-top: 1px solid #ddd;
-            font-size: 13px;
-        }
-        .footer-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        .footer-logo {
-            font-size: 18px;
-            font-weight: bold;
-            color: red;
-        }
-        .footer-info, .footer-copyright {
-            font-size: 13px;
-            line-height: 1.6;
-        }
-
-        .container {
-            display: flex;
-            padding: 30px;
-            gap: 30px;
-            max-width: 1200px;
-            margin: auto;
-        }
-
-        .image-section {
-            flex: 2;
-            background: #fff;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        }
-
-        .main-image {
-            width: 100%;
-            border-radius: 10px;
-        }
-
-        .thumbnail-container {
-            margin-top: 10px;
-            display: flex;
-            gap: 5px;
-            overflow-x: auto;
-        }
-
-        .thumbnail-container img {
-            height: 60px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .info-section {
-            flex: 1;
-            background: #fff;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        }
-
-        .badge {
-            background-color: red;
-            color: white;
-            padding: 4px 10px;
-            font-size: 12px;
-            border-radius: 5px;
-            margin-bottom: 10px;
-            display: inline-block;
-        }
-
-        .car-title {
-            font-size: 20px;
-            font-weight: bold;
-            margin: 10px 0;
-        }
-
-        .price-box {
-            background: #fafafa;
-            padding: 15px;
-            border-radius: 10px;
-            margin-top: 20px;
-            font-size: 16px;
-        }
-
-        .price-box div {
-            margin-bottom: 10px;
-        }
-
-        .total-price {
-            font-size: 20px;
-            font-weight: bold;
-            color: red;
-        }
-
-        .button-box {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .button-box button {
-            padding: 12px;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        .visit-btn {
-            background-color: orange;
-            color: white;
-        }
-
-        .home-btn {
-            background-color: #f33;
-            color: white;
-        }
-
-        .description-section {
-            max-width: 1200px;
-            margin: 30px auto;
-            background: #fff;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        }
-
-        .desc-title {
-            font-weight: bold;
-            font-size: 20px;
-            margin-bottom: 15px;
-        }
-
-        .desc-content {
-            font-size: 15px;
-            color: #333;
-            line-height: 1.7;
-        }
-    </style>
 
 
 </head>
@@ -297,7 +39,7 @@
             </ul>
         </nav>
 
-        <input type="text" placeholder="🔍차량을 검색하세요." class="search-bar">
+
     </div>
 </header>
 
@@ -305,57 +47,51 @@
 
 
 <div class="container">
-    <div class="image-section">
-        <img src="${pageContext.request.contextPath}/resources/img/자동차7.png" alt="Car" class="main-image">
+    <!-- 🔺 이미지 영역 -->
+    <div class="image-box">
+        <c:choose>
+            <c:when test="${not empty carDto.images}">
+                <img id="mainImage" class="main-image"
+                     src="${pageContext.request.contextPath}${carDto.images[0].imageUrl}" />
+            </c:when>
+            <c:otherwise>
+                <img id="mainImage" class="main-image"
+                     src="${pageContext.request.contextPath}/resources/img/자동차7.png" />
+            </c:otherwise>
+        </c:choose>
+
         <div class="thumbnail-container">
-            <img src="${pageContext.request.contextPath}/resources/img/자동차7.png" alt="thumb">
-            <img src="${pageContext.request.contextPath}/resources/img/자동차7.png" alt="thumb">
-            <img src="${pageContext.request.contextPath}/resources/img/자동차7.png" alt="thumb">
-            <img src="${pageContext.request.contextPath}/resources/img/자동차7.png" alt="thumb">
-            <img src="${pageContext.request.contextPath}/resources/img/자동차7.png" alt="thumb">
+            <c:forEach var="img" items="${carDto.images}">
+                <img src="${pageContext.request.contextPath}${img.imageUrl}"
+                     onclick="changeMainImage(this)"
+                     alt="썸네일" />
+            </c:forEach>
         </div>
     </div>
 
+    <!-- 🔻 차량 정보 영역 -->
     <div class="info-section">
-        <div class="badge">HOT 추천</div>
-
+        <div class="badge">무료배송</div>
         <div class="car-title">${carDto.modelName}</div>
-
         <div>${carDto.manufactureYear}년식 · ${carDto.mileage}km · ${carDto.fuelType}</div>
         <hr>
 
         <div class="price-box">
-            총 구매 예상비용 <hr>
-
-            <div>차량가격: <strong><fmt:formatNumber value="${carDto.carPrice}" type="number" groupingUsed="true" />원</strong></div>
-            <div>이전등록비: <strong><fmt:formatNumber value="${carDto.previousRegistrationFee}" type="number" groupingUsed="true" />원</strong></div>
-            <div>등록대행수수료: <strong><fmt:formatNumber value="${carDto.agencyFee}" type="number" groupingUsed="true" />원</strong></div>
-            <div>배송비: <strong><fmt:formatNumber value="0" type="number" groupingUsed="true" />원</strong></div>
-
-
-
+            <div>차량가격: <strong><fmt:formatNumber value="${carDto.carPrice}" type="number" />원</strong></div>
+            <div>이전등록비: <strong><fmt:formatNumber value="${carDto.previousRegistrationFee}" type="number" />원</strong></div>
+            <div>등록대행수수료: <strong><fmt:formatNumber value="${carDto.agencyFee}" type="number" />원</strong></div>
+            <div>배송비: <strong><fmt:formatNumber value="0" type="number" />원</strong></div>
 
             <div class="total-price">
-                총 합계:
-                <fmt:formatNumber value="${carDto.carAmountPrice}" type="number" groupingUsed="true" />원
+                총 합계: <fmt:formatNumber value="${carDto.carAmountPrice}" type="number" />원
             </div>
         </div>
 
-
-
-        <div class="button-box">
-            <button class="visit-btn">방문예약신청</button>
-            <a href="${pageContext.request.contextPath}/titleHolder?carInfoId=${carDto.carInfoId}"
-               class="home-btn"
-               style="text-align:center; padding:12px; border-radius:8px; text-decoration:none; color:white; display:block;">
-                홈서비스신청
-            </a>
-        </div>
-
-
-
+        <a href="${pageContext.request.contextPath}/titleHolder?carInfoId=${carDto.carInfoId}" class="home-btn"></a>
     </div>
 </div>
+
+
 
 <div class="description-section">
     <div class="desc-title">현재 보고 계시는 차량의 기본정보를 알려드릴게요</div>
@@ -393,6 +129,25 @@
         - 차량위치: 서울 강남구 강남대로 364 (역삼동) 10층<br>
         - 전화: 0000-0000
     </div>
+
+    <div style="max-width: 1200px; margin: 30px auto; text-align: center;">
+        <a href="${pageContext.request.contextPath}/titleHolder?carInfoId=${carDto.carInfoId}"
+           class="home-btn"
+           style="
+           display: inline-block;
+           background-color: #8B0000;
+           color: #fff;
+           padding: 16px 0;
+           width: 300px;
+           border-radius: 10px;
+           text-decoration: none;
+           font-size: 18px;
+           font-weight: bold;
+           text-align: center;
+       ">
+            다음
+        </a>
+    </div>
 </div>
 
 
@@ -409,6 +164,15 @@
         <div class="footer-copyright">Copyright © Trust Ride All Rights Reserved</div>
     </div>
 </footer>
+
+<script>
+    function changeMainImage(thumbnail) {
+        const mainImage = document.getElementById("mainImage");
+        if (mainImage && thumbnail) {
+            mainImage.src = thumbnail.src;
+        }
+    }
+</script>
 
 
 </body>

@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.util.List;
+
 
 @Data
 public class CarListDto {
@@ -14,6 +16,7 @@ public class CarListDto {
     private String manufactureYear;  // 제조 연도 (Manufacture Year)
     private String mileage;  // 주행 거리 (Mileage)
     private String fuelType;  // 연료 종류 (Fuel Type: Gasoline, Diesel, etc.)
+<<<<<<< Updated upstream
     private Integer carPrice;  // 차량 가격 (Car Price)
 
     //private List<ImageDto> images;
@@ -26,4 +29,13 @@ public class CarListDto {
     // DB와 상관x 있어도 다른거에 영향x
     private Boolean isWished;
 
+=======
+    private Integer carPrice;
+
+    // 차량 가격 (Car Price)
+    private List<ImageDto> images;
+    // 썸네일
+    private String thumbnailUrl;
+    private Integer thumbnailImageId;
+>>>>>>> Stashed changes
 }

@@ -22,14 +22,18 @@ public interface PHolderDao {
     UserDto userSelect(Integer userId) throws Exception;
 
     //메인화면 검색
-     List<CarListDto> searchCarsByTitle(String title) throws Exception;
+    List<CarListDto> searchCarsByTitle(String title) throws Exception;
 
-     List<CarListDto> carselect(int offset, int pageSize);
+    List<CarListDto> carselect(int offset, int pageSize);
 
+<<<<<<< Updated upstream
      int getCarCount();
 
     List<CarListDto> carselectByCate(String cateCode, int offset, int pageSize);
 
     int getCarCountByCate(String cateCode);
 
+=======
+    int getCarCount();
+>>>>>>> Stashed changes
 }
