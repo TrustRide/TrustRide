@@ -117,7 +117,7 @@
 <!-- 사이드바 포함 -->
 <jsp:include page="include/sidebar.jsp"/>
 
-<<<<<<< Updated upstream
+
 <main class="content">
     <h1>🚗 차량 목록</h1>
 
