@@ -16,6 +16,8 @@ public class LPaymentServiceImpl implements LPaymentService {
     @Override
     public int insert(PaymentProcessDTO paymentProcessDTO) {
 
+        paymentProcessDTO.setPaymentStatus("결제완료");  // 결제상태 세팅
+
         return paymentDao.insert(paymentProcessDTO);
     }
 }

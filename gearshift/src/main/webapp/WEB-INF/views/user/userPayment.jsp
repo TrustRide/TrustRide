@@ -16,12 +16,12 @@
       pg : 'html5_inicis',
       pay_method : 'card', //카드결제
       merchant_uid : 'merchant_' + new Date().getTime(),
-      name : `${cardPaymentDTO.productName}`,
-      amount : `${cardPaymentDTO.orderAmount}`, //판매가격
-      buyer_email : 'hong@naver.com',
-      buyer_name : `${cardPaymentDTO.userId}`,
-      buyer_tel : '010-1234-5678',
-      buyer_addr : '인천시',
+      name : `${carInfo.modelName}`,
+      amount :100 , //판매가격 carInfo.carAmountPrice
+      buyer_email : `${userInfo.userEmail}`,
+      buyer_name : `${userInfo.userName}`,
+      buyer_tel : ${userInfo.userPhoneNumber},
+      buyer_addr : '인천시 부평구 삼산동',
     }, function(rsp) {
       if ( rsp.success ) {
         var msg = '결제가 완료되었습니다.';
@@ -44,18 +44,102 @@
       var form = document.createElement('form');
       var objs;
 
-      // 상품명
+      // 자동차 ID
       objs = document.createElement('input');
       objs.setAttribute('type', 'hidden');
-      objs.setAttribute('name', 'productName');
-      objs.setAttribute('value', rsp.name);
+      objs.setAttribute('name', 'carInfoId');
+      objs.setAttribute('value', `${carInfo.carInfoId}`);
       form.appendChild(objs);
 
-      // 이미지 경로
+      // 배송비
       objs = document.createElement('input');
       objs.setAttribute('type', 'hidden');
-      objs.setAttribute('name', 'imageUrl');
-      objs.setAttribute('value', `${cardPaymentDTO.imageUrl}`);
+      objs.setAttribute('name', 'deliveryFee');
+      objs.setAttribute('value', `${carInfoDto.deliveryFee}`);
+      form.appendChild(objs);
+
+      // 배송 기사 전화번호
+      objs = document.createElement('input');
+      objs.setAttribute('type', 'hidden');
+      objs.setAttribute('name', 'driverPhoneNumber');
+      objs.setAttribute('value', `${carInfoDto.driverPhoneNumber}`);
+      form.appendChild(objs);
+
+      // 희망배송일
+      objs = document.createElement('input');
+      objs.setAttribute('type', 'hidden');
+      objs.setAttribute('name', 'preferredDate');
+      objs.setAttribute('value', `${carInfo.preferredDate}`);
+      form.appendChild(objs);
+
+      // 배송요청 사항
+      objs = document.createElement('input');
+      objs.setAttribute('type', 'hidden');
+      objs.setAttribute('name', 'deliveryRequest');
+      objs.setAttribute('value', `${carInfo.deliveryRequest}`);
+      form.appendChild(objs);
+
+      // 배송 기사 이름
+      objs = document.createElement('input');
+      objs.setAttribute('type', 'hidden');
+      objs.setAttribute('name', 'deliveryDriverName');
+      objs.setAttribute('value', `${carInfoDto.deliveryDriverName}`);
+      form.appendChild(objs);
+
+      // 결제금액
+      objs = document.createElement('input');
+      objs.setAttribute('type', 'hidden');
+      objs.setAttribute('name', 'carAmountPrice');
+      objs.setAttribute('value', rsp.paid_amount);
+      form.appendChild(objs);
+
+      // 명의자 이름
+      objs = document.createElement('input');
+      objs.setAttribute('type', 'hidden');
+      objs.setAttribute('name', 'holderName');
+      objs.setAttribute('value', `${carInfoDto.holderName}`);
+      form.appendChild(objs);
+
+      // 명의자 전화번호
+      objs = document.createElement('input');
+      objs.setAttribute('type', 'hidden');
+      objs.setAttribute('name', 'holderPhoneNumber');
+      objs.setAttribute('value', `${carInfoDto.holderPhoneNumber}`);
+      form.appendChild(objs);
+
+      // 명의자 주민등록번호
+      objs = document.createElement('input');
+      objs.setAttribute('type', 'hidden');
+      objs.setAttribute('name', 'holderResident');
+      objs.setAttribute('value', `${carInfoDto.holderResident}`);
+      form.appendChild(objs);
+
+      // 명의자 우편주소
+      objs = document.createElement('input');
+      objs.setAttribute('type', 'hidden');
+      objs.setAttribute('name', 'holderAddr1');
+      objs.setAttribute('value', `${carInfoDto.holderAddr1}`);
+      form.appendChild(objs);
+
+      //명의자 도로명주소
+      objs = document.createElement('input');
+      objs.setAttribute('type', 'hidden');
+      objs.setAttribute('name', 'holderAddr2');
+      objs.setAttribute('value', `${carInfoDto.holderAddr2}`);
+      form.appendChild(objs);
+
+      //명의자 상세주소
+      objs = document.createElement('input');
+      objs.setAttribute('type', 'hidden');
+      objs.setAttribute('name', 'holderAddr3');
+      objs.setAttribute('value', `${carInfoDto.holderAddr3}`);
+      form.appendChild(objs);
+
+      // 명의자 면허증
+      objs = document.createElement('input');
+      objs.setAttribute('type', 'hidden');
+      objs.setAttribute('name', 'holderLicense');
+      objs.setAttribute('value', `${carInfoDto.holderLicense}`);
       form.appendChild(objs);
 
       // 결제수단
@@ -65,83 +149,55 @@
       objs.setAttribute('value', "신용카드");
       form.appendChild(objs);
 
-
-      // 구매자명
-      objs = document.createElement('input');
-      objs.setAttribute('type', 'hidden');
-      objs.setAttribute('name', 'userId');
-      objs.setAttribute('value', rsp.buyer_name);
-      form.appendChild(objs);
-
-      // 결제금액
-      objs = document.createElement('input');
-      objs.setAttribute('type', 'hidden');
-      objs.setAttribute('name', 'orderAmount');
-      objs.setAttribute('value', rsp.paid_amount);
-      form.appendChild(objs);
-
-      // 할인금액
-      objs = document.createElement('input');
-      objs.setAttribute('type', 'hidden');
-      objs.setAttribute('name', 'discountAmount');
-      objs.setAttribute('value', `${cardPaymentDTO.discountAmount}`);
-      form.appendChild(objs);
-
-      // 최종 금액
-      objs = document.createElement('input');
-      objs.setAttribute('type', 'hidden');
-      objs.setAttribute('name', 'totalAmount');
-      objs.setAttribute('value', `${cardPaymentDTO.totalAmount}`);
-      form.appendChild(objs);
-
       // 소유 형태
       objs = document.createElement('input');
       objs.setAttribute('type', 'hidden');
       objs.setAttribute('name', 'ownershipType');
-      objs.setAttribute('value', `${cardPaymentDTO.ownershipType}`);
+      objs.setAttribute('value', "개인명의자");
       form.appendChild(objs);
 
       // 공동명의 여부
       objs = document.createElement('input');
       objs.setAttribute('type', 'hidden');
       objs.setAttribute('name', 'isJointOwnership');
-      objs.setAttribute('value', ${cardPaymentDTO.isJointOwnership});
+      objs.setAttribute('value', "false");
       form.appendChild(objs);
 
-      // 배송 기사 전화번호
-      objs = document.createElement('input');
-      objs.setAttribute('type', 'hidden');
-      objs.setAttribute('name', 'driverPhoneNumber');
-      objs.setAttribute('value', `${cardPaymentDTO.driverPhoneNumber}`);
-      form.appendChild(objs);
+      <%--// 소유 형태--%>
+      <%--objs = document.createElement('input');--%>
+      <%--objs.setAttribute('type', 'hidden');--%>
+      <%--objs.setAttribute('name', 'ownershipType');--%>
+      <%--objs.setAttribute('value', `${cardPaymentDTO.ownershipType}`);--%>
+      <%--form.appendChild(objs);--%>
 
-      // 배송요청 사항
-      objs = document.createElement('input');
-      objs.setAttribute('type', 'hidden');
-      objs.setAttribute('name', 'deliveryRequest');
-      objs.setAttribute('value', `${cardPaymentDTO.deliveryRequest}`);
-      form.appendChild(objs);
+      <%--// 공동명의 여부--%>
+      <%--objs = document.createElement('input');--%>
+      <%--objs.setAttribute('type', 'hidden');--%>
+      <%--objs.setAttribute('name', 'isJointOwnership');--%>
+      <%--objs.setAttribute('value', ${cardPaymentDTO.isJointOwnership});--%>
+      <%--form.appendChild(objs);--%>
 
-      // 희망배송일
-      objs = document.createElement('input');
-      objs.setAttribute('type', 'hidden');
-      objs.setAttribute('name', 'preferredDate');
-      objs.setAttribute('value', `${cardPaymentDTO.preferredDate}`);
-      form.appendChild(objs);
+      // 이미지 경로
+      <%--objs = document.createElement('input');--%>
+      <%--objs.setAttribute('type', 'hidden');--%>
+      <%--objs.setAttribute('name', 'imageUrl');--%>
+      <%--objs.setAttribute('value', `${cardPaymentDTO.imageUrl}`);--%>
+      <%--form.appendChild(objs);--%>
 
-      // 배송 기사 이름
-      objs = document.createElement('input');
-      objs.setAttribute('type', 'hidden');
-      objs.setAttribute('name', 'deliveryDriverName');
-      objs.setAttribute('value', `${cardPaymentDTO.deliveryDriverName}`);
-      form.appendChild(objs);
+      // 할인금액
+      <%--objs = document.createElement('input');--%>
+      <%--objs.setAttribute('type', 'hidden');--%>
+      <%--objs.setAttribute('name', 'discountAmount');--%>
+      <%--objs.setAttribute('value', `${cardPaymentDTO.discountAmount}`);--%>
+      <%--form.appendChild(objs);--%>
 
-      // 배송비
-      objs = document.createElement('input');
-      objs.setAttribute('type', 'hidden');
-      objs.setAttribute('name', 'deliveryFee');
-      objs.setAttribute('value', `${cardPaymentDTO.deliveryFee}`);
-      form.appendChild(objs);
+      // 최종 금액
+      <%--objs = document.createElement('input');--%>
+      <%--objs.setAttribute('type', 'hidden');--%>
+      <%--objs.setAttribute('name', 'totalAmount');--%>
+      <%--objs.setAttribute('value', `${cardPaymentDTO.totalAmount}`);--%>
+      <%--form.appendChild(objs);--%>
+
 
       form.setAttribute('method', 'post');
       form.setAttribute('action', "/gearshift/orders/status/credit");

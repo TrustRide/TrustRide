@@ -11,8 +11,8 @@
     </div>
     <ul>
         <li><h4>MY 쇼핑</h4></li>
-        <li><a href="#">주문목록/배송조회</a></li>
-        <li><a href="#">취소/반품/교환/환불내역</a></li>
+        <li><a href="/gearshift/orders/status/orderList">주문목록/배송조회</a></li>
+        <li><a href="/gearshift/user/orders/refundable">환불/환불내역</a></li>
         <li><h4>MY 혜택</h4></li>
         <li><a href="#">할인코드</a></li>
         <li><h4>MY 활동</h4></li>

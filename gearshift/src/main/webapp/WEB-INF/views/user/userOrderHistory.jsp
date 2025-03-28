@@ -1,10 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
     <title>주문목록/배송조회</title>
 </head>
 <body>
-// 사이드바
+    <%-- 사이드바 --%>
 <jsp:include page="include/sidebar.jsp"/>
 
 <main class="order-list">
@@ -16,20 +17,20 @@
             <p>2,250 원 - 1개</p>
         </div>
     </section>
-
+<c:forEach var="order" items="${orderList}">
     <section>
-        <h2>2025. 3. 10 주문</h2>
+        <h2>${order.orderCompletedDate} 주문</h2>
         <div>
-            <p>배송완료: <strong>3/11(화) 도착</strong></p>
-            <p>로켓배송 코멧 라벤더 3겹 롤화장지 27m, 12개입, 1개</p>
-            <p>5,990 원 - 1개</p>
-            <button>배송조회</button>
-            <button>교환, 반품 신청</button>
+            <p>${order.deliveryStatus} : <strong>${order.arrivalDate} 도착</strong></p>
+            <p>${order.modelName}</p>
+            <p>${order.totalAmount}</p>
+            <button>환불 신청</button>
             <button>리뷰 작성하기</button>
         </div>
     </section>
-</main>
+</c:forEach>
 
+</main>
 </body>
 </html>
 

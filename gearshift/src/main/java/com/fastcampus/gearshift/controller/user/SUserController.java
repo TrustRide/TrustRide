@@ -31,6 +31,7 @@ public class SUserController {
     @PostMapping("/register")
     public String processRegister(@ModelAttribute UserDto user, Model model) {
         userService.registerUser(user);
+
         return "redirect:/login.do";
     }
 
@@ -82,5 +83,4 @@ public class SUserController {
     public String handle404() {
         return "error/404";
     }
-
 }

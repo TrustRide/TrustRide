@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fastcampus.gearshift.dao.CarInfoMapper">
+
+    <select id="getCarInfo" resultType="CarDetailDto">
+          SELECT car_info_id, model_name, car_num, manufacture_year, mileage, fuel_type,car_price,
+                 previous_registration_fee,maintenance_cost, agency_fee
+          FROM information
+          WHERE car_info_id = #{carInfoId}
+
+    </select>
+
+</mapper>
+
+

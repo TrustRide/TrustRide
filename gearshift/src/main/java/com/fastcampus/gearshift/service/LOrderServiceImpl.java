@@ -2,8 +2,11 @@ package com.fastcampus.gearshift.service;
 
 import com.fastcampus.gearshift.dao.LOrderDao;
 import com.fastcampus.gearshift.dto.LOrderDTO;
+import com.fastcampus.gearshift.dto.LOrderListDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class LOrderServiceImpl implements LOrderService{
@@ -15,6 +18,16 @@ public class LOrderServiceImpl implements LOrderService{
     // 주문 정보 저장
     @Override
     public int insertOrder(LOrderDTO orderDto) {
+
+        int orderAmount = orderDto.getCarAmountPrice(); // 차량 총 가격 = 주문 가격
+        int discountAmount = 0; // 할인가격 0원
+        int totalAmount = orderAmount + discountAmount; // 총 주문 가격
+
+        orderDto.setOrderAmount(orderAmount);        // 주문 가격
+        orderDto.setDiscountAmount(discountAmount);  // 할인가격
+        orderDto.setTotalAmount(totalAmount);        // 총 주문 가격
+        orderDto.setOrderStatus("주문완료");          // 주문상태 세팅
+
         return orderDao.insertOrder(orderDto);
     }
 
@@ -22,6 +35,11 @@ public class LOrderServiceImpl implements LOrderService{
     @Override
     public int getLastOrderId() {
         return orderDao.getLastOrderId();
+    }
+
+    @Override
+    public List<LOrderListDTO> getLOrderList(Integer userId) {
+        return orderDao.getLOrderList(userId);
     }
 
 
