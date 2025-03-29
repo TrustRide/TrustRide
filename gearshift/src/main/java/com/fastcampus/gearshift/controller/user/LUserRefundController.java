@@ -52,7 +52,7 @@ public class LUserRefundController {
     }
 
     // 선택한 상품 환불 등록
-    @PostMapping("/orders/register/refund")
+    @PostMapping("/register/refund")
     public String  registerRefund(@ModelAttribute LRefundDTO refundDTO, Model model) {
 
         // 환불 선택한 상품 주문 아이디

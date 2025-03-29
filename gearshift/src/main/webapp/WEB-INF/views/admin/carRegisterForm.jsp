@@ -99,8 +99,11 @@
 <!-- 헤더 포함 -->
 <jsp:include page="include/header.jsp"/>
 
+
+
 <!-- 사이드바 포함 -->
 <jsp:include page="include/sidebar.jsp"/>
+
 
 <div class="container">
   <h1>중고차 등록</h1>
@@ -133,8 +136,6 @@
     <input name="maintenanceCost" type="number" required />
     <label>등록대행수수료</label>
     <input name="agencyFee" type="number" required />
-    <label>가격</label>
-    <input name="carPrice" type="number" required />
 
     <label>연식</label>
     <input name="manufactureYear" type="text" required />
@@ -178,13 +179,6 @@
 
 
 
-    <label>판매 시기</label>
-    <select name="soldStatus" required>
-      <option value="즉시">즉시</option>
-      <option value="7일 이내">7일 이내</option>
-      <option value="14일 이내">14일 이내</option>
-      <option value="30일 이내">30일 이내</option>
-      <option value="30일 이후">30일 이후</option>
 
     </select>
 

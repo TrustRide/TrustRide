@@ -39,4 +39,9 @@ public class LRefundServiceImpl implements LRefundService {
     public int modifyOrder(LRefundDTO refundDto) {
         return refundDao.modifyOrder(refundDto);
     }
+
+    @Override
+    public List<LRefundDTO> getRefundList(Integer userId) {
+        return refundDao.getRefundList(userId);
+    }
 }

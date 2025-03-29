@@ -1,10 +1,7 @@
 package com.fastcampus.gearshift.controller.user;
 
 import com.fastcampus.gearshift.dto.*;
-import com.fastcampus.gearshift.service.LDeliveryService;
-import com.fastcampus.gearshift.service.LHolderService;
-import com.fastcampus.gearshift.service.LOrderService;
-import com.fastcampus.gearshift.service.LPaymentService;
+import com.fastcampus.gearshift.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,6 +29,9 @@ public class LUserOrderController {
 
     @Autowired
     private LDeliveryService deliveryService;
+
+    @Autowired
+    private LRefundService refundService;
 
     // 현금 결제 후 주문내역/배송조회 페이지 이동
     @PostMapping("/status/cash")
@@ -137,6 +137,9 @@ public class LUserOrderController {
         // 주문 목록 조회
         List<LOrderListDTO> orderListDTO = orderService.getLOrderList(userId);
         model.addAttribute("orderList", orderListDTO);
+
+        List<LRefundDTO> refundDTOList = refundService.getRefundList(userId);
+        model.addAttribute("refundList", refundDTOList);
 
         return "user/userOrderHistory";
     }
