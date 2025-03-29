@@ -17,26 +17,55 @@
                 <c:if test="${not empty sessionScope.loginUser}">
                     <li><strong>${sessionScope.loginUser.userName}</strong>님 환영합니다.</li>
                     <li><a href="${pageContext.request.contextPath}/user/mypage">마이페이지</a></li>
-                    <li><a href="${pageContext.request.contextPath}/logout">로그아웃</a></li>
+                    <li><a href="#" onclick="logout()">로그아웃</a></li>
                 </c:if>
-
 
                 <c:if test="${empty sessionScope.loginUser}">
                     <li><a href="${pageContext.request.contextPath}/login.do">로그인</a></li>
                     <li><a href="${pageContext.request.contextPath}/register">회원가입</a></li>
                 </c:if>
-
             </ul>
         </nav>
 
-        <form action="/gearshift/searchCar" method="get" style="display: flex; align-items: center;">
-            <input type="text" name="searchQuery" placeholder="🔍차량을 검색하세요." class="search-bar" style="padding: 10px; border-radius: 4px; border: 1px solid #ddd; flex: 1;">
-            <button type="submit" class="search-btn">검색</button>
-        </form>
+        <!-- 검색 input, form 없이 처리 -->
+        <div style="display: flex; align-items: center;">
+            <input type="text" id="searchQuery" placeholder="🔍차량을 검색하세요." class="search-bar"
+                   style="padding: 10px; border-radius: 4px; border: 1px solid #ddd; flex: 1;"
+                   onkeypress="if(event.key === 'Enter') searchCar()">
+            <button type="button" class="search-btn" onclick="searchCar()">검색</button>
+        </div>
     </div>
-
-    <form id="logoutForm" action="${pageContext.request.contextPath}/logout" method="post" style="display:none;">
-        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-    </form>
-
 </header>
+
+<script>
+    // 로그아웃 기능 (POST + CSRF)
+    function logout() {
+        fetch('${pageContext.request.contextPath}/logout', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'X-CSRF-TOKEN': '${_csrf.token}'
+            },
+            body: ''
+        })
+            .then(response => {
+                if (response.redirected) {
+                    window.location.href = response.url;
+                } else {
+                    window.location.reload();
+                }
+            })
+            .catch(error => {
+                console.error('로그아웃 실패:', error);
+            });
+    }
+
+    // 검색 기능 (form 없이 GET 요청 전송)
+    function searchCar() {
+        const query = document.getElementById('searchQuery').value.trim();
+        if (query !== '') {
+            const url = '${pageContext.request.contextPath}/searchCar?searchQuery=' + encodeURIComponent(query);
+            window.location.href = url;
+        }
+    }
+</script>
