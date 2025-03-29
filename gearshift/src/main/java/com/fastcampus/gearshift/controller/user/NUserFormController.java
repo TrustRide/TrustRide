@@ -29,7 +29,7 @@ public class NUserFormController {
        //디버깅테스트
 //        System.out.println("로그인 안 됨 → 세션에 redirectAfterLogin 설정: /user/userForm");
 
-        UserDto loginUser = (UserDto) session.getAttribute("loginUser");
+        UserDto loginUser = (UserDto)session.getAttribute("loginUser");
         if (loginUser == null) {
             session.setAttribute("redirectAfterLogin", "/user/userForm");
             return "redirect:/login.do";
