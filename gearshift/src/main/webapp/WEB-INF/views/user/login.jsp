@@ -42,8 +42,7 @@
         </form>
 
         <div class="links">
-<%--            <a href="#">아이디 찾기</a> |--%>
-<%--            <a href="#">비밀번호 찾기</a> |--%>
+<%--            <a href="${pageContext.request.contextPath}/findInfo">아이디 · 비밀번호 찾기</a> |--%>
             <a href="${pageContext.request.contextPath}/register">회원가입</a>
         </div>
         <br>

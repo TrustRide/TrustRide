@@ -2,6 +2,7 @@ package com.fastcampus.gearshift.controller.admin;
 
 import com.fastcampus.gearshift.dto.AdminDto;
 import com.fastcampus.gearshift.dto.SPagingDto;
+import com.fastcampus.gearshift.dto.UserDto;
 import com.fastcampus.gearshift.service.SAdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -9,7 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/admin")
@@ -46,6 +49,19 @@ public class SAdminManageController {
     public String processRegister(@ModelAttribute AdminDto user, Model model) {
         adminService.registerUser(user);
         return "redirect:/admin/manage";
+    }
+
+    @PostMapping("/check-email")
+    @ResponseBody
+    public Map<String, Boolean> checkEmail(@RequestBody Map<String, String> body) {
+        String userEmail = body.get("email");
+        AdminDto admin = adminService.findUserByEmail(userEmail);
+
+        Map<String, Boolean> result = new HashMap<>();
+        boolean isDuplicate = (admin == null) ? false : true;
+        result.put("duplicate", isDuplicate);
+
+        return result;
     }
 
     @PostMapping("/deactivate")
