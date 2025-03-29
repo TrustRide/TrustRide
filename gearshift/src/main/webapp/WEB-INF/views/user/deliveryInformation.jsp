@@ -12,44 +12,19 @@
 <head>
     <title>배송지 입력</title>
     <link rel="stylesheet" href="<c:url value='/resources/css/user/deliveryInformation.css' />">
-
+    <link rel="stylesheet" href="<c:url value='/resources/css/user/header2.css' />">
+    <link rel="stylesheet" href="<c:url value='/resources/css/user/footer2.css' />">
 </head>
 
 <body>
-<header>
-    <div class="container header-content">
-        <div class="logo-container">
-            <a href="/gearshift/"><img src="<c:url value='/resources/img/trustride.png' />" alt="Trust Ride Logo" class="logo-img"></a>
-            <h1 class="logo">Trust Ride</h1>
-        </div>
-
-        <nav>
-            <ul>
-                <li><a href="${pageContext.request.contextPath}/userList">내차사기</a></li>
-                <li><a href="${pageContext.request.contextPath}/review">상품리뷰</a></li>
+<%@ include file="/WEB-INF/views/user/include/header2.jsp" %>
 
 
-                <c:if test="${not empty sessionScope.loginUser}">
-                    <li>${sessionScope.loginUser.userName}님 환영합니다.</li>
-                    <li><a href="#">마이페이지</a></li>
-                    <li><a href="${pageContext.request.contextPath}/logout">로그아웃</a></li>
-                </c:if>
-                <c:if test="${empty sessionScope.loginUser}">
-                    <a href="${pageContext.request.contextPath}/login.do">로그인</a>
-                    <li><a href="${pageContext.request.contextPath}/register">회원가입</a></li>
-                </c:if>
-
-            </ul>
-        </nav>
-
-        
-    </div>
-</header>
 
 <div class="container">
+
     <!-- 왼쪽 폼 섹션 -->
     <div class="form-section">
-
 
         <h2><%= title %>를 선택했습니다.</h2> <!-- 선택한 버튼에 따라 제목 변경됨 -->
         <p>이제 명의자 정보와 배송 정보를 입력해 주세요.</p>
@@ -62,6 +37,7 @@
             <input type="hidden" name="isJointOwnership" value="${carDto.isJointOwnership}">
 
             <input type="hidden" name="userId" value="${userDto.userId}">
+
 
             <!--회원 이름 값 안넘김 -->
             <label>회원 이름</label>
@@ -507,19 +483,7 @@
 
 
 
-<footer class="footer">
-    <div class="footer-container">
-        <div class="footer-logo">Trust Ride</div>
-        <div class="footer-info">
-            <p>
-                <img src="<c:url value='/resources/img/trustride.png' />" alt="Trust Ride Logo" class="logo-img">
-                상호명 : Trust Ride | 대표자: 패스트캠퍼스 | 개인정보보호책임자: 패스트캠퍼스 | 사업자등록번호: 787-87-00729
-            </p>
-            <p>통신판매업 신고번호 : 제 2025-서울강남-0562호 | 사업장 소재지 : 서울 강남구 강남대로 364 (역삼동) 10층</p>
-        </div>
-        <div class="footer-copyright">Copyright © Trust Ride All Rights Reserved</div>
-    </div>
-</footer>
+<%@ include file="/WEB-INF/views/user/include/footer2.jsp" %>
 
 
 

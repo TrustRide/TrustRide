@@ -72,6 +72,7 @@
                  JOIN information info ON ci.car_info_id = info.car_info_id
                  LEFT JOIN image img ON ci.car_info_id = img.car_info_id
         WHERE ci.car_info_id = #{carInfoId}
+        AND ci.sold_status = '판매중'
     </select>
 
 

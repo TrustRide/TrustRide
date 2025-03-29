@@ -23,6 +23,7 @@ public class CarListDto {
     private Integer thumbnailImageId;
 
 
+
     // 찜 여부 필드 추가
     private Boolean isWished;
 }

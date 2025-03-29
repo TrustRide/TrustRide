@@ -22,52 +22,7 @@ body {
     box-sizing: border-box;
 }
 
-/* ✅ 헤더 */
-header {
-    background: white;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    padding: 15px 0;
-}
 
-.header-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    width: 90%;
-    margin: 0 auto;
-}
-
-.logo-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.logo-img {
-    height: 50px;
-    width: auto;
-}
-
-.logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: red;
-}
-
-nav ul {
-    display: flex;
-    list-style: none;
-    gap: 20px;
-    padding: 0;
-    margin: 0;
-}
-
-nav a {
-    text-decoration: none;
-    color: #555;
-    font-size: 16px;
-}
 
 /* ✅ 왼쪽: form 영역 */
 .form-section {
@@ -328,29 +283,7 @@ input, select {
 }
 
 
-/* ✅ 푸터 */
-.footer {
-    background-color: #f9f9f9;
-    padding: 20px 0;
-    border-top: 1px solid #ddd;
-    color: #333;
-    font-size: 14px;
-    text-align: left;
-    margin-top: auto;
-}
 
-.footer-container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.footer-logo {
-    font-size: 18px;
-    font-weight: bold;
-    color: red;
-    margin-bottom: 10px;
-}
 
 .price-summary {
     background: #fff;

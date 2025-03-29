@@ -4,41 +4,15 @@
 <head>
     <title>차량 명의 선택</title>
     <link rel="stylesheet" href="<c:url value='/resources/css/user/userTitleHolder.css' />">
+    <link rel="stylesheet" href="<c:url value='/resources/css/user/header2.css' />">
+    <link rel="stylesheet" href="<c:url value='/resources/css/user/footer2.css' />">
 
 
 
 </head>
 <body>
 
-<header>
-    <div class="header-content">
-        <div class="logo-container">
-            <a href="/gearshift/">
-                <img src="${pageContext.request.contextPath}/resources/img/trustride.png" alt="Trust Ride Logo" class="logo-img">
-            </a>
-            <h1 class="logo">Trust Ride</h1>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="${pageContext.request.contextPath}/userList">내차사기</a></li>
-                <li><a href="${pageContext.request.contextPath}/review">상품리뷰</a></li>
-
-
-                <c:if test="${not empty sessionScope.loginUser}">
-                    <li>${sessionScope.loginUser.userName}님 환영합니다.</li>
-                    <li><a href="#">마이페이지</a></li>
-                    <li><a href="${pageContext.request.contextPath}/logout">로그아웃</a></li>
-                </c:if>
-                <c:if test="${empty sessionScope.loginUser}">
-                    <a href="${pageContext.request.contextPath}/login.do">로그인</a>
-                    <li><a href="${pageContext.request.contextPath}/register">회원가입</a></li>
-                </c:if>
-
-            </ul>
-        </nav>
-
-    </div>
-</header>
+<%@ include file="/WEB-INF/views/user/include/header2.jsp" %>
 
 <div class="container">
     <!-- 왼쪽 섹션 -->
@@ -139,16 +113,7 @@
 
 
 
-<footer class="footer">
-    <div class="footer-container">
-        <div class="footer-logo">Trust Ride</div>
-        <div class="footer-info">
-            <p>상호명 : Trust Ride | 대표자: 패스트캠퍼스 | 사업자등록번호: 787-87-00729</p>
-            <p>통신판매업 신고번호 : 제 2025-서울강남-0562호 | 사업장 소재지 : 서울 강남구 강남대로 364 (역삼동) 10층</p>
-        </div>
-        <div class="footer-copyright">Copyright © Trust Ride All Rights Reserved</div>
-    </div>
-</footer>
+<%@ include file="/WEB-INF/views/user/include/footer2.jsp" %>
 
 <div id="modal" class="modal">
     <div class="modal-content">
