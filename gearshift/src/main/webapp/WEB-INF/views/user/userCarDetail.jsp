@@ -7,14 +7,14 @@
 
 
     <link rel="stylesheet" href="<c:url value='/resources/css/user/userCarDetail.css' />">
-    <link rel="stylesheet" href="<c:url value='/resources/css/user/header2.css' />">
-    <link rel="stylesheet" href="<c:url value='/resources/css/user/footer2.css' />">
+    <link rel="stylesheet" href="<c:url value='/resources/css/user/header.css' />">
+    <link rel="stylesheet" href="<c:url value='/resources/css/user/footer.css' />">
 
 
 </head>
 <body>
 
-<%@ include file="/WEB-INF/views/user/include/header2.jsp" %>
+<%@ include file="/WEB-INF/views/user/include/header.jsp" %>
 
 
 
@@ -124,7 +124,7 @@
 </div>
 
 
-<%@ include file="/WEB-INF/views/user/include/footer2.jsp" %>
+<%@ include file="/WEB-INF/views/user/include/footer.jsp" %>
 
 <script>
     function changeMainImage(thumbnail) {

@@ -10,13 +10,13 @@
 <head>
   <title>회원 메인페이지</title>
   <link rel="stylesheet" href="<c:url value='/resources/css/user/userIndex.css' />">
-  <link rel="stylesheet" href="<c:url value='/resources/css/user/header2.css' />">
-  <link rel="stylesheet" href="<c:url value='/resources/css/user/footer2.css' />">
+  <link rel="stylesheet" href="<c:url value='/resources/css/user/header.css' />">
+  <link rel="stylesheet" href="<c:url value='/resources/css/user/footer.css' />">
 </head>
 <body>
 
 <!-- 🔷 헤더 영역 -->
-<%@ include file="/WEB-INF/views/user/include/header2.jsp" %>
+<%@ include file="/WEB-INF/views/user/include/header.jsp" %>
 
 <!-- 🔶 메인 콘텐츠 영역 -->
 <main>
@@ -69,7 +69,7 @@
 </a>
 
 <!-- 🔷 푸터 영역 -->
-<%@ include file="/WEB-INF/views/user/include/footer2.jsp" %>
+<%@ include file="/WEB-INF/views/user/include/footer.jsp" %>
 
 <!-- 🔷 슬라이드 이미지 전환 스크립트 -->
 <script>

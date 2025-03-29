@@ -5,14 +5,14 @@
 <head>
     <title>상품 리스트</title>
     <link rel="stylesheet" href="<c:url value='/resources/css/user/userCarList.css' />">
-    <link rel="stylesheet" href="<c:url value='/resources/css/user/header2.css' />">
-    <link rel="stylesheet" href="<c:url value='/resources/css/user/footer2.css' />">
+    <link rel="stylesheet" href="<c:url value='/resources/css/user/header.css' />">
+    <link rel="stylesheet" href="<c:url value='/resources/css/user/footer.css' />">
 
 </head>
 <body>
 
 <!-- 🔷 헤더 영역 -->
-<%@ include file="/WEB-INF/views/user/include/header2.jsp" %>
+<%@ include file="/WEB-INF/views/user/include/header.jsp" %>
 
 
 <!-- 🔶 메인 콘텐츠 영역 -->
@@ -123,7 +123,7 @@
 </main>
 
 <!-- 🔷 푸터 -->
-<%@ include file="/WEB-INF/views/user/include/footer2.jsp" %>
+<%@ include file="/WEB-INF/views/user/include/footer.jsp" %>
 
 <!-- 🔷 JS: 카테고리 토글 -->
 <script>

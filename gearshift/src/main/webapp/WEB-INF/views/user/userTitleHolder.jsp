@@ -4,15 +4,15 @@
 <head>
     <title>차량 명의 선택</title>
     <link rel="stylesheet" href="<c:url value='/resources/css/user/userTitleHolder.css' />">
-    <link rel="stylesheet" href="<c:url value='/resources/css/user/header2.css' />">
-    <link rel="stylesheet" href="<c:url value='/resources/css/user/footer2.css' />">
+    <link rel="stylesheet" href="<c:url value='/resources/css/user/header.css' />">
+    <link rel="stylesheet" href="<c:url value='/resources/css/user/footer.css' />">
 
 
 
 </head>
 <body>
 
-<%@ include file="/WEB-INF/views/user/include/header2.jsp" %>
+<%@ include file="/WEB-INF/views/user/include/header.jsp" %>
 
 <div class="container">
     <!-- 왼쪽 섹션 -->
@@ -113,7 +113,7 @@
 
 
 
-<%@ include file="/WEB-INF/views/user/include/footer2.jsp" %>
+<%@ include file="/WEB-INF/views/user/include/footer.jsp" %>
 
 <div id="modal" class="modal">
     <div class="modal-content">
