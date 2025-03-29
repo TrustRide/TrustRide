@@ -6,10 +6,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>리뷰 작성</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/user/review/userReview.css">
+    <link rel="stylesheet" href="<c:url value='/resources/css/user/review/userReview.css' />">
+    <link rel="stylesheet" href="<c:url value='/resources/css/user/header.css' />">
+    <link rel="stylesheet" href="<c:url value='/resources/css/user/footer.css' />">
+    <link rel="stylesheet" href="<c:url value='/resources/css/user/sidebar.css' />">
 </head>
 <body>
-
+<%-- 헤더 영역 --%>
+<%@ include file="/WEB-INF/views/user/include/header.jsp" %>
+<%-- 사이드바 --%>
+<%@ include file="/WEB-INF/views/user/include/sidebar.jsp" %>
     <div class="review-summary">
         <div>리뷰 작성</div>
     </div>
@@ -144,5 +150,7 @@
             document.getElementById('modalOverlay').style.display = 'none';
         }
     </script>
+<%@ include file="/WEB-INF/views/user/include/footer.jsp" %>
+<link rel="stylesheet" href="<c:url value='/resources/css/user/footer.css' />">
 </body>
 </html>
