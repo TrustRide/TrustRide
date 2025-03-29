@@ -12,6 +12,7 @@
     <!-- ① 선택한 상품 -->
     <section>
         <h3>선택한 상품 </h3>
+        <img src="${pageContext.request.contextPath}${refundInfo.thumbnailImageUrl}" style="width: 100%; max-width: 320px; border-radius: 8px; margin-bottom: 15px;" />
         <p>${refundDTO.modelName}</p>
         <p>${refundInfo.totalAmount} 원</p>
     </section>

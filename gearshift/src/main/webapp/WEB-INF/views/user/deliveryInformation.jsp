@@ -63,9 +63,6 @@
 
             <input type="hidden" name="userId" value="${userDto.userId}">
 
-            <!--명의 종류 값 넘김-->
-            <input type="hidden" name="ownershipType" value="<%= title %>">
-
             <!--회원 이름 값 안넘김 -->
             <label>회원 이름</label>
             <input type="text" name="userName" value="${userDto.userName}" readonly>

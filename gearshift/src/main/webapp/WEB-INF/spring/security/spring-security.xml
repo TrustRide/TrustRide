@@ -24,8 +24,8 @@
     <http auto-config="true" use-expressions="true">
 
         <!-- 권한별 접근 -->
-        <intercept-url pattern="/admin/**" access="hasRole('ADMIN')" />
-        <intercept-url pattern="/user/**" access="hasRole('USER')" />
+<!--        <intercept-url pattern="/admin/**" access="hasRole('ADMIN')" />-->
+<!--        <intercept-url pattern="/user/**" access="hasRole('USER')" />-->
         <intercept-url pattern="/**" access="permitAll" />
 
         <!-- 로그인 설정 -->

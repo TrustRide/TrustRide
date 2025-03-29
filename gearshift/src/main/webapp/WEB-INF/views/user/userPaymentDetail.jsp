@@ -52,19 +52,18 @@
       <input type="hidden" name="carInfoId" value="${carInfo.carInfoId}">
       <input type="hidden" name="deliveryFee" value="${carInfoDto.deliveryFee}">
       <input type="hidden" name="driverPhoneNumber" value="${carInfoDto.driverPhoneNumber}">
-      <input type="hidden" name="preferredDate" value="${carInfo.preferredDate}">
-      <input type="hidden" name="deliveryRequest" value="${carInfo.deliveryRequest}">
+      <input type="hidden" name="preferredDate" value="${carInfoDto.preferredDate}">
+      <input type="hidden" name="deliveryRequest" value="${carInfoDto.deliveryRequest}">
       <input type="hidden" name="deliveryDriverName" value="${carInfoDto.deliveryDriverName}">
       <input type="hidden" name="carAmountPrice" value="${carInfo.carAmountPrice}">
+
       <input type="hidden" name="holderName" value="${carInfoDto.holderName}">
       <input type="hidden" name="holderPhoneNumber" value="${carInfoDto.holderPhoneNumber}">
       <input type="hidden" name="holderResident" value="${carInfoDto.holderResident}">
       <input type="hidden" name="holderAddr1" value="${carInfoDto.holderAddr1}">
       <input type="hidden" name="holderAddr2" value="${carInfoDto.holderAddr2}">
       <input type="hidden" name="holderAddr3" value="${carInfoDto.holderAddr3}">
-      <input type="hidden" name="license" value="${carInfoDto.holderLicense}">
-      <input type="hidden" name="holderAddr3" value="${carInfoDto.holderAddr3}">
-      <input type="hidden" name="license" value="${carInfoDto.holderLicense}">
+      <input type="hidden" name="holderLicense" value="${carInfoDto.holderLicense}">
       <input type="hidden" name="ownershipType" value="${carInfoDto.ownershipType}">
       <input type="hidden" name="isJointOwnership" value="${carInfoDto.isJointOwnership}">
     </form>
@@ -76,7 +75,8 @@
   <!-- 오른쪽 주문 섹션 -->
   <div class="right-section">
     <div class="order-box">
-      <img src="<c:url value='/resources/img/3car3.png' />" alt="Trust Ride Logo" class="logo-img">
+      <img src="${pageContext.request.contextPath}${carInfo.images[0].imageUrl}" alt="대표 이미지"
+           style="width: 100%; max-width: 320px; border-radius: 8px; margin-bottom: 15px;" />
       <h3>${carInfo.modelName}</h3>
       <p>${carInfo.carNum} | ${carInfo.manufactureYear} 식  · ${carInfo.mileage}km · ${carInfo.fuelType}</p>
 

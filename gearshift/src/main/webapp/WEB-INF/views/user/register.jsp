@@ -328,10 +328,10 @@
                 msg.style.display !== "none" // 숨겨진 건 무시
             );
 
-            const isEmailReadonly = emailInput.readOnly; // 이메일 인증 관련 주석 처리
+            //const isEmailReadonly = emailInput.readOnly; // 이메일 인증 관련 주석 처리
 
-            if (allFilled && !hasRedMessage && isEmailReadonly) { // 이메일 인증 관련 주석 처리
-//            if (allFilled && !hasRedMessage) {
+            // if (allFilled && !hasRedMessage && isEmailReadonly) { // 이메일 인증 관련 주석 처리
+            if (allFilled && !hasRedMessage) {
                 signupBtn.classList.add("active"); // 빨간색으로 변경
                 signupBtn.removeAttribute("disabled"); // 버튼 활성화
             } else {

@@ -1,6 +1,8 @@
 package com.fastcampus.gearshift.dto;
 import lombok.Data;
 
+import java.util.List;
+
 
 @Data
 public class CarDetailDto {
@@ -16,7 +18,9 @@ public class CarDetailDto {
     private Integer agencyFee;  // 등록신청대행
     private Integer deliveryFee;//배송비
     private Integer carAmountPrice;  // 총 차량 금액
-    //private List<ImageDto> images;
+
+    private List<ImageDto> images;
+    
     private String ownershipType;
     private Boolean isJointOwnership;
     private String holderName;           // 명의자 이름

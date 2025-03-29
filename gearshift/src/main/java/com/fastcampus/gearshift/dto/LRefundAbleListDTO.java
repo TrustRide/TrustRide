@@ -9,5 +9,6 @@ public class LRefundAbleListDTO {
 
     private String modelName;
     private Integer orderId;
+    private String thumbnailImageUrl;   // 이미지 썸네일
 
 }

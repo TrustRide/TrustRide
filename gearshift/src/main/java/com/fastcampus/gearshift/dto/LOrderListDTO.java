@@ -17,4 +17,5 @@ public class LOrderListDTO {
     private String deliveryStatus;      // 배송 상태
     private String arrivalDate;         // 배송 도착 예정일
     private String arrivalDay;        // 배송 도착 요일
+    private String thumbnailImageUrl;   // 이미지 썸네일
 }

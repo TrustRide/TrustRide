@@ -1,9 +1,11 @@
 package com.fastcampus.gearshift.controller.user;
 
 import com.fastcampus.gearshift.dto.CarDetailDto;
+import com.fastcampus.gearshift.dto.CarInfoDto;
 import com.fastcampus.gearshift.dto.UserDto;
 import com.fastcampus.gearshift.service.LUserCarInfoService;
 import com.fastcampus.gearshift.service.NUserFormService;
+import com.fastcampus.gearshift.service.PHolderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,15 +21,18 @@ public class LUserPaymentController {
 
     @Autowired
     private LUserCarInfoService userCarInfoService;
+
     @Autowired
     private NUserFormService userService;
 
+    @Autowired
+    private PHolderService pHolderService;
 
     @PostMapping("/select")
-    public String selectPayment(@ModelAttribute CarDetailDto dto, Model model) {
+    public String selectPayment(@ModelAttribute CarDetailDto dto, Model model) throws Exception{
 
         // carInfoId로 다시 조회해서 carInfo 채움
-        CarDetailDto carInfo = userCarInfoService.getCarInfo(dto.getCarInfoId());
+        CarInfoDto carInfo = pHolderService.carSelect(dto.getCarInfoId());
 
         // 자동차 정보 데이터
         model.addAttribute("carInfo", carInfo);
@@ -41,10 +46,10 @@ public class LUserPaymentController {
 
     // 결제 상세 페이지 이동
     @PostMapping("/detail")
-    public String getPaymentDetail(@ModelAttribute CarDetailDto dto, Model model) {
+    public String getPaymentDetail(@ModelAttribute CarDetailDto dto, Model model) throws Exception{
 
         // carInfoId로 다시 조회해서 carInfo 채움
-        CarDetailDto carInfo = userCarInfoService.getCarInfo(dto.getCarInfoId());
+        CarInfoDto carInfo = pHolderService.carSelect(dto.getCarInfoId());
 
         // 자동차 정보 데이터
         model.addAttribute("carInfo", carInfo);
@@ -57,7 +62,7 @@ public class LUserPaymentController {
 
     // 카드 결제 페이지 이동
     @PostMapping("/creditCard")
-    public String goToPayment(@ModelAttribute CarDetailDto dto, Model model, HttpSession session) {
+    public String goToPayment(@ModelAttribute CarDetailDto dto, Model model, HttpSession session) throws  Exception {
 
         // 세션에 저장된 userId 가져오기
         UserDto userDto =  (UserDto)session.getAttribute("loginUser");
@@ -67,8 +72,8 @@ public class LUserPaymentController {
 
 
         // carInfoId로 다시 조회해서 carInfo 채움
-        CarDetailDto carInfo = userCarInfoService.getCarInfo(dto.getCarInfoId());
-
+        //CarDetailDto carInfo = userCarInfoService.getCarInfo(dto.getCarInfoId());
+        CarInfoDto carInfo = pHolderService.carSelect(dto.getCarInfoId());
         // userId 세팅
 
 

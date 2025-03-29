@@ -30,4 +30,16 @@ public class LOrderDaoImpl implements LOrderDao{
         return session.selectList(namespace + "getLOrderList", userId);
     }
 
+    // 자동차 아이디 조회
+    @Override
+    public int selectCarInfo(Integer orderId) {
+        return session.selectOne(namespace + "selectCarInfo", orderId);
+    }
+
+    // 상품 판매 후 판매완료 처리
+    @Override
+    public int updateOrder(Integer  carInfoId) {
+        return session.update(namespace + "updateOrder", carInfoId);
+    }
+
 }
