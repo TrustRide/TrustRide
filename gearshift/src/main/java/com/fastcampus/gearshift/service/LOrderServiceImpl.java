@@ -37,9 +37,21 @@ public class LOrderServiceImpl implements LOrderService{
         return orderDao.getLastOrderId();
     }
 
+    // 주문 목록 조회
     @Override
     public List<LOrderListDTO> getLOrderList(Integer userId) {
         return orderDao.getLOrderList(userId);
+    }
+
+    @Override
+    public int selectCarInfo(Integer orderId) {
+        return orderDao.selectCarInfo(orderId);
+    }
+
+    // 판매 완료된 상품 처리
+    @Override
+    public int updateOrder(Integer  carInfoId) {
+        return orderDao.updateOrder(carInfoId);
     }
 
 

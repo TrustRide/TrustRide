@@ -22,6 +22,7 @@
             <c:forEach var="refund" items="${refundAbleList}">
                 <section>
                     <label>
+                        <img src="${pageContext.request.contextPath}${refund.thumbnailImageUrl}" style="width: 100%; max-width: 320px; border-radius: 8px; margin-bottom: 15px;" />
                         <input type="radio" name="selectedProduct" value="${refund.modelName},${refund.orderId}">
                             ${refund.modelName}
                     </label>

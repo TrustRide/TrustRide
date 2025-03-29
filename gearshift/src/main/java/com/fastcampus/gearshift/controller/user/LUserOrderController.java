@@ -5,10 +5,7 @@ import com.fastcampus.gearshift.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -33,10 +30,11 @@ public class LUserOrderController {
     @Autowired
     private LRefundService refundService;
 
+
     // 현금 결제 후 주문내역/배송조회 페이지 이동
     @PostMapping("/status/cash")
     public String getOrderHistory(@ModelAttribute LOrderDTO lOrderDTO ,@ModelAttribute PaymentProcessDTO paymentProcessDTO,
-                                  @ModelAttribute LHolderDTO lHolderDTO,  @ModelAttribute DeliveryDTO deliveryDTO, Model model, HttpSession session){
+                                  @ModelAttribute LHolderDTO lHolderDTO,  @ModelAttribute DeliveryDTO deliveryDTO, Model model, HttpSession session, @RequestParam Integer carInfoId){
 
 
         // userId를 session에서 꺼내주기
@@ -75,6 +73,13 @@ public class LUserOrderController {
 
         // 배송 정보 저장
         deliveryService.insert(deliveryDTO);
+
+        // 자동차 아이디 조회
+        Integer carId = orderService.selectCarInfo(orderId);
+
+        // 판매중에서 판매완료로 설정
+        orderService.updateOrder(carId);
+
 
         return  "redirect:/user/orders/status/orderList";
     }
@@ -128,16 +133,20 @@ public class LUserOrderController {
 
     // 주문 목록 리스트
     @GetMapping("/status/orderList")
-    public String getOrderList(HttpSession session,Model model){
+    public String getOrderList(HttpSession session,Model model) throws Exception {
 
         // userId를 session에서 꺼내주기
         UserDto userDto =  (UserDto)session.getAttribute("loginUser");
         Integer userId = userDto.getUserId();
 
+        // carInfoId로 다시 조회해서 carInfo 채움
+        //List<CarInfoDto> carInfo = pHolderService.carSelect(carInfoId);
+
         // 주문 목록 조회
         List<LOrderListDTO> orderListDTO = orderService.getLOrderList(userId);
         model.addAttribute("orderList", orderListDTO);
 
+        // 반품목록
         List<LRefundDTO> refundDTOList = refundService.getRefundList(userId);
         model.addAttribute("refundList", refundDTOList);
 

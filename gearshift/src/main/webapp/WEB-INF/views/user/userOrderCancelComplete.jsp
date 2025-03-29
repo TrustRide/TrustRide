@@ -12,7 +12,7 @@
         <section>
             <h3>취소 신청이 완료되었습니다.</h3>
             <p>취소 상품</p>
-
+            <img src="${pageContext.request.contextPath}${refundInfo.thumbnailImageUrl}" style="width: 100%; max-width: 320px; border-radius: 8px; margin-bottom: 15px;" />
             <p>${refundDTO.modelName}</p>
             <p>${refundInfo.totalAmount} 만원</p>
         </section>

@@ -153,51 +153,15 @@
       objs = document.createElement('input');
       objs.setAttribute('type', 'hidden');
       objs.setAttribute('name', 'ownershipType');
-      objs.setAttribute('value', "개인명의자");
+      objs.setAttribute('value', `${cardPaymentDTO.ownershipType}`);
       form.appendChild(objs);
 
       // 공동명의 여부
       objs = document.createElement('input');
       objs.setAttribute('type', 'hidden');
       objs.setAttribute('name', 'isJointOwnership');
-      objs.setAttribute('value', "false");
+      objs.setAttribute('value', ${cardPaymentDTO.isJointOwnership});
       form.appendChild(objs);
-
-      <%--// 소유 형태--%>
-      <%--objs = document.createElement('input');--%>
-      <%--objs.setAttribute('type', 'hidden');--%>
-      <%--objs.setAttribute('name', 'ownershipType');--%>
-      <%--objs.setAttribute('value', `${cardPaymentDTO.ownershipType}`);--%>
-      <%--form.appendChild(objs);--%>
-
-      <%--// 공동명의 여부--%>
-      <%--objs = document.createElement('input');--%>
-      <%--objs.setAttribute('type', 'hidden');--%>
-      <%--objs.setAttribute('name', 'isJointOwnership');--%>
-      <%--objs.setAttribute('value', ${cardPaymentDTO.isJointOwnership});--%>
-      <%--form.appendChild(objs);--%>
-
-      // 이미지 경로
-      <%--objs = document.createElement('input');--%>
-      <%--objs.setAttribute('type', 'hidden');--%>
-      <%--objs.setAttribute('name', 'imageUrl');--%>
-      <%--objs.setAttribute('value', `${cardPaymentDTO.imageUrl}`);--%>
-      <%--form.appendChild(objs);--%>
-
-      // 할인금액
-      <%--objs = document.createElement('input');--%>
-      <%--objs.setAttribute('type', 'hidden');--%>
-      <%--objs.setAttribute('name', 'discountAmount');--%>
-      <%--objs.setAttribute('value', `${cardPaymentDTO.discountAmount}`);--%>
-      <%--form.appendChild(objs);--%>
-
-      // 최종 금액
-      <%--objs = document.createElement('input');--%>
-      <%--objs.setAttribute('type', 'hidden');--%>
-      <%--objs.setAttribute('name', 'totalAmount');--%>
-      <%--objs.setAttribute('value', `${cardPaymentDTO.totalAmount}`);--%>
-      <%--form.appendChild(objs);--%>
-
 
       form.setAttribute('method', 'post');
       form.setAttribute('action', "/gearshift/user/orders/status/credit");

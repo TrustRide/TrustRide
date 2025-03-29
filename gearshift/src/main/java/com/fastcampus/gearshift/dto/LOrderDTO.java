@@ -19,6 +19,7 @@ public class LOrderDTO {
     private Integer userId;           // 유저 아이디
     private Integer holderId;         // 명의자 아이디
     private Integer carAmountPrice;   // 차량 총가격
+    private String soldStatus;           // 판매상태
 
 
     public LOrderDTO (Integer carInfoId, Integer orderAmount, Integer discountAmount,

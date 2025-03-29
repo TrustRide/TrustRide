@@ -15,6 +15,20 @@ public class LRefundDTO {
     private String refundReason;     // 반품사유
     private String refundStatus;     // 반품 상태
     private Integer orderId;         // 주문 아이디
+    private String thumbnailImageUrl;   // 이미지 썸네일
+
+
+    public LRefundDTO() {
+        // 기본 생성자 - MyBatis용
+    }
+
+    public LRefundDTO(Integer orderId, Integer totalAmount, String refundStatus, String modelName) {
+        this.orderId = orderId;
+        this.totalAmount = totalAmount;
+        this.refundStatus = refundStatus;
+        this.modelName = modelName;
+    }
+
 
     public LRefundDTO(Integer orderAmount, Integer totalAmount, Integer orderId) {
         this.orderAmount = orderAmount;
