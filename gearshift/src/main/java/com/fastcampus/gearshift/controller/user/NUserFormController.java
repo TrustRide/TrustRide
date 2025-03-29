@@ -26,8 +26,6 @@ public class NUserFormController {
     // 사용자 프로필 조회
     @GetMapping("")
     public String getUserForm(HttpSession session, Model model) {
-       //디버깅테스트
-//        System.out.println("로그인 안 됨 → 세션에 redirectAfterLogin 설정: /user/userForm");
 
         UserDto loginUser = (UserDto)session.getAttribute("loginUser");
         if (loginUser == null) {

@@ -71,7 +71,7 @@ public class PUserController {
         // ★ 로그인 유저
         UserDto user = (UserDto) session.getAttribute("loginUser");
         Integer userId = (user != null) ? user.getUserId() : null;
-
+        boolean isLogin = userId != null;
 
         if(userId != null) {
             // 각 차량에 대해 isWished 설정
@@ -93,6 +93,7 @@ public class PUserController {
         model.addAttribute("userCarList", userCarList);
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", totalPages);
+        model.addAttribute("isLogin", isLogin);
 
         return "user/userCarList";
     }

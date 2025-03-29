@@ -13,7 +13,7 @@
 <header>
   <div class="container">
     <div class="logo-container">
-      <a href="${pageContext.request.contextPath}/main">
+      <a href="${pageContext.request.contextPath}">
         <img src="${pageContext.request.contextPath}/resources/img/trustride.png" alt="Trust Ride Logo" class="logo-img">
       </a>
       <h1 class="logo">Trust Ride</h1>
@@ -21,7 +21,7 @@
     <nav>
       <ul>
         <li><a href="${pageContext.request.contextPath}/userList">내차사기</a></li>
-        <li><a href="#">상품리뷰</a></li>
+        <li><a href="${pageContext.request.contextPath}/review">상품리뷰</a></li>
 
         <c:choose>
           <c:when test="${not empty sessionScope.loginUser}">
@@ -44,3 +44,6 @@
     <% } %>
   </div>
 </header>
+
+
+

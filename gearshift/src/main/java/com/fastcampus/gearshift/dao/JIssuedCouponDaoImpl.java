@@ -34,7 +34,6 @@ public class JIssuedCouponDaoImpl implements JIssuedCouponDao {
     /** 전체 사용자에게 선택된 쿠폰 지급 (일괄 INSERT) */
     @Override
     public void insertIssuedCoupons(List<IssuedCouponDto> issuedCoupons) {
-        System.out.println("issuedCoupons Dao 디버깅 = " + issuedCoupons);
         sqlSession.insert(NAMESPACE + "insertIssuedCoupons", issuedCoupons);
     }
 

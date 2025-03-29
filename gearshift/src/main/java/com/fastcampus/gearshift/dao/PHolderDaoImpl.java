@@ -64,8 +64,6 @@ public class PHolderDaoImpl implements  PHolderDao{
     @Override
     public List<CarListDto> carselectByCate(String cateCode, int offset, int pageSize) {
 
-        // cateCode 디버깅
-        System.out.println("cateCode Dao 디버깅 = " + cateCode);
 
         Map<String, Object> params = new HashMap<>();
         params.put("cateCode", cateCode);

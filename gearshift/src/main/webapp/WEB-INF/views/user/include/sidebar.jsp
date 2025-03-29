@@ -23,7 +23,7 @@
         <div class="mypage-section-title">MY 활동</div>
         <a href="${pageContext.request.contextPath}/user/inquiry" class="mypage-link">문의하기</a>
         <a href="${pageContext.request.contextPath}/user/review/list" class="mypage-link">리뷰하기</a>
-        <a href="${pageContext.request.contextPath}/user/wishlist/list" class="mypage-link">찜 리스트</a>
+        <a href="${pageContext.request.contextPath}/user/wishlist" class="mypage-link">찜 리스트</a>
     </div>
 
     <div class="mypage-section">
