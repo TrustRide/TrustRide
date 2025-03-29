@@ -3,10 +3,29 @@
 <html>
 <head>
     <title>주문목록/배송조회</title>
+    <link rel="stylesheet" href="<c:url value='/resources/css/user/header2.css' />">
+    <link rel="stylesheet" href="<c:url value='/resources/css/user/footer2.css' />">
+    <link rel="stylesheet" href="<c:url value='/resources/css/user/sidebar.css' />">
 </head>
+
+<%--<!-- CDN 폰트/스타일 -->--%>
+<%--<link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">--%>
+<%--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">--%>
+<%--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">--%>
+<%--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">--%>
+
+<%--<!-- 내부 css 경로 -->--%>
+<%--<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/user/header2.css">--%>
+<%--<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/user/sidebar.css">--%>
+<%--<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footer.css">--%>
+<%--<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/fonts.css">--%>
+<%--<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/content.css">--%>
 <body>
+
+<%-- 헤더 영역 --%>
+<%@ include file="/WEB-INF/views/user/include/header2.jsp" %>
     <%-- 사이드바 --%>
-<jsp:include page="include/sidebar.jsp"/>
+<%@ include file="/WEB-INF/views/user/include/sidebar.jsp" %>
 
     <c:forEach var="refund" items="${refundList}">
         <section>
@@ -29,12 +48,13 @@
             <p>${order.deliveryStatus} : <strong>${order.arrivalDate} 도착</strong></p>
             <p>${order.modelName}</p>
             <p>${order.totalAmount}</p>
-            <button>리뷰 작성하기</button>
         </div>
     </section>
 </c:forEach>
 
 </main>
+<%@ include file="/WEB-INF/views/user/include/footer2.jsp" %>
+<link rel="stylesheet" href="<c:url value='/resources/css/user/footer2.css' />">
 </body>
 </html>
 

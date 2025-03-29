@@ -3,8 +3,8 @@
 <header>
     <div class="container header-content">
         <div class="logo-container">
-            <a href="${pageContext.request.contextPath}">
-                <img src="<c:url value='/resources/img/logo-orange.png' />" alt="Trust Ride Logo" class="logo-img">
+            <a href="<c:url value='/' />">
+                <img src="<c:url value='/resources/img/logo-orange.png'/>" alt="Trust Ride Logo" class="logo-img">
             </a>
             <h1 class="logo">Trust Ride</h1>
         </div>
@@ -16,8 +16,12 @@
 
                 <c:if test="${not empty sessionScope.loginUser}">
                     <li><strong>${sessionScope.loginUser.userName}</strong>님 환영합니다.</li>
-                    <li><a href="${pageContext.request.contextPath}/user/mypage">마이페이지</a></li>
+
+                    <li><a href="${pageContext.request.contextPath}/user/orders/status/orderList">마이페이지</a></li>
                     <li><a href="#" onclick="logout()">로그아웃</a></li>
+
+                    
+
                 </c:if>
 
                 <c:if test="${empty sessionScope.loginUser}">
