@@ -5,12 +5,10 @@ import com.fastcampus.gearshift.dto.CarListDto;
 import com.fastcampus.gearshift.dto.UserDto;
 import com.fastcampus.gearshift.service.JWishlistService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -23,14 +21,31 @@ public class JWishlistController {
 
     private final JWishlistService wishlistService;
 
-    // [A] 찜 등록
+
     @PostMapping("/add")
-    public String addWishlist(@RequestParam("carInfoId") Integer carInfoId,
-                              HttpSession session) {
-        
+    @ResponseBody
+    public ResponseEntity<String> addWishlist(@RequestBody Integer carInfoId, HttpSession session) {
+        UserDto user = (UserDto) session.getAttribute("loginUser");
+        wishlistService.addWishlist(user.getUserId(), carInfoId);
+        return ResponseEntity.ok("success");
+    }
+
+    @PostMapping("/remove")
+    @ResponseBody
+    public ResponseEntity<String> removeWishlist(@RequestBody Integer carInfoId, HttpSession session) {
+        UserDto user = (UserDto) session.getAttribute("loginUser");
+        wishlistService.removeWishlist(user.getUserId(), carInfoId);
+        return ResponseEntity.ok("success");
+    }
+
+    // [A] 찜 등록
+    @PostMapping("/add2")
+    public String addWishlist2(@RequestParam("carInfoId") Integer carInfoId,
+                               HttpSession session) {
+
         UserDto user = (UserDto) session.getAttribute("loginUser");
         System.out.println("user 컨트롤러 = " + user);
-        
+
         if (user == null) {
             return "redirect:/login.do";
         }
@@ -40,15 +55,15 @@ public class JWishlistController {
     }
 
     // [B] 찜 해제
-    @PostMapping("/remove")
-    public String removeWishlist(@RequestParam("carInfoId") Integer carInfoId,
-                                 HttpSession session) {
+    @PostMapping("/remove2")
+    public String removeWishlist2(@RequestParam("carInfoId") Integer carInfoId,
+                                  HttpSession session) {
         UserDto user = (UserDto) session.getAttribute("loginUser");
         if (user == null) {
             return "redirect:/login.do";
         }
         wishlistService.removeWishlist(user.getUserId(), carInfoId);
-        return "redirect:/userList"; // 취향에 맞게
+        return "redirect:/user/wishlist"; // 취향에 맞게
     }
 
     // [C] 내 찜 목록 페이지

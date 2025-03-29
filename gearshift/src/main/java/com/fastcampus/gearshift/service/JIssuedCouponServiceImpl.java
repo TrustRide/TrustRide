@@ -61,12 +61,6 @@ public class JIssuedCouponServiceImpl implements JIssuedCouponService {
             issuedCoupons.add(dto);
         }
 
-        // 2번 로직이 제대로 돌아가는지 확인하기 위한 디버깅 코드
-        for (IssuedCouponDto dto : issuedCoupons) {
-            System.out.println("쿠폰 발급 대상: userId=" + dto.getUserId() + ", couponId=" + dto.getCouponId());
-        }
-        System.out.println("issuedCoupons = " + issuedCoupons);
-
         // 3) DAO 호출 (일괄 insert)
         issuedCouponDAO.insertIssuedCoupons(issuedCoupons);
     }

@@ -88,26 +88,20 @@
                             </div>
                         </a>
 
-                        <div style="text-align: center; margin: 10px 0;">
-                            <c:choose>
-                                <c:when test="${car.isWished}">
-                                    <form action="${pageContext.request.contextPath}/wishlist/remove" method="post">
-                                        <input type="hidden" name="carInfoId" value="${car.carInfoId}" />
-                                        <button type="submit" style="background: none; border: none; color: red; font-size: 20px;">
-                                            ❤️ 찜 해제
-                                        </button>
-                                    </form>
-                                </c:when>
-                                <c:otherwise>
-                                    <form action="${pageContext.request.contextPath}/wishlist/add" method="post">
-                                        <input type="hidden" name="carInfoId" value="${car.carInfoId}" />
-                                        <button type="submit" style="background: none; border: none; font-size: 20px;">
-                                            🤍 찜하기
-                                        </button>
-                                    </form>
-                                </c:otherwise>
-                            </c:choose>
-                        </div>
+
+                        <c:if test="${isLogin}">
+                            <div style="text-align: center; margin: 10px 0;">
+                                <c:choose>
+                                    <c:when test="${car.isWished}">
+                                        <button id="btn-${car.carInfoId}" style="background: none; border: none; font-size: 20px;" onclick="cancelWishlist(${car.carInfoId})">❤️ 찜 해제</button>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <button id="btn-${car.carInfoId}" style="background: none; border: none; font-size: 20px;" onclick="addWishlist(${car.carInfoId})">🤍 찜하기</button>
+                                    </c:otherwise>
+                                </c:choose>
+                            </div>
+                        </c:if>
+
                     </div>
                 </c:forEach>
             </div>
@@ -138,6 +132,56 @@
         if (element) {
             element.classList.toggle("hidden");
         }
+    }
+
+    function addWishlist(carInfoId) {
+        fetch("${pageContext.request.contextPath}/user/wishlist/add", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(carInfoId)
+        })
+            .then(res => res.text())
+            .then(data => {
+                if (data === "success") {
+                    const btn = document.getElementById('btn-' + carInfoId);
+                    btn.innerText = "❤️ 찜 해제";
+                    btn.setAttribute("onclick", "cancelWishlist(" + carInfoId + ")");
+                } else {
+                    // 실패
+                    alert('작업에 실패했습니다.');
+                }
+            })
+            .catch(error => {
+                console.error("오류:", error);
+                alert("서버 오류로 작업에 실패했습니다.");
+            });
+    }
+
+    function cancelWishlist(carInfoId) {
+        fetch("${pageContext.request.contextPath}/user/wishlist/remove", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(carInfoId)
+        })
+            .then(res => res.text())
+            .then(data => {
+                if (data === "success") {
+                    const btn = document.getElementById('btn-' + carInfoId);
+                    btn.innerText = "🤍 찜하기";
+                    btn.setAttribute("onclick", "addWishlist(" + carInfoId + ")");
+                } else {
+                    // 실패
+                    alert('작업에 실패했습니다.');
+                }
+            })
+            .catch(error => {
+                console.error("오류:", error);
+                alert("서버 오류로 작업에 실패했습니다.");
+            });
     }
 </script>
 

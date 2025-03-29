@@ -14,14 +14,17 @@
             created_at,
             user_gender
         FROM user
+        WHERE is_deleted = FALSE
         ORDER BY user_id
+
     </select>
 
 
-    <delete id="deleteUser" parameterType="Integer">
-        DELETE
-        FROM user
+    <update id="deleteUser" parameterType="Integer">
+        UPDATE user
+        SET is_deleted = TRUE
         WHERE user_id = #{userId}
-    </delete>
+    </update>
+
 
 </mapper>
