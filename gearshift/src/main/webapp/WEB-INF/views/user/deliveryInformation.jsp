@@ -38,11 +38,7 @@
 
             <input type="hidden" name="userId" value="${userDto.userId}">
 
-<<<<<<< Updated upstream
-=======
 
-
->>>>>>> Stashed changes
             <!--회원 이름 값 안넘김 -->
             <label>회원 이름</label>
             <input type="text" name="userName" value="${userDto.userName}" readonly>
