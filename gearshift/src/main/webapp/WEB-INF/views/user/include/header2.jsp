@@ -3,8 +3,8 @@
 <header>
     <div class="container header-content">
         <div class="logo-container">
-            <a href="${pageContext.request.contextPath}">
-                <img src="<c:url value='/resources/img/logo-orange.png' />" alt="Trust Ride Logo" class="logo-img">
+            <a href="<c:url value='/' />">
+                <img src="<c:url value='/resources/img/logo-orange.png'/>" alt="Trust Ride Logo" class="logo-img">
             </a>
             <h1 class="logo">Trust Ride</h1>
         </div>
@@ -16,8 +16,13 @@
 
                 <c:if test="${not empty sessionScope.loginUser}">
                     <li><strong>${sessionScope.loginUser.userName}</strong>님 환영합니다.</li>
+<<<<<<< Updated upstream
                     <li><a href="${pageContext.request.contextPath}/user/mypage">마이페이지</a></li>
                     <li><a href="#" onclick="logout()">로그아웃</a></li>
+=======
+                    <li><a href="${pageContext.request.contextPath}/user/orders/status/orderList">마이페이지</a></li>
+                    <li><a href="${pageContext.request.contextPath}/logout">로그아웃</a></li>
+>>>>>>> Stashed changes
                 </c:if>
 
                 <c:if test="${empty sessionScope.loginUser}">
@@ -27,6 +32,7 @@
             </ul>
         </nav>
 
+<<<<<<< Updated upstream
         <!-- 검색 input, form 없이 처리 -->
         <div style="display: flex; align-items: center;">
             <input type="text" id="searchQuery" placeholder="🔍차량을 검색하세요." class="search-bar"
@@ -34,6 +40,12 @@
                    onkeypress="if(event.key === 'Enter') searchCar()">
             <button type="button" class="search-btn" onclick="searchCar()">검색</button>
         </div>
+=======
+        <form action="<c:url value='/searchCar'/>" method="get" style="display: flex; align-items: center;">
+            <input type="text" name="searchQuery" placeholder="🔍차량을 검색하세요." class="search-bar" style="padding: 10px; border-radius: 4px; border: 1px solid #ddd; flex: 1;">
+            <button type="submit" class="search-btn">검색</button>
+        </form>
+>>>>>>> Stashed changes
     </div>
 </header>
 
