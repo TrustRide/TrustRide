@@ -31,7 +31,7 @@ public class CarInfoDto {
     private Integer deliveryFee;//배송비
     private String ownershipType;// 명의자 타입
     private Boolean isJointOwnership;//명의자 불리언
-    private String carLocation;
+    private String carLocation;//차량 위치
 
     // DB와 상관x 있어도 다른거에 영향x
     private Boolean isWished;
