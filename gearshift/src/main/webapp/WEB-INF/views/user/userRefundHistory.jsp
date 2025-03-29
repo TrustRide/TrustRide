@@ -3,11 +3,17 @@
 <html>
 <head>
     <title>취소신청</title>
+    <link rel="stylesheet" href="<c:url value='/resources/css/user/header.css' />">
+    <link rel="stylesheet" href="<c:url value='/resources/css/user/footer.css' />">
+    <link rel="stylesheet" href="<c:url value='/resources/css/user/sidebar.css' />">
 </head>
 <body>
 
+
+<%-- 헤더 영역 --%>
+<%@ include file="/WEB-INF/views/user/include/header.jsp" %>
 <%-- 사이드바 --%>
-<jsp:include page="include/sidebar.jsp"/>
+<%@ include file="/WEB-INF/views/user/include/sidebar.jsp" %>
 
 <main>
     <form id="refundForm" method="get">
@@ -73,6 +79,7 @@
         document.getElementById('refundForm').submit();
     }
 </script>
-
+<%@ include file="/WEB-INF/views/user/include/footer.jsp" %>
+<link rel="stylesheet" href="<c:url value='/resources/css/user/footer.css' />">
 </body>
 </html>

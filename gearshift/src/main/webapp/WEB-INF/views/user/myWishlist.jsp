@@ -70,8 +70,18 @@
             margin-top: 10px;
         }
     </style>
+
+    <link rel="stylesheet" href="<c:url value='/resources/css/user/header.css' />">
+    <link rel="stylesheet" href="<c:url value='/resources/css/user/footer.css' />">
+    <link rel="stylesheet" href="<c:url value='/resources/css/user/sidebar.css' />">
 </head>
 <body>
+<%-- 헤더 영역 --%>
+<%@ include file="/WEB-INF/views/user/include/header.jsp" %>
+<%-- 사이드바 --%>
+<%@ include file="/WEB-INF/views/user/include/sidebar.jsp" %>
+
+
 <div class="container">
     <h1>❤️ 내 찜 목록</h1>
 
@@ -100,5 +110,7 @@
         </c:forEach>
     </div>
 </div>
+<%@ include file="/WEB-INF/views/user/include/footer.jsp" %>
+<link rel="stylesheet" href="<c:url value='/resources/css/user/footer.css' />">
 </body>
 </html>

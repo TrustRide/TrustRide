@@ -3,8 +3,8 @@
 <html>
 <head>
     <title>주문목록/배송조회</title>
-    <link rel="stylesheet" href="<c:url value='/resources/css/user/header2.css' />">
-    <link rel="stylesheet" href="<c:url value='/resources/css/user/footer2.css' />">
+    <link rel="stylesheet" href="<c:url value='/resources/css/user/header.css' />">
+    <link rel="stylesheet" href="<c:url value='/resources/css/user/footer.css' />">
     <link rel="stylesheet" href="<c:url value='/resources/css/user/sidebar.css' />">
 </head>
 
@@ -23,7 +23,7 @@
 <body>
 
 <%-- 헤더 영역 --%>
-<%@ include file="/WEB-INF/views/user/include/header2.jsp" %>
+<%@ include file="/WEB-INF/views/user/include/header.jsp" %>
     <%-- 사이드바 --%>
 <%@ include file="/WEB-INF/views/user/include/sidebar.jsp" %>
 
@@ -53,8 +53,8 @@
 </c:forEach>
 
 </main>
-<%@ include file="/WEB-INF/views/user/include/footer2.jsp" %>
-<link rel="stylesheet" href="<c:url value='/resources/css/user/footer2.css' />">
+<%@ include file="/WEB-INF/views/user/include/footer.jsp" %>
+<link rel="stylesheet" href="<c:url value='/resources/css/user/footer.css' />">
 </body>
 </html>
 
