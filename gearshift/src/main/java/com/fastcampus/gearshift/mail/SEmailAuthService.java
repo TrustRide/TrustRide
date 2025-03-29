@@ -48,12 +48,12 @@ public class SEmailAuthService {
             ClassPathResource resource = new ClassPathResource("templates/email-template.html");
             String html = Files.readString(resource.getFile().toPath());
 
-            String imageUrl = "http://localhost:"
-                    + request.getServerPort()
-                    + request.getContextPath()
-                    + "/img/logo-orange.png";
+//            String imageUrl = "http://localhost:"
+//                    + request.getServerPort()
+//                    + request.getContextPath()
+//                    + "/img/logo-orange.png";
 
-            html = html.replace("${imageUrl}", imageUrl);
+//            html = html.replace("${imageUrl}", imageUrl);
             html = html.replace("${code}", code);
             helper.setText(html, true);
 

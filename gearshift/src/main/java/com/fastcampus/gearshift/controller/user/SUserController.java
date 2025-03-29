@@ -76,6 +76,11 @@ public class SUserController {
         return Map.of("verified", result);
     }
 
+    @GetMapping("/findInfo")
+    public String loadFindInfoPage(Model model) {
+        return "user/findInfo";
+    }
+
     @GetMapping("/error403")
     public String handle403() {
         return "error/403";

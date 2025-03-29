@@ -25,9 +25,11 @@
                 <label for="adminEmail">이메일</label>
                 <div class="email-check">
                     <input type="email" id="adminEmail" name="adminEmail" required />
-                    <button type="button">중복확인</button>
+                    <button id="idCheckBtn" type="button">중복확인</button>
                 </div>
+                <small id="emailMessage" class="message"></small>
             </div>
+            <br>
 
             <label for="adminPassword">비밀번호</label>
             <input type="password" id="adminPassword" name="adminPassword" required>
@@ -70,6 +72,46 @@
             <button type="submit">가입하기</button>
         </form>
     </main>
+
+    <script>
+        document.getElementById("idCheckBtn").addEventListener("click", function () {
+            const emailInput = document.getElementById("adminEmail");
+            const emailMessage = document.getElementById("emailMessage");
+            const email = emailInput.value.trim();
+
+            if (!email) {
+                alert('이메일을 입력해주세요.');
+                return;
+            }
+
+            fetch("${pageContext.request.contextPath}/admin/check-email", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ email: email })
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.duplicate) {
+                        emailMessage.innerText = "이미 가입된 이메일입니다.";
+                        emailMessage.style.color = "red";
+                        emailMessage.style.display = "block";
+                        //checkInputs();
+                    } else {
+                        emailMessage.innerText = "사용 가능한 이메일입니다.";
+                        emailMessage.style.color = "green";
+                        emailMessage.style.display = "block";
+                    }
+                })
+                .catch(error => {
+                    console.error("이메일 중복 확인 에러:", error);
+                    emailMessage.innerText = "오류가 발생했습니다.";
+                    emailMessage.style.color = "red";
+                    emailMessage.style.display = "block";
+                });
+        });
+    </script>
 
 </body>
 </html>
