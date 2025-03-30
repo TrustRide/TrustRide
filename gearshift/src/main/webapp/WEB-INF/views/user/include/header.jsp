@@ -1,5 +1,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
+<style>
+    .logout-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font: inherit;
+        padding: 0;
+    }
+</style>
 <header>
     <div class="container header-content">
         <div class="logo-container">
@@ -15,9 +25,14 @@
                 <li><a href="${pageContext.request.contextPath}/review">상품리뷰</a></li>
 
                 <c:if test="${not empty sessionScope.loginUser}">
-                    <li><strong>${sessionScope.loginUser.userName}</strong>님</li>
-                    <li><a href="${pageContext.request.contextPath}/user/orders/status/orderList">마이페이지</a></li>
-                    <li><a href="#" onclick="logout()">로그아웃</a></li>
+                    <li><strong>${sessionScope.loginUser.userName}</strong>님 환영합니다.</li>
+                    <li><a href="${pageContext.request.contextPath}/user/mypage">마이페이지</a></li>
+                    <li>
+                        <form id="logoutForm" method="POST" action="${pageContext.request.contextPath}/logout" style="display:inline;">
+                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                            <button type="submit" class="logout-btn">로그아웃</button>
+                        </form>
+                    </li>
                 </c:if>
 
                 <c:if test="${empty sessionScope.loginUser}">
@@ -40,28 +55,6 @@
 </header>
 
 <script>
-    // 로그아웃 기능 (POST + CSRF)
-    function logout() {
-        fetch('${pageContext.request.contextPath}/logout', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-                'X-CSRF-TOKEN': '${_csrf.token}'
-            },
-            body: ''
-        })
-            .then(response => {
-                if (response.redirected) {
-                    window.location.href = response.url;
-                } else {
-                    window.location.reload();
-                }
-            })
-            .catch(error => {
-                console.error('로그아웃 실패:', error);
-            });
-    }
-
     // 검색 기능 (form 없이 GET 요청 전송)
     function searchCar() {
         const query = document.getElementById('searchQuery').value.trim();
