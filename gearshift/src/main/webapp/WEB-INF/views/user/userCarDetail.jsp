@@ -50,13 +50,13 @@
         <hr>
 
         <div class="price-box">
-            <div>차량가격: <strong><fmt:formatNumber value="${carDto.carPrice}" type="number" />원</strong></div>
-            <div>이전등록비: <strong><fmt:formatNumber value="${carDto.previousRegistrationFee}" type="number" />원</strong></div>
-            <div>등록대행수수료: <strong><fmt:formatNumber value="${carDto.agencyFee}" type="number" />원</strong></div>
-            <div>배송비: <strong><fmt:formatNumber value="0" type="number" />원</strong></div>
+            <div>차량가격: <strong><fmt:formatNumber value="${carDto.carPrice}" type="number" />만원</strong></div>
+            <div>이전등록비: <strong><fmt:formatNumber value="${carDto.previousRegistrationFee}" type="number" />만원</strong></div>
+            <div>등록대행수수료: <strong><fmt:formatNumber value="${carDto.agencyFee}" type="number" />만원</strong></div>
+            <div>배송비: <strong><fmt:formatNumber value="0" type="number" />만원</strong></div>
 
             <div class="total-price">
-                총 합계: <fmt:formatNumber value="${carDto.carAmountPrice}" type="number" />원
+                총 합계: <fmt:formatNumber value="${carDto.carAmountPrice}" type="number" />만원
             </div>
         </div>
 
@@ -85,9 +85,9 @@
         ▶ 차량 세부내용<br>
         - 차종:${carDto.modelName} <br>
         - 배기량: ${carDto.engineCapacity}cc<br>
-        - 연식: ${carDto.manufactureYear}<br>
+        - 연식: ${carDto.manufactureYear}식<br>
         - 색상: ${carDto.color}<br>
-        - 주행거리: ${carDto.mileage}<br>
+        - 주행거리: ${carDto.mileage}km<br>
         <hr>
         차량 설명<br>
 

@@ -20,7 +20,7 @@
       amount :100 , //판매가격 carInfo.carAmountPrice
       buyer_email : `${userInfo.userEmail}`,
       buyer_name : `${userInfo.userName}`,
-      buyer_tel : ${userInfo.userPhoneNumber},
+      buyer_tel : `${userInfo.userPhoneNumber}`,
       buyer_addr : '인천시 부평구 삼산동',
     }, function(rsp) {
       if ( rsp.success ) {
@@ -69,14 +69,14 @@
       objs = document.createElement('input');
       objs.setAttribute('type', 'hidden');
       objs.setAttribute('name', 'preferredDate');
-      objs.setAttribute('value', `${carInfo.preferredDate}`);
+      objs.setAttribute('value', `${carInfoDto.preferredDate}`);
       form.appendChild(objs);
 
       // 배송요청 사항
       objs = document.createElement('input');
       objs.setAttribute('type', 'hidden');
       objs.setAttribute('name', 'deliveryRequest');
-      objs.setAttribute('value', `${carInfo.deliveryRequest}`);
+      objs.setAttribute('value', `${carInfoDto.deliveryRequest}`);
       form.appendChild(objs);
 
       // 배송 기사 이름
