@@ -17,40 +17,16 @@
 
 <%-- 헤더 영역 --%>
 <%@ include file="/WEB-INF/views/user/include/header.jsp" %>
-<<<<<<< Updated upstream
 
     <%-- 사이드바 --%>
 <%@ include file="/WEB-INF/views/user/include/sidebar.jsp" %>
 
-
-
-
     <c:forEach var="refund" items="${refundList}">
         <section>
-=======
-<%-- 사이드바 --%>
-<%@ include file="/WEB-INF/views/user/include/sidebar.jsp" %>
-
->>>>>>> Stashed changes
 
 <main class="order-main">
     <div class="order-container content">
         <h1 class="order-title">주문목록</h1>
-
-<<<<<<< Updated upstream
-<c:forEach var="order" items="${orderList}">
-    <section>
-        <h2>${order.orderCompletedDate} 주문</h2>
-        <div>
-            <img src="${pageContext.request.contextPath}${order.thumbnailImageUrl}" style="width: 100%; max-width: 320px; border-radius: 8px; margin-bottom: 15px;" />
-            <p>${order.deliveryStatus} : <strong>${order.arrivalDate} 도착</strong></p>
-            <p>${order.modelName}</p>
-            <p>${order.totalAmount}</p>
-        </div>
-    </section>
-
-</c:forEach>
-=======
         <!-- 환불 내역 -->
         <c:choose>
             <c:when test="${empty refundList}">
@@ -73,8 +49,6 @@
                 </c:forEach>
             </c:otherwise>
         </c:choose>
->>>>>>> Stashed changes
-
 
         <!-- 주문 내역 -->
         <c:choose>
