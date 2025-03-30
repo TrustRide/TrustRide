@@ -30,8 +30,8 @@
             info.transmission,
             info.car_price,
             info.fuel_type,
-            img.image_url AS thumbnailUrl,
-            img.image_id AS thumbnailImageId
+            img.image_url AS thumbnail_url,
+            img.image_id AS thumbnail_image_id
         FROM car_information ci
                  LEFT JOIN information info ON ci.car_info_id = info.car_info_id
                  LEFT JOIN image img ON ci.car_info_id = img.car_info_id AND img.is_thumbnail = true
@@ -127,12 +127,15 @@
             info.mileage,
             info.transmission,
             info.car_price,
-            info.fuel_type
+            info.fuel_type,
+            img.image_url AS thumbnail_url
         FROM car_information ci
                  LEFT JOIN information info ON ci.car_info_id = info.car_info_id
+                 left join image img ON img.car_info_id = info.car_info_id
         WHERE ci.is_deleted = false
           AND info.is_deleted = false
           AND ci.cate_code = #{cateCode}
+          AND img.is_thumbnail = true
         ORDER BY ci.car_info_id DESC
             LIMIT #{pageSize} OFFSET #{offset}
     </select>

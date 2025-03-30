@@ -18,15 +18,13 @@
 <%-- 헤더 영역 --%>
 <%@ include file="/WEB-INF/views/user/include/header.jsp" %>
 
-    <%-- 사이드바 --%>
+<%-- 사이드바 --%>
 <%@ include file="/WEB-INF/views/user/include/sidebar.jsp" %>
-
-    <c:forEach var="refund" items="${refundList}">
-        <section>
 
 <main class="order-main">
     <div class="order-container content">
         <h1 class="order-title">주문목록</h1>
+
         <!-- 환불 내역 -->
         <c:choose>
             <c:when test="${empty refundList}">
@@ -38,7 +36,7 @@
                         <h2 class="order-title">[환불]</h2>
                         <div class="order-box">
                             <p>취소</p>
-                            <img src="${pageContext.request.contextPath}${order.thumbnailImageUrl}" class="order-img"/>
+                            <img src="${pageContext.request.contextPath}${refund.thumbnailImageUrl}" class="order-img"/>
                             <div class="order-info">
                                 <p>${refund.refundStatus}</p>
                                 <p>${refund.modelName}</p>
@@ -74,9 +72,6 @@
     </div>
 </main>
 
-
-
 <%@ include file="/WEB-INF/views/user/include/footer.jsp" %>
 </body>
 </html>
-
