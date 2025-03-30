@@ -36,9 +36,11 @@
                  LEFT JOIN information info ON ci.car_info_id = info.car_info_id
                  LEFT JOIN image img ON ci.car_info_id = img.car_info_id AND img.is_thumbnail = true
         WHERE ci.is_deleted = false
+          AND ci.sold_status = '판매중'
           AND info.is_deleted = false
         ORDER BY ci.car_info_id DESC
             LIMIT #{pageSize} OFFSET #{offset}
+
     </select>
 
 
@@ -72,7 +74,7 @@
                  JOIN information info ON ci.car_info_id = info.car_info_id
                  LEFT JOIN image img ON ci.car_info_id = img.car_info_id
         WHERE ci.car_info_id = #{carInfoId}
-        AND ci.sold_status = '판매중'
+
     </select>
 
 

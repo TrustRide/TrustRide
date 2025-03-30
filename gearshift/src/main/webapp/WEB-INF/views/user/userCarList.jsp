@@ -69,44 +69,46 @@
         <!-- 오른쪽 차량 리스트 -->
         <section class="car-section">
             <h2>홈서비스 타임딜</h2>
-            <div class="car-grid">
-                <c:forEach var="car" items="${userCarList}">
-                    <div class="car-card">
-                        <a href="/gearshift/carDetail?carInfoId=${car.carInfoId}" class="car-card">
-                            <c:choose>
-                                <c:when test="${not empty car.thumbnailUrl}">
-                                    <img src="${pageContext.request.contextPath}${car.thumbnailUrl}" alt="Car Image">
-                                </c:when>
-                                <c:otherwise>
-                                    <img src="${pageContext.request.contextPath}/resources/img/자동차7.png" alt="기본 이미지">
-                                </c:otherwise>
-                            </c:choose>
-                            <div class="car-card-content">
-                                <h2>${car.modelName}</h2>
-                                <h4>${car.manufactureYear}년식 · ${car.mileage}km · ${car.fuelType}</h4>
-                                <h1><fmt:formatNumber value="${car.carPrice}" type="number" />만원</h1>
-                            </div>
-                        </a>
 
-
-                        <c:if test="${isLogin}">
-                            <div style="text-align: center; margin: 10px 0;">
+            <c:if test="${not empty userCarList}">
+                <div class="car-grid">
+                    <c:forEach var="car" items="${userCarList}">
+                        <div class="car-card">
+                            <a href="/gearshift/carDetail?carInfoId=${car.carInfoId}" class="car-card">
                                 <c:choose>
-                                    <c:when test="${car.isWished}">
-                                        <button id="btn-${car.carInfoId}" style="background: none; border: none; font-size: 20px;" onclick="cancelWishlist(${car.carInfoId})">❤️ 찜 해제</button>
+                                    <c:when test="${not empty car.thumbnailUrl}">
+                                        <img src="${pageContext.request.contextPath}${car.thumbnailUrl}" alt="Car Image">
                                     </c:when>
                                     <c:otherwise>
-                                        <button id="btn-${car.carInfoId}" style="background: none; border: none; font-size: 20px;" onclick="addWishlist(${car.carInfoId})">🤍 찜하기</button>
+                                        <img src="${pageContext.request.contextPath}/resources/img/자동차7.png" alt="기본 이미지">
                                     </c:otherwise>
                                 </c:choose>
-                            </div>
-                        </c:if>
+                                <div class="car-card-content">
+                                    <h2>${car.modelName}</h2>
+                                    <h4>${car.manufactureYear}년식 · ${car.mileage}km · ${car.fuelType}</h4>
+                                    <h1><fmt:formatNumber value="${car.carPrice}" type="number" />만원</h1>
+                                </div>
+                            </a>
 
-                    </div>
-                </c:forEach>
-            </div>
+                            <c:if test="${isLogin}">
+                                <div style="text-align: center; margin: 10px 0;">
+                                    <c:choose>
+                                        <c:when test="${car.isWished}">
+                                            <button id="btn-${car.carInfoId}" style="background: none; border: none; font-size: 20px;" onclick="cancelWishlist(${car.carInfoId})">❤️ 찜 해제</button>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <button id="btn-${car.carInfoId}" style="background: none; border: none; font-size: 20px;" onclick="addWishlist(${car.carInfoId})">🤍 찜하기</button>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </div>
+                            </c:if>
 
-            <!-- 🔹 페이지네이션 -->
+                        </div>
+                    </c:forEach>
+                </div>
+            </c:if>
+
+            <!--  페이징-->
             <div class="pagination">
                 <c:if test="${currentPage > 1}">
                     <a href="/gearshift/userList?page=${currentPage - 1}">« 이전</a>

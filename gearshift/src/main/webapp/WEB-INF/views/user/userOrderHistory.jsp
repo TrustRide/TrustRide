@@ -24,8 +24,12 @@
 
 <%-- 헤더 영역 --%>
 <%@ include file="/WEB-INF/views/user/include/header.jsp" %>
+<<<<<<< Updated upstream
     <%-- 사이드바 --%>
 <%@ include file="/WEB-INF/views/user/include/sidebar.jsp" %>
+=======
+
+>>>>>>> Stashed changes
 
     <c:forEach var="refund" items="${refundList}">
         <section>
@@ -50,9 +54,15 @@
             <p>${order.totalAmount}</p>
         </div>
     </section>
+
 </c:forEach>
 
 </main>
+<<<<<<< Updated upstream
+=======
+
+
+>>>>>>> Stashed changes
 <%@ include file="/WEB-INF/views/user/include/footer.jsp" %>
 <link rel="stylesheet" href="<c:url value='/resources/css/user/footer.css' />">
 </body>

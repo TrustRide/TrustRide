@@ -14,6 +14,15 @@
     <link rel="stylesheet" href="<c:url value='/resources/css/user/deliveryInformation.css' />">
     <link rel="stylesheet" href="<c:url value='/resources/css/user/header.css' />">
     <link rel="stylesheet" href="<c:url value='/resources/css/user/footer.css' />">
+
+
+    <style>
+        /* ✅ 중앙 컨텐츠 여백 추가 */
+        .container {
+            margin-top: 11px; /* 헤더 아래 여백 */
+            margin-bottom: 100px; /* 푸터 위 여백 */
+        }
+    </style>
 </head>
 
 <body>
@@ -312,10 +321,14 @@
                     <span class="label">이전등록비</span>
                     <span class="value">${carDto.previousRegistrationFee}000원</span>
                 </div>
+
+
                 <div class="price-item">
                     <span class="label">등록대행수수료</span>
                     <span class="value">${carDto.agencyFee}000원</span>
                 </div>
+
+
                 <div class="price-item">
                     <span class="label">배송비</span>
                     <span class="value">0원</span>

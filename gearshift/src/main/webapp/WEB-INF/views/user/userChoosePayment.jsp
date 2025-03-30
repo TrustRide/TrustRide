@@ -3,23 +3,44 @@
 <html>
 <head>
   <title>결제 수단 선택</title>
+  <link rel="stylesheet" href="<c:url value='/resources/css/user/header.css' />">
+  <link rel="stylesheet" href="<c:url value='/resources/css/user/footer.css' />">
+  <link rel="stylesheet" href="<c:url value='/resources/css/user/userChoosePayment.css' />">
+
 </head>
 <body>
+<%@ include file="/WEB-INF/views/user/include/header.jsp" %>
 <div class="container">
-  <!-- 결제 방법 선택 영역-->
-    <div>
+  <!-- 왼쪽 결제 영역 -->
+  <section class="payment-section">
+    <!-- 주문 안내 -->
+    <div class="order-guide">
       <h2>주문 내역 확인</h2>
-      <h3>주문 내역을 확인하고 원하시는 결제 방법을 선택해주세요.</h3>
+      <p>주문 내역을 확인하고 원하시는 결제 방법을 선택해 주세요.</p>
+      <div class="total-price-box">
+        <strong>총 결제 금액을 확인하고, 결제 방법을 선택해 주세요.</strong>
+        <ul>
+          <li>구매 후 3일 동안은 위약금 없이 변경하실 수 있습니다.</li>
+          <li>타던 차를 가지고 직접 방문하셔서 견적 확인 후 추가금액 결제로 새로운 차량 교환도 가능합니다.</li>
+        </ul>
+        <div class="action-buttons">
+
+        </div>
+      </div>
     </div>
 
-    <div>
+    <!-- 결제 방법 -->
+    <div class="payment-method-section">
       <h3>결제방법</h3>
+      <p>결제 방법 여러 개를 등록하여 금액을 나누어 결제하실 수 있습니다.</p>
+      <div class="payment-options">
+        <div class="payment-option selected" onclick="selectPaymentMethod('현금')">현금</div>
+
+        <div class="payment-option" onclick="selectPaymentMethod('신용카드')">신용카드</div>
+      </div>
     </div>
 
-    <div class="payment-buttons">
-      <button type="button" onclick="selectPaymentMethod('현금')">현금</button>
-      <button type="button" onclick="selectPaymentMethod('신용카드')">신용카드</button>
-    </div>
+    <!-- 결제 폼 -->
     <form action="/gearshift/user/payment/detail" method="post">
       <!-- 선택한 결제 수단 -->
       <input type="hidden" name="paymentMethod" id="paymentMethod">
@@ -43,72 +64,78 @@
       <input type="hidden" name="isJointOwnership" value="${carInfoDto.isJointOwnership}">
 
       <!-- 결제 버튼 -->
-      <button type="submit">결제</button>
+
+      <button type="submit" class="submit-button">결제</button>
+
 
     </form>
+  </section>
 
 
-    <!-- 오른쪽 주문 섹션 -->
-    <div class="right-section">
-      <div class="order-box">
-        <img src="${pageContext.request.contextPath}${carInfo.images[0].imageUrl}" alt="대표 이미지"
-             style="width: 100%; max-width: 320px; border-radius: 8px; margin-bottom: 15px;" />
-        <h3>${carInfo.modelName}</h3>
-        <p>${carInfo.carNum} | ${carInfo.manufactureYear} 식  · ${carInfo.mileage}km · ${carInfo.fuelType}</p>
 
-        <div class="info-buttons">
-          <button class="info-button">차량옵션</button>
-          <button class="info-button">성능·상태 점검기록부</button>
-          <button class="info-button">Trust Ride 진단서</button>
-          <button class="info-button">보험이력조회</button>
-        </div>
 
-        <hr>
+  <!-- 오른쪽 주문 요약 -->
+  <section class="right-section">
 
-        <div class="price-summary">
-          <h3>예상 결제 금액</h3>
-          <div class="price-item">
-            <span class="label">차량가격</span>
-            <span class="value">${carInfo.carPrice}원</span>
-          </div>
-          <div class="price-item">
-            <span class="label">이전등록비</span>
-            <span class="value">${carInfo.previousRegistrationFee}원</span>
-          </div>
-          <div class="price-item">
-            <span class="label">등록대행수수료</span>
-            <span class="value">${carInfo.agencyFee}원</span>
-          </div>
-          <div class="price-item">
-            <span class="label">배송비</span>
-            <span class="value">${carInfoDto.deliveryFee}</span>
-          </div><hr>
-          <div class="price-item total">
-            <span class="label">총 합계</span>
-            <span class="value">${carInfo.carAmountPrice}원</span>
-          </div>
-        </div>
+    <!-- 프로그래스 바  -->
+    <div class="order-progress">
+      <div class="step-title">주문 내역 확인</div> <!--  단계 이름 -->
+      <div class="progress-bar-wrapper">
+        <div class="progress-bar-fill" style="width: 75%;"></div> <!--  2단계 진행률 -->
+      </div>
+      <div class="step-count">3/4</div> <!--  단계 표시 -->
+    </div>
+
+
+    <img src="${pageContext.request.contextPath}${carInfo.images[0].imageUrl}" alt="대표 이미지" />
+    <h3>${carInfo.modelName}</h3>
+    <p>${carInfo.carNum} | ${carInfo.manufactureYear} 식  ·  ${carInfo.mileage}km · ${carInfo.fuelType}</p>
+
+    <div class="info-buttons">
+      <button class="info-button">차량옵션</button>
+      <button class="info-button">성능·상태 점검기록부</button>
+      <button class="info-button">Trust Ride 진단서</button>
+      <button class="info-button">보험이력조회</button>
+    </div>
+
+    <div class="price-summary">
+      <h3>예상 결제 금액</h3>
+      <div class="price-item">
+        <span class="label">차량가격</span>
+        <span class="value">${carInfo.carPrice}원</span>
+      </div>
+      <div class="price-item">
+        <span class="label">이전등록비</span>
+        <span class="value">${carInfo.previousRegistrationFee}원</span>
+      </div>
+      <div class="price-item">
+        <span class="label">등록대행수수료</span>
+        <span class="value">${carInfo.agencyFee}원</span>
+      </div>
+      <div class="price-item">
+        <span class="label">배송비</span>
+        <span class="value">${carInfoDto.deliveryFee}</span>
+      </div>
+      <div class="price-item total">
+        <span class="label">총 합계</span>
+        <span class="value">${carInfo.carAmountPrice}원</span>
       </div>
     </div>
+  </section>
+
 </div>
-
-
-
-<footer class="footer">
-  <div class="footer-container">
-    <div class="footer-logo">Trust Ride</div>
-    <div class="footer-info">
-      <p>상호명 : Trust Ride | 대표자: 패스트캠퍼스 | 사업자등록번호: 787-87-00729</p>
-      <p>통신판매업 신고번호 : 제 2025-서울강남-0562호 | 사업장 소재지 : 서울 강남구 강남대로 364 (역삼동) 10층</p>
-    </div>
-    <div class="footer-copyright">Copyright © Trust Ride All Rights Reserved</div>
-  </div>
-</footer>
-
-
+<%@ include file="/WEB-INF/views/user/include/footer.jsp" %>
 <script>
   function selectPaymentMethod(method) {
     document.getElementById("paymentMethod").value = method;
+
+    const options = document.querySelectorAll('.payment-option');
+    options.forEach(opt => opt.classList.remove('selected'));
+    options.forEach(opt => {
+      if (opt.textContent.trim() === method) {
+        opt.classList.add('selected');
+      }
+    });
   }
 </script>
 </body>

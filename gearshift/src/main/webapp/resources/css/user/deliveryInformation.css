@@ -15,14 +15,15 @@ body {
     justify-content: space-between;
     width: 90%;
     max-width: 1200px;
-    margin: 40px auto;
+
+    /* ✅ 여기가 핵심 */
+    margin: 140px auto 100px; /* 헤더 아래 140px, 푸터 위 100px 여백 */
+
     flex: 1;
     flex-wrap: wrap;
     align-items: flex-start;
     box-sizing: border-box;
 }
-
-
 
 /* ✅ 왼쪽: form 영역 */
 .form-section {
@@ -83,22 +84,13 @@ input, select {
     margin-top: 30px;
 }
 
-.terms-main {
+.terms-main, .terms-box {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 10px 0;
     border-bottom: 1px solid #ddd;
-    flex-wrap: nowrap; /* ✅ 줄바꿈 방지 */
-}
-
-.terms-box {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 0;
-    border-bottom: 1px solid #ddd;
-    flex-wrap: nowrap; /* ✅ 줄바꿈 방지 */
+    flex-wrap: nowrap;
 }
 
 .terms-box:last-child {
@@ -110,7 +102,7 @@ input, select {
     align-items: center;
     gap: 10px;
     margin: 0;
-    white-space: nowrap; /* ✅ 텍스트 줄바꿈 방지 */
+    white-space: nowrap;
 }
 
 .terms-box a {
@@ -200,7 +192,7 @@ input, select {
 .progress-bar-fill {
     background-color: #b5091b;
     height: 100%;
-    width: 50%; /* 2단계 (50%) */
+    width: 50%;
     border-radius: 10px;
 }
 
@@ -275,16 +267,12 @@ input, select {
     font-weight: bold;
 }
 
-
-
 .terms-main input[type="checkbox"] {
     margin: 0;
-    transform: translateY(1px); /* 체크박스 위치 미세 조정 */
+    transform: translateY(1px);
 }
 
-
-
-
+/* 가격 요약 박스 */
 .price-summary {
     background: #fff;
     padding: 20px;
