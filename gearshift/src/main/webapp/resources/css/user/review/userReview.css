@@ -265,3 +265,14 @@ body {
 .meta-info .writer::after {
     content: "  ·  ";
 }
+
+.review-main {
+    margin-left: 250px; /* ✅ 사이드바 너비만큼 띄우기 */
+    padding: 20px;
+}
+
+main {
+    min-height: calc(100vh - 140px); /* header + footer 대충 합쳐서 */
+    padding: 40px 20px 100px; /* 위, 양옆, 아래 */
+    box-sizing: border-box;
+}
