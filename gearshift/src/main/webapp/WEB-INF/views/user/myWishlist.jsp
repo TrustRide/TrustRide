@@ -31,7 +31,15 @@
         <c:forEach var="car" items="${wishlistCars}">
             <div class="car-card">
                 <a href="/gearshift/carDetail?carInfoId=${car.carInfoId}">
-                    <img src="${pageContext.request.contextPath}/resources/img/자동차7.png" alt="Car Image"/>
+                    <c:choose>
+                        <c:when test="${not empty car.thumbnailUrl}">
+                            <img src="${pageContext.request.contextPath}${car.thumbnailUrl}" alt="Car Image" />
+                        </c:when>
+                        <c:otherwise>
+                            <img src="${pageContext.request.contextPath}/resources/img/자동차7.png" alt="기본 이미지" />
+                        </c:otherwise>
+                    </c:choose>
+
                 </a>
                 <div class="car-info">
                     <h2>${car.modelName}</h2>
