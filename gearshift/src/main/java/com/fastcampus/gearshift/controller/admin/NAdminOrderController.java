@@ -30,11 +30,14 @@ public class NAdminOrderController {
 
         List<NOrderListDto> list = orderListService.orderList();
 
-        if (list == null || list.isEmpty()) {
-            throw new RuntimeException("orderList 데이터가 비어있습니다!");
+        // 예외 대신 빈 리스트 처리
+        if (list == null) {
+            list = List.of(); // 자바 9 이상 or Collections.emptyList()도 OK
         }
 
         model.addAttribute("orderList", list);
         return "admin/orderList";
     }
+
+
 }
