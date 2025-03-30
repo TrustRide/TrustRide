@@ -14,7 +14,8 @@
                ic.coupon_id,
                ic.user_id,
                c.coupon_name,
-               c.discount_value
+               c.discount_value,
+               c.min_order_amount
         FROM issued_coupon ic
                  JOIN coupon c ON ic.coupon_id = c.coupon_id
         WHERE ic.user_id = #{userId}
