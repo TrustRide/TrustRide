@@ -27,6 +27,7 @@
       overflow-y: auto;
       margin-top: 80px;
     }
+
     h1 {
       text-align: center;
       position: sticky;
@@ -96,18 +97,14 @@
   </style>
 </head>
 <body>
-<!-- 헤더 포함 -->
+
 <jsp:include page="include/header.jsp"/>
-
-
-
-<!-- 사이드바 포함 -->
 <jsp:include page="include/sidebar.jsp"/>
-
 
 <div class="container">
   <h1>중고차 등록</h1>
   <form action="${pageContext.request.contextPath}/admin/cars/register" method="post" enctype="multipart/form-data">
+
     <label>차량 번호</label>
     <input name="carNum" type="text" required />
 
@@ -128,12 +125,16 @@
 
     <label>색상</label>
     <input name="color" type="text" required />
+
     <label>차량 가격</label>
     <input name="carPrice" type="number" required />
+
     <label>이전 등록비</label>
     <input name="previousRegistrationFee" type="number" required />
+
     <label>유지보수 비용</label>
     <input name="maintenanceCost" type="number" required />
+
     <label>등록대행수수료</label>
     <input name="agencyFee" type="number" required />
 
@@ -176,10 +177,6 @@
       <option value="판매준비중">판매준비중</option>
       <option value="판매중">판매중</option>
       <option value="판매완료">판매완료</option>
-
-
-
-
     </select>
 
     <button class="submit-btn" type="submit">등록</button>
@@ -188,26 +185,28 @@
 
 <script>
   $(document).ready(function () {
+    const contextPath = '${pageContext.request.contextPath}';
+
     $('#largeCate').change(function () {
-      const largeCateCode = $(this).val();
+      const parentCode = $(this).val();
       $('#mediumCate').html('<option value="">중분류 선택</option>');
       $('#smallCate').html('<option value="">소분류 선택</option>');
-      if (largeCateCode) {
-        $.get('${pageContext.request.contextPath}/admin/cars/categories/medium?parentCode=' + largeCateCode, function (data) {
-          $.each(data, function (index, item) {
-            $('#mediumCate').append('<option value="' + item.cateCode + '">' + item.cateName + '</option>');
+      if (parentCode) {
+        $.get(contextPath + '/admin/cars/categories/medium', { parentCode: parentCode }, function (data) {
+          $.each(data, function (i, category) {
+            $('#mediumCate').append(`<option value="${category.cateCode}">${category.cateName}</option>`);
           });
         });
       }
     });
 
     $('#mediumCate').change(function () {
-      const mediumCateCode = $(this).val();
+      const parentCode = $(this).val();
       $('#smallCate').html('<option value="">소분류 선택</option>');
-      if (mediumCateCode) {
-        $.get('${pageContext.request.contextPath}/admin/cars/categories/small?parentCode=' + mediumCateCode, function (data) {
-          $.each(data, function (index, item) {
-            $('#smallCate').append('<option value="' + item.cateCode + '">' + item.cateName + '</option>');
+      if (parentCode) {
+        $.get(contextPath + '/admin/cars/categories/small', { parentCode: parentCode }, function (data) {
+          $.each(data, function (i, category) {
+            $('#smallCate').append(`<option value="${category.cateCode}">${category.cateName}</option>`);
           });
         });
       }
