@@ -17,7 +17,7 @@
       pay_method : 'card', //카드결제
       merchant_uid : 'merchant_' + new Date().getTime(),
       name : `${carInfo.modelName}`,
-      amount :100 , //판매가격 carInfo.carAmountPrice
+      amount :`${carInfo.carAmountPrice}`,
       buyer_email : `${userInfo.userEmail}`,
       buyer_name : `${userInfo.userName}`,
       buyer_tel : `${userInfo.userPhoneNumber}`,
@@ -153,14 +153,14 @@
       objs = document.createElement('input');
       objs.setAttribute('type', 'hidden');
       objs.setAttribute('name', 'ownershipType');
-      objs.setAttribute('value', `${cardPaymentDTO.ownershipType}`);
+      objs.setAttribute('value', `${carInfoDto.ownershipType}`);
       form.appendChild(objs);
 
       // 공동명의 여부
       objs = document.createElement('input');
       objs.setAttribute('type', 'hidden');
       objs.setAttribute('name', 'isJointOwnership');
-      objs.setAttribute('value', ${cardPaymentDTO.isJointOwnership});
+      objs.setAttribute('value', `${carInfoDto.isJointOwnership}`);
       form.appendChild(objs);
 
       form.setAttribute('method', 'post');
