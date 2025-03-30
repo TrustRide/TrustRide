@@ -29,12 +29,14 @@
         </nav>
 
         <!-- 검색 input, form 없이 처리 -->
+        <c:if test="${not hideSearch}">
         <div style="display: flex; align-items: center;">
             <input type="text" id="searchQuery" placeholder="🔍차량을 검색하세요." class="search-bar"
                    style="padding: 10px; border-radius: 4px; border: 1px solid #ddd; flex: 1;"
                    onkeypress="if(event.key === 'Enter') searchCar()">
             <button type="button" class="search-btn" onclick="searchCar()">검색</button>
         </div>
+        </c:if>
     </div>
 </header>
 
