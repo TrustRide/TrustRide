@@ -61,7 +61,7 @@
       outline: none;
     }
 
-    submit-btn {
+    .submit-btn {
       width: 100%;
       padding: 12px;
       margin-top: 25px;
@@ -76,7 +76,7 @@
       transition: transform 0.2s, box-shadow 0.2s;
     }
 
-    submit-btn:hover {
+    .submit-btn:hover {
       transform: translateY(-2px);
       box-shadow: 0 8px 15px rgba(255, 107, 107, 0.35);
     }

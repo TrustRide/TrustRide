@@ -24,8 +24,12 @@
 
 <%-- 헤더 영역 --%>
 <%@ include file="/WEB-INF/views/user/include/header.jsp" %>
+
     <%-- 사이드바 --%>
 <%@ include file="/WEB-INF/views/user/include/sidebar.jsp" %>
+
+
+
 
     <c:forEach var="refund" items="${refundList}">
         <section>
@@ -50,9 +54,13 @@
             <p>${order.totalAmount}</p>
         </div>
     </section>
+
 </c:forEach>
 
 </main>
+
+
+
 <%@ include file="/WEB-INF/views/user/include/footer.jsp" %>
 <link rel="stylesheet" href="<c:url value='/resources/css/user/footer.css' />">
 </body>

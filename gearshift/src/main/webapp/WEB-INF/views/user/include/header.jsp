@@ -15,8 +15,8 @@
                 <li><a href="${pageContext.request.contextPath}/review">상품리뷰</a></li>
 
                 <c:if test="${not empty sessionScope.loginUser}">
-                    <li><strong>${sessionScope.loginUser.userName}</strong>님 환영합니다.</li>
-                    <li><a href="${pageContext.request.contextPath}/user/mypage">마이페이지</a></li>
+                    <li><strong>${sessionScope.loginUser.userName}</strong>님</li>
+                    <li><a href="${pageContext.request.contextPath}/user/orders/status/orderList">마이페이지</a></li>
                     <li><a href="#" onclick="logout()">로그아웃</a></li>
                 </c:if>
 

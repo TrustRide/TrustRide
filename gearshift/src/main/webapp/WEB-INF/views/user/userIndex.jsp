@@ -15,13 +15,13 @@
 </head>
 <body>
 
-<!-- 🔷 헤더 영역 -->
+<!--  헤더 영역 -->
 <%@ include file="/WEB-INF/views/user/include/header.jsp" %>
 
-<!-- 🔶 메인 콘텐츠 영역 -->
+<!--  메인 콘텐츠 영역 -->
 <main>
 
-  <!-- 🔹 슬라이드 배너 영역 -->
+  <!--  슬라이드 배너 영역 -->
   <section class="main-banner">
     <div class="image-container">
       <a id="imageLink" href="<c:url value='/userList' />">
@@ -30,18 +30,11 @@
     </div>
   </section>
 
-  <!-- 🔹 향후 추가될 추천 섹션이나 필터 영역 (선택 사항) -->
-  <!--
-  <section class="car-filter-section">
-    <div class="car-filter-container">
-      필터 영역 들어갈 자리
-    </div>
-  </section>
-  -->
+
 
 </main>
 
-<!-- 🔷 채널톡 스크립트 (고정 아이콘 포함) -->
+<!--  채널톡 스크립트 (고정 아이콘 포함) -->
 <a href="/chat">
   <script>
     (function(){
@@ -68,10 +61,10 @@
   </script>
 </a>
 
-<!-- 🔷 푸터 영역 -->
+<!--  푸터 영역 -->
 <%@ include file="/WEB-INF/views/user/include/footer.jsp" %>
 
-<!-- 🔷 슬라이드 이미지 전환 스크립트 -->
+<!-- 슬라이드 이미지 전환 스크립트 -->
 <script>
   const images = [
     "<c:url value='/resources/img/1car1.png' />",

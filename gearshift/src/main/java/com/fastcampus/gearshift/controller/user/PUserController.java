@@ -37,15 +37,7 @@ public class PUserController {
         return "user/userIndex";
     }
 
-    @GetMapping("/login2")
-    public String login2(){
-        return "user/loginForm";
-    }
 
-    @GetMapping("/loginTest")
-    public String login(){
-        return "user/loginForm";
-    }
 
 
 
@@ -164,14 +156,12 @@ public class PUserController {
         // 여기를 "loginUser"로 변경해야 세션에서 제대로 꺼낼 수 있음
 
 
-
-
         CarInfoDto carInfoDto = pHolderService.carSelect(carInfoId);
 
         model.addAttribute("carDto", carInfoDto);
 
-
         return "user/userTitleHolder";
+
     }
 
 
