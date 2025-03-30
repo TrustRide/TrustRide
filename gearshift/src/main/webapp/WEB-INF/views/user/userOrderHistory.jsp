@@ -40,7 +40,7 @@
                             <div class="order-info">
                                 <p>${refund.refundStatus}</p>
                                 <p>${refund.modelName}</p>
-                                <p>${refund.totalAmount}</p>
+                                <p>${refund.totalAmount}만원</p>
                             </div>
                         </div>
                     </section>

@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // 오늘 날짜 및 면허 발급일 최대 설정
     let today = new Date().toISOString().split("T")[0];
-    document.getElementById("deliveryDate").setAttribute("min", today);
+    document.getElementById("preferredDate").setAttribute("min", today);
     document.getElementById("licenseIssuedDate").setAttribute("max", today);
 
     document.getElementById("licenseIssuedDate").addEventListener("change", setLicenseExpiryDate);

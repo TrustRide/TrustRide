@@ -84,8 +84,8 @@
 
             <label for="deliveryDate">희망 배송일</label>
             <input type="date" id="deliveryDate" name="deliveryDate" min="">
-            <label for="deliveryDate">요청사항</label>
-            <input type="text" name="deliveryRequest">
+            <label for="deliveryRequest">요청사항</label>
+            <input type="text" id="deliveryRequest" name="deliveryRequest">
 
 
 
@@ -313,19 +313,19 @@
                 <h3>예상 결제 금액</h3>
                 <div class="price-item">
                     <span class="label">차량가격</span>
-                    <span class="value">${carDto.carPrice}000원</span>
+                    <span class="value">${carDto.carPrice}만원</span>
                 </div>
 
 
                 <div class="price-item">
                     <span class="label">이전등록비</span>
-                    <span class="value">${carDto.previousRegistrationFee}000원</span>
+                    <span class="value">${carDto.previousRegistrationFee}만원</span>
                 </div>
 
 
                 <div class="price-item">
                     <span class="label">등록대행수수료</span>
-                    <span class="value">${carDto.agencyFee}000원</span>
+                    <span class="value">${carDto.agencyFee}만원</span>
                 </div>
 
 
@@ -339,7 +339,7 @@
 
                 <div class="price-item total">
                     <span class="label">총 합계</span>
-                    <span class="value">${carDto.carAmountPrice}000원</span>
+                    <span class="value">${carDto.carAmountPrice}만원</span>
                 </div>
             </div>
 

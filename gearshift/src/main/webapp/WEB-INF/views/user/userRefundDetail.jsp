@@ -26,7 +26,7 @@
         <h3>선택한 상품 </h3>
         <img src="${pageContext.request.contextPath}${refundInfo.thumbnailImageUrl}" style="width: 100%; max-width: 320px; border-radius: 8px; margin-bottom: 15px;" />
         <p>${refundDTO.modelName}</p>
-        <p>${refundInfo.totalAmount} 원</p>
+        <p>${refundInfo.totalAmount} 만원</p>
     </section>
 
     <!-- ② 선택한 사유 -->
@@ -49,7 +49,7 @@
     <!-- ④ 환불 예상금액 -->
     <section>
         <h4>환불 예상금액</h4>
-        <p>${refundInfo.totalAmount} 원</p>
+        <p>${refundInfo.totalAmount} 만원</p>
     </section>
 
     <!-- 선택한 상품 환불 등록 -->
@@ -63,6 +63,7 @@
     </section>
     </form>
 </main>
+
     <%@ include file="/WEB-INF/views/user/include/footer.jsp" %>
 </body>
 </html>
