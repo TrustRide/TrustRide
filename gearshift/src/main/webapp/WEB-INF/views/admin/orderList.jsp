@@ -15,35 +15,42 @@
 <!-- 사이드바 포함 -->
 <jsp:include page="include/sidebar.jsp"/>
 
-
 <main class="content">
     <h2>주문 관리</h2>
-    <table class="table">
-        <thead>
-        <tr>
-            <th>회원이름</th>
-            <th>회원코드</th>
-            <th>주문코드</th>
-            <th>주문가격</th>
-            <th>주문상태</th>
-            <th>주문일자</th>
-        </tr>
-        </thead>
-        <tbody>
-        <c:forEach var="order" items="${orderList}">
-            <tr>
-                <td>${order.userName}</td>
-                <td>${order.userId}</td>
-                <td>${order.orderId}</td>
-                <td>${order.totalPrice}</td>
-                <td>${order.orderStatus}</td>
-                <td>${order.orderCompletedDate}</td>
-            </tr>
-        </c:forEach>
-        </tbody>
-    </table>
+
+    <c:choose>
+        <c:when test="${empty orderList}">
+            <p style="text-align: center; font-size: 16px; color: gray;">주문 내역이 없습니다.</p>
+        </c:when>
+        <c:otherwise>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>회원이름</th>
+                    <th>회원코드</th>
+                    <th>주문코드</th>
+                    <th>주문가격</th>
+                    <th>주문상태</th>
+                    <th>주문일자</th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach var="order" items="${orderList}">
+                    <tr>
+                        <td>${order.userName}</td>
+                        <td>${order.userId}</td>
+                        <td>${order.orderId}</td>
+                        <td>${order.totalPrice}</td>
+                        <td>${order.orderStatus}</td>
+                        <td>${order.orderCompletedDate}</td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+        </c:otherwise>
+    </c:choose>
+
 </main>
 
 </body>
 </html>
-
