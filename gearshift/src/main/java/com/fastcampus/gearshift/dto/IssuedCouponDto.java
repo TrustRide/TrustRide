@@ -20,4 +20,5 @@ public class IssuedCouponDto {
     // 추가 필드
     private String couponName;
     private Integer discountValue;
+    private Integer minOrderAmount;
 }
