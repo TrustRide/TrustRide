@@ -3,138 +3,44 @@
 <html>
 <head>
     <title>문의 목록</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #f1f3f5;
-            margin: 0;
-            padding: 40px 20px;
-        }
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="<c:url value='/resources/css/user/header.css' />">
+    <link rel="stylesheet" href="<c:url value='/resources/css/user/footer.css' />">
+    <link rel="stylesheet" href="<c:url value='/resources/css/user/sidebar.css' />">
+    <link rel="stylesheet" href="<c:url value='/resources/css/user/userInquiry.css' />">
 
-        .container {
-            max-width: 1000px;
-            margin: auto;
-            background: #ffffff;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.08);
-        }
 
-        h2 {
-            color: #212529;
-            margin-bottom: 30px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            color: white;
-            background-color: #0d6efd;
-            text-decoration: none;
-            border-radius: 6px;
-            font-size: 15px;
-            margin-bottom: 20px;
-            transition: background-color 0.3s ease;
-        }
-
-        .btn:hover {
-            background-color: #0b5ed7;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            border-radius: 12px;
-            overflow: hidden;
-        }
-
-        th, td {
-            padding: 14px 12px;
-            text-align: center;
-            font-size: 14px;
-        }
-
-        th {
-            background-color: #0d6efd;
-            color: #fff;
-        }
-
-        tr {
-            transition: background-color 0.2s ease;
-        }
-
-        tr:hover {
-            background-color: #f8f9fa;
-            cursor: pointer;
-        }
-
-        .status {
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-weight: 600;
-            display: inline-block;
-            font-size: 13px;
-        }
-
-        .completed {
-            background-color: #198754;
-            color: #fff;
-        }
-
-        .pending {
-            background-color: #ffc107;
-            color: #212529;
-        }
-
-        .empty-message {
-            padding: 50px 0;
-            color: #868e96;
-            font-size: 16px;
-            text-align: center;
-        }
-
-        @media (max-width: 768px) {
-            table, thead, tbody, th, td, tr {
-                display: block;
-            }
-
-            thead tr {
-                display: none;
-            }
-
-            tr {
-                margin-bottom: 15px;
-                background: #f8f9fa;
-                border-radius: 10px;
-                padding: 10px;
-            }
-
-            td {
-                text-align: left;
-                padding: 8px;
-                position: relative;
-            }
-
-            td::before {
-                content: attr(data-label);
-                font-weight: bold;
-                display: block;
-                margin-bottom: 4px;
-                color: #495057;
-            }
-        }
-    </style>
 </head>
-<body>
-<div class="container">
-    <h2>📋 문의 목록</h2>
-    <a href="${pageContext.request.contextPath}/user/inquiry/write" class="btn">＋ 새 문의 작성</a>
 
-    <c:choose>
-        <c:when test="${empty inquiryList}">
-            <div class="empty-message">😢 등록된 문의가 없습니다. <br>문의하고 싶은 내용을 작성해 주세요!</div>
-        </c:when>
-        <c:otherwise>
+<%
+    request.setAttribute("hideSearch", true);
+%>
+
+<%-- 헤더 영역 --%>
+<%@ include file="/WEB-INF/views/user/include/header.jsp" %>
+<%-- 사이드바 --%>
+<%@ include file="/WEB-INF/views/user/include/sidebar.jsp" %>
+
+<body>
+<main class="inquiry-main">
+<div class="container">
+    <section class="inquiry-header">
+    <h2>📋 문의 목록</h2>
+        <a href="${pageContext.request.contextPath}/user/inquiry/write"
+           style="display:inline-block; padding:10px 20px; background-color:#e60023; color:#fff; font-size:16px; font-weight:600; border-radius:8px; text-decoration:none; box-shadow:0 4px 8px rgba(0,0,0,0.1); transition:background-color 0.3s ease;">
+            ＋ 새 문의 작성
+        </a>
+    </section>
+
+<c:if test="${empty inquiryList}">
+    <section class="inquiry-empty">
+    <div class="empty-message">
+                😢 등록된 문의가 없습니다. <br>문의하고 싶은 내용을 작성해 주세요!
+            </div>
+    </section>
+</c:if>
+    <c:if test="${not empty inquiryList}">
+    <section class="inquiry-table">
             <table>
                 <thead>
                 <tr>
@@ -168,8 +74,10 @@
                 </c:forEach>
                 </tbody>
             </table>
-        </c:otherwise>
-    </c:choose>
+    </section>
+    </c:if>
 </div>
+</main>
+<%@ include file="/WEB-INF/views/user/include/footer.jsp" %>
 </body>
 </html>

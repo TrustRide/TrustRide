@@ -1,12 +1,24 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>환불 상세 내역</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="<c:url value='/resources/css/user/header.css' />">
+    <link rel="stylesheet" href="<c:url value='/resources/css/user/footer.css' />">
+    <link rel="stylesheet" href="<c:url value='/resources/css/user/sidebar.css' />">
+    <link rel="stylesheet" href="<c:url value='/resources/css/user/userRefundDetail.css' />">
 </head>
 <body>
 
-    <!-- 사이드바 -->
-<jsp:include page="include/sidebar.jsp"/>
+<%
+    request.setAttribute("hideSearch", true);
+%>
+
+<%-- 헤더 영역 --%>
+<%@ include file="/WEB-INF/views/user/include/header.jsp" %>
+<%-- 사이드바 --%>
+<%@ include file="/WEB-INF/views/user/include/sidebar.jsp" %>
 
 <main>
     <!-- ① 선택한 상품 -->
@@ -51,5 +63,6 @@
     </section>
     </form>
 </main>
+    <%@ include file="/WEB-INF/views/user/include/footer.jsp" %>
 </body>
 </html>

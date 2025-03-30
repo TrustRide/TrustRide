@@ -5,17 +5,24 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
     <title>리뷰 작성</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="<c:url value='/resources/css/user/review/userReview.css' />">
     <link rel="stylesheet" href="<c:url value='/resources/css/user/header.css' />">
     <link rel="stylesheet" href="<c:url value='/resources/css/user/footer.css' />">
     <link rel="stylesheet" href="<c:url value='/resources/css/user/sidebar.css' />">
 </head>
 <body>
+<%
+    request.setAttribute("hideSearch", true);
+%>
+
 <%-- 헤더 영역 --%>
 <%@ include file="/WEB-INF/views/user/include/header.jsp" %>
 <%-- 사이드바 --%>
 <%@ include file="/WEB-INF/views/user/include/sidebar.jsp" %>
+<main class="review-main">
     <div class="review-summary">
         <div>리뷰 작성</div>
     </div>
@@ -109,7 +116,7 @@
             </div>
         </div>
     </div>
-
+</main>
 
     <script>
         <c:if test="${not empty message}">
@@ -151,6 +158,5 @@
         }
     </script>
 <%@ include file="/WEB-INF/views/user/include/footer.jsp" %>
-<link rel="stylesheet" href="<c:url value='/resources/css/user/footer.css' />">
 </body>
 </html>

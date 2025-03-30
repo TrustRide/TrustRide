@@ -1,0 +1,127 @@
+/* 전체 배경 */
+body {
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+/* 메인 컨테이너 */
+.profile-main {
+    margin-left: 250px; /* 사이드바 공간 고려 */
+    padding: 60px 20px 100px;
+    background-color: #f5f5f5;
+}
+
+/* 내용 박스 */
+.content-box {
+    background: white;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+/* 제목 */
+.content-box h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #333;
+    text-align: center;
+}
+
+/* 공통 form 스타일 */
+form {
+    margin-bottom: 30px;
+}
+
+/* 라벨 */
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: #444;
+}
+
+/* input 필드 */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px 14px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-bottom: 16px;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+}
+
+input:focus {
+    border-color: #007aff;
+    outline: none;
+}
+
+input[readonly] {
+    background-color: #f2f2f2;
+    color: #888;
+}
+
+/* 버튼 */
+button {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 10px 18px;
+    font-size: 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: #007aff;
+    color: white;
+    transition: background-color 0.2s ease-in-out;
+}
+
+button:hover {
+    background-color: #005fcc;
+}
+
+/* 탈퇴 버튼 스타일 */
+#deleteForm button {
+    background-color: #f44336;
+}
+
+#deleteForm button:hover {
+    background-color: #d32f2f;
+}
+
+/* 비밀번호 확인 섹션 */
+.password-check-section {
+    margin-bottom: 40px;
+}
+
+/* 숨김 처리 영역 */
+#profileForm,
+#deleteForm,
+#newPasswordRow {
+    display: none;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+    .profile-main {
+        margin-left: 0;
+        padding: 40px 16px;
+    }
+
+    .content-box {
+        padding: 30px 20px;
+    }
+}
+
+main {
+    min-height: calc(100vh - 140px); /* header + footer 대충 합쳐서 */
+    padding: 40px 20px 100px; /* 위, 양옆, 아래 */
+    box-sizing: border-box;
+
+}

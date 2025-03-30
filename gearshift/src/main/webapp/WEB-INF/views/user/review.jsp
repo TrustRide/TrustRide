@@ -6,9 +6,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>상품리뷰</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/user/review/review.css">
+    <link rel="stylesheet" href="<c:url value='/resources/css/user/header.css' />">
+    <link rel="stylesheet" href="<c:url value='/resources/css/user/footer.css' />">
+
 </head>
 <body>
+<%
+    request.setAttribute("hideSearch", true);
+%>
+<%-- 헤더 영역 --%>
+<%@ include file="/WEB-INF/views/user/include/header.jsp" %>
     <h1 style="text-align:center;">솔직한 이용 후기</h1>
     <br>
     <div class="container">
@@ -44,5 +53,6 @@
             <a href="?page=${paging.endPage + 1}">&gt;</a>
         </c:if>
     </div>
+    <%@ include file="/WEB-INF/views/user/include/footer.jsp" %>
 </body>
 </html>
