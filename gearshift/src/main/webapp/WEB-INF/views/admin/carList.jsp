@@ -156,7 +156,9 @@
                     <a href="${pageContext.request.contextPath}/admin/cars/${car.carInfoId}/edit" class="edit-btn">수정</a>
                 </td>
                 <td class="action-buttons">
-                    <a href="javascript:void(0);" onclick="event.stopPropagation(); confirmDelete('${car.carInfoId}');" class="delete-btn">삭제</a>                </td>
+                    <a href="javascript:void(0);" onclick="event.stopPropagation(); confirmDelete('${car.carInfoId}');" class="delete-btn">삭제</a>
+                </td>
+
             </tr>
         </c:forEach>
         </tbody>
