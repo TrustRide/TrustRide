@@ -17,5 +17,12 @@ public class NOrderListServiceImpl implements NOrderListService {
     public List<NOrderListDto> orderList() {
         return orderListDao.orderList();
     }
+
+    public void updateDeliveryStatus(Integer orderId, String deliveryStatus){
+        orderListDao.updateDeliveryStatus(orderId, deliveryStatus);
+    };
+
+
+
 }
 

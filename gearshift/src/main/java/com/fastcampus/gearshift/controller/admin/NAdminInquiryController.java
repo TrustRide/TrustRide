@@ -24,7 +24,7 @@ public class NAdminInquiryController {
 
     @GetMapping({"", "/"})
     public String getList(Model model, HttpSession session) {
-        AdminDto admin = (AdminDto) session.getAttribute("adminUser");
+        AdminDto admin = (AdminDto)session.getAttribute("adminUser");
 
         if (admin == null) {
             session.setAttribute("redirectAfterLogin", "/admin/inquiry");

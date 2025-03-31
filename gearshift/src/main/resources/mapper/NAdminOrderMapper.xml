@@ -10,11 +10,23 @@
             user_id,
             order_id,
             total_price,
+            delivery_status,
             order_status,
             order_completed_date
         FROM vw_order_summary
         ORDER BY order_completed_date DESC
     </select>
+
+
+    <update id="updateDeliveryStatus" parameterType="map">
+        UPDATE delivery
+        SET delivery_status = #{deliveryStatus}
+        WHERE order_id = #{orderId}
+    </update>
+
+
+
+
 
 </mapper>
 
