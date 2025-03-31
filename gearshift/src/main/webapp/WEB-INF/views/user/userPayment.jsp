@@ -11,7 +11,7 @@
 <script>
   $(function(){
     var IMP = window.IMP;
-    IMP.init('imp01076110');
+    IMP.init('import');
     IMP.request_pay({
       pg : 'html5_inicis',
       pay_method : 'card', //카드결제
