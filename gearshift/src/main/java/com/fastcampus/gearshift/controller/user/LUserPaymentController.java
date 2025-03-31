@@ -70,9 +70,6 @@ public class LUserPaymentController {
 
         UserDto userInfoDto = userService.getUserFormById(userId);
 
-
-        // carInfoId로 다시 조회해서 carInfo 채움
-        //CarDetailDto carInfo = userCarInfoService.getCarInfo(dto.getCarInfoId());
         CarInfoDto carInfo = pHolderService.carSelect(dto.getCarInfoId());
         // userId 세팅
 

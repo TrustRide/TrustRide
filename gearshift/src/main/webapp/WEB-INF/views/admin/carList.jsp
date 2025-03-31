@@ -104,7 +104,7 @@
     <script>
         function confirmDelete(carInfoId) {
             if (confirm('정말 삭제하시겠습니까?')) {
-                window.location.href = '${pageContext.request.contextPath}/admin/cars/' + carInfoId + '/delete';
+                window.location.href = '${pageContext.request.contextPath}/admin/cars/'+carInfoId+'/delete';
             }
         }
     </script>
@@ -158,6 +158,7 @@
                 <td class="action-buttons">
                     <a href="javascript:void(0);" onclick="event.stopPropagation(); confirmDelete('${car.carInfoId}');" class="delete-btn">삭제</a>
                 </td>
+
             </tr>
         </c:forEach>
         </tbody>

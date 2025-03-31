@@ -140,7 +140,7 @@
         <table>
             <thead>
             <tr>
-                <th>쿠폰 ID</th>
+
                 <th>쿠폰명</th>
                 <th>할인 금액</th>
                 <th>최소 주문 금액</th>
@@ -152,9 +152,8 @@
             <c:if test="${not empty coupons}">
                 <c:forEach var="coupon" items="${coupons}">
                     <tr>
-                        <td>${coupon.couponId}</td>
                         <td>${coupon.couponName}</td>
-                        <td>${coupon.discountValue}%</td>
+                        <td>${coupon.discountAmount}원</td>
                         <td>${coupon.minOrderAmount}원</td>
                         <td class="action-buttons">
                             <a href="${pageContext.request.contextPath}/admin/coupons/edit/${coupon.couponId}" class="edit-btn">수정</a>

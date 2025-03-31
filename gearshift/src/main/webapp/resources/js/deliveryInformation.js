@@ -1,34 +1,3 @@
-// 📌 배송원 정보 설정 및 폼 제출
-document.addEventListener("DOMContentLoaded", function () {
-    document.querySelector(".submit-btn").addEventListener("click", function(event) {
-        event.preventDefault(); // 항상 기본 동작 막기
-
-        const selectedDelivery = document.querySelector('input[name="delivery"]:checked');
-        if (!selectedDelivery) {
-            openErrorModal("배송원을 선택해 주세요.");
-            return;
-        }
-
-        const [deliveryName, deliveryPhone] = selectedDelivery.value.split(',');
-        document.querySelector("[name='deliveryDriverName']").value = deliveryName;
-        document.querySelector("[name='driverPhoneNumber']").value = deliveryPhone;
-
-        validateForm(); // 배송원 선택 후 유효성 검사
-    });
-
-    // 오늘 날짜 및 면허 발급일 최대 설정
-    let today = new Date().toISOString().split("T")[0];
-    document.getElementById("preferredDate").setAttribute("min", today);
-    document.getElementById("licenseIssuedDate").setAttribute("max", today);
-
-    document.getElementById("licenseIssuedDate").addEventListener("change", setLicenseExpiryDate);
-
-    // 📌 에러 모달 확인 버튼 이벤트 연결
-    document.querySelectorAll("#errorModal .confirm-button").forEach(btn => {
-        btn.addEventListener("click", closeErrorModal);
-    });
-});
-
 // 📌 면허 만료일 자동 설정
 function setLicenseExpiryDate() {
     let issueDate = document.getElementById("licenseIssuedDate").value;
@@ -53,31 +22,24 @@ function closeErrorModal() {
 function openTermsModal() {
     document.getElementById("termsModal").style.display = "block";
 }
-
 function closeTermsModal() {
     document.getElementById("termsModal").style.display = "none";
 }
-
 function openIdentificationModal() {
     document.getElementById("identificationModal").style.display = "block";
 }
-
 function closeIdentificationModal() {
     document.getElementById("identificationModal").style.display = "none";
 }
-
 function openBenefitModal() {
     document.getElementById("benefitModal").style.display = "block";
 }
-
 function closeBenefitModal() {
     document.getElementById("benefitModal").style.display = "none";
 }
-
 function openThirdPartyModal() {
     document.getElementById("thirdPartyModal").style.display = "block";
 }
-
 function closeThirdPartyModal() {
     document.getElementById("thirdPartyModal").style.display = "none";
 }
@@ -86,7 +48,6 @@ function closeThirdPartyModal() {
 function openDeliveryModal(id) {
     document.getElementById("deliveryModal" + id).style.display = "block";
 }
-
 function closeDeliveryModal(id) {
     document.getElementById("deliveryModal" + id).style.display = "none";
 }
@@ -95,7 +56,6 @@ function closeDeliveryModal(id) {
 function updateCheckboxValue(checkbox) {
     checkbox.value = checkbox.checked ? "true" : "false";
 }
-
 function toggleAllCheckboxes(masterCheckbox) {
     const checkboxes = document.querySelectorAll('.agreement-checkbox');
     checkboxes.forEach(cb => {
@@ -165,3 +125,43 @@ function execution_daum_address() {
         }
     }).open();
 }
+
+// 📌 페이지 로드 시 초기 설정 및 이벤트 바인딩
+document.addEventListener("DOMContentLoaded", function () {
+    // 에러 모달 확인 버튼
+    const errorConfirmButton = document.querySelector("#errorModal .confirm-button");
+    if (errorConfirmButton) {
+        errorConfirmButton.addEventListener("click", closeErrorModal);
+    }
+
+    // 오늘 날짜 설정
+    let today = new Date().toISOString().split("T")[0];
+    const deliveryDateInput = document.getElementById("deliveryDate"); // ← ID 수정
+    if (deliveryDateInput) deliveryDateInput.setAttribute("min", today);
+
+    const licenseDateInput = document.getElementById("licenseIssuedDate");
+    if (licenseDateInput) {
+        licenseDateInput.setAttribute("max", today);
+        licenseDateInput.addEventListener("change", setLicenseExpiryDate);
+    }
+
+    // 폼 제출 버튼 처리
+    const submitBtn = document.querySelector(".submit-btn");
+    if (submitBtn) {
+        submitBtn.addEventListener("click", function (event) {
+            event.preventDefault();
+
+            const selectedDelivery = document.querySelector('input[name="delivery"]:checked');
+            if (!selectedDelivery) {
+                openErrorModal("배송원을 선택해 주세요.");
+                return;
+            }
+
+            const [deliveryName, deliveryPhone] = selectedDelivery.value.split(',');
+            document.querySelector("[name='deliveryDriverName']").value = deliveryName;
+            document.querySelector("[name='driverPhoneNumber']").value = deliveryPhone;
+
+            validateForm();
+        });
+    }
+});
