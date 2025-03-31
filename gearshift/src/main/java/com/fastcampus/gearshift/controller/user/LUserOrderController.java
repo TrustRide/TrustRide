@@ -139,9 +139,6 @@ public class LUserOrderController {
         UserDto userDto =  (UserDto)session.getAttribute("loginUser");
         Integer userId = userDto.getUserId();
 
-        // carInfoId로 다시 조회해서 carInfo 채움
-        //List<CarInfoDto> carInfo = pHolderService.carSelect(carInfoId);
-
         // 주문 목록 조회
         List<LOrderListDTO> orderListDTO = orderService.getLOrderList(userId);
         model.addAttribute("orderList", orderListDTO);

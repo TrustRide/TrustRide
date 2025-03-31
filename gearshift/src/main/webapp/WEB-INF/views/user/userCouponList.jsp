@@ -33,7 +33,7 @@
         <tr>
 
             <th>쿠폰명</th>
-            <th>할인내용</th>
+            <th>할인금액</th>
             <th>최소주문금액</th>
             <th>발급일</th>
             <th>사용여부</th>
@@ -45,7 +45,7 @@
             <tr>
 
                 <td>${coupon.couponName}</td>
-                <td>${coupon.discountValue}원</td>
+                <td>${coupon.discountAmount}원</td>
                 <td>${coupon.minOrderAmount}원</td>
                 <td>
                     <fmt:formatDate value="${coupon.issueDate}" pattern="yyyy-MM-dd HH:mm" />
