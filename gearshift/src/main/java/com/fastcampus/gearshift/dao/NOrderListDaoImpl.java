@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class NOrderListDaoImpl implements NOrderListDao {
@@ -19,4 +20,12 @@ public class NOrderListDaoImpl implements NOrderListDao {
     public List<NOrderListDto> orderList() {
         return sqlSession.selectList(NAMESPACE + ".orderList");
     }
+
+    @Override
+    public void updateDeliveryStatus(Integer orderId, String deliveryStatus) {
+        sqlSession.update(NAMESPACE + ".updateDeliveryStatus",
+                Map.of("orderId", orderId, "deliveryStatus", deliveryStatus));
+    }
+
+
 }

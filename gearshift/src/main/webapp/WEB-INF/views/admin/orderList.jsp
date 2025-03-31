@@ -32,6 +32,7 @@
                     <th>주문가격</th>
                     <th>주문상태</th>
                     <th>주문일자</th>
+                    <th>배달상태</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -43,14 +44,48 @@
                         <td>${order.totalPrice}</td>
                         <td>${order.orderStatus}</td>
                         <td>${order.orderCompletedDate}</td>
+                        <td>
+                            <select class="delivery-status-select" data-order-id="${order.orderId}">
+                                <option value="배송준비중" <c:if test="${order.deliveryStatus == '배송준비중'}">selected</c:if>>배송준비중</option>
+                                <option value="배송중" <c:if test="${order.deliveryStatus == '배송중'}">selected</c:if>>배송중</option>
+                                <option value="배송완료" <c:if test="${order.deliveryStatus == '배송완료'}">selected</c:if>>배송완료</option>
+                            </select>
+                        </td>
                     </tr>
                 </c:forEach>
                 </tbody>
             </table>
         </c:otherwise>
     </c:choose>
-
 </main>
+
+<!-- jQuery CDN -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- 배송상태 Ajax 처리 -->
+<script>
+    $(document).ready(function () {
+        $('.delivery-status-select').change(function () {
+            const newStatus = $(this).val();
+            const orderId = $(this).data('order-id');
+
+            $.ajax({
+                url: '${pageContext.request.contextPath}/admin/orderList/updateDeliveryStatus',
+                type: 'POST',
+                data: {
+                    orderId: orderId,
+                    deliveryStatus: newStatus
+                },
+                success: function (response) {
+                    alert('배송 상태가 "' + newStatus + '"로 변경되었습니다.');
+                },
+                error: function () {
+                    alert('배송 상태 변경에 실패했습니다.');
+                }
+            });
+        });
+    });
+</script>
 
 </body>
 </html>

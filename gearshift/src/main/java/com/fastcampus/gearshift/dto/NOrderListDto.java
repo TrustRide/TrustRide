@@ -16,5 +16,9 @@ public class NOrderListDto {
     private Integer totalPrice;    // 주문 가격
     private String orderStatus;    // 주문 상태
     private Date orderCompletedDate;   // 주문 일자 (order_completed_date)
+
+    private String deliveryStatus;
+
+
 }
 
