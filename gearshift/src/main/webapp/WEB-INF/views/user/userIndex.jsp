@@ -99,12 +99,7 @@
   }
 
   setInterval(changeImage, 5000);
-
-  function logout() {
-    document.getElementById('logoutForm').submit();
-  }
-
-
+  
 </script>
 </body>
 </html>
