@@ -102,23 +102,23 @@
       <h3>예상 결제 금액</h3>
       <div class="price-item">
         <span class="label">차량가격</span>
-        <span class="value">${carInfo.carPrice}원</span>
+        <span class="value">${carInfo.carPrice}만원</span>
       </div>
       <div class="price-item">
         <span class="label">이전등록비</span>
-        <span class="value">${carInfo.previousRegistrationFee}원</span>
+        <span class="value">${carInfo.previousRegistrationFee}만원</span>
       </div>
       <div class="price-item">
         <span class="label">등록대행수수료</span>
-        <span class="value">${carInfo.agencyFee}원</span>
+        <span class="value">${carInfo.agencyFee}만원</span>
       </div>
       <div class="price-item">
         <span class="label">배송비</span>
-        <span class="value">${carInfoDto.deliveryFee}</span>
+        <span class="value">${carInfoDto.deliveryFee}원</span>
       </div>
       <div class="price-item total">
         <span class="label">총 합계</span>
-        <span class="value">${carInfo.carAmountPrice}원</span>
+        <span class="value">${carInfo.carAmountPrice}만원</span>
       </div>
     </div>
   </section>

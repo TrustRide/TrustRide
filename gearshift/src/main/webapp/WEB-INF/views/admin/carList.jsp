@@ -144,7 +144,7 @@
             <tr onclick="location.href='${pageContext.request.contextPath}/admin/cars/${car.carInfoId}'" style="cursor: pointer;">
                 <td>${car.carInfoId}</td>
                 <td>${car.modelName}</td>
-                <td>${car.carPrice}</td>
+                <td>${car.carPrice}만원</td>
                 <td>${car.soldStatus}</td>
                 <td>${car.fuelType}</td>
                 <td>

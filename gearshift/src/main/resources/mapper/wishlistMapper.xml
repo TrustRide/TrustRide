@@ -39,9 +39,9 @@
             info.fuel_type,
             img.image_url AS thumbnail_url
         FROM wishlist w
-                 JOIN car_information ci ON w.car_info_id = ci.car_info_id
-                 LEFT JOIN information info ON ci.car_info_id = info.car_info_id
-                 inner join image img ON img.car_info_id = info.car_info_id
+        JOIN car_information ci ON w.car_info_id = ci.car_info_id
+        INNER JOIN information info ON ci.car_info_id = info.car_info_id
+        INNER join image img ON img.car_info_id = info.car_info_id
         WHERE w.user_id = #{userId}
           AND img.is_thumbnail = true
           AND ci.is_deleted = false
