@@ -299,7 +299,7 @@
             </c:choose>
 
             <h3>${carDto.modelName}</h3>
-            <p>43다5558 | ${carDto.manufactureYear} ·${carDto.mileage} ·  ${carDto.fuelType}</p>
+            <p>${carDto.carNum} | ${carDto.manufactureYear}식 ·${carDto.mileage}km ·  ${carDto.fuelType}</p>
 
             <div class="info-buttons">
                 <button class="info-button">차량옵션</button>

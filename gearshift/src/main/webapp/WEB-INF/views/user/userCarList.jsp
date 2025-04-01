@@ -129,6 +129,7 @@
 
 <!-- 🔷 JS: 카테고리 토글 -->
 <script>
+
     function toggleCategory(id) {
         var element = document.getElementById(id);
         if (element) {
@@ -136,7 +137,9 @@
         }
     }
 
+    // 1. 동기  -->  비동기
     function addWishlist(carInfoId) {
+        // 2. 액션 시 URL을 컨트롤러에 보내고 JSON형식, POST로  carInfoId보냄
         fetch("${pageContext.request.contextPath}/user/wishlist/add", {
             method: "POST",
             headers: {
@@ -144,6 +147,11 @@
             },
             body: JSON.stringify(carInfoId)
         })
+            // jsp -> 컨트롤러 ->DB -> 컨트롤러 -> jsp
+
+            // 3. 백단에서 에러없이 return으로 왔다면 success로 응답하도록
+            // res.text() === success 인거고   data = "success"
+            // 실패를 했으면 res.text()가 success가 아님
             .then(res => res.text())
             .then(data => {
                 if (data === "success") {
@@ -169,9 +177,8 @@
             },
             body: JSON.stringify(carInfoId)
         })
-            .then(res => res.text())
-            .then(data => {
-                if (data === "success") {
+            .then(aaa => {
+                if (aaa.ok) {
                     const btn = document.getElementById('btn-' + carInfoId);
                     btn.innerText = "🤍 찜하기";
                     btn.setAttribute("onclick", "addWishlist(" + carInfoId + ")");

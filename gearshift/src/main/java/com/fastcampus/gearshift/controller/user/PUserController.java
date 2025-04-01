@@ -63,6 +63,8 @@ public class PUserController {
         // ★ 로그인 유저
         UserDto user = (UserDto) session.getAttribute("loginUser");
         Integer userId = (user != null) ? user.getUserId() : null;
+        
+        // isLogin 으로 로그인안되어있을 때 안보이도록
         boolean isLogin = userId != null;
 
         if(userId != null) {

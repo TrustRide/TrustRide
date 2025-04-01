@@ -36,7 +36,7 @@
     <main>
       <div>
         <h3>총 결제금액</h3>
-        <h2>${carInfo.carAmountPrice}원</h2>
+        <h2>${carInfo.carAmountPrice}만원</h2>
       </div>
 
       <div style="display: flex; background: white; border: 1px solid #eee; border-radius: 8px; margin-top: 20px;">
@@ -55,15 +55,15 @@
           <div style="margin-top: 12px;">
             <div style="display: flex; justify-content: space-between; padding: 6px 0;">
               <span>차량가</span>
-              <span>${carInfo.carPrice}</span>
+              <span>${carInfo.carPrice}만원</span>
             </div>
             <div style="display: flex; justify-content: space-between; padding: 6px 0;">
               <span>관리비용</span>
-              <span>${carInfo.maintenanceCost}원</span>
+              <span>${carInfo.maintenanceCost}만원</span>
             </div>
             <div style="display: flex; justify-content: space-between; padding: 6px 0;">
               <span>등록신청대행수수료</span>
-              <span>${carInfo.agencyFee}원</span>
+              <span>${carInfo.agencyFee}만원</span>
             </div>
 
 
@@ -75,7 +75,7 @@
 
           <div style="display: flex; justify-content: space-between; font-weight: bold; border-top: 1px solid #ccc; padding-top: 12px; margin-top: 12px; color: #b40000;">
             <span>총 가격</span>
-            <span>${carInfo.carAmountPrice}원</span>
+            <span>${carInfo.carAmountPrice}만원</span>
           </div>
         </div>
       </div>
@@ -141,15 +141,15 @@
           <h3>예상 결제 금액</h3>
           <div class="price-item">
             <span class="label">차량가격</span>
-            <span class="value">${carInfo.carPrice}원</span>
+            <span class="value">${carInfo.carPrice}만원</span>
           </div>
           <div class="price-item">
             <span class="label">이전등록비</span>
-            <span class="value">${carInfo.previousRegistrationFee}원</span>
+            <span class="value">${carInfo.previousRegistrationFee}만원</span>
           </div>
           <div class="price-item">
             <span class="label">등록대행수수료</span>
-            <span class="value">${carInfo.agencyFee}원</span>
+            <span class="value">${carInfo.agencyFee}만원</span>
           </div>
           <div class="price-item">
             <span class="label">배송비</span>
@@ -157,7 +157,7 @@
           </div>
           <div class="price-item total">
             <span class="label">총 합계</span>
-            <span class="value">${carInfo.carAmountPrice}원</span>
+            <span class="value">${carInfo.carAmountPrice}만원</span>
           </div>
         </div>
       </div>
