@@ -58,50 +58,52 @@
     <!-- ========================= -->
     <select id="getCarList" resultMap="carWithImagesMap">
         SELECT
-            ci.car_info_id,                      -- 차량 ID (PK)
-            ci.offer_report_number,             -- 제안서 번호
-            ci.vin_number,                      -- 차대 번호
-            ci.description,                     -- 차량 설명
-            ci.sold_status,                     -- 판매 상태
+        ci.car_info_id,                      -- 차량 ID (PK)
+        ci.offer_report_number,             -- 제안서 번호
+        ci.vin_number,                      -- 차대 번호
+        ci.description,                     -- 차량 설명
+        ci.sold_status,                     -- 판매 상태
 
-            sc.cate_code AS small_cate_code,    -- 소분류 코드
-            mc.cate_code AS medium_cate_code,   -- 중분류 코드
-            lc.cate_code AS large_cate_code,    -- 대분류 코드
-            sc.cate_name AS small_cate_name,    -- 소분류 이름
-            mc.cate_name AS medium_cate_name,   -- 중분류 이름
-            lc.cate_name AS large_cate_name,    -- 대분류 이름
+        sc.cate_code AS small_cate_code,    -- 소분류 코드
+        mc.cate_code AS medium_cate_code,   -- 중분류 코드
+        lc.cate_code AS large_cate_code,    -- 대분류 코드
+        sc.cate_name AS small_cate_name,    -- 소분류 이름
+        mc.cate_name AS medium_cate_name,   -- 중분류 이름
+        lc.cate_name AS large_cate_name,    -- 대분류 이름
 
-            info.model_name,                    -- 모델명
-            info.mileage,                       -- 주행거리
-            info.engine_capacity,               -- 배기량
-            info.fuel_type,                     -- 연료 타입 (가솔린, 디젤 등)
-            info.transmission,                  -- 변속기 (오토, 수동 등)
-            info.color,                         -- 차량 색상
-            info.manufacture_year,              -- 제조 연도
-            info.previous_registration_fee,     -- 이전 등록비
-            info.maintenance_cost,              -- 유지 비용
-            info.agency_fee,                    -- 대행 수수료
-            info.car_location,                  -- 차량 위치 (보관 장소)
-            info.owner_change_count,            -- 소유자 변경 횟수
-            info.car_price,                     -- 차량 가격
-            info.car_num,                       -- 차량 등록 번호
-            info.car_amount_price,              -- 총 차량 가격
+        info.model_name,                    -- 모델명
+        info.mileage,                       -- 주행거리
+        info.engine_capacity,               -- 배기량
+        info.fuel_type,                     -- 연료 타입 (가솔린, 디젤 등)
+        info.transmission,                  -- 변속기 (오토, 수동 등)
+        info.color,                         -- 차량 색상
+        info.manufacture_year,              -- 제조 연도
+        info.previous_registration_fee,     -- 이전 등록비
+        info.maintenance_cost,              -- 유지 비용
+        info.agency_fee,                    -- 대행 수수료
+        info.car_location,                  -- 차량 위치 (보관 장소)
+        info.owner_change_count,            -- 소유자 변경 횟수
+        info.car_price,                     -- 차량 가격
+        info.car_num,                       -- 차량 등록 번호
+        info.car_amount_price,              -- 총 차량 가격
 
-            img.image_id AS i_image_id,         -- 이미지 ID
-            img.image_url AS i_image_url,       -- 이미지 경로
-            img.image_type AS i_image_type,     -- 이미지 타입 (예: image/jpeg)
-            img.image_uuid AS i_image_uuid,     -- 이미지 파일 UUID
-            img.is_thumbnail AS i_is_thumbnail  -- 썸네일 여부 (TRUE/FALSE)
+        img.image_id AS i_image_id,         -- 이미지 ID
+        img.image_url AS i_image_url,       -- 이미지 경로
+        img.image_type AS i_image_type,     -- 이미지 타입 (예: image/jpeg)
+        img.image_uuid AS i_image_uuid,     -- 이미지 파일 UUID
+        img.is_thumbnail AS i_is_thumbnail  -- 썸네일 여부 (TRUE/FALSE)
 
         FROM car_information ci
-                 LEFT JOIN car_cate sc ON ci.cate_code = sc.cate_code
-                 LEFT JOIN car_cate mc ON sc.cate_parent = mc.cate_code
-                 LEFT JOIN car_cate lc ON mc.cate_parent = lc.cate_code
-                 LEFT JOIN information info ON ci.car_info_id = info.car_info_id
-                 LEFT JOIN image img ON ci.car_info_id = img.car_info_id
+
+        <!-- 셀프조인을 해서 대중소 등등 -->
+        LEFT JOIN car_cate sc ON ci.cate_code = sc.cate_code
+        LEFT JOIN car_cate mc ON sc.cate_parent = mc.cate_code
+        LEFT JOIN car_cate lc ON mc.cate_parent = lc.cate_code
+        LEFT JOIN information info ON ci.car_info_id = info.car_info_id
+        LEFT JOIN image img ON ci.car_info_id = img.car_info_id
 
         WHERE ci.is_deleted = FALSE
-          AND info.is_deleted = FALSE
+        AND info.is_deleted = FALSE
         ORDER BY ci.car_info_id DESC
     </select>
 

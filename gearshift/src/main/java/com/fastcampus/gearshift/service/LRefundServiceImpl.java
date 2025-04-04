@@ -40,6 +40,7 @@ public class LRefundServiceImpl implements LRefundService {
         return refundDao.modifyOrder(refundDto);
     }
 
+    // 환불 목록 조회
     @Override
     public List<LRefundDTO> getRefundList(Integer userId) {
         return refundDao.getRefundList(userId);

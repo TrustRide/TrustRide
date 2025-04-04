@@ -24,13 +24,16 @@ public interface PHolderDao {
     //메인화면 검색
     List<CarListDto> searchCarsByTitle(String title) throws Exception;
 
+    // 조회
     List<CarListDto> carselect(int offset, int pageSize);
 
+    // 차량 리스트 개수 조회
 
-     int getCarCount();
+    int getCarCount();
 
     List<CarListDto> carselectByCate(String cateCode, int offset, int pageSize);
 
     int getCarCountByCate(String cateCode);
+
 
 }

@@ -29,9 +29,9 @@ public class LUserRefundController {
 
         List<LRefundAbleListDTO> refundAbleListDTO = refundService.getRefundAbleList(userId);
 
-            model.addAttribute("refundAbleList", refundAbleListDTO);
+        model.addAttribute("refundAbleList", refundAbleListDTO);
 
-            return "/user/userRefundHistory";
+        return "/user/userRefundHistory";
     }
 
     // 선택한 환불 상품 조회
