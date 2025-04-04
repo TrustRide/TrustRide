@@ -67,8 +67,6 @@ public class JAdminCarController {
         carDto.setCarAmountPrice(carDto.getCarPrice()+carDto.getAgencyFee()+carDto.getPreviousRegistrationFee());
 
 
-        System.out.println("carDto 컨트롤러 = " + carDto);
-        
         carService.registerCarWithFiles(carDto, imageFiles, thumbnailIndex); // 실제 호출
         return "redirect:/admin/cars/list";
     }
@@ -92,6 +90,7 @@ public class JAdminCarController {
     // (7) 차량 수정 처리
     @PostMapping("/{carInfoId}/edit")
     public String updateCar(@PathVariable("carInfoId") Integer carInfoId, CarDto carDto) {
+
         // PK 세팅 (일반적으로 hidden form이나 PathVariable로 넘김)
         carDto.setCarInfoId(carInfoId);
         carService.updateCar(carDto);

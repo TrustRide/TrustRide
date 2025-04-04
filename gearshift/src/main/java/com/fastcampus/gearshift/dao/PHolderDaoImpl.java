@@ -13,7 +13,8 @@ import java.util.List;
 import java.util.Map;
 
 @Repository
-public class PHolderDaoImpl implements  PHolderDao{
+public class PHolderDaoImpl implements  PHolderDao {
+
     @Autowired
     private SqlSession session;
     private static final String namespace = "com.fastcampus.gearshift.";
@@ -26,16 +27,19 @@ public class PHolderDaoImpl implements  PHolderDao{
         return session.selectOne(namespace+"select",userId);
     }
 
+    // 차량 목록 조회
     @Override
     public List<CarListDto> carselect() {
         return session.selectList(namespace+"selectList");
     }
 
+    // 차량 상세 조회
     @Override
     public CarInfoDto carSelect(Integer carInfoId) throws Exception {
         return session.selectOne(namespace+"carSelect",carInfoId);
     }
 
+    // 유저 정보 조회
     @Override
     public UserDto userSelect(Integer userId) throws Exception {
         return session.selectOne(namespace+"userSelect",userId);
@@ -49,6 +53,7 @@ public class PHolderDaoImpl implements  PHolderDao{
     }
 
 
+    //리스트 조회 페이징
     @Override
     public List<CarListDto> carselect(int offset, int pageSize) {
         Map<String, Object> params = new HashMap<>();
@@ -56,10 +61,12 @@ public class PHolderDaoImpl implements  PHolderDao{
         params.put("pageSize", pageSize);
         return session.selectList(namespace + "selectList", params);
     }
+    // 수량 조회
     @Override
     public int getCarCount() {
         return session.selectOne(namespace+"getCarCount");
     }
+
 
     @Override
     public List<CarListDto> carselectByCate(String cateCode, int offset, int pageSize) {
@@ -70,16 +77,16 @@ public class PHolderDaoImpl implements  PHolderDao{
         params.put("offset", offset);
         params.put("pageSize", pageSize);
         return session.selectList(namespace + "selectListByCate", params);
+
     }
 
     @Override
     public int getCarCountByCate(String cateCode) {
         return session.selectOne(namespace + "getCarCountByCate", cateCode);
+
     }
 
 
 
 }
-
-
 

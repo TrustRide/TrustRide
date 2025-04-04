@@ -32,15 +32,17 @@ public class PUserController {
     PHolderService pHolderService;
 
 
+    //메인
     @GetMapping("/")
     public String index(){
+
         return "user/userIndex";
+
     }
 
 
 
-
-
+    //상품 리스트
     @RequestMapping(value = "/userList", method = RequestMethod.GET)
     public String getList(@RequestParam(defaultValue = "1") int page,
                           @RequestParam(required = false) String cateCode,
@@ -60,11 +62,11 @@ public class PUserController {
         }
 
 
-        // ★ 로그인 유저
+        //  로그인 유저
         UserDto user = (UserDto) session.getAttribute("loginUser");
         Integer userId = (user != null) ? user.getUserId() : null;
-        
-        // isLogin 으로 로그인안되어있을 때 안보이도록
+
+        // isLogin 으로 로그인 안 되어있을 때 안보이도록
         boolean isLogin = userId != null;
 
         if(userId != null) {
@@ -93,7 +95,7 @@ public class PUserController {
     }
 
 
-
+    //배송지 입력 화면
     @GetMapping("/user/delivery")
     public String getDelivery(
             @RequestParam("carInfoId") Integer carInfoId,
@@ -103,16 +105,20 @@ public class PUserController {
             Model model
     ) throws Exception {
 
+        //세션 검증
         UserDto userDto = (UserDto) session.getAttribute("loginUser");
+        //세션 없을시 로그인 폼 이동
         if (userDto == null) {
+
             return "redirect:/login.do";
         }
+
 
         Integer userId = userDto.getUserId();
         UserDto selectedUser = pHolderService.userSelect(userId);
         CarInfoDto carInfoDto = pHolderService.carSelect(carInfoId);
 
-        // 👉 여기서 DTO에 값 주입
+        //  여기서 DTO에 값 주입
         carInfoDto.setOwnershipType(title);
         carInfoDto.getOwnershipType();
 
@@ -120,8 +126,11 @@ public class PUserController {
         model.addAttribute("userDto", selectedUser);
         model.addAttribute("carDto", carInfoDto);
 
+
         return "user/deliveryInformation";
+
     }
+
 
 
 
@@ -130,9 +139,13 @@ public class PUserController {
 
         //나중에 유효성 검사 및 경로 수정
         return "user/userCarList";
+
     }
 
 
+
+
+    //차량 상세페이지 이동
     @GetMapping("/carDetail")
     public String getDetail(@RequestParam("carInfoId") Integer carInfoId, Model model,CarInfoDto dto) throws Exception {
         CarInfoDto carInfoDto = pHolderService.carSelect(carInfoId);
@@ -144,8 +157,8 @@ public class PUserController {
         model.addAttribute("dto", dto);
 
         return "user/userCarDetail";
-    }
 
+    }
 
 
     //차량 명의
@@ -155,14 +168,15 @@ public class PUserController {
             Model model,
             HttpSession session
     ) throws Exception {
-        // 여기를 "loginUser"로 변경해야 세션에서 제대로 꺼낼 수 있음
 
+        // 여기를 "loginUser"로 변경해야 세션에서 제대로 꺼낼 수 있음
 
         CarInfoDto carInfoDto = pHolderService.carSelect(carInfoId);
 
         model.addAttribute("carDto", carInfoDto);
 
         return "user/userTitleHolder";
+
 
     }
 
@@ -171,12 +185,16 @@ public class PUserController {
     //메인화면 + 상품리스트 검색
     @GetMapping("/searchCar")
     public String searchCar(@RequestParam("searchQuery") String searchQuery,Model model) throws Exception{
+
         //페이지 크기 설정(예:10)
 
         List<CarListDto> searchResults = pHolderService.searchCarsByTitle(searchQuery);
+
         model.addAttribute("userCarList",searchResults);
+
         return "user/userCarList";
     }
+
 
 
 }

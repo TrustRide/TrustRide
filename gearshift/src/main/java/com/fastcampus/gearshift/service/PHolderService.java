@@ -13,10 +13,13 @@ public interface PHolderService {
     //차량 리스트 조회
     List<CarListDto> carselect();
 
+    // 차량 조회
     CarInfoDto carSelect(Integer carInfoId) throws Exception;
 
+    //유저 조회
     UserDto userSelect(Integer userId) throws Exception;
 
+    //제목 검색
     List<CarListDto> searchCarsByTitle(String title) throws Exception;
 
     //페이징 관련 기능
