@@ -46,22 +46,22 @@
       <input type="hidden" name="paymentMethod" id="paymentMethod">
 
       <input type="hidden" name="carInfoId" value="${carInfo.carInfoId}">
-      <input type="hidden" name="deliveryFee" value="${carInfoDto.deliveryFee}">
-      <input type="hidden" name="driverPhoneNumber" value="${carInfoDto.driverPhoneNumber}">
-      <input type="hidden" name="preferredDate" value="${carInfoDto.preferredDate}">
-      <input type="hidden" name="deliveryRequest" value="${carInfoDto.deliveryRequest}">
-      <input type="hidden" name="deliveryDriverName" value="${carInfoDto.deliveryDriverName}">
+      <input type="hidden" name="deliveryFee" value="${carDetailDto.deliveryFee}">
+      <input type="hidden" name="driverPhoneNumber" value="${carDetailDto.driverPhoneNumber}">
+      <input type="hidden" name="preferredDate" value="${carDetailDto.preferredDate}">
+      <input type="hidden" name="deliveryRequest" value="${carDetailDto.deliveryRequest}">
+      <input type="hidden" name="deliveryDriverName" value="${carDetailDto.deliveryDriverName}">
       <input type="hidden" name="carAmountPrice" value="${carInfo.carAmountPrice}">
 
-      <input type="hidden" name="holderName" value="${carInfoDto.holderName}">
-      <input type="hidden" name="holderPhoneNumber" value="${carInfoDto.holderPhoneNumber}">
-      <input type="hidden" name="holderResident" value="${carInfoDto.holderResident}">
-      <input type="hidden" name="holderAddr1" value="${carInfoDto.holderAddr1}">
-      <input type="hidden" name="holderAddr2" value="${carInfoDto.holderAddr2}">
-      <input type="hidden" name="holderAddr3" value="${carInfoDto.holderAddr3}">
-      <input type="hidden" name="holderLicense" value="${carInfoDto.holderLicense}">
-      <input type="hidden" name="ownershipType" value="${carInfoDto.ownershipType}">
-      <input type="hidden" name="isJointOwnership" value="${carInfoDto.isJointOwnership}">
+      <input type="hidden" name="holderName" value="${carDetailDto.holderName}">
+      <input type="hidden" name="holderPhoneNumber" value="${carDetailDto.holderPhoneNumber}">
+      <input type="hidden" name="holderResident" value="${carDetailDto.holderResident}">
+      <input type="hidden" name="holderAddr1" value="${carDetailDto.holderAddr1}">
+      <input type="hidden" name="holderAddr2" value="${carDetailDto.holderAddr2}">
+      <input type="hidden" name="holderAddr3" value="${carDetailDto.holderAddr3}">
+      <input type="hidden" name="holderLicense" value="${carDetailDto.holderLicense}">
+      <input type="hidden" name="ownershipType" value="${carDetailDto.ownershipType}">
+      <input type="hidden" name="isJointOwnership" value="${carDetailDto.isJointOwnership}">
 
       <!-- 결제 버튼 -->
 
@@ -114,7 +114,7 @@
       </div>
       <div class="price-item">
         <span class="label">배송비</span>
-        <span class="value">${carInfoDto.deliveryFee}원</span>
+        <span class="value">${carDetailDto.deliveryFee}원</span>
       </div>
       <div class="price-item total">
         <span class="label">총 합계</span>
