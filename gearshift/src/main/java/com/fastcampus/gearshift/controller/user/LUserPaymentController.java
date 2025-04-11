@@ -68,13 +68,8 @@ public class LUserPaymentController {
 
         // 세션에 저장된 userId 가져오기
         UserDto userDto =  (UserDto)session.getAttribute("loginUser");
-        Integer userId = userDto.getUserId();
-
-        UserDto userInfoDto = userService.getUserFormById(userId);
 
         CarInfoDto carInfo = pHolderService.carSelect(carDetailDto.getCarInfoId());
-        // userId 세팅
-
 
         // 자동차 정보 데이터
         model.addAttribute("carInfo", carInfo);
@@ -83,7 +78,7 @@ public class LUserPaymentController {
         model.addAttribute("carDetailDto", carDetailDto);
 
         // 유저 정보
-        model.addAttribute("userInfo", userInfoDto);
+        model.addAttribute("userInfo", userDto);
 
         return "user/userPayment";
     }

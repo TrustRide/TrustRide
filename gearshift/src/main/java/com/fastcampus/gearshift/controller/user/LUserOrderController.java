@@ -34,7 +34,7 @@ public class LUserOrderController {
     // 현금 결제 후 주문내역/배송조회 페이지 이동
     @PostMapping("/status/cash")
     public String getOrderHistory(@ModelAttribute LOrderDTO lOrderDTO ,@ModelAttribute PaymentProcessDTO paymentProcessDTO,
-                                  @ModelAttribute LHolderDTO lHolderDTO,  @ModelAttribute DeliveryDTO deliveryDTO, HttpSession session, @RequestParam Integer carInfoId){
+                                  @ModelAttribute LHolderDTO lHolderDTO,  @ModelAttribute DeliveryDTO deliveryDTO, HttpSession session){
 
 
         // userId를 session에서 꺼내주기
