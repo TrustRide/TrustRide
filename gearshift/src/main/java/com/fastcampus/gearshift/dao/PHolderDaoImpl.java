@@ -4,6 +4,7 @@ import com.fastcampus.gearshift.dto.CarDto;
 import com.fastcampus.gearshift.dto.CarInfoDto;
 import com.fastcampus.gearshift.dto.CarListDto;
 import com.fastcampus.gearshift.dto.UserDto;
+import lombok.RequiredArgsConstructor;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -13,12 +14,12 @@ import java.util.List;
 import java.util.Map;
 
 @Repository
+@RequiredArgsConstructor
 public class PHolderDaoImpl implements  PHolderDao {
 
-    @Autowired
-    private SqlSession session;
-    private static final String namespace = "com.fastcampus.gearshift.";
 
+    private final SqlSession session;
+    private static final String namespace = "com.fastcampus.gearshift.";
 
 
 
@@ -27,11 +28,13 @@ public class PHolderDaoImpl implements  PHolderDao {
         return session.selectOne(namespace+"select",userId);
     }
 
+
     // 차량 목록 조회
     @Override
     public List<CarListDto> carselect() {
         return session.selectList(namespace+"selectList");
     }
+
 
     // 차량 상세 조회
     @Override

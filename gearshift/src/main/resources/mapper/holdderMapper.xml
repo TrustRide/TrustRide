@@ -17,11 +17,14 @@
     <!-- 차량 리스트 조회 -->
     <!-- 전체 차량 개수 조회 -->
     <select id="getCarCount" resultType="int">
+
         SELECT COUNT(*) FROM car_information WHERE is_deleted = false
+
     </select>
 
     <!-- 페이징된 차량 리스트 조회 -->
     <select id="selectList" resultType="com.fastcampus.gearshift.dto.CarListDto">
+
         SELECT
             ci.car_info_id,
             info.model_name,
@@ -47,6 +50,7 @@
 
 
     <select id="carSelect" parameterType="Integer" resultMap="CarInfoWithImagesResultMap">
+
         SELECT
             ci.car_info_id,
             info.model_name,
@@ -75,9 +79,8 @@
                  LEFT JOIN image img ON ci.car_info_id = img.car_info_id
         WHERE ci.car_info_id = #{carInfoId}
 
+
     </select>
-
-
 
 
 
@@ -140,6 +143,7 @@
         ORDER BY ci.car_info_id DESC
             LIMIT #{pageSize} OFFSET #{offset}
     </select>
+
 
     <select id="getCarCountByCate" resultType="int">
         SELECT COUNT(*)

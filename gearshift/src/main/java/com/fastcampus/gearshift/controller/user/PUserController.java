@@ -5,6 +5,7 @@ import com.fastcampus.gearshift.dto.*;
 import com.fastcampus.gearshift.service.JWishlistService;
 import com.fastcampus.gearshift.service.PCateService;
 import com.fastcampus.gearshift.service.PHolderService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -19,17 +20,18 @@ import org.slf4j.LoggerFactory;
 
 
 @Controller
+@RequiredArgsConstructor
 public class PUserController {
     private static final Logger logger = LoggerFactory.getLogger(PUserController.class);
-    @Autowired
-    PCateService cateService;
 
+
+    private final PCateService cateService;
 
     @Autowired
     JWishlistService wishlistService;
 
-    @Autowired
-    PHolderService pHolderService;
+
+    private final PHolderService pHolderService;
 
 
     //메인
@@ -133,7 +135,7 @@ public class PUserController {
 
 
 
-
+    //추후 제거
     @PostMapping("/deliveryInsert")
     public String postDelivery(UserDto userDto) throws  Exception{
 
@@ -177,9 +179,7 @@ public class PUserController {
 
         return "user/userTitleHolder";
 
-
     }
-
 
 
     //메인화면 + 상품리스트 검색

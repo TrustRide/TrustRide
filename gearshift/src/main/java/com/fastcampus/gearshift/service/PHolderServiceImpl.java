@@ -5,16 +5,18 @@ import com.fastcampus.gearshift.dto.CarDto;
 import com.fastcampus.gearshift.dto.CarInfoDto;
 import com.fastcampus.gearshift.dto.CarListDto;
 import com.fastcampus.gearshift.dto.UserDto;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class  PHolderServiceImpl implements PHolderService {
 
-    @Autowired
-    PHolderDao pHolderDao;
+
+    private final PHolderDao pHolderDao;
 
 
     @Override
