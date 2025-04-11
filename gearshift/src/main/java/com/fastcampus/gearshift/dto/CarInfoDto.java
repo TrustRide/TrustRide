@@ -36,67 +36,6 @@ public class CarInfoDto {
     private Boolean isWished;
 
 
-    public CarInfoDto(String modelName, String carNum, String manufactureYear, String mileage, String fuelType, Integer carPrice, Integer previousRegistrationFee, Integer agencyFee, Integer carAmountPrice) {
-
-        this.modelName = modelName;
-        this.carNum = carNum;
-        this.manufactureYear = manufactureYear;
-        this.mileage = mileage;
-        this.fuelType = fuelType;
-        this.carPrice = carPrice;
-        this.previousRegistrationFee = previousRegistrationFee;
-        this.agencyFee = agencyFee;
-        this.carAmountPrice = carAmountPrice;
-
-    }
-
-
-    public CarInfoDto(String modelName, String carNum, String manufactureYear, String mileage, String fuelType, String engineCapacity, String transmission, String color, Integer carPrice, Integer previousRegistrationFee, Integer maintenanceCost, Integer agencyFee, Integer carAmountPrice, String description, String offerReportNumber, String vinNumber, String carLocation) {
-
-        this.modelName = modelName;
-        this.carNum = carNum;
-        this.manufactureYear = manufactureYear;
-        this.mileage = mileage;
-        this.fuelType = fuelType;
-        this.engineCapacity = engineCapacity;
-        this.transmission = transmission;
-        this.color = color;
-        this.carPrice = carPrice;
-        this.previousRegistrationFee = previousRegistrationFee;
-        this.maintenanceCost = maintenanceCost;
-        this.agencyFee = agencyFee;
-        this.carAmountPrice = carAmountPrice;
-        this.description = description;
-        this.offerReportNumber = offerReportNumber;
-        this.vinNumber = vinNumber;
-
-    }
-
-
-    public CarInfoDto(Integer carInfoId, String modelName, String carNum, String manufactureYear, String mileage,String fuelType, String engineCapacity, String transmission, String color, Integer carPrice, Integer previousRegistrationFee, Integer maintenanceCost, Integer agencyFee, Integer carAmountPrice, String description, String offerReportNumber, String vinNumber, String carLocation
-    )
-
-    {
-        this.carInfoId = carInfoId;
-        this.modelName = modelName;
-        this.carNum = carNum;
-        this.manufactureYear = manufactureYear;
-        this.mileage = mileage;
-        this.fuelType = fuelType;
-        this.engineCapacity = engineCapacity;
-        this.transmission = transmission;
-        this.color = color;
-        this.carPrice = carPrice;
-        this.previousRegistrationFee = previousRegistrationFee;
-        this.maintenanceCost = maintenanceCost;
-        this.agencyFee = agencyFee;
-        this.carAmountPrice = carAmountPrice;
-        this.description = description;
-        this.offerReportNumber = offerReportNumber;
-        this.vinNumber = vinNumber;
-
-
-    }
 
 
 
