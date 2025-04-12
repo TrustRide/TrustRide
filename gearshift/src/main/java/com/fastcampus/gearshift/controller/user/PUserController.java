@@ -122,10 +122,8 @@ public class PUserController {
         carInfoDto.setOwnershipType(title);                   // 명의 타입
         carInfoDto.setIsJointOwnership(isJointHolder);        // 공동 명의 여부
 
-        // 디버깅용 로그
-        System.out.println("carInfoId = " + carInfoId);
-        System.out.println("title = " + title);
-        System.out.println("isJointOwnership = " + isJointHolder);
+
+
 
         model.addAttribute("userDto", selectedUser);
         model.addAttribute("carDto", carInfoDto);
