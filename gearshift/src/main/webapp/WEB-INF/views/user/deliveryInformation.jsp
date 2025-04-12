@@ -83,8 +83,8 @@
             </div>
 
 
-            <label for="deliveryDate">희망 배송일</label>
-            <input type="date" id="deliveryDate" name="deliveryDate" min="">
+            <label for="preferredDate">희망 배송일</label>
+            <input type="date" id="preferredDate" name="preferredDate" min="">
             <label for="deliveryRequest">요청사항</label>
             <input type="text" id="deliveryRequest" name="deliveryRequest">
 
