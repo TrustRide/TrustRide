@@ -1,18 +1,27 @@
 package com.fastcampus.gearshift.service;
 
 import com.fastcampus.gearshift.dao.LOrderDao;
-import com.fastcampus.gearshift.dto.LOrderDTO;
-import com.fastcampus.gearshift.dto.LOrderListDTO;
+import com.fastcampus.gearshift.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
-public class LOrderServiceImpl implements LOrderService{
+public class LOrderServiceImpl implements LOrderService {
 
     @Autowired
     private LOrderDao orderDao;
+
+    @Autowired
+    private LHolderService holderService;
+
+    @Autowired
+    private LPaymentService paymentService;
+
+    @Autowired
+    private LDeliveryService deliveryService;
 
 
     // 주문 정보 저장
@@ -50,9 +59,42 @@ public class LOrderServiceImpl implements LOrderService{
 
     // 판매 완료된 상품 처리
     @Override
-    public int updateOrder(Integer  carInfoId) {
+    public int updateOrder(Integer carInfoId) {
         return orderDao.updateOrder(carInfoId);
     }
 
+
+    // 주문 처리
+    @Transactional(rollbackFor = Exception.class)
+    public void processCashOrder(
+            LOrderDTO lOrderDTO,
+            PaymentProcessDTO paymentProcessDTO,
+            LHolderDTO lHolderDTO,
+            DeliveryDTO deliveryDTO,
+            Integer userId
+    ) throws Exception {
+
+        // 1. 명의자 저장
+        holderService.insertHolder(lHolderDTO);
+        Integer holderId = lHolderDTO.getHolderId();
+
+        // 2. 주문 저장
+        lOrderDTO.setUserId(userId);
+        lOrderDTO.setHolderId(holderId);
+        this.insertOrder(lOrderDTO);
+        Integer orderId = lOrderDTO.getOrderId();
+
+        // 3. 결제 저장
+        paymentProcessDTO.setOrderId(orderId);
+        paymentService.insert(paymentProcessDTO);
+
+        // 4. 배송 저장
+        deliveryDTO.setOrderId(orderId);
+        deliveryService.insert(deliveryDTO);
+
+        // 5. 차량 상태 변경
+        Integer carId = this.selectCarInfo(orderId);
+        this.updateOrder(carId);
+    }
 
 }

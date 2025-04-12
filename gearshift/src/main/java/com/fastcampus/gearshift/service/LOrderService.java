@@ -1,7 +1,6 @@
 package com.fastcampus.gearshift.service;
 
-import com.fastcampus.gearshift.dto.LOrderDTO;
-import com.fastcampus.gearshift.dto.LOrderListDTO;
+import com.fastcampus.gearshift.dto.*;
 
 import java.util.List;
 
@@ -21,4 +20,7 @@ public interface LOrderService {
 
     // 판매된 제품 판매완료 처리
     int updateOrder(Integer carInfoId);
+
+    // 주문 처리
+    void processCashOrder(LOrderDTO lOrderDTO, PaymentProcessDTO paymentProcessDTO, LHolderDTO lHolderDTO, DeliveryDTO deliveryDTO, Integer userId) throws Exception;
 }
