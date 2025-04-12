@@ -69,7 +69,7 @@
 
             <div style="display: flex; justify-content: space-between; padding: 6px 0;">
               <span>배송비</span>
-              <span> 0원</span>
+              <span> ${carDetailDto.deliveryFee}원</span>
             </div>
           </div>
 
@@ -82,7 +82,7 @@
       <!-- form 태그: 결제가 완료되는 순간 서버로 데이터를 넘김 -->
       <form id="paymentForm" method="post">
         <!-- 선택한 결제 수단 -->
-        <input type="hidden" name="paymentMethod" id="paymentMethod" value="${carInfoDto.paymentMethod}">
+        <input type="hidden" name="paymentMethod" id="paymentMethod" value="${carDetailDto.paymentMethod}">
 
         <input type="hidden" name="carInfoId" value="${carInfo.carInfoId}">
         <input type="hidden" name="deliveryFee" value="${carDetailDto.deliveryFee}">
@@ -104,7 +104,7 @@
       </form>
 
       <!-- 결제 버튼 -->
-      <button type="button" class="submit-button" onclick="handlePayment()">즉시 결제</button>
+      <button class="submit-button" onclick="handlePayment()">즉시 결제</button>
     </main>
 
 
