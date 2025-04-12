@@ -28,14 +28,14 @@ public class  PHolderServiceImpl implements PHolderService {
 
     //차량 리스트 조회
     @Override
-    public List<CarListDto> carselect() {
-        return pHolderDao.carselect();
+    public List<CarListDto> carSelect() {
+        return pHolderDao.carSelect();
     }
 
     //상품 조회
     @Override
-    public CarInfoDto carSelect(Integer carInfoId) throws Exception {
-        CarInfoDto carInfoDto = pHolderDao.carSelect(carInfoId);
+    public CarInfoDto carDetailSelect(Integer carInfoId) throws Exception {
+        CarInfoDto carInfoDto = pHolderDao.carDetailSelect(carInfoId);
         return carInfoDto;
     }
 
@@ -56,10 +56,10 @@ public class  PHolderServiceImpl implements PHolderService {
 
     // 자동차 조회 페이징
     @Override
-    public List<CarListDto> carselect(int page, int pageSize) throws Exception {
+    public List<CarListDto> carPageSelect(int page, int pageSize) throws Exception {
         int offset = (page -1) * pageSize;
 
-        return pHolderDao.carselect(offset,pageSize);
+        return pHolderDao.carPageSelect(offset,pageSize);
     }
 
     //상품 개수

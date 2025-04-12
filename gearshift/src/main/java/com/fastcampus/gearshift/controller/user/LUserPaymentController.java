@@ -34,7 +34,7 @@ public class LUserPaymentController {
     public String selectPayment(CarDetailDto carDetailDto, Model model) throws Exception{
 
         // carInfoId로 다시 조회해서 carInfo 채움
-        CarInfoDto carInfo = pHolderService.carSelect(carDetailDto.getCarInfoId());
+        CarInfoDto carInfo = pHolderService.carDetailSelect(carDetailDto.getCarInfoId());
 
         // 자동차 정보 데이터
         model.addAttribute("carInfo", carInfo);
@@ -51,7 +51,7 @@ public class LUserPaymentController {
     public String getPaymentDetail(CarDetailDto carDetailDto, Model model) throws Exception{
 
         // carInfoId로 다시 조회해서 carInfo 채움
-        CarInfoDto carInfo = pHolderService.carSelect(carDetailDto.getCarInfoId());
+        CarInfoDto carInfo = pHolderService.carDetailSelect(carDetailDto.getCarInfoId());
 
         // 자동차 정보 데이터
         model.addAttribute("carInfo", carInfo);
@@ -69,7 +69,7 @@ public class LUserPaymentController {
         // 세션에 저장된 userId 가져오기
         UserDto userDto =  (UserDto)session.getAttribute("loginUser");
 
-        CarInfoDto carInfo = pHolderService.carSelect(carDetailDto.getCarInfoId());
+        CarInfoDto carInfo = pHolderService.carDetailSelect(carDetailDto.getCarInfoId());
 
         // 자동차 정보 데이터
         model.addAttribute("carInfo", carInfo);

@@ -37,6 +37,7 @@
 
         <h2><%= title %>를 선택했습니다.</h2> <!-- 선택한 버튼에 따라 제목 변경됨 -->
         <p>이제 명의자 정보와 배송 정보를 입력해 주세요.</p>
+        <p>공동 명의 여부: ${carDto.isJointOwnership}</p>
 
 
 
@@ -46,13 +47,14 @@
             <input type="hidden" name="isJointOwnership" value="${carDto.isJointOwnership}">
 
             <input type="hidden" name="userId" value="${userDto.userId}">
+            <input type="hidden" name="userId" value="${carDto.isJointOwnership}">
 
 
             <!--회원 이름 값 안넘김 -->
             <label>회원 이름</label>
             <input type="text" name="userName" value="${userDto.userName}" readonly>
 
-            <!--명의자 전화번호 값 넘김 -->
+            <!--명의자 전화번호 값 안넘김 -->
             <label>회원 휴대폰 번호</label>
             <input type="text" name="userPhoneNumber" value="${userDto.userPhoneNumber}" readonly>
 
@@ -82,8 +84,8 @@
             </div>
 
 
-            <label for="deliveryDate">희망 배송일</label>
-            <input type="date" id="deliveryDate" name="deliveryDate" min="">
+            <label for="preferredDate">희망 배송일</label>
+            <input type="date" id="preferredDate" name="preferredDate" min="">
             <label for="deliveryRequest">요청사항</label>
             <input type="text" id="deliveryRequest" name="deliveryRequest">
 

@@ -58,7 +58,7 @@ public class PUserController {
 
         List<CarListDto> userCarList;
         if (cateCode == null) {
-            userCarList = pHolderService.carselect(page, pageSize);
+            userCarList = pHolderService.carPageSelect(page, pageSize);
         } else {
             userCarList = pHolderService.carselectByCate(cateCode, page, pageSize);
         }
@@ -94,6 +94,7 @@ public class PUserController {
         model.addAttribute("isLogin", isLogin);
 
         return "user/userCarList";
+
     }
 
 
@@ -107,32 +108,30 @@ public class PUserController {
             Model model
     ) throws Exception {
 
-        //세션 검증
+        // 세션 체크
         UserDto userDto = (UserDto) session.getAttribute("loginUser");
-        //세션 없을시 로그인 폼 이동
         if (userDto == null) {
-
             return "redirect:/login.do";
         }
 
-
         Integer userId = userDto.getUserId();
         UserDto selectedUser = pHolderService.userSelect(userId);
-        CarInfoDto carInfoDto = pHolderService.carSelect(carInfoId);
+        CarInfoDto carInfoDto = pHolderService.carDetailSelect(carInfoId);
 
-        //  여기서 DTO에 값 주입
-        carInfoDto.setOwnershipType(title);
-        carInfoDto.getOwnershipType();
+        // DTO에 값 세팅
+        carInfoDto.setOwnershipType(title);                   // 명의 타입
+        carInfoDto.setIsJointOwnership(isJointHolder);        // 공동 명의 여부
 
+        // 디버깅용 로그
+        System.out.println("carInfoId = " + carInfoId);
+        System.out.println("title = " + title);
+        System.out.println("isJointOwnership = " + isJointHolder);
 
         model.addAttribute("userDto", selectedUser);
         model.addAttribute("carDto", carInfoDto);
 
-
         return "user/deliveryInformation";
-
     }
-
 
 
     //추후 제거
@@ -145,12 +144,10 @@ public class PUserController {
     }
 
 
-
-
     //차량 상세페이지 이동
     @GetMapping("/carDetail")
     public String getDetail(@RequestParam("carInfoId") Integer carInfoId, Model model,CarInfoDto dto) throws Exception {
-        CarInfoDto carInfoDto = pHolderService.carSelect(carInfoId);
+        CarInfoDto carInfoDto = pHolderService.carDetailSelect(carInfoId);
 
         logger.debug("요청된 carInfoId = {}", carInfoId);
         logger.debug("조회된 carInfoDto = {}", carInfoDto);
@@ -173,7 +170,7 @@ public class PUserController {
 
         // 여기를 "loginUser"로 변경해야 세션에서 제대로 꺼낼 수 있음
 
-        CarInfoDto carInfoDto = pHolderService.carSelect(carInfoId);
+        CarInfoDto carInfoDto = pHolderService.carDetailSelect(carInfoId);
 
         model.addAttribute("carDto", carInfoDto);
 

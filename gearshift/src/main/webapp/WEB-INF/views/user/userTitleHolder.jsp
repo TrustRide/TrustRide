@@ -102,16 +102,26 @@
 <script>
     let selectedTitle = "";
     let selectedButton = null;
+    let isJointHolder = false;  // 기본값은 false
 
     function selectOption(selection, button) {
         if (selectedButton === button) {
             selectedButton.classList.remove('active');
             selectedTitle = "";
+            isJointHolder = false;  // 선택 해제 시 공동 명의 여부를 false로 설정
             selectedButton = null;
         } else {
             document.querySelectorAll('.option-button').forEach(btn => btn.classList.remove('active'));
             button.classList.add('active');
             selectedTitle = selection;
+
+            // 버튼 텍스트에 "공동 명의자가 있어요"가 포함되어 있을 경우 공동 명의로 처리
+            if (button.textContent.includes("공동 명의자") || button.textContent.includes("법인사업자")) {
+                isJointHolder = true;  // "공동 명의자"라는 텍스트가 포함된 경우 true로 설정
+            } else {
+                isJointHolder = false;  // 그 외에는 false로 설정
+            }
+
             selectedButton = button;
         }
     }
@@ -129,20 +139,11 @@
         }
 
         const carInfoId = ${carDto.carInfoId};
-        const isJoint = selectedTitle.includes("공동") ? "true" : "false";
 
+        // isJointHolder 값과 selectedTitle을 함께 전달
         window.location.href = "/gearshift/user/delivery?title=" + encodeURIComponent(selectedTitle)
             + "&carInfoId=" + carInfoId
-            + "&isJointHolder=" + isJoint;
-    }
-
-    function showModal(message) {
-        document.getElementById("modal-message").innerText = message;
-        document.getElementById("modal").style.display = "flex";
-    }
-
-    function closeModal() {
-        document.getElementById("modal").style.display = "none";
+            + "&isJointHolder=" + isJointHolder;
     }
 </script>
 
