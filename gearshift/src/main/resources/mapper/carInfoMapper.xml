@@ -5,7 +5,7 @@
 
 <mapper namespace="com.fastcampus.gearshift.dao.CarInfoMapper">
 
-    <!-- 자동차 정보 저장   -->
+    <!-- 자동차 정보 조회   -->
     <select id="getCarInfo" resultType="CarDetailDto">
           SELECT info.car_info_id, info.model_name, info.car_num, info.manufacture_year, info.mileage, info.fuel_type, info.car_price,
                  info.previous_registration_fee, info.maintenance_cost, info.agency_fee, img.image_url

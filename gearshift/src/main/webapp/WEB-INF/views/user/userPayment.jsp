@@ -47,35 +47,35 @@
       objs = document.createElement('input');
       objs.setAttribute('type', 'hidden');
       objs.setAttribute('name', 'deliveryFee');
-      objs.setAttribute('value', `${carInfoDto.deliveryFee}`);
+      objs.setAttribute('value', `${carDetailDto.deliveryFee}`);
       form.appendChild(objs);
 
       // 배송 기사 전화번호
       objs = document.createElement('input');
       objs.setAttribute('type', 'hidden');
       objs.setAttribute('name', 'driverPhoneNumber');
-      objs.setAttribute('value', `${carInfoDto.driverPhoneNumber}`);
+      objs.setAttribute('value', `${carDetailDto.driverPhoneNumber}`);
       form.appendChild(objs);
 
       // 희망배송일
       objs = document.createElement('input');
       objs.setAttribute('type', 'hidden');
       objs.setAttribute('name', 'preferredDate');
-      objs.setAttribute('value', `${carInfoDto.preferredDate}`);
+      objs.setAttribute('value', `${carDetailDto.preferredDate}`);
       form.appendChild(objs);
 
       // 배송요청 사항
       objs = document.createElement('input');
       objs.setAttribute('type', 'hidden');
       objs.setAttribute('name', 'deliveryRequest');
-      objs.setAttribute('value', `${carInfoDto.deliveryRequest}`);
+      objs.setAttribute('value', `${carDetailDto.deliveryRequest}`);
       form.appendChild(objs);
 
       // 배송 기사 이름
       objs = document.createElement('input');
       objs.setAttribute('type', 'hidden');
       objs.setAttribute('name', 'deliveryDriverName');
-      objs.setAttribute('value', `${carInfoDto.deliveryDriverName}`);
+      objs.setAttribute('value', `${carDetailDto.deliveryDriverName}`);
       form.appendChild(objs);
 
       // 결제금액
@@ -89,49 +89,49 @@
       objs = document.createElement('input');
       objs.setAttribute('type', 'hidden');
       objs.setAttribute('name', 'holderName');
-      objs.setAttribute('value', `${carInfoDto.holderName}`);
+      objs.setAttribute('value', `${carDetailDto.holderName}`);
       form.appendChild(objs);
 
       // 명의자 전화번호
       objs = document.createElement('input');
       objs.setAttribute('type', 'hidden');
       objs.setAttribute('name', 'holderPhoneNumber');
-      objs.setAttribute('value', `${carInfoDto.holderPhoneNumber}`);
+      objs.setAttribute('value', `${carDetailDto.holderPhoneNumber}`);
       form.appendChild(objs);
 
       // 명의자 주민등록번호
       objs = document.createElement('input');
       objs.setAttribute('type', 'hidden');
       objs.setAttribute('name', 'holderResident');
-      objs.setAttribute('value', `${carInfoDto.holderResident}`);
+      objs.setAttribute('value', `${carDetailDto.holderResident}`);
       form.appendChild(objs);
 
       // 명의자 우편주소
       objs = document.createElement('input');
       objs.setAttribute('type', 'hidden');
       objs.setAttribute('name', 'holderAddr1');
-      objs.setAttribute('value', `${carInfoDto.holderAddr1}`);
+      objs.setAttribute('value', `${carDetailDto.holderAddr1}`);
       form.appendChild(objs);
 
       //명의자 도로명주소
       objs = document.createElement('input');
       objs.setAttribute('type', 'hidden');
       objs.setAttribute('name', 'holderAddr2');
-      objs.setAttribute('value', `${carInfoDto.holderAddr2}`);
+      objs.setAttribute('value', `${carDetailDto.holderAddr2}`);
       form.appendChild(objs);
 
       //명의자 상세주소
       objs = document.createElement('input');
       objs.setAttribute('type', 'hidden');
       objs.setAttribute('name', 'holderAddr3');
-      objs.setAttribute('value', `${carInfoDto.holderAddr3}`);
+      objs.setAttribute('value', `${carDetailDto.holderAddr3}`);
       form.appendChild(objs);
 
       // 명의자 면허증
       objs = document.createElement('input');
       objs.setAttribute('type', 'hidden');
       objs.setAttribute('name', 'holderLicense');
-      objs.setAttribute('value', `${carInfoDto.holderLicense}`);
+      objs.setAttribute('value', `${carDetailDto.holderLicense}`);
       form.appendChild(objs);
 
       // 결제수단
@@ -145,14 +145,14 @@
       objs = document.createElement('input');
       objs.setAttribute('type', 'hidden');
       objs.setAttribute('name', 'ownershipType');
-      objs.setAttribute('value', `${carInfoDto.ownershipType}`);
+      objs.setAttribute('value', `${carDetailDto.ownershipType}`);
       form.appendChild(objs);
 
       // 공동명의 여부
       objs = document.createElement('input');
       objs.setAttribute('type', 'hidden');
       objs.setAttribute('name', 'isJointOwnership');
-      objs.setAttribute('value', `${carInfoDto.isJointOwnership}`);
+      objs.setAttribute('value', `${carDetailDto.isJointOwnership}`);
       form.appendChild(objs);
 
       form.setAttribute('method', 'post');
