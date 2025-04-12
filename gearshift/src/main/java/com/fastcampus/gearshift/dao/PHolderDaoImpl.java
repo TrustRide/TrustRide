@@ -31,14 +31,14 @@ public class PHolderDaoImpl implements  PHolderDao {
 
     // 차량 목록 조회
     @Override
-    public List<CarListDto> carselect() {
+    public List<CarListDto> carSelect() {
         return session.selectList(namespace+"selectList");
     }
 
 
     // 차량 상세 조회
     @Override
-    public CarInfoDto carSelect(Integer carInfoId) throws Exception {
+    public CarInfoDto carDetailSelect(Integer carInfoId) throws Exception {
         return session.selectOne(namespace+"carSelect",carInfoId);
     }
 
@@ -58,7 +58,7 @@ public class PHolderDaoImpl implements  PHolderDao {
 
     //리스트 조회 페이징
     @Override
-    public List<CarListDto> carselect(int offset, int pageSize) {
+    public List<CarListDto> carPageSelect(int offset, int pageSize) {
         Map<String, Object> params = new HashMap<>();
         params.put("offset", offset);
         params.put("pageSize", pageSize);

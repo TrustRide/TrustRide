@@ -79,7 +79,6 @@
                  LEFT JOIN image img ON ci.car_info_id = img.car_info_id
         WHERE ci.car_info_id = #{carInfoId}
 
-
     </select>
 
 
@@ -89,7 +88,6 @@
         from user
         where user_id= #{userId};
     </select>
-
 
 
     <!-- 차량 리스트 검색 (제목 일부) --> <!-- 페이징 -->
