@@ -13,13 +13,4 @@ public class LHolderDTO {
     private String holderAddr3;
     private String holderLicense;
 
-    public LHolderDTO(String holderName, String holderPhoneNumber, String holderResident, String holderAddr1, String holderAddr2, String holderAddr3, String license) {
-        this.holderName = holderName;
-        this.holderPhoneNumber = holderPhoneNumber;
-        this.holderResident = holderResident;
-        this.holderAddr1 = holderAddr1;
-        this.holderAddr2 = holderAddr2;
-        this.holderAddr3 = holderAddr3;
-        this.holderLicense = holderLicense;
-    }
 }
