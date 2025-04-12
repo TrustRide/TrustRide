@@ -68,7 +68,7 @@ function toggleAllCheckboxes(masterCheckbox) {
 function validateForm() {
     const fields = [
         'userName', 'userPhoneNumber', 'holderResident',
-        'holderAddr1', 'holderAddr2', 'deliveryDate',
+        'holderAddr1', 'holderAddr2', 'preferredDate',
         'holderLicense', 'licenseNumber', 'licenseIssuedDate', 'licenseExpiryDate'
     ];
 
