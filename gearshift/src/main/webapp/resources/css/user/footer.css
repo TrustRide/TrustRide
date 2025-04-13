@@ -23,6 +23,11 @@
     color: red;
 }
 
+.logo-img-text{
+    height: 100px;
+    width: auto;
+}
+
 .footer-info {
     font-size: 14px;
     line-height: 1.6;

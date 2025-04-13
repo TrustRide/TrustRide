@@ -7,7 +7,7 @@
             <a href="${pageContext.request.contextPath}">
                 <img src="<c:url value='/resources/img/logo-orange.png' />" alt="Trust Ride Logo" class="logo-img">
             </a>
-            <h1 class="logo">Trust Ride</h1>
+         <img src="<c:url value='/resources/img/logoText.png' />" alt="Trust Ride Logo Text" class="logo-img-text">
         </div>
 
         <nav>
