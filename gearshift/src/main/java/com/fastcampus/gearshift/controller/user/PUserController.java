@@ -46,7 +46,7 @@ public class PUserController {
 
     //상품 리스트
     @RequestMapping(value = "/userList", method = RequestMethod.GET)
-    public String getList(@RequestParam(defaultValue = "1") int page,
+    public String getCarList(@RequestParam(defaultValue = "1") int page,
                           @RequestParam(required = false) String cateCode,
                           Model model, HttpSession session) throws Exception {
         int pageSize = 9; // 한 페이지에 표시할 상품 개수
@@ -100,7 +100,7 @@ public class PUserController {
 
     //배송지 입력 화면
     @GetMapping("/user/delivery")
-    public String getDelivery(
+    public String showDeliveryForm(
             @RequestParam("carInfoId") Integer carInfoId,
             @RequestParam("title") String title,
             @RequestParam("isJointHolder") Boolean isJointHolder,
@@ -132,23 +132,14 @@ public class PUserController {
     }
 
 
-    //추후 제거
-    @PostMapping("/deliveryInsert")
-    public String postDelivery(UserDto userDto) throws  Exception{
-
-        //나중에 유효성 검사 및 경로 수정
-        return "user/userCarList";
-
-    }
 
 
     //차량 상세페이지 이동
     @GetMapping("/carDetail")
-    public String getDetail(@RequestParam("carInfoId") Integer carInfoId, Model model,CarInfoDto dto) throws Exception {
+    public String showCarDetail(@RequestParam("carInfoId") Integer carInfoId, Model model,CarInfoDto dto) throws Exception {
         CarInfoDto carInfoDto = pHolderService.carDetailSelect(carInfoId);
 
-        logger.debug("요청된 carInfoId = {}", carInfoId);
-        logger.debug("조회된 carInfoDto = {}", carInfoDto);
+
 
         model.addAttribute("carDto", carInfoDto);
         model.addAttribute("dto", dto);
@@ -156,6 +147,7 @@ public class PUserController {
         return "user/userCarDetail";
 
     }
+
 
 
     //차량 명의
@@ -188,8 +180,7 @@ public class PUserController {
         model.addAttribute("userCarList",searchResults);
 
         return "user/userCarList";
+
     }
-
-
 
 }

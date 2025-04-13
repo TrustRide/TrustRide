@@ -5,7 +5,7 @@
 
 <footer class="footer">
     <div class="footer-container">
-        <div class="footer-logo">Trust Ride</div>
+        <div class="footer-logo"> <img src="${pageContext.request.contextPath}/resources/img/logoText.png" alt="Trust Ride Logo" class="logo-img-text"> </div>
         <div class="footer-info">
             <p>
                 <img src="${pageContext.request.contextPath}/resources/img/logo-orange.png" alt="Trust Ride Logo" class="logo-img">
