@@ -2,7 +2,7 @@ package com.fastcampus.gearshift.controller.user;
 
 import com.fastcampus.gearshift.dto.*;
 import com.fastcampus.gearshift.service.*;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,39 +13,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
-
+@RequiredArgsConstructor
 @Controller
 @RequestMapping("/user/orders")
 public class LUserOrderController {
 
-    @Autowired
-    private LHolderService holderService;
+    private final LOrderService orderService;
 
-    @Autowired
-    private LOrderService orderService;
-
-    @Autowired
-    private LPaymentService paymentService;
-
-    @Autowired
-    private LDeliveryService deliveryService;
-
-    @Autowired
-    private LRefundService refundService;
-
+    private final LRefundService refundService;
 
     // 현금 결제 후 주문내역/배송조회 페이지 이동
     @PostMapping("/status/cash")
     public String getOrderHistory(@ModelAttribute LOrderDTO lOrderDTO, @ModelAttribute PaymentProcessDTO paymentProcessDTO,
                                   @ModelAttribute LHolderDTO lHolderDTO, @ModelAttribute DeliveryDTO deliveryDTO, HttpSession session) throws Exception {
 
-
         // userId를 session에서 꺼내주기
         UserDto userDto = (UserDto) session.getAttribute("loginUser");
         Integer userId = userDto.getUserId();
         // 전체 주문 처리 로직을 서비스로 위임
         orderService.processCashOrder(lOrderDTO, paymentProcessDTO, lHolderDTO, deliveryDTO, userId);
-
 
         return "redirect:/user/orders/status/orderList";
     }
@@ -55,11 +41,9 @@ public class LUserOrderController {
     public String getOrderHistory2(@ModelAttribute LOrderDTO lOrderDTO, @ModelAttribute PaymentProcessDTO paymentProcessDTO,
                                    @ModelAttribute LHolderDTO lHolderDTO, @ModelAttribute DeliveryDTO deliveryDTO, HttpSession session) throws Exception {
 
-
         // userId를 session에서 꺼내주기
         UserDto userDto = (UserDto) session.getAttribute("loginUser");
         Integer userId = userDto.getUserId();
-
 
         orderService.processCashOrder(lOrderDTO, paymentProcessDTO, lHolderDTO, deliveryDTO, userId);
 
