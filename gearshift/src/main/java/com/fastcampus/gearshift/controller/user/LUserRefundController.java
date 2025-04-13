@@ -4,7 +4,7 @@ import com.fastcampus.gearshift.dto.LRefundAbleListDTO;
 import com.fastcampus.gearshift.dto.LRefundDTO;
 import com.fastcampus.gearshift.dto.UserDto;
 import com.fastcampus.gearshift.service.LRefundService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
+@RequiredArgsConstructor
 @Controller
 @RequestMapping("/user/orders")
 public class LUserRefundController {
 
-    @Autowired
-    private LRefundService refundService;
+    private final LRefundService refundService;
 
     // 환불 할 수 있는 상품 목록 조회
     @GetMapping("/refundable")
