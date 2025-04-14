@@ -22,7 +22,7 @@ import org.slf4j.LoggerFactory;
 @Controller
 @RequiredArgsConstructor
 public class PUserController {
-    private static final Logger logger = LoggerFactory.getLogger(PUserController.class);
+
 
 
     private final PCateService cateService;
@@ -49,6 +49,7 @@ public class PUserController {
     public String getCarList(@RequestParam(defaultValue = "1") int page,
                           @RequestParam(required = false) String cateCode,
                           Model model, HttpSession session) throws Exception {
+
         int pageSize = 9; // 한 페이지에 표시할 상품 개수
 
         // 전체 상품 개수 조회
@@ -57,6 +58,7 @@ public class PUserController {
 
 
         List<CarListDto> userCarList;
+
         if (cateCode == null) {
             userCarList = pHolderService.carPageSelect(page, pageSize);
         } else {
@@ -133,7 +135,6 @@ public class PUserController {
 
 
 
-
     //차량 상세페이지 이동
     @GetMapping("/carDetail")
     public String showCarDetail(@RequestParam("carInfoId") Integer carInfoId, Model model,CarInfoDto dto) throws Exception {
@@ -147,7 +148,6 @@ public class PUserController {
         return "user/userCarDetail";
 
     }
-
 
 
     //차량 명의
@@ -182,5 +182,7 @@ public class PUserController {
         return "user/userCarList";
 
     }
+
+
 
 }
