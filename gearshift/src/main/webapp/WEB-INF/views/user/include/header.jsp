@@ -5,9 +5,9 @@
     <div class="container header-content">
         <div class="logo-container">
             <a href="${pageContext.request.contextPath}">
-                <img src="<c:url value='/resources/img/logo-orange.png' />" alt="Trust Ride Logo" class="logo-img">
+                <img src="<c:url value='/resources/img/logo.png' />" alt="Trust Ride Logo" class="logo-img">
             </a>
-         <img src="<c:url value='/resources/img/logoText.png' />" alt="Trust Ride Logo Text" class="logo-img-text">
+         <img src="<c:url value='/resources/img/letter.png' />" alt="Trust Ride Logo Text" class="logo-img-text">
         </div>
 
         <nav>
