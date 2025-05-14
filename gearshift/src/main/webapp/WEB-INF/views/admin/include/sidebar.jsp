@@ -11,13 +11,11 @@
          <li><a href="${pageContext.request.contextPath}/admin/cars/list">상품관리</a></li>
          <li><a href="${pageContext.request.contextPath}/admin/orderList">주문관리</a></li>
 
-        <li><a href="${pageContext.request.contextPath}/admin/carAd">차량광고생성기</a></li>
-        <li><a href="${pageContext.request.contextPath}/admin/manage">관리자정보</a></li>
+         <li><a href="${pageContext.request.contextPath}/admin/chat">채팅관리</a></li>
 	     <li><a href="${pageContext.request.contextPath}/admin/inquiry">문의관리</a></li>
          <li><a href="${pageContext.request.contextPath}/admin/coupons/list">쿠폰관리</a></li>
 
          <li><a href="${pageContext.request.contextPath}/admin/review">리뷰관리</a></li>
-        <li><a href="${pageContext.request.contextPath}/adminNewsList">매거진관리</a></li>
          <li><a href="${pageContext.request.contextPath}/admin/userList">회원관리</a></li>
          <li><a href="${pageContext.request.contextPath}/admin/manage">관리자정보</a></li>
     </ul>
